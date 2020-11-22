@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class cameramovement : MonoBehaviour
 {
-    public Vector2 mousePos;
+    private Vector2 mousePos;
     private GameObject player;
-    public Vector2 playerPos;
+    private Vector2 playerPos;
     private Camera cam;
-    public Vector2 finalvector;
-    public Vector2 mouseDir;
-    public float mouseDist;
+    private Vector2 finalvector;
+    private Vector2 mouseDir;
+    private float mouseDist;
     void Start()
     {
         cam = gameObject.GetComponent<Camera>();

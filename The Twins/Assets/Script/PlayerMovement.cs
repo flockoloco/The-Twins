@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playermovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 10f;
+    private float moveSpeed = 10f;
     private Rigidbody2D rb;
     private Animator animator;
 
     private Vector3 moveDirection;
     private Vector3 dodgeDirection;
     private float dodgeSpeed;
-    float dodgeTimer = 0f;
+    private float dodgeTimer = 0f;
+    public bool invunerable;
 
     // define a type of state
     private enum State
@@ -35,6 +36,10 @@ public class playermovement : MonoBehaviour
         switch (state)
         {
             case State.walking:
+
+
+                invunerable = false;
+
                 dodgeTimer -= Time.deltaTime;
 
                 float moveX = 0f;
@@ -48,10 +53,10 @@ public class playermovement : MonoBehaviour
                 animator.SetFloat("Horizontal", moveX);
                 animator.SetFloat("Speed", moveDirection.sqrMagnitude);
 
-                if (Input.GetKeyDown(KeyCode.Space) && dodgeTimer <= 0)
+                if (Input.GetKeyDown(KeyCode.Space) && (dodgeTimer <= 0) && (moveX != 0 || moveY != 0))
                 {
                     dodgeDirection = moveDirection;
-                    dodgeSpeed = 75f;
+                    dodgeSpeed = 40f;
                     state = State.dodging;
                     dodgeTimer = 2f; 
                 }
@@ -59,10 +64,13 @@ public class playermovement : MonoBehaviour
                 //this dodging state 
             case State.dodging:
                 //transicao para estado de walking enquanto diminui a velocidade do dodge
-                float dodgeSpeedDropper = 5f;
+
+                invunerable = true;
+
+                float dodgeSpeedDropper = 2f;
                 dodgeSpeed -= dodgeSpeed * dodgeSpeedDropper * Time.deltaTime;
 
-                float dodgeSpeedMin = 50f;
+                float dodgeSpeedMin = 30f;
                 if (dodgeSpeed < dodgeSpeedMin)
                 {
                     state = State.walking;
