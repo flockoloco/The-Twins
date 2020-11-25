@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
-    private Rigidbody2D bulletrigidbody;
-    void Start()
+    
+    private void Awake()
     {
-        bulletrigidbody = GetComponent<Rigidbody2D>();
-
-        bulletrigidbody.velocity = new Vector2(0,0 );
+        
     }
-    void Update()
+    private void OnCollisionEnter(Collision collision)
     {
         
     }

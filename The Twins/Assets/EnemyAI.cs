@@ -8,36 +8,42 @@ public class EnemyAI : MonoBehaviour
     private Vector3 playerPos;
     private Rigidbody2D rigidbody;
     public GameObject BulletPrefab;
-
+    public StatsHolder stats;
     private readonly float agroDist = 4;
-
-    private float atkCooldown;
+    private float bulletTimer;
+    
 
     void Start()
     {
         rigidbody = gameObject.GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player");
-        playerPos = player.GetComponent<Transform>().position;
     }
 
     // Update is called once per frame
     void Update()
-    { 
-        //cds
-
+    {
+        bulletTimer += Time.deltaTime;
+        playerPos = player.GetComponent<Transform>().position;
 
         if (PlayerToEnemyDist(playerPos,transform.position) < agroDist)
         {
-            Debug.Log("hey");
-            rigidbody.velocity = new Vector2 (PlayerToEnemyDir(playerPos,transform.position).x * -4, PlayerToEnemyDir(playerPos, transform.position).y * -4);
+            rigidbody.velocity = new Vector2 (PlayerToEnemyDir(playerPos,transform.position).x * 4, PlayerToEnemyDir(playerPos, transform.position).y * 4);
         }
         else
         {
-            Vector2 direction = PlayerToEnemyDir(playerPos, transform.position);
-            float bulletSpeed = 15;
-            GameObject bullet = Instantiate(BulletPrefab, new Vector3(transform.position.x + (direction.x * 2 ), transform.position.y + (direction.y * 2), 0), transform.rotation);
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            rb.AddForce(direction * bulletSpeed, ForceMode2D.Impulse);
+
+            rigidbody.velocity = new Vector2(0,0);
+            
+            Vector2 direction = -PlayerToEnemyDir(playerPos, transform.position);
+            rigidbody.rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            float bulletSpeed = 7.5f;
+            if (bulletTimer > stats.atkspeed)
+            {
+                bulletTimer = 0;
+                GameObject bullet = Instantiate(BulletPrefab, new Vector3(transform.position.x + (direction.x * 2), transform.position.y + (direction.y * 2), 0), transform.rotation);
+                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+                rb.velocity = direction * bulletSpeed;
+            }
         }
     }
    

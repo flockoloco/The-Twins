@@ -12,7 +12,7 @@ public class SwordScript : MonoBehaviour
     private Vector2 mouseDir;
     private float swordrotatorotato;
 
-    private bool rotatoFrezeto;
+    public bool rotatoFrezeto;
 
     private Animator swordAnimator;
 

@@ -13,6 +13,18 @@ public class PlayerMovement : MonoBehaviour
     private float dodgeSpeed;
     private float dodgeTimer = 0f;
     public bool invunerable;
+    public GameObject playersword;
+    public GameObject playerbow;
+    public SwordScript swordScript;
+    public BowScript bowScript;
+    public enum weaponState
+    {
+        sword,
+        bow,
+    }
+    private weaponState weapon;
+
+    private int health;
 
     // define a type of state
     private enum State
@@ -28,10 +40,34 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         state = State.walking;
+        weapon = weaponState.sword;
+
     }
 
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            if (weapon == weaponState.sword && swordScript.rotatoFrezeto == false)
+            {
+                weapon = weaponState.bow;
+            }else if(weapon == weaponState.bow && bowScript.rotatoFrezeto == false)
+            {
+                weapon = weaponState.sword;
+            }
+        }
+        switch (weapon)
+        {
+            case weaponState.sword:
+                playersword.SetActive(true);
+                playerbow.SetActive(false);
+                break;
+            case weaponState.bow:
+                playersword.SetActive(false);
+                playerbow.SetActive(true);
+                break;
+        }
+
         //switch between the walking state to
         switch (state)
         {

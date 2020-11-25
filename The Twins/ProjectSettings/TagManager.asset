@@ -6,6 +6,8 @@ TagManager:
   tags:
   - EProjectiles
   - Enemy
+  - PlayerSword
+  - PlayerBow
   layers:
   - Default
   - TransparentFX

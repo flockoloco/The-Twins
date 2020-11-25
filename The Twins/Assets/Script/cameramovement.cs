@@ -22,7 +22,7 @@ public class cameramovement : MonoBehaviour
         playerPos = player.transform.position;
         mouseDir = new Vector2(mousePos.x-playerPos.x, mousePos.y-playerPos.y).normalized;
         mouseDist = Mathf.Sqrt((mousePos.x-playerPos.x)*(mousePos.x-playerPos.x) + (mousePos.y-playerPos.y)*(mousePos.y-playerPos.y));
-        finalvector = mouseDir * mouseDist/5;
+        finalvector = mouseDir * mouseDist/8;
         gameObject.transform.position = new Vector3(finalvector.x + playerPos.x,finalvector.y + playerPos.y,-10);
     }
 }
