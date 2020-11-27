@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordScript : MonoBehaviour
+public class swordscript : MonoBehaviour
 {
     private Vector2 mousePos;
     private GameObject player;

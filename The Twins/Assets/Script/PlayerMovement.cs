@@ -15,8 +15,9 @@ public class PlayerMovement : MonoBehaviour
     public bool invunerable;
     public GameObject playersword;
     public GameObject playerbow;
-    public SwordScript swordScript;
+    public swordscript swordScript;
     public BowScript bowScript;
+
     public enum weaponState
     {
         sword,
