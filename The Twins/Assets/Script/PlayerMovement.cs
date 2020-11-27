@@ -27,13 +27,14 @@ public class PlayerMovement : MonoBehaviour
     private int health;
 
     // define a type of state
-    private enum State
+    public enum State
     {
         walking,
         dodging,
+        hit,
     }
 
-    private State state;
+    public State state;
 
     private void Awake()
     {
@@ -73,8 +74,8 @@ public class PlayerMovement : MonoBehaviour
         {
             case State.walking:
 
+                gameObject.GetComponent<PlayerStats>().invunerable = false;
 
-                invunerable = false;
 
                 dodgeTimer -= Time.deltaTime;
 
@@ -101,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
             case State.dodging:
                 //transicao para estado de walking enquanto diminui a velocidade do dodge
 
-                invunerable = true;
+                gameObject.GetComponent<PlayerStats>().invunerable = true;
 
                 float dodgeSpeedDropper = 2f;
                 dodgeSpeed -= dodgeSpeed * dodgeSpeedDropper * Time.deltaTime;
@@ -114,11 +115,13 @@ public class PlayerMovement : MonoBehaviour
                 break;
         }
     }
-
     void FixedUpdate()
     {
         switch (state)
         {
+            case State.hit:
+                
+                break;
             case State.walking:
                 rb.velocity = moveDirection * moveSpeed;
                 break;

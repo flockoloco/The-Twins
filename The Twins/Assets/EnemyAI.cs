@@ -42,6 +42,7 @@ public class EnemyAI : MonoBehaviour
                 bulletTimer = 0;
                 GameObject bullet = Instantiate(BulletPrefab, new Vector3(transform.position.x + (direction.x * 2), transform.position.y + (direction.y * 2), 0), transform.rotation);
                 Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+                bullet.GetComponent<BulletScript>().EnemyDamage(gameObject.GetComponent<StatsHolder>().damage);
                 rb.velocity = direction * bulletSpeed;
             }
         }

@@ -17,19 +17,18 @@ public class UsefulllFs
     {
         return Mathf.Sqrt(((pos2.x - pos1.x) * (pos2.x - pos1.x)) + ((pos2.y - pos1.y) * (pos2.y - pos1.y)));
     }
-    public static void TakeDamage(GameObject target, GameObject dealer)
+    public static void TakeDamage(GameObject target, float dealerDamage)
     {
-        // if (tag == player)
-        //{
-        //    target.GetComponent<PlayerStats>() blaaaaaa
-        //}else if tag == EnemyAI{
-        //    target.GetComponent<StatsHolder>()
-        //}
+        if (target.tag == "Player")
+        {
 
-        //stats.aaaaaaaaaaaaaaa = 3;
-        //if (target.health && target.health)
-        //{
-        //    target.health = target.health - (damage - target.armor / 2);
-        //}
+            target.GetComponent<PlayerStats>().health -= (dealerDamage - (target.GetComponent<PlayerStats>().armor/2));
+            target.GetComponent<PlayerStats>().hit = true;
+        }
+        else if (target.tag == "Enemy") 
+        {
+            target.GetComponent<StatsHolder>().health -= (dealerDamage - (target.GetComponent<StatsHolder>().armor / 2));
+            target.GetComponent<StatsHolder>().hit = true;
+        }
     }
 }
