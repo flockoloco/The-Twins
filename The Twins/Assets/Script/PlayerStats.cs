@@ -10,7 +10,7 @@ public class PlayerStats : MonoBehaviour
     public float bowAtkSpeed;
     public int armor = 8;
     public float swordDamage = 2;
-    public float bowDamage;
+    public int bowDamage;
     public bool hit;
     public bool invunerable;
     private float vunerableTimer;

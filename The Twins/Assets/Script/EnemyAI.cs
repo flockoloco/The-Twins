@@ -27,14 +27,14 @@ public class EnemyAI : MonoBehaviour
 
         if (PlayerToEnemyDist(playerPos,transform.position) < agroDist)
         {
-            rigidbody.velocity = new Vector2 (PlayerToEnemyDir(playerPos,transform.position).x * 4, PlayerToEnemyDir(playerPos, transform.position).y * 4);
+            rigidbody.velocity = new Vector2 (UsefulllFs.Dir(playerPos,transform.position,true).x * 4, UsefulllFs.Dir(playerPos, transform.position,true).y * 4);
         }
         else
         {
 
             rigidbody.velocity = new Vector2(0,0);
             
-            Vector2 direction = -PlayerToEnemyDir(playerPos, transform.position);
+            Vector2 direction = -UsefulllFs.Dir(playerPos, transform.position,true);
             rigidbody.rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             float bulletSpeed = 7.5f;
             if (bulletTimer > stats.atkspeed)
@@ -52,8 +52,4 @@ public class EnemyAI : MonoBehaviour
     {
         return Mathf.Sqrt((ePos.x - pPos.x)* (ePos.x - pPos.x) + (ePos.y - pPos.y) * (ePos.y - pPos.y));
     }
-    private Vector2 PlayerToEnemyDir(Vector3 pPos, Vector3 ePos)
-    {
-        return new Vector2(ePos.x - pPos.x,ePos.y - pPos.y).normalized;
-    }   
 }

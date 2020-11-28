@@ -15,6 +15,8 @@ public class BowScript : MonoBehaviour
     private Animator bowAnimator;
 
     public float bowTimer;
+    public GameObject arrowPrefab;
+
 
     void Awake()
     {
@@ -50,5 +52,15 @@ public class BowScript : MonoBehaviour
             gameObject.transform.rotation = Quaternion.Euler(0, 0, bowrotatorotato);
             gameObject.transform.position = new Vector3(finalvector.x + playerPos.x, finalvector.y + playerPos.y - 0.25f, 0);
         }
+    }
+    public void SpawnArrow()
+    {
+        Vector2 direction = -UsefulllFs.Dir(playerPos, transform.position, true);
+        float arrowSpeed = 10f;
+        GameObject arrow = Instantiate(arrowPrefab, transform.position, transform.rotation);
+        arrow.GetComponent<ArrowScript>().ArrowDamage(gameObject.GetComponent<PlayerStats>().bowDamage);
+        arrow.GetComponent<Rigidbody2D>().velocity = direction * arrowSpeed;
+
+
     }
 }
