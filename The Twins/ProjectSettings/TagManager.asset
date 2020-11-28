@@ -12,6 +12,7 @@ TagManager:
   - rooms
   - Wall
   - closedRoom
+  - PauseUI
   layers:
   - Default
   - TransparentFX

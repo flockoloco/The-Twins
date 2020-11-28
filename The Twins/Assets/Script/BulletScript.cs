@@ -20,5 +20,9 @@ public class BulletScript : MonoBehaviour
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(gameObject.GetComponent<Rigidbody2D>().velocity.normalized * 5 , ForceMode2D.Impulse); //knocking the target towards the projectiles velocity
             Destroy(gameObject);
         }
+        if (collision.tag == "Wall")
+        {
+            Destroy(gameObject);
+        }
     }
 }

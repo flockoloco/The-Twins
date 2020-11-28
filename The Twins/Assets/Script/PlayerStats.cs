@@ -15,13 +15,19 @@ public class PlayerStats : MonoBehaviour
     public bool invunerable;
     private float vunerableTimer;
 
+    private PauseMenu pauseMenu;
+
+    private void Awake()
+    {
+        pauseMenu = GameObject.FindWithTag("PauseUI").GetComponent<PauseMenu>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (health < 0)
+        if (health <= 0)
         {
-            //Death();
+            pauseMenu.ResetGame();
         }
 
         if (hit == true)
