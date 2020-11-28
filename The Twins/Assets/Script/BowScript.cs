@@ -14,6 +14,9 @@ public class BowScript : MonoBehaviour
     public bool rotatoFrezeto;
     private Animator bowAnimator;
 
+    private Vector2 mouseDirection;
+    
+
     public float bowTimer;
     public GameObject arrowPrefab;
 
@@ -24,18 +27,17 @@ public class BowScript : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         bowAnimator = GetComponent<Animator>();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+ 
     private void Update()
     {
         bowTimer += Time.deltaTime;
-        if (Input.GetKey(KeyCode.Mouse1) && (bowTimer > 0.5))
+        
+        if (Input.GetKey(KeyCode.Mouse0) && (bowTimer > 0.5))
         {
-            bowAnimator.SetBool("Attack", true);
+            bowTimer = 0;
+            bowAnimator.SetBool("Fire", true);
             rotatoFrezeto = true;
+            mouseDirection = mousePos;
         }
     }
     void FixedUpdate()
@@ -55,12 +57,21 @@ public class BowScript : MonoBehaviour
     }
     public void SpawnArrow()
     {
-        Vector2 direction = -UsefulllFs.Dir(playerPos, transform.position, true);
+        
+        Vector2 direction = -UsefulllFs.Dir(mouseDirection, transform.parent.gameObject.transform.position, true);
         float arrowSpeed = 10f;
         GameObject arrow = Instantiate(arrowPrefab, transform.position, transform.rotation);
-        arrow.GetComponent<ArrowScript>().ArrowDamage(gameObject.GetComponent<PlayerStats>().bowDamage);
+        
+        arrow.GetComponent<ArrowScript>().ArrowDamage(transform.parent.gameObject.GetComponent<PlayerStats>().bowDamage);
+
         arrow.GetComponent<Rigidbody2D>().velocity = direction * arrowSpeed;
-
-
+        
+    }
+    
+    public void StopBowAnimation()
+    {
+        bowAnimator.SetBool("Fire", false);
+        rotatoFrezeto = false;
+        SpawnArrow();
     }
 }
