@@ -53,7 +53,7 @@ public class PauseMenu : MonoBehaviour
     {
         Debug.Log("Going to main menu");
         //só criar o scene do main menu
-        //SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Main Menu");
     }
     public void Options()
     {

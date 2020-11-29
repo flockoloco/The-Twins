@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class ShopScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    public void Interact()
     {
-        
+
     }
 
     // Update is called once per frame
