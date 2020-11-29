@@ -3020,7 +3020,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7758780687407827862, guid: bf0085243bc54ab49a51dc30ccfb3f10, type: 3}
       propertyPath: aaaa.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7758780687407827862, guid: bf0085243bc54ab49a51dc30ccfb3f10, type: 3}
       propertyPath: player
@@ -3030,5 +3030,13 @@ PrefabInstance:
       propertyPath: aaaa.Array.data[0]
       value: 
       objectReference: {fileID: 11500000, guid: 0cc7ed4455ac30e478b8345c53b96bca, type: 3}
+    - target: {fileID: 7758780687407827862, guid: bf0085243bc54ab49a51dc30ccfb3f10, type: 3}
+      propertyPath: aaaa.Array.data[1]
+      value: 
+      objectReference: {fileID: 11500000, guid: 09e7c409ff7bf31408ba02b380c9f992, type: 3}
+    - target: {fileID: 7758780687407827862, guid: bf0085243bc54ab49a51dc30ccfb3f10, type: 3}
+      propertyPath: aaaa.Array.data[2]
+      value: 
+      objectReference: {fileID: 11500000, guid: bc859c950d9595c4c88236b0bb8c4885, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf0085243bc54ab49a51dc30ccfb3f10, type: 3}
