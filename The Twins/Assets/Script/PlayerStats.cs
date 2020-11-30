@@ -13,6 +13,9 @@ public class PlayerStats : MonoBehaviour
     public int bowDamage;
     public bool hit;
     public bool invunerable;
+    public int gold;
+    public int bars;
+    public int nuggets;
     private float vunerableTimer;
 
     private PauseMenu pauseMenu;

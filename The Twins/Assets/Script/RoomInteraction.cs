@@ -8,6 +8,7 @@ public class RoomInteraction : MonoBehaviour
     public Sprite normalSprite;
     public Sprite glowSprite;
     public SpriteRenderer spriteRenderer;
+    public bool ableToInteract = true;
 
     private void Awake()
     {
@@ -18,35 +19,50 @@ public class RoomInteraction : MonoBehaviour
         if (collision.tag == "Player")
         {
             spriteRenderer.sprite = glowSprite;
+            if (gameObject.tag == "Shop")
+            {
+                GameObject.FindWithTag("ShopCanvas").GetComponent<ShopMenuScript>().Activate();    
+            }
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetKey(KeyCode.E))
-        { 
-            if (gameObject.name == "Shop")
+        if (collision.tag == "Player" && ableToInteract == true)
+        {
+            
+            if (Input.GetKey(KeyCode.E))
             {
-                gameObject.GetComponent<ShopScript>().Interact();
-            }
-            else if (gameObject.name == "Fountain")
-            {
-                gameObject.GetComponent<FountainScript>().Interact();
-            }
-            else if (gameObject.name == "Enchantments")
-            {
+                ableToInteract = false;
+                Debug.Log("pressing E");
+                
+                if (gameObject.tag == "Fountain")
+                {
+                    Debug.Log("trying to give helath");
+                    gameObject.GetComponent<FountainScript>().Interact();
+                }
+                else if (gameObject.tag == "Enchantments")
+                {
 
-            }
-            else if (gameObject.name == "Well")
-            {
+                }
+                else if (gameObject.tag == "Well")
+                {
 
+                }
             }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        ableToInteract = true;
         if (collision.tag == "Player")
         {
             spriteRenderer.sprite = normalSprite;
+            if (gameObject.name == "Shop")
+            {
+                GameObject.FindWithTag("ShopCanvas").GetComponent<ShopMenuScript>().DeActivate();
+            }
+
         }
+
     }
 }
