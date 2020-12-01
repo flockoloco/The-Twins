@@ -123,6 +123,54 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &228837268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0}
+  Name: Corridor
+  IndividualRoomTemplates: []
+  RoomTemplateSets: []
+--- !u!114 &318642867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0}
+  Name: Corridor
+  IndividualRoomTemplates: []
+  RoomTemplateSets: []
+--- !u!114 &642265249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0}
+  Name: Corridor
+  IndividualRoomTemplates: []
+  RoomTemplateSets: []
 --- !u!1 &777599498
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,7 +206,7 @@ MonoBehaviour:
     UseCorridors: 1
   GeneratorConfig:
     RootGameObject: {fileID: 0}
-    Timeout: 10000
+    Timeout: 600000
     RepeatModeOverride: 0
   PostProcessConfig:
     InitializeSharedTilemaps: 1
@@ -192,6 +240,705 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &799893321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0}
+  Name: Corridor
+  IndividualRoomTemplates: []
+  RoomTemplateSets: []
+--- !u!1 &837941476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 837941478}
+  - component: {fileID: 837941477}
+  m_Layer: 0
+  m_Name: Generated Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &837941477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837941476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6374e3c6b7c2b31469c5b57ae85656a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RoomInstances:
+  - room: {fileID: -6571282701520625271, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    isCorridor: 0
+    connection: {fileID: 0}
+    roomTemplatePrefab: {fileID: 9121758027560506767, guid: ea97fae76eff9494f858c76f7e063140, type: 3}
+    roomTemplateInstance: {fileID: 0}
+    position: {x: -35, y: 30, z: 0}
+    doors:
+    - doorLine:
+        fromX: -31
+        fromY: 37
+        fromZ: 0
+        toX: -29
+        toY: 37
+        toZ: 0
+      facingDirection: {x: 0, y: 1}
+      isHorizontal: 1
+      connectedRoom: {fileID: 1528016842}
+    - doorLine:
+        fromX: -42
+        fromY: 37
+        fromZ: 0
+        toX: -40
+        toY: 37
+        toZ: 0
+      facingDirection: {x: 0, y: 1}
+      isHorizontal: 1
+      connectedRoom: {fileID: 799893321}
+    - doorLine:
+        fromX: -46
+        fromY: 29
+        fromZ: 0
+        toX: -46
+        toY: 31
+        toZ: 0
+      facingDirection: {x: -1, y: 0}
+      isHorizontal: 0
+      connectedRoom: {fileID: 318642867}
+    - doorLine:
+        fromX: -37
+        fromY: 24
+        fromZ: 0
+        toX: -35
+        toY: 24
+        toZ: 0
+      facingDirection: {x: 0, y: -1}
+      isHorizontal: 1
+      connectedRoom: {fileID: 1023838698}
+    outlinePolygon:
+      points:
+      - {x: -46, y: 37}
+      - {x: -25, y: 37}
+      - {x: -25, y: 24}
+      - {x: -46, y: 24}
+  - room: {fileID: -5313075144515376716, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    isCorridor: 0
+    connection: {fileID: 0}
+    roomTemplatePrefab: {fileID: 1485217367886948873, guid: 20b206d4a076e054aa09c22652042e7c, type: 3}
+    roomTemplateInstance: {fileID: 0}
+    position: {x: -67, y: 28, z: 0}
+    doors:
+    - doorLine:
+        fromX: -55
+        fromY: 29
+        fromZ: 0
+        toX: -55
+        toY: 31
+        toZ: 0
+      facingDirection: {x: 1, y: 0}
+      isHorizontal: 0
+      connectedRoom: {fileID: 318642867}
+    - doorLine:
+        fromX: -73
+        fromY: 21
+        fromZ: 0
+        toX: -71
+        toY: 21
+        toZ: 0
+      facingDirection: {x: 0, y: -1}
+      isHorizontal: 1
+      connectedRoom: {fileID: 228837268}
+    outlinePolygon:
+      points:
+      - {x: -77, y: 31}
+      - {x: -66, y: 31}
+      - {x: -66, y: 36}
+      - {x: -55, y: 36}
+      - {x: -55, y: 21}
+      - {x: -77, y: 21}
+  - room: {fileID: 1254745931331699511, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    isCorridor: 0
+    connection: {fileID: 0}
+    roomTemplatePrefab: {fileID: 9121758027560506767, guid: ea97fae76eff9494f858c76f7e063140, type: 3}
+    roomTemplateInstance: {fileID: 0}
+    position: {x: -39, y: 4, z: 0}
+    doors:
+    - doorLine:
+        fromX: -37
+        fromY: 11
+        fromZ: 0
+        toX: -35
+        toY: 11
+        toZ: 0
+      facingDirection: {x: 0, y: 1}
+      isHorizontal: 1
+      connectedRoom: {fileID: 1023838698}
+    - doorLine:
+        fromX: -45
+        fromY: -2
+        fromZ: 0
+        toX: -43
+        toY: -2
+        toZ: 0
+      facingDirection: {x: 0, y: -1}
+      isHorizontal: 1
+      connectedRoom: {fileID: 1951161334}
+    outlinePolygon:
+      points:
+      - {x: -50, y: 11}
+      - {x: -29, y: 11}
+      - {x: -29, y: -2}
+      - {x: -50, y: -2}
+  - room: {fileID: 5542874551500312502, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    isCorridor: 0
+    connection: {fileID: 0}
+    roomTemplatePrefab: {fileID: 6874096849543655325, guid: 70e6daa7ae37fc142bb088953966f5d9, type: 3}
+    roomTemplateInstance: {fileID: 0}
+    position: {x: -24, y: 57, z: 0}
+    doors:
+    - doorLine:
+        fromX: -31
+        fromY: 50
+        fromZ: 0
+        toX: -29
+        toY: 50
+        toZ: 0
+      facingDirection: {x: 0, y: -1}
+      isHorizontal: 1
+      connectedRoom: {fileID: 1528016842}
+    - doorLine:
+        fromX: -30
+        fromY: 63
+        fromZ: 0
+        toX: -28
+        toY: 63
+        toZ: 0
+      facingDirection: {x: 0, y: 1}
+      isHorizontal: 1
+      connectedRoom: {fileID: 1359226878}
+    outlinePolygon:
+      points:
+      - {x: -35, y: 63}
+      - {x: -17, y: 63}
+      - {x: -17, y: 50}
+      - {x: -35, y: 50}
+  - room: {fileID: -88114493959410035, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    isCorridor: 0
+    connection: {fileID: 0}
+    roomTemplatePrefab: {fileID: 8600251875759139634, guid: e03a5710bf2ca1c4cb53087932dbb720, type: 3}
+    roomTemplateInstance: {fileID: 0}
+    position: {x: -50, y: 56, z: 0}
+    doors:
+    - doorLine:
+        fromX: -42
+        fromY: 50
+        fromZ: 0
+        toX: -40
+        toY: 50
+        toZ: 0
+      facingDirection: {x: 0, y: -1}
+      isHorizontal: 1
+      connectedRoom: {fileID: 799893321}
+    - doorLine:
+        fromX: -57
+        fromY: 54
+        fromZ: 0
+        toX: -57
+        toY: 56
+        toZ: 0
+      facingDirection: {x: -1, y: 0}
+      isHorizontal: 0
+      connectedRoom: {fileID: 642265249}
+    outlinePolygon:
+      points:
+      - {x: -57, y: 60}
+      - {x: -36, y: 60}
+      - {x: -36, y: 50}
+      - {x: -57, y: 50}
+  - room: {fileID: 7685343977769316517, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    isCorridor: 0
+    connection: {fileID: 0}
+    roomTemplatePrefab: {fileID: 6874096849543655325, guid: 70e6daa7ae37fc142bb088953966f5d9, type: 3}
+    roomTemplateInstance: {fileID: 0}
+    position: {x: -71, y: 2, z: 0}
+    doors:
+    - doorLine:
+        fromX: -73
+        fromY: 8
+        fromZ: 0
+        toX: -71
+        toY: 8
+        toZ: 0
+      facingDirection: {x: 0, y: 1}
+      isHorizontal: 1
+      connectedRoom: {fileID: 228837268}
+    outlinePolygon:
+      points:
+      - {x: -82, y: 8}
+      - {x: -64, y: 8}
+      - {x: -64, y: -5}
+      - {x: -82, y: -5}
+  - room: {fileID: -4440685884272457631, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    isCorridor: 0
+    connection: {fileID: 0}
+    roomTemplatePrefab: {fileID: 8600251875759139634, guid: e03a5710bf2ca1c4cb53087932dbb720, type: 3}
+    roomTemplateInstance: {fileID: 0}
+    position: {x: -52, y: -14, z: 0}
+    doors:
+    - doorLine:
+        fromX: -45
+        fromY: -10
+        fromZ: 0
+        toX: -43
+        toY: -10
+        toZ: 0
+      facingDirection: {x: 0, y: 1}
+      isHorizontal: 1
+      connectedRoom: {fileID: 1951161334}
+    outlinePolygon:
+      points:
+      - {x: -59, y: -10}
+      - {x: -38, y: -10}
+      - {x: -38, y: -20}
+      - {x: -59, y: -20}
+  - room: {fileID: -8352657456299897063, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    isCorridor: 0
+    connection: {fileID: 0}
+    roomTemplatePrefab: {fileID: 9121758027560506767, guid: ea97fae76eff9494f858c76f7e063140, type: 3}
+    roomTemplateInstance: {fileID: 0}
+    position: {x: -26, y: 82, z: 0}
+    doors:
+    - doorLine:
+        fromX: -30
+        fromY: 76
+        fromZ: 0
+        toX: -28
+        toY: 76
+        toZ: 0
+      facingDirection: {x: 0, y: -1}
+      isHorizontal: 1
+      connectedRoom: {fileID: 1359226878}
+    outlinePolygon:
+      points:
+      - {x: -37, y: 89}
+      - {x: -16, y: 89}
+      - {x: -16, y: 76}
+      - {x: -37, y: 76}
+  - room: {fileID: 8232388282270076087, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    isCorridor: 0
+    connection: {fileID: 0}
+    roomTemplatePrefab: {fileID: 6874096849543655325, guid: 70e6daa7ae37fc142bb088953966f5d9, type: 3}
+    roomTemplateInstance: {fileID: 0}
+    position: {x: -78, y: 55, z: 0}
+    doors:
+    - doorLine:
+        fromX: -71
+        fromY: 54
+        fromZ: 0
+        toX: -71
+        toY: 56
+        toZ: 0
+      facingDirection: {x: 1, y: 0}
+      isHorizontal: 0
+      connectedRoom: {fileID: 642265249}
+    outlinePolygon:
+      points:
+      - {x: -89, y: 61}
+      - {x: -71, y: 61}
+      - {x: -71, y: 48}
+      - {x: -89, y: 48}
+  - room: {fileID: 1528016842}
+    isCorridor: 1
+    connection: {fileID: -490774867988056046, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    roomTemplatePrefab: {fileID: 4374557940119921305, guid: 6fa103e3da930ff4a99be5939a4fbffb, type: 3}
+    roomTemplateInstance: {fileID: 0}
+    position: {x: -30, y: 47, z: 0}
+    doors:
+    - doorLine:
+        fromX: -31
+        fromY: 37
+        fromZ: 0
+        toX: -29
+        toY: 37
+        toZ: 0
+      facingDirection: {x: 0, y: 1}
+      isHorizontal: 1
+      connectedRoom: {fileID: -6571282701520625271, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    - doorLine:
+        fromX: -31
+        fromY: 50
+        fromZ: 0
+        toX: -29
+        toY: 50
+        toZ: 0
+      facingDirection: {x: 0, y: -1}
+      isHorizontal: 1
+      connectedRoom: {fileID: 5542874551500312502, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    outlinePolygon:
+      points:
+      - {x: -34, y: 47}
+      - {x: -32, y: 47}
+      - {x: -32, y: 50}
+      - {x: -28, y: 50}
+      - {x: -28, y: 47}
+      - {x: -26, y: 47}
+      - {x: -26, y: 40}
+      - {x: -28, y: 40}
+      - {x: -28, y: 37}
+      - {x: -32, y: 37}
+      - {x: -32, y: 40}
+      - {x: -34, y: 40}
+  - room: {fileID: 1359226878}
+    isCorridor: 1
+    connection: {fileID: 4640740460898622719, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    roomTemplatePrefab: {fileID: 4374557940119921305, guid: 6fa103e3da930ff4a99be5939a4fbffb, type: 3}
+    roomTemplateInstance: {fileID: 0}
+    position: {x: -29, y: 73, z: 0}
+    doors:
+    - doorLine:
+        fromX: -30
+        fromY: 63
+        fromZ: 0
+        toX: -28
+        toY: 63
+        toZ: 0
+      facingDirection: {x: 0, y: 1}
+      isHorizontal: 1
+      connectedRoom: {fileID: 5542874551500312502, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    - doorLine:
+        fromX: -30
+        fromY: 76
+        fromZ: 0
+        toX: -28
+        toY: 76
+        toZ: 0
+      facingDirection: {x: 0, y: -1}
+      isHorizontal: 1
+      connectedRoom: {fileID: -8352657456299897063, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    outlinePolygon:
+      points:
+      - {x: -33, y: 73}
+      - {x: -31, y: 73}
+      - {x: -31, y: 76}
+      - {x: -27, y: 76}
+      - {x: -27, y: 73}
+      - {x: -25, y: 73}
+      - {x: -25, y: 66}
+      - {x: -27, y: 66}
+      - {x: -27, y: 63}
+      - {x: -31, y: 63}
+      - {x: -31, y: 66}
+      - {x: -33, y: 66}
+  - room: {fileID: 799893321}
+    isCorridor: 1
+    connection: {fileID: -558917914298891856, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    roomTemplatePrefab: {fileID: 4374557940119921305, guid: 6fa103e3da930ff4a99be5939a4fbffb, type: 3}
+    roomTemplateInstance: {fileID: 0}
+    position: {x: -41, y: 47, z: 0}
+    doors:
+    - doorLine:
+        fromX: -42
+        fromY: 37
+        fromZ: 0
+        toX: -40
+        toY: 37
+        toZ: 0
+      facingDirection: {x: 0, y: 1}
+      isHorizontal: 1
+      connectedRoom: {fileID: -6571282701520625271, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    - doorLine:
+        fromX: -42
+        fromY: 50
+        fromZ: 0
+        toX: -40
+        toY: 50
+        toZ: 0
+      facingDirection: {x: 0, y: -1}
+      isHorizontal: 1
+      connectedRoom: {fileID: -88114493959410035, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    outlinePolygon:
+      points:
+      - {x: -45, y: 47}
+      - {x: -43, y: 47}
+      - {x: -43, y: 50}
+      - {x: -39, y: 50}
+      - {x: -39, y: 47}
+      - {x: -37, y: 47}
+      - {x: -37, y: 40}
+      - {x: -39, y: 40}
+      - {x: -39, y: 37}
+      - {x: -43, y: 37}
+      - {x: -43, y: 40}
+      - {x: -45, y: 40}
+  - room: {fileID: 318642867}
+    isCorridor: 1
+    connection: {fileID: -9090313661449593027, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    roomTemplatePrefab: {fileID: 5754402271382057863, guid: 476609720ea6c674da52026c129c1bff, type: 3}
+    roomTemplateInstance: {fileID: 0}
+    position: {x: -51, y: 31, z: 0}
+    doors:
+    - doorLine:
+        fromX: -46
+        fromY: 29
+        fromZ: 0
+        toX: -46
+        toY: 31
+        toZ: 0
+      facingDirection: {x: -1, y: 0}
+      isHorizontal: 0
+      connectedRoom: {fileID: -6571282701520625271, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    - doorLine:
+        fromX: -55
+        fromY: 29
+        fromZ: 0
+        toX: -55
+        toY: 31
+        toZ: 0
+      facingDirection: {x: 1, y: 0}
+      isHorizontal: 0
+      connectedRoom: {fileID: -5313075144515376716, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    outlinePolygon:
+      points:
+      - {x: -55, y: 33}
+      - {x: -46, y: 33}
+      - {x: -46, y: 28}
+      - {x: -55, y: 28}
+  - room: {fileID: 1023838698}
+    isCorridor: 1
+    connection: {fileID: -3621170435203182513, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    roomTemplatePrefab: {fileID: 4374557940119921305, guid: 6fa103e3da930ff4a99be5939a4fbffb, type: 3}
+    roomTemplateInstance: {fileID: 0}
+    position: {x: -36, y: 21, z: 0}
+    doors:
+    - doorLine:
+        fromX: -37
+        fromY: 24
+        fromZ: 0
+        toX: -35
+        toY: 24
+        toZ: 0
+      facingDirection: {x: 0, y: -1}
+      isHorizontal: 1
+      connectedRoom: {fileID: -6571282701520625271, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    - doorLine:
+        fromX: -37
+        fromY: 11
+        fromZ: 0
+        toX: -35
+        toY: 11
+        toZ: 0
+      facingDirection: {x: 0, y: 1}
+      isHorizontal: 1
+      connectedRoom: {fileID: 1254745931331699511, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    outlinePolygon:
+      points:
+      - {x: -40, y: 21}
+      - {x: -38, y: 21}
+      - {x: -38, y: 24}
+      - {x: -34, y: 24}
+      - {x: -34, y: 21}
+      - {x: -32, y: 21}
+      - {x: -32, y: 14}
+      - {x: -34, y: 14}
+      - {x: -34, y: 11}
+      - {x: -38, y: 11}
+      - {x: -38, y: 14}
+      - {x: -40, y: 14}
+  - room: {fileID: 1951161334}
+    isCorridor: 1
+    connection: {fileID: 6574159287845397555, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    roomTemplatePrefab: {fileID: 5416963717307959135, guid: 4f12579b27b215442a07eea17a4d04af, type: 3}
+    roomTemplateInstance: {fileID: 0}
+    position: {x: -50, y: -5, z: 0}
+    doors:
+    - doorLine:
+        fromX: -45
+        fromY: -2
+        fromZ: 0
+        toX: -43
+        toY: -2
+        toZ: 0
+      facingDirection: {x: 0, y: -1}
+      isHorizontal: 1
+      connectedRoom: {fileID: 1254745931331699511, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    - doorLine:
+        fromX: -45
+        fromY: -10
+        fromZ: 0
+        toX: -43
+        toY: -10
+        toZ: 0
+      facingDirection: {x: 0, y: 1}
+      isHorizontal: 1
+      connectedRoom: {fileID: -4440685884272457631, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    outlinePolygon:
+      points:
+      - {x: -46, y: -2}
+      - {x: -42, y: -2}
+      - {x: -42, y: -10}
+      - {x: -46, y: -10}
+  - room: {fileID: 228837268}
+    isCorridor: 1
+    connection: {fileID: 3130875614279488635, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    roomTemplatePrefab: {fileID: 4374557940119921305, guid: 6fa103e3da930ff4a99be5939a4fbffb, type: 3}
+    roomTemplateInstance: {fileID: 0}
+    position: {x: -72, y: 18, z: 0}
+    doors:
+    - doorLine:
+        fromX: -73
+        fromY: 21
+        fromZ: 0
+        toX: -71
+        toY: 21
+        toZ: 0
+      facingDirection: {x: 0, y: -1}
+      isHorizontal: 1
+      connectedRoom: {fileID: -5313075144515376716, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    - doorLine:
+        fromX: -73
+        fromY: 8
+        fromZ: 0
+        toX: -71
+        toY: 8
+        toZ: 0
+      facingDirection: {x: 0, y: 1}
+      isHorizontal: 1
+      connectedRoom: {fileID: 7685343977769316517, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    outlinePolygon:
+      points:
+      - {x: -76, y: 18}
+      - {x: -74, y: 18}
+      - {x: -74, y: 21}
+      - {x: -70, y: 21}
+      - {x: -70, y: 18}
+      - {x: -68, y: 18}
+      - {x: -68, y: 11}
+      - {x: -70, y: 11}
+      - {x: -70, y: 8}
+      - {x: -74, y: 8}
+      - {x: -74, y: 11}
+      - {x: -76, y: 11}
+  - room: {fileID: 642265249}
+    isCorridor: 1
+    connection: {fileID: -7729229582919077411, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    roomTemplatePrefab: {fileID: 6336366798538649379, guid: 9c0055f9902671e43b0d0a7210fde21b, type: 3}
+    roomTemplateInstance: {fileID: 0}
+    position: {x: -65, y: 55, z: 0}
+    doors:
+    - doorLine:
+        fromX: -57
+        fromY: 54
+        fromZ: 0
+        toX: -57
+        toY: 56
+        toZ: 0
+      facingDirection: {x: -1, y: 0}
+      isHorizontal: 0
+      connectedRoom: {fileID: -88114493959410035, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    - doorLine:
+        fromX: -71
+        fromY: 54
+        fromZ: 0
+        toX: -71
+        toY: 56
+        toZ: 0
+      facingDirection: {x: 1, y: 0}
+      isHorizontal: 0
+      connectedRoom: {fileID: 8232388282270076087, guid: 1e60fc8833cdecd48920d287660b318b, type: 2}
+    outlinePolygon:
+      points:
+      - {x: -71, y: 58}
+      - {x: -68, y: 58}
+      - {x: -68, y: 60}
+      - {x: -60, y: 60}
+      - {x: -60, y: 58}
+      - {x: -57, y: 58}
+      - {x: -57, y: 53}
+      - {x: -60, y: 53}
+      - {x: -60, y: 51}
+      - {x: -68, y: 51}
+      - {x: -68, y: 53}
+      - {x: -71, y: 53}
+--- !u!4 &837941478
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837941476}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1023838698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0}
+  Name: Corridor
+  IndividualRoomTemplates: []
+  RoomTemplateSets: []
+--- !u!114 &1359226878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0}
+  Name: Corridor
+  IndividualRoomTemplates: []
+  RoomTemplateSets: []
+--- !u!114 &1528016842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0}
+  Name: Corridor
+  IndividualRoomTemplates: []
+  RoomTemplateSets: []
 --- !u!1 &1866222617
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,3 +1035,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc636310feb114e41a1a3c3058a26943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1951161334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0}
+  Name: Corridor
+  IndividualRoomTemplates: []
+  RoomTemplateSets: []
