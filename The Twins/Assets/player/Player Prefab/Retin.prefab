@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6687403023126719153}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.01, y: -0.24, z: 0}
-  m_LocalScale: {x: 4.616573, y: 4.616573, z: 4.616573}
+  m_LocalPosition: {x: 0.79, y: -0.26, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6687403023915824278}
   m_Father: {fileID: 6687403023518315391}
@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 6687403023518315390}
   - component: {fileID: 6687403023518315386}
   - component: {fileID: 6687403023518315389}
-  - component: {fileID: 6687403023518315388}
+  - component: {fileID: 5510964965212659342}
   m_Layer: 0
   m_Name: Retin
   m_TagString: Player
@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09e7c409ff7bf31408ba02b380c9f992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnRoom: {fileID: 6874096849543655325, guid: 70e6daa7ae37fc142bb088953966f5d9, type: 3}
   invunerable: 0
   playersword: {fileID: 6687403023126719153}
   playerbow: {fileID: 6687403023602151114}
@@ -276,8 +277,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b912051afa8e54784f1032be1e3676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 11.07
-  maxHealth: 126.26
+  health: 100
+  maxHealth: 100
   swordAtkSpeed: 0
   bowAtkSpeed: 0
   armor: 2
@@ -288,8 +289,8 @@ MonoBehaviour:
   gold: 0
   bars: 0
   nuggets: 0
---- !u!61 &6687403023518315388
-BoxCollider2D:
+--- !u!70 &5510964965212659342
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -301,19 +302,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.07051909, y: -0.36630726}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.75}
-    newSize: {x: 1, y: 1.75}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.78844285, y: 1.0173855}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.016926885, y: -0.2166642}
+  m_Size: {x: 0.51093936, y: 0.692714}
+  m_Direction: 0
 --- !u!1 &6687403023602151114
 GameObject:
   m_ObjectHideFlags: 0

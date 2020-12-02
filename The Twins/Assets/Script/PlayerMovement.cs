@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float moveSpeed = 10f;
+    private float moveSpeed = 6f;
     private Rigidbody2D rb;
     private Animator animator;
+
+    public GameObject spawnRoom;
 
     private Vector3 moveDirection;
     private Vector3 dodgeDirection;
@@ -43,7 +45,20 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         state = State.walking;
         weapon = weaponState.sword;
+        
+    }
 
+    private void Start()
+    {
+        
+        Invoke("PlayerRespawn", 1f);
+       
+    }
+
+    void PlayerRespawn()
+    {
+        spawnRoom = GameObject.FindWithTag("Respawn");
+        transform.position = spawnRoom.transform.position;
     }
 
     void Update()

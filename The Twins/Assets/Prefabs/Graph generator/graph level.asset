@@ -56,9 +56,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position: {x: 561, y: 270}
+  Position: {x: 549.94275, y: 277.03644}
   Name: SpawnRoom
-  IndividualRoomTemplates: []
+  IndividualRoomTemplates:
+  - {fileID: 6874096849543655325, guid: 70e6daa7ae37fc142bb088953966f5d9, type: 3}
   RoomTemplateSets: []
 --- !u!114 &-5313075144515376716
 MonoBehaviour:
@@ -88,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position: {x: 889, y: 282}
+  Position: {x: 873.9219, y: 269.93753}
   Name: Room
   IndividualRoomTemplates: []
   RoomTemplateSets: []
@@ -181,7 +182,6 @@ MonoBehaviour:
   - {fileID: 8600251875759139634, guid: e03a5710bf2ca1c4cb53087932dbb720, type: 3}
   - {fileID: 4753516775658709897, guid: aec2215c3973c5142baa32777d7aeade, type: 3}
   - {fileID: 1485217367886948873, guid: 20b206d4a076e054aa09c22652042e7c, type: 3}
-  - {fileID: 6874096849543655325, guid: 70e6daa7ae37fc142bb088953966f5d9, type: 3}
   - {fileID: 5175616250331333879, guid: d7f84a62024ba9b41b22a38a47ebc455, type: 3}
   - {fileID: 3886127930010019442, guid: e59a9251581edf44fafc2be868fb5e2c, type: 3}
   - {fileID: 8165010944940123651, guid: 1edebeff3aed62b4daa69dd659b66e6d, type: 3}
@@ -200,8 +200,8 @@ MonoBehaviour:
   - {fileID: -8352657456299897063}
   - {fileID: 8232388282270076087}
   EditorData:
-    PanOffset: {x: 118.760605, y: 105.65003}
-    Zoom: 0.7859422
+    PanOffset: {x: 263.7947, y: 39.688145}
+    Zoom: 0.7252239
   RoomType: ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph.Room
   ConnectionType: ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph.Connection
 --- !u!114 &1254745931331699511
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position: {x: 752, y: 275}
+  Position: {x: 729.88544, y: 273.99478}
   Name: Room
   IndividualRoomTemplates: []
   RoomTemplateSets: []
