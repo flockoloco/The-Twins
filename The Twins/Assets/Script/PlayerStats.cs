@@ -22,7 +22,7 @@ public class PlayerStats : MonoBehaviour
 
     private void Awake()
     {
-        pauseMenu = GameObject.FindWithTag("PauseUI").GetComponent<PauseMenu>();
+        //pauseMenu = GameObject.FindWithTag("PauseUI").GetComponent<PauseMenu>();
     }
 
     // Update is called once per frame
