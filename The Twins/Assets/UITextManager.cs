@@ -20,8 +20,8 @@ public class UITextManager : MonoBehaviour
         goldText = GameObject.FindWithTag("GoldText").GetComponent<TextMeshProUGUI>();
         nuggetsText = GameObject.FindWithTag("NuggetsText").GetComponent<TextMeshProUGUI>();
         barsText = GameObject.FindWithTag("BarsText").GetComponent<TextMeshProUGUI>();
-        normalArrowsText = GameObject.FindWithTag("NormalArrowsText").GetComponent<TextMeshProUGUI>();
-        oreArrowsText = GameObject.FindWithTag("OreArrowsText").GetComponent<TextMeshProUGUI>();
+        //normalArrowsText = GameObject.FindWithTag("NormalArrowsText").GetComponent<TextMeshProUGUI>();
+        //oreArrowsText = GameObject.FindWithTag("OreArrowsText").GetComponent<TextMeshProUGUI>();
     }
     void Update()
     {//eventualmente remover o UPDATE() todo, e apenas dar call a funcao quando e necessario.

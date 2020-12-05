@@ -11,11 +11,14 @@ public class StatsHolder : MonoBehaviour
     public bool invunerable;
     private float vunerableTimer;
     public bool hit;
+    public int lootTier;
+
     void Update()
     {
         if (health < 0)
         {
             Destroy(gameObject);
+            UsefulllFs.SpawnDrops(lootTier);
         }
         if (hit == true)
         {

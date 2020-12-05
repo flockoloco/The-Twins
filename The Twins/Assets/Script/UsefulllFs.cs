@@ -53,4 +53,14 @@ public class UsefulllFs
             }
         }
     }
+    public static void SpawnDrops(int tier)
+    {
+
+        if (tier == 1)
+        {
+        //    GameObject drops = Instantiate(BulletPrefab, new Vector3(transform.position.x + (direction.x * 2), transform.position.y + (direction.y * 2), 0), transform.rotation);
+
+        }
+
+    }
 }
