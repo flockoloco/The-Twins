@@ -3861,11 +3861,33 @@ MonoBehaviour:
   DistanceFromCorners: 4
   DoorLength: 3
   DoorsList:
+  - From: {x: -7, y: 6, z: 0}
+    To: {x: -6, y: 6, z: 0}
   - From: {x: -6, y: 6, z: 0}
+    To: {x: -5, y: 6, z: 0}
+  - From: {x: -5, y: 6, z: 0}
+    To: {x: -4, y: 6, z: 0}
+  - From: {x: -4, y: 6, z: 0}
+    To: {x: -3, y: 6, z: 0}
+  - From: {x: -3, y: 6, z: 0}
+    To: {x: -2, y: 6, z: 0}
+  - From: {x: -2, y: 6, z: 0}
+    To: {x: -1, y: 6, z: 0}
+  - From: {x: -1, y: 6, z: 0}
+    To: {x: 0, y: 6, z: 0}
+  - From: {x: 0, y: 6, z: 0}
+    To: {x: 1, y: 6, z: 0}
+  - From: {x: 1, y: 6, z: 0}
+    To: {x: 2, y: 6, z: 0}
+  - From: {x: 2, y: 6, z: 0}
+    To: {x: 3, y: 6, z: 0}
+  - From: {x: 3, y: 6, z: 0}
+    To: {x: 4, y: 6, z: 0}
+  - From: {x: 4, y: 6, z: 0}
     To: {x: 5, y: 6, z: 0}
-  - From: {x: -6, y: -6, z: 0}
-    To: {x: 5, y: -6, z: 0}
-  SelectedMode: 0
+  - From: {x: 5, y: 6, z: 0}
+    To: {x: 6, y: 6, z: 0}
+  SelectedMode: 1
 --- !u!1 &7664416122514099598
 GameObject:
   m_ObjectHideFlags: 0
