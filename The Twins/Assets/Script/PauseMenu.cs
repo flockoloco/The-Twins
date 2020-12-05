@@ -49,7 +49,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void reset()
+    public void MainMenu()
     {
         Debug.Log("Going to main menu");
         //só criar o scene do main menu

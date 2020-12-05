@@ -61,8 +61,8 @@ public class BowScript : MonoBehaviour
         Vector2 direction = -UsefulllFs.Dir(mouseDirection, transform.parent.gameObject.transform.position, true);
         float arrowSpeed = 10f;
         GameObject arrow = Instantiate(arrowPrefab, transform.position, transform.rotation);
-        
-        arrow.GetComponent<ArrowScript>().ArrowDamage(transform.parent.gameObject.GetComponent<PlayerStats>().bowDamage);
+        //if (arrowEquiped) fazer a diferenca de flechas , meter input para trocar entre flechas usadas, fazer um if para se o player nao tiver flechas, fazer o player perder flechas.
+        arrow.GetComponent<ArrowScript>().ArrowDamage(transform.parent.gameObject.GetComponent<PlayerStats>().bowDamage);//por esta linha dentro do if e meter orearrowdamage / normalarrowdamage
 
         arrow.GetComponent<Rigidbody2D>().velocity = direction * arrowSpeed;
         

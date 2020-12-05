@@ -4,20 +4,22 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - EProjectiles
-  - Enemy
+  - Wall
+  - Fountain
   - PlayerSword
   - PlayerBow
-  - spawnPoint
-  - rooms
-  - Wall
-  - closedRoom
-  - PauseUI
-  - ShopCanvas
-  - Fountain
   - Shop
-  - Well
+  - Stairs
   - Enchantment
+  - Enemy
+  - ShopCanvas
+  - PauseUI
+  - EProjectiles
+  - EnchantCanvas
+  - HPText
+  - GoldText
+  - NuggetsText
+  - BarsText
   layers:
   - Default
   - TransparentFX
@@ -54,4 +56,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI behind
+    uniqueID: 2922306715
+    locked: 0
+  - name: UI front
+    uniqueID: 234086693
     locked: 0

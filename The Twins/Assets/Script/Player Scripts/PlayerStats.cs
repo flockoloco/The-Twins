@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public float health = 5;
+    public float health;
     public float maxHealth;
     public float swordAtkSpeed;
     public float bowAtkSpeed;
@@ -22,7 +22,7 @@ public class PlayerStats : MonoBehaviour
 
     private void Awake()
     {
-        //pauseMenu = GameObject.FindWithTag("PauseUI").GetComponent<PauseMenu>();
+        pauseMenu = GameObject.FindWithTag("PauseUI").GetComponent<PauseMenu>();
     }
 
     // Update is called once per frame

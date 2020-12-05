@@ -26,8 +26,6 @@ public class MenuCameraMovement : MonoBehaviour
     }
     public int NewWayPoint( int cWayNumber,int maxcount)
     {
-        Debug.Log("current number" + cWayNumber);
-        Debug.Log("max count " +  maxcount);
         int newnumber;
         if(cWayNumber >= maxcount - 1)
         {
@@ -37,7 +35,6 @@ public class MenuCameraMovement : MonoBehaviour
         {
             newnumber = cWayNumber + 1;
         }
-        Debug.Log("new number"+ newnumber);
         return newnumber;
     }
 }
