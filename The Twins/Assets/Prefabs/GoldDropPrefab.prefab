@@ -98,7 +98,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -119,9 +119,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.045907974, y: 0}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.4239216
+  m_Radius: 0.49381256
 --- !u!114 &3030940426621218664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,4 +134,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e8271a5fe1e1b44be66ab1a3027347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisValue: 0
   player: {fileID: 0}

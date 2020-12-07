@@ -20,7 +20,6 @@ public class StatsHolder : MonoBehaviour
     {
         if (health < 0)
         {
-            
             SpawnDrops(lootTier, gameObject.transform);
             Destroy(gameObject);
         }
@@ -36,25 +35,27 @@ public class StatsHolder : MonoBehaviour
             }
         }
     }
-    void SpawnDrops(int tier, Transform ya)
+    private void OnDestroy()
     {
-        Debug.Log("dentro da funcao");
-            int randomNumberGold = Random.Range(1 * tier, 6 * tier);
-        Debug.Log("numero random: " + randomNumberGold);
-            if (randomNumberGold > 0)
-            {
-            Debug.Log("should be spawning something");
-                GameObject goldDrop = Instantiate(goldPrefab, ya);
-                goldDrop.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)), ForceMode2D.Impulse);
-                goldDrop.GetComponent<DropableScript>().Value(randomNumberGold);
-            }
-            int randomNumberNuggets = Random.Range(1 * tier, 3 * tier);
-            if (randomNumberNuggets > 0)
-            {
-                GameObject nuggetsDrop = Instantiate(nuggetsPrefab, ya);
-                int randomAngle = Random.Range(0, 361);
-                nuggetsDrop.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)), ForceMode2D.Impulse);
-                nuggetsDrop.GetComponent<DropableScript>().Value(randomNumberNuggets);
+        //SpawnDrops(lootTier, gameObject.transform);
+    }
+    void SpawnDrops(int tier, Transform enemyTransform)
+    {
+        int randomNumberGold = Random.Range(1 * tier, 6 * tier);
+        if (randomNumberGold > 0)
+        {
+            GameObject goldDrop = Instantiate(goldPrefab,enemyTransform.position,enemyTransform.rotation);
+            goldDrop.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f)), ForceMode2D.Impulse);
+            goldDrop.GetComponent<DropableScript>().Value(randomNumberGold);
+        }
+        int randomNumberNuggets = Random.Range(1 * tier, 3 * tier);
+        Debug.Log(randomNumberNuggets);
+        if (randomNumberNuggets > 0)
+        {
+            Debug.Log("hello :aaaa");
+            GameObject nuggetsDrop = Instantiate(nuggetsPrefab, enemyTransform.position, enemyTransform.rotation);
+            nuggetsDrop.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)), ForceMode2D.Impulse);
+            nuggetsDrop.GetComponent<DropableScript>().Value(randomNumberNuggets);
         }
     }
 }

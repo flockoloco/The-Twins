@@ -23,7 +23,8 @@ public class DropableScript : MonoBehaviour
             Destroy(gameObject);
             if (gameObject.tag == "GoldDrop")
             {
-                Debug.Log("toquei em gold");
+
+                Debug.Log(thisValue);
                 player.GetComponent<PlayerStats>().gold = player.GetComponent<PlayerStats>().gold + thisValue;
             }
             else if (gameObject.tag == "NuggetsDrop")
