@@ -12,7 +12,8 @@ public class MainMenuScript : MonoBehaviour
     }
     public void StartNewGame()
     {
-        SceneManager.LoadScene("Main Game");
+        SceneManager.LoadScene("Level Generator");
+        Time.timeScale = 1;
     }
     public void Login()
     {
