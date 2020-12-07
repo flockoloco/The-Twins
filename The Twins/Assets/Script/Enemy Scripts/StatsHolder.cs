@@ -6,12 +6,13 @@ public class StatsHolder : MonoBehaviour
 {
     public float health;
     public int armor;
-    public float damage;
+    public int damage;
     public float atkspeed;
     public bool invunerable;
     private float vunerableTimer;
     public bool hit;
     public int lootTier;
+    public int aaaaaa;
     public GameObject goldPrefab;
     public GameObject nuggetsPrefab;
 
@@ -19,8 +20,9 @@ public class StatsHolder : MonoBehaviour
     {
         if (health < 0)
         {
-            Destroy(gameObject);
+            
             SpawnDrops(lootTier, gameObject.transform);
+            Destroy(gameObject);
         }
         if (hit == true)
         {
@@ -36,11 +38,13 @@ public class StatsHolder : MonoBehaviour
     }
     void SpawnDrops(int tier, Transform ya)
     {
+        Debug.Log("dentro da funcao");
             int randomNumberGold = Random.Range(1 * tier, 6 * tier);
+        Debug.Log("numero random: " + randomNumberGold);
             if (randomNumberGold > 0)
             {
+            Debug.Log("should be spawning something");
                 GameObject goldDrop = Instantiate(goldPrefab, ya);
-                int randomAngle = Random.Range(0, 361);
                 goldDrop.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)), ForceMode2D.Impulse);
                 goldDrop.GetComponent<DropableScript>().Value(randomNumberGold);
             }

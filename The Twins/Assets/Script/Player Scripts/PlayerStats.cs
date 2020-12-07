@@ -25,30 +25,30 @@ public class PlayerStats : MonoBehaviour
         pauseMenu = GameObject.FindWithTag("PauseUI").GetComponent<PauseMenu>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (health <= 0)
         {
             pauseMenu.ResetGame();
         }
-
+       
         if (hit == true)
         {
             invunerable = true;
             if (vunerableTimer == 0)
             {
+
                 gameObject.GetComponent<PlayerMovement>().state = PlayerMovement.State.hit;
             }
             vunerableTimer += Time.deltaTime;
-            if (vunerableTimer > 2 && vunerableTimer < 4)
+            if (vunerableTimer > 0.25 && vunerableTimer < 0.5)
             {
                 if (gameObject.GetComponent<PlayerMovement>().state == PlayerMovement.State.hit)
                 {
                     gameObject.GetComponent<PlayerMovement>().state = PlayerMovement.State.walking;
                 }
             }
-            if (vunerableTimer > 4)
+            if (vunerableTimer > 0.5)
             {
                 invunerable = false;
                 hit = false;

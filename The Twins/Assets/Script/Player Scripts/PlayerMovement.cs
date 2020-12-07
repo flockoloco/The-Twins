@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 dodgeDirection;
     private float dodgeSpeed;
     private float dodgeTimer = 0f;
-    public bool invunerable;
     public GameObject playersword;
     public GameObject playerbow;
     public swordscript swordScript;
@@ -90,9 +89,6 @@ public class PlayerMovement : MonoBehaviour
         {
             case State.walking:
 
-                gameObject.GetComponent<PlayerStats>().invunerable = false;
-
-
                 dodgeTimer -= Time.deltaTime;
 
                 float moveX = 0f;
@@ -126,6 +122,7 @@ public class PlayerMovement : MonoBehaviour
                 float dodgeSpeedMin = 30f;
                 if (dodgeSpeed < dodgeSpeedMin)
                 {
+                    gameObject.GetComponent<PlayerStats>().invunerable = false;
                     state = State.walking;
                 }
                 break;

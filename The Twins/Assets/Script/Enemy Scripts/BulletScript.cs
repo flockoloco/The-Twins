@@ -12,7 +12,6 @@ public class BulletScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.tag);
         if (collision.tag == "Player" && collision.gameObject.GetComponent<PlayerStats>().invunerable == false)
         {
             UsefulllFs.TakeDamage(collision.gameObject, bulletDamage);

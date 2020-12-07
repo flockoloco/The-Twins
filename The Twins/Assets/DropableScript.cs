@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DropableScript : MonoBehaviour
 {
-    int thisValue;
+    public int thisValue;
     public GameObject player;
 
     public void Value(int value)
@@ -18,14 +18,18 @@ public class DropableScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
-        if (gameObject.tag == "GoldDrop")
+        if (collision.tag == "Player")
         {
-            player.GetComponent<PlayerStats>().gold += thisValue;
-        }
-        else if(gameObject.tag == "NuggetsDrop")
-        {
-            player.GetComponent<PlayerStats>().nuggets += thisValue;
+            Destroy(gameObject);
+            if (gameObject.tag == "GoldDrop")
+            {
+                Debug.Log("toquei em gold");
+                player.GetComponent<PlayerStats>().gold = player.GetComponent<PlayerStats>().gold + thisValue;
+            }
+            else if (gameObject.tag == "NuggetsDrop")
+            {
+                player.GetComponent<PlayerStats>().nuggets += thisValue;
+            }
         }
     }
     // Update is called once per frame

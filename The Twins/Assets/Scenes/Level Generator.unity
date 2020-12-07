@@ -99094,7 +99094,8 @@ MonoBehaviour:
   atkspeed: 0.53
   invunerable: 0
   hit: 0
-  lootTier: 0
+  lootTier: 1
+  aaaaaa: 0
   goldPrefab: {fileID: 0}
   nuggetsPrefab: {fileID: 0}
 --- !u!114 &1612863384
@@ -99170,7 +99171,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1612863382}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -100, y: 40, z: 0}
+  m_LocalPosition: {x: -106.7, y: 22.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -123289,11 +123290,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3856447810011522735, guid: f494d076d2ab08246aca53f9f357dceb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -86.31
+      value: -101
       objectReference: {fileID: 0}
     - target: {fileID: 3856447810011522735, guid: f494d076d2ab08246aca53f9f357dceb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 37.39
+      value: 23.8
       objectReference: {fileID: 0}
     - target: {fileID: 3856447810011522735, guid: f494d076d2ab08246aca53f9f357dceb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -123331,6 +123332,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6472215790350553426, guid: f494d076d2ab08246aca53f9f357dceb, type: 3}
+      propertyPath: thisValue
+      value: 43
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f494d076d2ab08246aca53f9f357dceb, type: 3}
 --- !u!1001 &4750052228558507775
@@ -123342,11 +123347,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 184705383726117084, guid: e47326b11a82c5a4087a16cc9676a02c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -83.19
+      value: -97
       objectReference: {fileID: 0}
     - target: {fileID: 184705383726117084, guid: e47326b11a82c5a4087a16cc9676a02c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 34.85
+      value: 22.3
       objectReference: {fileID: 0}
     - target: {fileID: 184705383726117084, guid: e47326b11a82c5a4087a16cc9676a02c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -123384,9 +123389,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3030940426621218664, guid: e47326b11a82c5a4087a16cc9676a02c, type: 3}
+      propertyPath: thisValue
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3974753108313818560, guid: e47326b11a82c5a4087a16cc9676a02c, type: 3}
       propertyPath: m_Name
       value: GoldDropPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496535962423498864, guid: e47326b11a82c5a4087a16cc9676a02c, type: 3}
+      propertyPath: m_BodyType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e47326b11a82c5a4087a16cc9676a02c, type: 3}
