@@ -35,10 +35,6 @@ public class StatsHolder : MonoBehaviour
             }
         }
     }
-    private void OnDestroy()
-    {
-        //SpawnDrops(lootTier, gameObject.transform);
-    }
     void SpawnDrops(int tier, Transform enemyTransform)
     {
         int randomNumberGold = Random.Range(1 * tier, 6 * tier);
@@ -54,7 +50,7 @@ public class StatsHolder : MonoBehaviour
         {
             Debug.Log("hello :aaaa");
             GameObject nuggetsDrop = Instantiate(nuggetsPrefab, enemyTransform.position, enemyTransform.rotation);
-            nuggetsDrop.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)), ForceMode2D.Impulse);
+            nuggetsDrop.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f)), ForceMode2D.Impulse);
             nuggetsDrop.GetComponent<DropableScript>().Value(randomNumberNuggets);
         }
     }
