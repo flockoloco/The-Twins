@@ -24,6 +24,7 @@ TagManager:
   - OreArrow
   - GoldDrop
   - NuggetsDrop
+  - Collideable
   layers:
   - Default
   - TransparentFX
@@ -33,9 +34,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Walls
+  - Player
+  - Dropables
   - 
   - 
   - 
