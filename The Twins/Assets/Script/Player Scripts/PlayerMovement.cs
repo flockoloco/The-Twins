@@ -49,9 +49,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        
-        Invoke("PlayerRespawn", 1f);
-       
+        Invoke("PlayerRespawn", 0.01f);
     }
 
     void PlayerRespawn()
