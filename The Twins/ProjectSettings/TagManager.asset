@@ -25,6 +25,8 @@ TagManager:
   - GoldDrop
   - NuggetsDrop
   - Collideable
+  - Door
+  - Room
   layers:
   - Default
   - TransparentFX

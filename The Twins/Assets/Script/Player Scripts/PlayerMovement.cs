@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     public swordscript swordScript;
     public BowScript bowScript;
 
+    public SpawnPoint RoomSpawn;
+
     public enum weaponState
     {
         sword,

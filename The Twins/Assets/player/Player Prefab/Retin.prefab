@@ -259,7 +259,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRoom: {fileID: 6874096849543655325, guid: 70e6daa7ae37fc142bb088953966f5d9, type: 3}
-  invunerable: 0
   playersword: {fileID: 6687403023126719153}
   playerbow: {fileID: 6687403023602151114}
   swordScript: {fileID: 6687403023126719157}
