@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/AnvilFragment">
+    <fragment
+        android:id="@+id/AnvilFragment"
+        android:name="com.example.mainactivity.AnvilFragment"
+        android:label="Anvil" />
+    <fragment
+        android:id="@+id/InventoryFragment"
+        android:name="com.example.mainactivity.InventoryFragment"
+        android:label="Inventory" />
+    <fragment
+        android:id="@+id/ShopFragment"
+        android:name="com.example.mainactivity.ShopFragment"
+        android:label="Shop" />
+    <fragment
+        android:id="@+id/MineFragment"
+        android:name="com.example.mainactivity.MineFragment"
+        android:label="Mine" />
+</navigation>
