@@ -7,12 +7,15 @@ public class StatsHolder : MonoBehaviour
     public float health;
     public int armor;
     public int damage;
+    public float moveSpeed;
     public float atkspeed;
+    public float bulletSpd;
     public bool invunerable;
     private float vunerableTimer;
     public bool hit;
     public int lootTier;
     public int aaaaaa;
+    public int agroRange;
     public GameObject goldPrefab;
     public GameObject nuggetsPrefab;
 
@@ -53,5 +56,17 @@ public class StatsHolder : MonoBehaviour
             nuggetsDrop.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f)), ForceMode2D.Impulse);
             nuggetsDrop.GetComponent<DropableScript>().Value(randomNumberNuggets);
         }
+    }
+    
+    public void EnemyFire(GameObject BulletPrefab,Transform firepoint,float angleDiff)
+    {
+        Quaternion finalrotation = firepoint.rotation;
+
+        finalrotation = Quaternion.Euler(0,0,firepoint.rotation.eulerAngles.z + angleDiff );
+        GameObject bullet = Instantiate(BulletPrefab, firepoint.position,finalrotation);
+        
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        bullet.GetComponent<BulletScript>().EnemyDamage(damage);
+        rb.velocity = bullet.transform.right * bulletSpd;
     }
 }
