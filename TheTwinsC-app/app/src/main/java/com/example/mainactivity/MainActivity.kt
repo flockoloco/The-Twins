@@ -1,13 +1,12 @@
 package com.example.mainactivity
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.drawer_header.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,6 +32,11 @@ class MainActivity : AppCompatActivity() {
         //-=-=-=-=-=-=-=-=-=-=--=-=-=-=-==-=-=-=-=-=-=-=-==-=-=-=-==-=-=-=
 
         //Top navigation
+        /*
+        val username = intent.getStringExtra("EXTRA_USERNAME")
+        val message = "Hi $username, welcome back"
+        txtmessage.text = message*/
+
         val shopFragment = ShopFragment()
         val inventoryFragment = InventoryFragment()
 
@@ -43,9 +47,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         navigation_view.setNavigationItemSelectedListener {
-            val username = intent.getStringExtra("EXTRA_USERNAME")
-            val message = "Hi $username, welcome back"
-            txtmessage.text = message
+
             when (it.itemId) {
                 R.id.ShopFragment -> setCurrentFragment(shopFragment)
                 R.id.InventoryFragment -> setCurrentFragment(inventoryFragment)
