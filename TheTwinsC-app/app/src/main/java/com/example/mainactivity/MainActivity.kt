@@ -6,6 +6,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.drawer_header.view.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -32,11 +33,6 @@ class MainActivity : AppCompatActivity() {
         //-=-=-=-=-=-=-=-=-=-=--=-=-=-=-==-=-=-=-=-=-=-=-==-=-=-=-==-=-=-=
 
         //Top navigation
-        /*
-        val username = intent.getStringExtra("EXTRA_USERNAME")
-        val message = "Hi $username, welcome back"
-        txtmessage.text = message*/
-
         val shopFragment = ShopFragment()
         val inventoryFragment = InventoryFragment()
 
@@ -45,6 +41,12 @@ class MainActivity : AppCompatActivity() {
         toggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        //uhuuuuuuuuuuuuuuuuuuuuuuuuuuu nao crashou ebaaaaaaaaaaaaaaaaaaaaaaaa
+        val username = intent.getStringExtra("EXTRA_USERNAME")
+        val message = "Hi $username, welcome back"
+        navigation_view.getHeaderView(0).txtmessage.text = message
+
 
         navigation_view.setNavigationItemSelectedListener {
 
