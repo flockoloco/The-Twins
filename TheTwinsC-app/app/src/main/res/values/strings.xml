@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">MainActivity</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">TheTwins</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="profile">Profile</string>
     <string name="news">News</string>
