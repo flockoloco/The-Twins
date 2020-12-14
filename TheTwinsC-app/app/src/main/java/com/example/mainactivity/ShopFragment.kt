@@ -2,23 +2,24 @@ package com.example.mainactivity
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import com.example.mainactivity.databinding.FragmentShopBinding
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
-class ShopFragment : Fragment() {
-    lateinit var binding:FragmentShopBinding
+class ShopFragment : Fragment(R.layout.fragment_shop) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+        var shopList = mutableListOf(
+            Items("Ore", "Ores are gathered every hour inside the mine", R.drawable.ic_gold_ingot),
+            Items("Ingot", "Ingots are forged in the anvil, it can be traded in the shop or sent to the player", R.drawable.ic_ingot),
+            Items("Mine Speed", "Temporary speed upgrade, the ores are gathered every 1/2 hour", R.drawable.ic_upgrade),
+            Items("Mine Harvest", "Temporary harvest upgrade, the amount of ores gathered are x2", R.drawable.ic_upgrade),
+            Items("Mine Ores", "Permanent ores upgrade, the amount of ores gathered are +1", R.drawable.ic_upgrade)
+        )
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentShopBinding.inflate(inflater)
-        return binding.root
+        val shopRecycler = view.findViewById<RecyclerView>(R.id.shopRecycler)
+        shopRecycler.adapter = ShopAdapter(shopList)
+        shopRecycler.layoutManager = LinearLayoutManager(this.activity)
     }
 }

@@ -6,19 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.mainactivity.databinding.FragmentAnvilBinding
+import kotlinx.android.synthetic.main.fragment_anvil.*
 
-class AnvilFragment : Fragment() {
-    lateinit var binding:FragmentAnvilBinding
+class AnvilFragment : Fragment(R.layout.fragment_anvil) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentAnvilBinding.inflate(inflater)
-        return binding.root
-    }
 }

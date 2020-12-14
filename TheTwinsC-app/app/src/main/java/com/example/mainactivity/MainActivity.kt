@@ -1,41 +1,80 @@
 package com.example.mainactivity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationView
+import android.view.MenuItem
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.drawer_header.view.*
+
 
 class MainActivity : AppCompatActivity() {
-    lateinit var appBarConfiguration: AppBarConfiguration
-    lateinit var navController: NavController
+
+    lateinit var toggle: ActionBarDrawerToggle
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //Bottom navigation
+        val anvilFragment = AnvilFragment()
+        val mineFragment = MineFragment()
 
-        // bottom navigation
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        navController = findNavController(R.id.hostFragment)
-        bottomNav.setupWithNavController(navController)
+        setCurrentFragment(anvilFragment)
 
-        //up navigation
-        val drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
-        appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
-        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
+        bottom_navigation.setOnNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.AnvilFragment -> setCurrentFragment(anvilFragment)
+                R.id.MineFragment -> setCurrentFragment(mineFragment)
+            }
+            true
+        }
+        //-=-=-=-=-=-=-=-=-=-=--=-=-=-=-==-=-=-=-=-=-=-=-==-=-=-=-==-=-=-=
 
-        //drawer navigation
-        val navView = findViewById<NavigationView>(R.id.navigation_view)
-        NavigationUI.setupWithNavController(navView, navController)
+        //Top navigation
+        val shopFragment = ShopFragment()
+        val inventoryFragment = InventoryFragment()
+
+        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        //uhuuuuuuuuuuuuuuuuuuuuuuuuuuu nao crashou ebaaaaaaaaaaaaaaaaaaaaaaaa
+        val username = intent.getStringExtra("EXTRA_USERNAME")
+        val message = "Hi $username, welcome back"
+        navigation_view.getHeaderView(0).txtmessage.text = message
+
+
+        navigation_view.setNavigationItemSelectedListener {
+
+            when (it.itemId) {
+                R.id.ShopFragment -> setCurrentFragment(shopFragment)
+                R.id.InventoryFragment -> setCurrentFragment(inventoryFragment)
+                R.id.Quit -> finish()
+            }
+            drawerLayout.closeDrawers()
+            true
+        }
+            //-=-=-=-=-=-=-=-=-=-=--=-=-=-=-==-=-=-=-=-=-=-=-==-=-=-=-==-=-=-=
+
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
+    private fun setCurrentFragment(fragment: Fragment){
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.hostFragment, fragment)
+            addToBackStack(null)
+            commit()
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(toggle.onOptionsItemSelected(item)){
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }
