@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TheTwins.Model;
 
 public class ArrowScript : MonoBehaviour
 {
     private int arrowDamage;
-    public void ArrowDamage(int damage)
+    public void Start()
     {
-        arrowDamage = damage;
+        arrowDamage = EquipmentClass.Quiver[GameObject.FindWithTag("Player").GetComponent<PlayerStats>().selectedArrow].damage;
+        //mudar sprite;
+        
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

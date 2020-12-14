@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TheTwins.Model;
 
 public class BowScript : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class BowScript : MonoBehaviour
 
     public float bowTimer;
     public GameObject arrowPrefab;
+    public int selectedArrow = 0; //0 = normal 1 = ore arrows
 
 
     void Awake()
@@ -34,16 +36,18 @@ public class BowScript : MonoBehaviour
         
         if (Input.GetKey(KeyCode.Mouse0) && (bowTimer > 0.5))
         {
-            bowTimer = 0;
-            bowAnimator.SetBool("Fire", true);
-            rotatoFrezeto = true;
-            mouseDirection = mousePos;
+            if (EquipmentClass.Quiver[player.GetComponent<PlayerStats>().selectedArrow].amount > 0 )
+            {
+                EquipmentClass.Quiver[player.GetComponent<PlayerStats>().selectedArrow].amount -= 1;
+                bowTimer = 0;
+                bowAnimator.SetBool("Fire", true);
+                rotatoFrezeto = true;
+                mouseDirection = mousePos;
+            }
         }
     }
     void FixedUpdate()
     {
-
-
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         playerPos = player.transform.position;
         mouseDir = new Vector2(mousePos.x - playerPos.x, mousePos.y - playerPos.y).normalized;
@@ -57,15 +61,10 @@ public class BowScript : MonoBehaviour
     }
     public void SpawnArrow()
     {
-        
         Vector2 direction = -UsefulllFs.Dir(mouseDirection, transform.parent.gameObject.transform.position, true);
         float arrowSpeed = 10f;
         GameObject arrow = Instantiate(arrowPrefab, transform.position, transform.rotation);
-        //if (arrowEquiped) fazer a diferenca de flechas , meter input para trocar entre flechas usadas, fazer um if para se o player nao tiver flechas, fazer o player perder flechas.
-        arrow.GetComponent<ArrowScript>().ArrowDamage(transform.parent.gameObject.GetComponent<PlayerStats>().bowDamage);//por esta linha dentro do if e meter orearrowdamage / normalarrowdamage
-
         arrow.GetComponent<Rigidbody2D>().velocity = direction * arrowSpeed;
-        
     }
     
     public void StopBowAnimation()

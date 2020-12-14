@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 4
-  armor: 0
+  armor: 1
   damage: 10
   moveSpeed: 2
   atkspeed: 1

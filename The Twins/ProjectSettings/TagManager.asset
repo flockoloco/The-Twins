@@ -20,13 +20,13 @@ TagManager:
   - GoldText
   - NuggetsText
   - BarsText
-  - NormalArrow
-  - OreArrow
-  - GoldDrop
   - NuggetsDrop
   - Collideable
   - Door
   - Room
+  - GoldDrop
+  - OreArrowText
+  - NormalArrowText
   layers:
   - Default
   - TransparentFX

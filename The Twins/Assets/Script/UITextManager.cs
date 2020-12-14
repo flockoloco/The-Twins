@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using TheTwins.Model;
 public class UITextManager : MonoBehaviour
 {
     private PlayerStats playerStats;
@@ -20,8 +21,8 @@ public class UITextManager : MonoBehaviour
         goldText = GameObject.FindWithTag("GoldText").GetComponent<TextMeshProUGUI>();
         nuggetsText = GameObject.FindWithTag("NuggetsText").GetComponent<TextMeshProUGUI>();
         barsText = GameObject.FindWithTag("BarsText").GetComponent<TextMeshProUGUI>();
-        //normalArrowsText = GameObject.FindWithTag("NormalArrowsText").GetComponent<TextMeshProUGUI>();
-        //oreArrowsText = GameObject.FindWithTag("OreArrowsText").GetComponent<TextMeshProUGUI>();
+        normalArrowsText = GameObject.FindWithTag("NormalArrowText").GetComponent<TextMeshProUGUI>();
+        oreArrowsText = GameObject.FindWithTag("OreArrowText").GetComponent<TextMeshProUGUI>();
     }
     void Update()
     {//eventualmente remover o UPDATE() todo, e apenas dar call a funcao quando e necessario.
@@ -29,6 +30,9 @@ public class UITextManager : MonoBehaviour
         goldText.text = playerStats.gold.ToString();
         nuggetsText.text = playerStats.nuggets.ToString();
         barsText.text = playerStats.bars.ToString();
+
+        normalArrowsText.text = EquipmentClass.Quiver[0].amount.ToString();
+        oreArrowsText.text = EquipmentClass.Quiver[1].amount.ToString();
     }
     void UpdateText(string stat) //more efficient :D for the future C:
     {
@@ -51,6 +55,7 @@ public class UITextManager : MonoBehaviour
             case "OreArrow":
                 oreArrowsText.text = "0"; //playerStats.oreArrow.ToString();
                 break;
+
         }
     }
 }

@@ -6,7 +6,7 @@ public class ShottyAI : MonoBehaviour
 {
     private GameObject player;
     private Vector3 playerPos;
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D rigidbodya;
     public GameObject BulletPrefab;
     public StatsHolder stats;
     private readonly float agroDist;
@@ -16,7 +16,7 @@ public class ShottyAI : MonoBehaviour
 
     void Start()
     {
-        rigidbody = gameObject.GetComponent<Rigidbody2D>();
+        rigidbodya = gameObject.GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player");
     }
 
@@ -28,11 +28,10 @@ public class ShottyAI : MonoBehaviour
 
         Vector2 playerDir = UsefulllFs.Dir(playerPos, transform.position, true);
 
-        rigidbody.velocity = new Vector2(-playerDir.x, -playerDir.y) * stats.moveSpeed;
+        rigidbodya.velocity = new Vector2(-playerDir.x, -playerDir.y) * stats.moveSpeed;
 
         Vector2 direction = -playerDir;
-        rigidbody.rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
+        rigidbodya.rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         if (bulletTimer > stats.atkspeed)
         {
             bulletTimer = 0;

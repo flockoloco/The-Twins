@@ -61,8 +61,7 @@ public class StatsHolder : MonoBehaviour
     public void EnemyFire(GameObject BulletPrefab,Transform firepoint,float angleDiff)
     {
         Quaternion finalrotation = firepoint.rotation;
-
-        finalrotation = Quaternion.Euler(0,0,firepoint.rotation.eulerAngles.z + angleDiff );
+        finalrotation = Quaternion.Euler(0,0,firepoint.rotation.eulerAngles.z + angleDiff);
         GameObject bullet = Instantiate(BulletPrefab, firepoint.position,finalrotation);
         
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();

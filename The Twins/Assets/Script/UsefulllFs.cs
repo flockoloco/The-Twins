@@ -31,26 +31,28 @@ public class UsefulllFs
             target.GetComponent<StatsHolder>().hit = true;
         }
     }
-    public static void BuySomething(GameObject player,string type,int cost)
+    public static bool BuySomething(GameObject player,string type,int cost)
     {
         if (type == "gold")
         {
             if (player.GetComponent<PlayerStats>().gold > cost)
             {
                 player.GetComponent<PlayerStats>().gold -= cost;
-                //add item
+                return true;
             }
         }else if (type == "bars")
         {
-            if (player.GetComponent<PlayerStats>().bars > cost)
+            if (player.GetComponent<PlayerStats>().bars >= cost)
             {
                 player.GetComponent<PlayerStats>().bars -= cost;
-                //add item
-            }else if (player.GetComponent<PlayerStats>().nuggets > (cost * 5))
+                return true;
+            }
+            else if (player.GetComponent<PlayerStats>().nuggets > (cost * 5))
             {
                 player.GetComponent<PlayerStats>().nuggets -= (cost * 5);
-                //add item
+                return true;
             }
         }
+        return false;
     }
 }
