@@ -11,7 +11,7 @@ public class TankAI : MonoBehaviour
     private readonly float agroDist;
     private float bulletTimer;
     public Transform FirePoint;
-
+    public bool triggered;
 
     void Start()
     {
@@ -21,15 +21,17 @@ public class TankAI : MonoBehaviour
 
     void Update()
     {
-        bulletTimer += Time.deltaTime;
-        playerPos = player.GetComponent<Transform>().position;
-        Vector2 playerDir = UsefulllFs.Dir(playerPos, transform.position, true);
+        if (triggered)
+        {
+            bulletTimer += Time.deltaTime;
+            playerPos = player.GetComponent<Transform>().position;
+            Vector2 playerDir = UsefulllFs.Dir(playerPos, transform.position, true);
 
-        rigidbody.velocity = new Vector2(-playerDir.x * stats.moveSpeed, -playerDir.y * stats.moveSpeed);
+            rigidbody.velocity = new Vector2(-playerDir.x * stats.moveSpeed, -playerDir.y * stats.moveSpeed);
 
-        Vector2 direction = -playerDir;
-        rigidbody.rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
+            Vector2 direction = -playerDir;
+            rigidbody.rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        }
     }
     void OnCollisionEnter2D(Collision2D collision)
     {

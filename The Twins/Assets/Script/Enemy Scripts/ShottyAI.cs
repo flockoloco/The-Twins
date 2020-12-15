@@ -12,7 +12,7 @@ public class ShottyAI : MonoBehaviour
     private readonly float agroDist;
     private float bulletTimer;
     public Transform FirePoint;
-
+    public bool triggered;
 
     void Start()
     {
@@ -23,21 +23,24 @@ public class ShottyAI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        bulletTimer += Time.deltaTime;
-        playerPos = player.GetComponent<Transform>().position;
-
-        Vector2 playerDir = UsefulllFs.Dir(playerPos, transform.position, true);
-
-        rigidbodya.velocity = new Vector2(-playerDir.x, -playerDir.y) * stats.moveSpeed;
-
-        Vector2 direction = -playerDir;
-        rigidbodya.rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        if (bulletTimer > stats.atkspeed)
+        if (triggered)
         {
-            bulletTimer = 0;
-            stats.EnemyFire(BulletPrefab, FirePoint, 0);
-            stats.EnemyFire(BulletPrefab, FirePoint, 30);
-            stats.EnemyFire(BulletPrefab, FirePoint, -30);
+            bulletTimer += Time.deltaTime;
+            playerPos = player.GetComponent<Transform>().position;
+
+            Vector2 playerDir = UsefulllFs.Dir(playerPos, transform.position, true);
+
+            rigidbodya.velocity = new Vector2(-playerDir.x, -playerDir.y) * stats.moveSpeed;
+
+            Vector2 direction = -playerDir;
+            rigidbodya.rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            if (bulletTimer > stats.atkspeed)
+            {
+                bulletTimer = 0;
+                stats.EnemyFire(BulletPrefab, FirePoint, 0);
+                stats.EnemyFire(BulletPrefab, FirePoint, 30);
+                stats.EnemyFire(BulletPrefab, FirePoint, -30);
+            }
         }
     }
 }

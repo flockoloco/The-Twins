@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
-    float bulletDamage;
+    int bulletDamage;
 
-    public void EnemyDamage(float damage)
+    public void EnemyDamage(int damage)
     {
         bulletDamage = damage;
     }

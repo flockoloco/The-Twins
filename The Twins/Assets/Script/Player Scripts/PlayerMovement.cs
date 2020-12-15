@@ -28,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
     }
     private weaponState weapon;
 
-    private int health;
 
     // define a type of state
     public enum State
@@ -62,6 +61,18 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            gameObject.GetComponent<PlayerStats>().UseHealthPotion();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            gameObject.GetComponent<PlayerStats>().selectedArrow = 0;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            gameObject.GetComponent<PlayerStats>().selectedArrow = 1;
+        }
 
         if (Input.GetKeyDown(KeyCode.Q)) {
             if (weapon == weaponState.sword && swordScript.rotatoFrezeto == false)

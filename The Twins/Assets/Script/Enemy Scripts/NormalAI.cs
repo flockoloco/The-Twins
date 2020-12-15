@@ -9,9 +9,9 @@ public class NormalAI : MonoBehaviour
     private Rigidbody2D rigidbody;
     public GameObject BulletPrefab;
     public StatsHolder stats;
-    private readonly float agroDist = 4;
     private float bulletTimer;
     public Transform FirePoint;
+    public bool triggered;
 
 
     void Start()
@@ -23,20 +23,23 @@ public class NormalAI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        bulletTimer += Time.deltaTime;
-        playerPos = player.GetComponent<Transform>().position;
-
-        Vector2 playerDir = UsefulllFs.Dir(playerPos, transform.position, true);
-
-        rigidbody.velocity = new Vector2(-playerDir.x, -playerDir.y) * stats.moveSpeed;
-
-        Vector2 direction = -playerDir;
-        rigidbody.rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-        if (bulletTimer > stats.atkspeed)
+        if (triggered)
         {
-            bulletTimer = 0;
-            stats.EnemyFire(BulletPrefab, FirePoint, 0);
+            bulletTimer += Time.deltaTime;
+            playerPos = player.GetComponent<Transform>().position;
+
+            Vector2 playerDir = UsefulllFs.Dir(playerPos, transform.position, true);
+
+            rigidbody.velocity = new Vector2(-playerDir.x, -playerDir.y) * stats.moveSpeed;
+
+            Vector2 direction = -playerDir;
+            rigidbody.rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+            if (bulletTimer > stats.atkspeed)
+            {
+                bulletTimer = 0;
+                stats.EnemyFire(BulletPrefab, FirePoint, 0);
+            }
         }
     }
 }

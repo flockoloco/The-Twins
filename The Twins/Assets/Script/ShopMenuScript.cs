@@ -9,38 +9,43 @@ public class ShopMenuScript : MonoBehaviour
     public GameObject player;
     public GameObject shopMenu;
 
-    public Button Button0;
-    public Button Button1;
-    public Button Button2;
-    public Button Button3;
-    public Button Button4;
-    public Button Button5;
-    public Button Button6;
-    public Button Button7;
-    public Button Button8;
+    public Button sButton0;
+    public Button sButton1;
+    public Button sButton2;
+    public Button sButton3;
+    public Button sButton4;
+    public Button sButton5;
+    public Button sButton6;
+    public Button sButton7;
+    public Button sButton8;
+    private PlayerStats playerstats;
 
-
-    // Start is called before the first frame update
+    public bool teste = false;
     private void Awake()
     {
         shopMenu.SetActive(false);
         player = GameObject.FindWithTag("Player");
+        playerstats = player.GetComponent<PlayerStats>();
+
+        sButton0.onClick.AddListener(delegate { BuyEquipment(0, 1); });//first field is the number of the item inside the second fields list 0 = pots/arrows 1 = equipments
+        sButton1.onClick.AddListener(delegate { BuyEquipment(1, 1); });
+
+        sButton2.onClick.AddListener(delegate { BuyEquipment(2, 1); });
+        sButton3.onClick.AddListener(delegate { BuyEquipment(3, 1); });
+        sButton4.onClick.AddListener(delegate { BuyEquipment(4, 1); });
+        sButton5.onClick.AddListener(delegate { BuyEquipment(5, 1); });
+
+        sButton6.onClick.AddListener(delegate { BuyEquipment(0, 0); });
+        sButton7.onClick.AddListener(delegate { BuyEquipment(1, 0); });
+        sButton8.onClick.AddListener(delegate { BuyEquipment(2, 0); });
     }
-    void Start()
+    void Update()
     {
-       
-        Button0.onClick.AddListener(delegate { BuyEquipment(0,1); });//first field is the number of the item inside the second fields list 0 = pots/arrows 1 = equipments
-        Button1.onClick.AddListener(delegate { BuyEquipment(1,1); });
-        Button2.onClick.AddListener(delegate { BuyEquipment(2, 1); });
-        Button3.onClick.AddListener(delegate { BuyEquipment(3, 1); });
-        Button4.onClick.AddListener(delegate { BuyEquipment(4, 1); });
-        Button5.onClick.AddListener(delegate { BuyEquipment(5, 1); });
-
-        Button6.onClick.AddListener(delegate { BuyEquipment(0, 0); });
-        Button7.onClick.AddListener(delegate { BuyEquipment(1, 0); });
-        Button8.onClick.AddListener(delegate { BuyEquipment(2, 0); });
-
-
+        if (teste == true)
+        {
+            teste = false;
+            BuyEquipment(2, 1);
+        }
     }
     public void Activate()
     {
@@ -50,29 +55,22 @@ public class ShopMenuScript : MonoBehaviour
     {
         shopMenu.SetActive(false);
     }
-
-    void Update()
+    public void StartNoMoneyPopUp()
     {
-        
+        Debug.Log("no money");
     }
     public void BuyEquipment(int number,int type)
     {
-        Debug.Log("dentro do buy equipment numero " + number + " type " + type);
-        Debug.Log("length dos equipments" + EquipmentClass.SwordandArmor.Count);
         if (type == 1)
         {
-            Debug.Log("buy check " + UsefulllFs.BuySomething(player, "gold", EquipmentClass.SwordandArmor[number].price));
             if (UsefulllFs.BuySomething(player, "gold", EquipmentClass.SwordandArmor[number].price) == true)
             {
-                player.GetComponent<PlayerStats>().RemoveEquipedItem(EquipmentClass.SwordandArmor[number].type);
-
-                player.GetComponent<PlayerStats>().EquipItem(EquipmentClass.SwordandArmor[number].type,number);
-          
+                playerstats.RemoveEquipedItem(EquipmentClass.SwordandArmor[number].type);
+                playerstats.EquipItem(EquipmentClass.SwordandArmor[number].type, number);
             }
             else
             {
-                //display "not enough money"
-         
+                StartNoMoneyPopUp();
             }
         }
         else if (type == 0)
@@ -81,11 +79,11 @@ public class ShopMenuScript : MonoBehaviour
             {
                 if (UsefulllFs.BuySomething(player, "gold", 20) == true)
                 {
-                    player.GetComponent<PlayerStats>().healthPotions += 1;
+                    playerstats.healthPotions += 1;
                 }
                 else
                 {
-                    //display "not enough money"
+                    StartNoMoneyPopUp();//send info
                 }
             }
             else if(number == 1)
@@ -96,7 +94,7 @@ public class ShopMenuScript : MonoBehaviour
                 }
                 else
                 {
-                    //display "not enough money"
+                    StartNoMoneyPopUp();
                 }
             }
             else if (number == 2)
@@ -107,7 +105,7 @@ public class ShopMenuScript : MonoBehaviour
                 }
                 else
                 {
-                    //display "not enough money"
+                    StartNoMoneyPopUp();
                 }
             }
         }

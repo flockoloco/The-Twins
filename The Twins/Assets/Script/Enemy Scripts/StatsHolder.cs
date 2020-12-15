@@ -18,6 +18,7 @@ public class StatsHolder : MonoBehaviour
     public int agroRange;
     public GameObject goldPrefab;
     public GameObject nuggetsPrefab;
+    private bool triggered;
 
     void Update()
     {
@@ -48,7 +49,6 @@ public class StatsHolder : MonoBehaviour
             goldDrop.GetComponent<DropableScript>().Value(randomNumberGold);
         }
         int randomNumberNuggets = Random.Range(1 * tier, 3 * tier);
-        Debug.Log(randomNumberNuggets);
         if (randomNumberNuggets > 0)
         {
             Debug.Log("hello :aaaa");

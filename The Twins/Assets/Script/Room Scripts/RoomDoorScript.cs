@@ -12,21 +12,17 @@ public class RoomDoorScript : MonoBehaviour
         enemiesInside.RemoveAll(i => i == null);
     }
 
-    public void OnTriggerStay2D(Collider2D collision)
-    {
-
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
             playerInside = true;
+            EnemyTriggerCheck(playerInside, enemiesInside);
         }
-
-        if(collision.tag == "Enemy")
+        if (collision.tag == "Enemy")
         {
             enemiesInside.Add(collision.gameObject);
+
         }
     }
 
@@ -35,6 +31,61 @@ public class RoomDoorScript : MonoBehaviour
         if (collision.tag == "Player")
         {
             playerInside = false;
+        }
+    }
+    void EnemyTriggerCheck(bool playercheck, List<GameObject> enemies)
+    {
+        if (playercheck == true && enemies.Count > 0)
+        {
+            foreach (GameObject enemy in enemies)
+            {
+                if (enemy.name.Contains("Normal"))
+                {
+                    enemy.GetComponent<NormalAI>().triggered = true;
+                }
+                else if (enemy.name.Contains("Tank"))
+                {
+                    enemy.GetComponent<TankAI>().triggered = true;
+                }
+                else if (enemy.name.Contains("Shotty"))
+                {
+                    enemy.GetComponent<ShottyAI>().triggered = true;
+                }
+                else if (enemy.name.Contains("Runner"))
+                {
+                    enemy.GetComponent<RunnerAI>().triggered = true;
+                }
+                else if (enemy.name.Contains("Boss"))
+                {
+
+                }
+            }
+        }
+        else
+        {
+            foreach (GameObject enemy in enemies)
+            {
+                if (enemy.name.Contains("Normal"))
+                {
+                    enemy.GetComponent<NormalAI>().triggered = false;
+                }
+                else if (enemy.name.Contains("Tank"))
+                {
+                    enemy.GetComponent<TankAI>().triggered = false;
+                }
+                else if (enemy.name.Contains("Shotty"))
+                {
+                    enemy.GetComponent<ShottyAI>().triggered = false;
+                }
+                else if (enemy.name.Contains("Runner"))
+                {
+                    enemy.GetComponent<RunnerAI>().triggered = false;
+                }
+                else if (enemy.name.Contains("Boss"))
+                {
+
+                }
+            }
         }
     }
 }

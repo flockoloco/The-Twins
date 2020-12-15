@@ -16,7 +16,7 @@ public class EnchantsScript : MonoBehaviour
     {
         Debug.Log("setting active");
         enchantCanvas.SetActive(true);
-        enchantCanvas.GetComponent<ShopMenuScript>().Activate();
+        enchantCanvas.GetComponent<EnchantMenuScript>().Activate();
 
     }
     public void Deinteract()

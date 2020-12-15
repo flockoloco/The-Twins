@@ -5,13 +5,15 @@ using TheTwins.Model;
 
 public class PlayerStats : MonoBehaviour
 {
-    public float health;
-    public float maxHealth;
+    public int health;
+    public int maxHealth;
+    private int baseHPAmount = 100;
+    private int baseArmorAmount = 1;
     public float swordAtkSpeed;
     public float swordRange;
     public float bowAtkSpeed;
     public int armor;
-    public float swordDamage;
+    public int swordDamage;
     public int selectedArrow = 0;
     public bool hit;
     public bool invunerable;
@@ -19,13 +21,9 @@ public class PlayerStats : MonoBehaviour
     public int bars;
     public int nuggets;
     public int healthPotions;
-    ////////////public int normalArrows;
-    ////////////public int oreArrows;
     private float vunerableTimer;
-    public SwordAndArmor equippedSword;
+    public SwordAndArmor equippedSword = new SwordAndArmor();
     public SwordAndArmor equippedArmor;
-    
-
     private PauseMenu pauseMenu;
 
     private void Awake()
@@ -39,13 +37,11 @@ public class PlayerStats : MonoBehaviour
         {
             pauseMenu.ResetGame();
         }
-       
         if (hit == true)
         {
             invunerable = true;
             if (vunerableTimer == 0)
             {
-
                 gameObject.GetComponent<PlayerMovement>().state = PlayerMovement.State.hit;
             }
             vunerableTimer += Time.deltaTime;
@@ -65,40 +61,51 @@ public class PlayerStats : MonoBehaviour
             }
         }
     }
-    public void EquipItem(string type,int number)
-    {
 
+    public void EquipItem(string type, int number)
+    {
+        Debug.Log("inside Equip, type" + type + " number " + number);
         if (type == "Sword")
         {
+            Debug.Log("trying to equip the sword");
             equippedSword = EquipmentClass.SwordandArmor[number];
-            swordDamage += equippedSword.damage;
-            swordRange += equippedSword.range;
-            swordAtkSpeed += equippedSword.atkSpeed;
-
+            swordDamage = equippedSword.damage + EquipmentClass.Enchant[equippedSword.enchantTier].BonusDamage;
+            swordRange = equippedSword.range;
+            swordAtkSpeed = equippedSword.atkSpeed;
+            Debug.Log("equipping worked");
         }
         else if (type == "Armor")
         {
             equippedArmor = EquipmentClass.SwordandArmor[number];
-            maxHealth += equippedArmor.maxHP;
-            armor += equippedArmor.armor;
+            maxHealth = baseHPAmount + equippedArmor.maxHP + EquipmentClass.Enchant[equippedArmor.enchantTier].bonusHp;
+            armor = baseArmorAmount + equippedArmor.armor;
         }
     }
     public void RemoveEquipedItem(string type)
     {
         if (type == "Sword")
         {
-            swordDamage -= equippedSword.damage;
-            swordRange -= equippedSword.range;
-            swordAtkSpeed -= equippedSword.atkSpeed;
+            swordDamage = 0;
+            swordRange = 1;
+            swordAtkSpeed = 1;
             equippedSword.type = "None";
-
         }
 
         else if (type == "Armor")
         {
-            maxHealth -= equippedArmor.maxHP;
-            armor -= equippedArmor.armor;
+            maxHealth = baseHPAmount;
+            armor = baseArmorAmount;
             equippedArmor.type = "None";
+        }
+    }
+    public void UseHealthPotion()
+    {
+        healthPotions -= 1;
+
+        health += maxHealth / 2;
+        if (health > maxHealth)
+        {
+            health = maxHealth;
         }
     }
 }

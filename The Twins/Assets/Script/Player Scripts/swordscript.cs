@@ -53,9 +53,6 @@ public class swordscript : MonoBehaviour
             gameObject.transform.position = new Vector3(finalvector.x + playerPos.x, finalvector.y + playerPos.y - 0.25f, 0);
         }
     }
-    //So call out my name (call out my name)
-    //Call out my name when I kiss you so gently
-    //I want you to stay(I want you to stay)
     void stopSwordAttackAnimation()
     {
         swordTimer = 0;

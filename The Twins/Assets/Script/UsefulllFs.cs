@@ -17,27 +17,30 @@ public class UsefulllFs
     {
         return Mathf.Sqrt(((pos2.x - pos1.x) * (pos2.x - pos1.x)) + ((pos2.y - pos1.y) * (pos2.y - pos1.y)));
     }
-    public static void TakeDamage(GameObject target, float dealerDamage)
+    public static void TakeDamage(GameObject target, int dealerDamage)
     {
         if (target.tag == "Player")
         {
 
-            target.GetComponent<PlayerStats>().health -= (dealerDamage - (target.GetComponent<PlayerStats>().armor/2));
+            target.GetComponent<PlayerStats>().health -= (dealerDamage - Mathf.FloorToInt(Mathf.Floor((target.GetComponent<PlayerStats>().armor/2))));
             target.GetComponent<PlayerStats>().hit = true;
         }
         else if (target.tag == "Enemy") 
         {
-            target.GetComponent<StatsHolder>().health -= (dealerDamage - (target.GetComponent<StatsHolder>().armor / 2));
+            target.GetComponent<StatsHolder>().health -= (dealerDamage - Mathf.FloorToInt(Mathf.Floor((target.GetComponent<StatsHolder>().armor / 2))));
             target.GetComponent<StatsHolder>().hit = true;
         }
     }
-    public static bool BuySomething(GameObject player,string type,int cost)
+    public static bool BuySomething(GameObject player, string type, int cost)
     {
+        Debug.Log("inside the buysomething, type of currency " + type + " cost " + cost);
         if (type == "gold")
         {
+            Debug.Log("should be inside the gold menu and has gold " + player.GetComponent<PlayerStats>().gold + " and cost " + cost);
             if (player.GetComponent<PlayerStats>().gold > cost)
             {
                 player.GetComponent<PlayerStats>().gold -= cost;
+                Debug.Log("returnning true;");
                 return true;
             }
         }else if (type == "bars")

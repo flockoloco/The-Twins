@@ -12,6 +12,7 @@ public class RunnerAI : MonoBehaviour
     private readonly float agroDist = 4;
     private float bulletTimer;
     public Transform FirePoint;
+    public bool triggered;
 
     void Start()
     {
@@ -21,30 +22,33 @@ public class RunnerAI : MonoBehaviour
 
     void FixedUpdate()
     {
-        bulletTimer += Time.deltaTime;
-        playerPos = player.GetComponent<Transform>().position;
-
-
-        Vector2 playerDir = UsefulllFs.Dir(playerPos, transform.position, true);
-
-
-        if (PlayerToEnemyDist(playerPos, transform.position) < agroDist) //when running away, he faces away from the player and moves away
+        if (triggered)
         {
-            Vector2 direction = playerDir;
-            rigidbody.velocity = new Vector2(playerDir.x, playerDir.y) * stats.moveSpeed;
-            rigidbody.rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        }
-        else //attacking cuz hes far away enough
-        {
+            bulletTimer += Time.deltaTime;
+            playerPos = player.GetComponent<Transform>().position;
 
-            rigidbody.velocity = new Vector2(0, 0);
 
-            Vector2 direction = -playerDir;
-            rigidbody.rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            if (bulletTimer > stats.atkspeed)
+            Vector2 playerDir = UsefulllFs.Dir(playerPos, transform.position, true);
+
+
+            if (PlayerToEnemyDist(playerPos, transform.position) < agroDist) //when running away, he faces away from the player and moves away
             {
-                bulletTimer = 0;
-                stats.EnemyFire(BulletPrefab, FirePoint, 0);
+                Vector2 direction = playerDir;
+                rigidbody.velocity = new Vector2(playerDir.x, playerDir.y) * stats.moveSpeed;
+                rigidbody.rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            }
+            else //attacking cuz hes far away enough
+            {
+
+                rigidbody.velocity = new Vector2(0, 0);
+
+                Vector2 direction = -playerDir;
+                rigidbody.rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                if (bulletTimer > stats.atkspeed)
+                {
+                    bulletTimer = 0;
+                    stats.EnemyFire(BulletPrefab, FirePoint, 0);
+                }
             }
         }
     }
