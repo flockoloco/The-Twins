@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 15944661}
   - component: {fileID: 15944660}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Lvl 1 armor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20677,6 +20677,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 218398660483767826, guid: ed699d81779612744a7e0b900e363b12, type: 3}
   stats: {fileID: 336560421}
   FirePoint: {fileID: 0}
+  triggered: 0
 --- !u!212 &336560423
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23766,6 +23767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c03d520e6430b4428642554fbe1d3e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   shopMenu: {fileID: 1985763298}
   sButton0: {fileID: 883661262}
   sButton1: {fileID: 1038345302}
@@ -23776,6 +23778,7 @@ MonoBehaviour:
   sButton6: {fileID: 766051996}
   sButton7: {fileID: 1417260927}
   sButton8: {fileID: 738813781}
+  teste: 0
 --- !u!114 &374258709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24146,6 +24149,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 218398660483767826, guid: ed699d81779612744a7e0b900e363b12, type: 3}
   stats: {fileID: 377494106}
   FirePoint: {fileID: 0}
+  triggered: 0
 --- !u!212 &377494108
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27033,6 +27037,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 218398660483767826, guid: ed699d81779612744a7e0b900e363b12, type: 3}
   stats: {fileID: 418414953}
   FirePoint: {fileID: 984633587}
+  triggered: 0
 --- !u!61 &418414951
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -30944,7 +30949,7 @@ GameObject:
   - component: {fileID: 475160805}
   - component: {fileID: 475160804}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Lvl 3 sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31514,6 +31519,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 218398660483767826, guid: ed699d81779612744a7e0b900e363b12, type: 3}
   stats: {fileID: 529066326}
   FirePoint: {fileID: 0}
+  triggered: 0
 --- !u!212 &529066328
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -31578,7 +31584,7 @@ GameObject:
   - component: {fileID: 557988733}
   - component: {fileID: 557988732}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: Lvl 2 armor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33204,6 +33210,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 218398660483767826, guid: ed699d81779612744a7e0b900e363b12, type: 3}
   stats: {fileID: 682119761}
   FirePoint: {fileID: 0}
+  triggered: 0
 --- !u!212 &682119763
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -34149,6 +34156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd74ab564e6863149a50cb2dd0c760c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   enchantMenu: {fileID: 1622488457}
   eButton0: {fileID: 1485501719}
   eButton1: {fileID: 820351487}
@@ -36318,7 +36326,7 @@ GameObject:
   - component: {fileID: 820351488}
   - component: {fileID: 820351487}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Lvl 2 sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38881,6 +38889,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 218398660483767826, guid: ed699d81779612744a7e0b900e363b12, type: 3}
   stats: {fileID: 900427619}
   FirePoint: {fileID: 0}
+  triggered: 0
 --- !u!212 &900427621
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -75534,6 +75543,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 218398660483767826, guid: ed699d81779612744a7e0b900e363b12, type: 3}
   stats: {fileID: 1231456646}
   FirePoint: {fileID: 0}
+  triggered: 0
 --- !u!212 &1231456648
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -77218,6 +77228,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 218398660483767826, guid: ed699d81779612744a7e0b900e363b12, type: 3}
   stats: {fileID: 1325437929}
   FirePoint: {fileID: 0}
+  triggered: 0
 --- !u!212 &1325437931
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -112766,7 +112777,7 @@ GameObject:
   - component: {fileID: 1485501720}
   - component: {fileID: 1485501719}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Lvl 1 sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120751,7 +120762,7 @@ GameObject:
   - component: {fileID: 1721100114}
   - component: {fileID: 1721100113}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: Lvl 3 armor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131266,6 +131277,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 218398660483767826, guid: ed699d81779612744a7e0b900e363b12, type: 3}
   stats: {fileID: 1837224682}
   FirePoint: {fileID: 0}
+  triggered: 0
 --- !u!212 &1837224684
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -134106,6 +134118,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 218398660483767826, guid: ed699d81779612744a7e0b900e363b12, type: 3}
   stats: {fileID: 2042253705}
   FirePoint: {fileID: 0}
+  triggered: 0
 --- !u!212 &2042253707
 SpriteRenderer:
   m_ObjectHideFlags: 0
