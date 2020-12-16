@@ -2,22 +2,38 @@ package com.example.mainactivity
 
 import android.content.ClipData
 import android.content.ClipDescription
+import android.content.Context
+import android.content.Intent
+import android.hardware.*
 import android.os.Bundle
 import android.view.DragEvent
+import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewParent
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import kotlinx.android.synthetic.main.fragment_anvil.*
 
-class AnvilFragment : Fragment(R.layout.fragment_anvil) {
+class AnvilFragment: Fragment(R.layout.fragment_anvil), SensorEventListener{
 
     var batata: Int = 0
+    //private lateinit var sensorManager: SensorManager
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        /*val sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        val mSensor: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_SIGNIFICANT_MOTION)
+        val triggerEventListener = object : TriggerEventListener() {
+            override fun onTrigger(event: TriggerEvent?) {
+                Toast.makeText(context, "blablablabla", Toast.LENGTH_SHORT).show()
+            }
+        }
+        mSensor?.also { sensor ->
+            sensorManager.requestTriggerSensor(triggerEventListener, sensor)
+        }*/
 
         dragBot.setOnDragListener(dragListen)
         dragTop.setOnDragListener(dragListen)
@@ -37,7 +53,7 @@ class AnvilFragment : Fragment(R.layout.fragment_anvil) {
 
         //Progress bar
         clickablearea.setOnClickListener {
-            if(batata == 1) {
+            if (batata == 1) {
                 ProgressBar.incrementProgressBy(1)
                 //mudar a cor da barra
             }
@@ -68,7 +84,7 @@ class AnvilFragment : Fragment(R.layout.fragment_anvil) {
             DragEvent.ACTION_DROP -> {
                 val item = event.clipData.getItemAt(0)
                 val dragData = item.text
-                Toast.makeText(view.context, dragData, Toast.LENGTH_SHORT).show()
+                Toast.makeText(view.context, "esse é o numero ", Toast.LENGTH_SHORT).show()
 
                 view.invalidate()
 
@@ -96,5 +112,13 @@ class AnvilFragment : Fragment(R.layout.fragment_anvil) {
             }
             else -> false
         }
+    }
+
+    override fun onSensorChanged(event: SensorEvent?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
+        TODO("Not yet implemented")
     }
 }
