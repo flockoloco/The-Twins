@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f42cb1a3ec93f0f4fb3efb3aca698c41, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.4021739, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -173,6 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 4722209276096482469}
   FirePoint: {fileID: 8145599562572669480}
+  triggered: 0
 --- !u!1 &9166994120211698561
 GameObject:
   m_ObjectHideFlags: 0

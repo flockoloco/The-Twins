@@ -37,7 +37,7 @@ public class UsefulllFs
         if (type == "gold")
         {
             Debug.Log("should be inside the gold menu and has gold " + player.GetComponent<PlayerStats>().gold + " and cost " + cost);
-            if (player.GetComponent<PlayerStats>().gold > cost)
+            if (player.GetComponent<PlayerStats>().gold >= cost)
             {
                 player.GetComponent<PlayerStats>().gold -= cost;
                 Debug.Log("returnning true;");
@@ -50,9 +50,9 @@ public class UsefulllFs
                 player.GetComponent<PlayerStats>().bars -= cost;
                 return true;
             }
-            else if (player.GetComponent<PlayerStats>().nuggets > (cost * 5))
+            else if (player.GetComponent<PlayerStats>().nuggets >= (cost * 3))
             {
-                player.GetComponent<PlayerStats>().nuggets -= (cost * 5);
+                player.GetComponent<PlayerStats>().nuggets -= (cost * 3);
                 return true;
             }
         }

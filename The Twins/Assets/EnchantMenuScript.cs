@@ -23,12 +23,12 @@ public class EnchantMenuScript : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerstats = player.GetComponent<PlayerStats>();
        
-            eButton0.onClick.AddListener(delegate { BuyEnchant(1, 1); });//armors
-            eButton1.onClick.AddListener(delegate { BuyEnchant(2, 1); });
-            eButton2.onClick.AddListener(delegate { BuyEnchant(3, 1); });
-            eButton3.onClick.AddListener(delegate { BuyEnchant(1, 0); });//swords
-            eButton4.onClick.AddListener(delegate { BuyEnchant(2, 0); });
-            eButton5.onClick.AddListener(delegate { BuyEnchant(3, 0); });
+        eButton0.onClick.AddListener(delegate { BuyEnchant(1, 1); });//armors
+        eButton1.onClick.AddListener(delegate { BuyEnchant(2, 1); });
+        eButton2.onClick.AddListener(delegate { BuyEnchant(3, 1); });
+        eButton3.onClick.AddListener(delegate { BuyEnchant(1, 0); });//swords
+        eButton4.onClick.AddListener(delegate { BuyEnchant(2, 0); });
+        eButton5.onClick.AddListener(delegate { BuyEnchant(3, 0); });
         
     }
     public void Activate()

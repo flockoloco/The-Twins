@@ -91,9 +91,9 @@ namespace TheTwins.Model
                 if (enchant.Count == 0)
                 {
                     enchant.Add(new Enchants(0, 0, 0, 0));
-                    enchant.Add(new Enchants(1, 10, 10, 100));
-                    enchant.Add(new Enchants(2, 20, 20, 200));
-                    enchant.Add(new Enchants(3, 25, 25, 300));
+                    enchant.Add(new Enchants(1, 10, 10, 50));
+                    enchant.Add(new Enchants(2, 20, 20, 75));
+                    enchant.Add(new Enchants(3, 25, 30, 100));
                 }
                 return enchant;
             }
@@ -103,20 +103,17 @@ namespace TheTwins.Model
         public static List<SwordAndArmor> SwordandArmor
         {
             get {
-                Debug.Log("inside the get before the if = " + swordandArmor.Count);
                 if (swordandArmor.Count == 0)
                 {
-                    Debug.Log("inside the if");
                     //ir buscar a save 
                     int enchantTier = 0;//busca da database
 
-                    swordandArmor.Add(new SwordAndArmor("wooden sword", 1, 2, 50f, 20, enchantTier, 1));
-                    swordandArmor.Add(new SwordAndArmor("iron sword", 1.5f, 3, 55f, 30, enchantTier, 2));
-                    swordandArmor.Add(new SwordAndArmor("gold sword", 2f, 1, 310f, 50, enchantTier, 3));
-                    swordandArmor.Add(new SwordAndArmor("wood armor", 5, 20, 10, enchantTier, 4));
-                    swordandArmor.Add(new SwordAndArmor("iron armor", 8, 30, 20, enchantTier, 5));
-                    swordandArmor.Add(new SwordAndArmor("gold armor", 10, 40, 50, enchantTier, 6));
-                    
+                    swordandArmor.Add(new SwordAndArmor("wooden sword", 1, 1, 50f, 20, enchantTier, 0));
+                    swordandArmor.Add(new SwordAndArmor("iron sword", 5f, 5, 55f, 30, enchantTier, 1));
+                    swordandArmor.Add(new SwordAndArmor("gold sword", 10f, 10, 310f, 50, enchantTier, 2));
+                    swordandArmor.Add(new SwordAndArmor("wood armor", 5, 20, 10, enchantTier, 3));
+                    swordandArmor.Add(new SwordAndArmor("iron armor", 8, 30, 20, enchantTier, 4));
+                    swordandArmor.Add(new SwordAndArmor("gold armor", 10, 40, 50, enchantTier, 5));
                 }
                 return swordandArmor;
             }

@@ -65,6 +65,7 @@ public class ShopMenuScript : MonoBehaviour
         {
             if (UsefulllFs.BuySomething(player, "gold", EquipmentClass.SwordandArmor[number].price) == true)
             {
+                Debug.Log("inside if number "+number);
                 playerstats.RemoveEquipedItem(EquipmentClass.SwordandArmor[number].type);
                 playerstats.EquipItem(EquipmentClass.SwordandArmor[number].type, number);
             }

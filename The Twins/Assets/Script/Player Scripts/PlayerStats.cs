@@ -23,7 +23,7 @@ public class PlayerStats : MonoBehaviour
     public int healthPotions;
     private float vunerableTimer;
     public SwordAndArmor equippedSword = new SwordAndArmor();
-    public SwordAndArmor equippedArmor;
+    public SwordAndArmor equippedArmor = new SwordAndArmor();
     private PauseMenu pauseMenu;
 
     private void Awake()
@@ -88,14 +88,14 @@ public class PlayerStats : MonoBehaviour
             swordDamage = 0;
             swordRange = 1;
             swordAtkSpeed = 1;
-            equippedSword.type = "None";
+            equippedSword = new SwordAndArmor();
         }
 
         else if (type == "Armor")
         {
             maxHealth = baseHPAmount;
             armor = baseArmorAmount;
-            equippedArmor.type = "None";
+            equippedArmor = new SwordAndArmor();
         }
     }
     public void UseHealthPotion()
