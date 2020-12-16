@@ -43,7 +43,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ResetGame()
     { 
-        SceneManager.LoadScene("Main Game");
+        SceneManager.LoadScene("Level Generator");
         gameIsPaused = false;
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
@@ -51,9 +51,9 @@ public class PauseMenu : MonoBehaviour
 
     public void MainMenu()
     {
-        Debug.Log("Going to main menu");
-        //só criar o scene do main menu
         SceneManager.LoadScene("Main Menu");
+        gameIsPaused = false;
+        pauseMenu.SetActive(false);
     }
     public void Options()
     {
