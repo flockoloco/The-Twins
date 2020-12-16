@@ -12,6 +12,7 @@ public class UITextManager : MonoBehaviour
     private TextMeshProUGUI barsText;
     private TextMeshProUGUI normalArrowsText;
     private TextMeshProUGUI oreArrowsText;
+    private TextMeshProUGUI potionText;
 
     void Start()
     {
@@ -23,6 +24,7 @@ public class UITextManager : MonoBehaviour
         barsText = GameObject.FindWithTag("BarsText").GetComponent<TextMeshProUGUI>();
         normalArrowsText = GameObject.FindWithTag("NormalArrowText").GetComponent<TextMeshProUGUI>();
         oreArrowsText = GameObject.FindWithTag("OreArrowText").GetComponent<TextMeshProUGUI>();
+        potionText = GameObject.FindWithTag("PotionText").GetComponent<TextMeshProUGUI>();
     }
     void Update()
     {//eventualmente remover o UPDATE() todo, e apenas dar call a funcao quando e necessario.
@@ -33,6 +35,8 @@ public class UITextManager : MonoBehaviour
 
         normalArrowsText.text = EquipmentClass.Quiver[0].amount.ToString();
         oreArrowsText.text = EquipmentClass.Quiver[1].amount.ToString();
+
+        potionText.text = playerStats.healthPotions.ToString();
     }
     void UpdateText(string stat) //more efficient :D for the future C:
     {

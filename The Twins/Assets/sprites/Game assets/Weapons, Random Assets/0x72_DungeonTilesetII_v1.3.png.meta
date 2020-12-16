@@ -5303,7 +5303,7 @@ TextureImporter:
         x: 96
         y: 465
         width: 16
-        height: 38
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5347,7 +5347,7 @@ TextureImporter:
         width: 14
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -5355,6 +5355,27 @@ TextureImporter:
       bones: []
       spriteID: 099376dcd3d7a8a10800000000000000
       internalID: 1912478696164768144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0x72_DungeonTilesetII_v1.3_5
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 432
+        width: 16
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f0c34a9c1f324400800000000000000
+      internalID: 306877116694380785
       vertices: []
       indices: 
       edges: []

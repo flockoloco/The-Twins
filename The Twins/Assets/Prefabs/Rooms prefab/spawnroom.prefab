@@ -4205,10 +4205,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 5408434191910700814}
     m_Modifications:
     - target: {fileID: 7758780687407827850, guid: bf0085243bc54ab49a51dc30ccfb3f10, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -2645911129077382370, guid: c8efa902863600f458f0629fa1a092bc, type: 3}
-    - target: {fileID: 7758780687407827850, guid: bf0085243bc54ab49a51dc30ccfb3f10, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
@@ -4260,14 +4256,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FountainExample
       objectReference: {fileID: 0}
-    - target: {fileID: 7758780687407827862, guid: bf0085243bc54ab49a51dc30ccfb3f10, type: 3}
-      propertyPath: normalSprite
-      value: 
-      objectReference: {fileID: 8375856745163201129, guid: c8efa902863600f458f0629fa1a092bc, type: 3}
-    - target: {fileID: 7758780687407827862, guid: bf0085243bc54ab49a51dc30ccfb3f10, type: 3}
-      propertyPath: glowSprite
-      value: 
-      objectReference: {fileID: 5844738942003390317, guid: c8efa902863600f458f0629fa1a092bc, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf0085243bc54ab49a51dc30ccfb3f10, type: 3}
 --- !u!4 &2924543969315866792 stripped

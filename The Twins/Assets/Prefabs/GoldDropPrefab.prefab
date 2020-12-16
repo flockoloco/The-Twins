@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1563535938953717312}
   - component: {fileID: 3030940426621218664}
   - component: {fileID: 6562054970395756593}
+  - component: {fileID: 513051725520747002}
   m_Layer: 10
   m_Name: GoldDropPrefab
   m_TagString: GoldDrop
@@ -106,7 +107,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &1563535938953717312
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -122,7 +123,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.49381256
+  m_Radius: 0.45313072
 --- !u!114 &3030940426621218664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,3 +164,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
+--- !u!95 &513051725520747002
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3974753108313818560}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3b5750ff43060ce4f8a6ef4b540d6e67, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

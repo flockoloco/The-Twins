@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4155484121494802349, guid: bc9ebd4f4eb02034d8053b1635553b2d, type: 3}
+  m_Sprite: {fileID: -3691283762694273852, guid: c8efa902863600f458f0629fa1a092bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 2.375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -125,8 +125,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 1, y: 2.375}
+    newSize: {x: 1, y: 2.375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -163,8 +163,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  normalSprite: {fileID: -1007621799875005872, guid: bc9ebd4f4eb02034d8053b1635553b2d, type: 3}
-  glowSprite: {fileID: 1495685904721747155, guid: bc9ebd4f4eb02034d8053b1635553b2d, type: 3}
+  normalSprite: {fileID: -3691283762694273852, guid: c8efa902863600f458f0629fa1a092bc, type: 3}
+  glowSprite: {fileID: 306877116694380785, guid: c8efa902863600f458f0629fa1a092bc, type: 3}
   spriteRenderer: {fileID: 7758780687407827850}
   ableToInteract: 1
 --- !u!114 &1993491639593689115
@@ -179,3 +179,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77d774b1a9362bf41b24483874346296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInside: 0
