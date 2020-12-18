@@ -3,28 +3,35 @@ package com.example.mainactivity
 import android.content.ClipData
 import android.content.ClipDescription
 import android.content.Context
-import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
+import android.graphics.Color.*
+import android.graphics.ColorFilter
+import android.graphics.drawable.Drawable
 import android.hardware.*
 import android.os.Bundle
 import android.view.DragEvent
-import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.toColor
+import androidx.core.graphics.toColorFilter
 import kotlinx.android.synthetic.main.fragment_anvil.*
+import kotlinx.android.synthetic.main.fragment_anvil.view.*
 
-class AnvilFragment: Fragment(R.layout.fragment_anvil), SensorEventListener{
+class AnvilFragment: Fragment(R.layout.fragment_anvil), SensorEventListener {
 
     var batata: Int = 0
-    //private lateinit var sensorManager: SensorManager
+    private lateinit var sensorManager: SensorManager
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /*val sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        sensorManager = activity?.getSystemService(Context.SENSOR_SERVICE) as SensorManager
+
         val mSensor: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_SIGNIFICANT_MOTION)
         val triggerEventListener = object : TriggerEventListener() {
             override fun onTrigger(event: TriggerEvent?) {
@@ -33,7 +40,7 @@ class AnvilFragment: Fragment(R.layout.fragment_anvil), SensorEventListener{
         }
         mSensor?.also { sensor ->
             sensorManager.requestTriggerSensor(triggerEventListener, sensor)
-        }*/
+        }
 
         dragBot.setOnDragListener(dragListen)
         dragTop.setOnDragListener(dragListen)
@@ -55,7 +62,15 @@ class AnvilFragment: Fragment(R.layout.fragment_anvil), SensorEventListener{
         clickablearea.setOnClickListener {
             if (batata == 1) {
                 ProgressBar.incrementProgressBy(1)
-                //mudar a cor da barra
+
+                if(ProgressBar.progress> 50) {
+                    //ProgressBar.progressDrawable.setTint(RED)
+                    ProgressBar.progressTintList = ColorStateList.valueOf(YELLOW)
+                }
+                if(ProgressBar.progress> 70) {
+                    //ProgressBar.progressDrawable.setTint(RED)
+                    ProgressBar.progressTintList = ColorStateList.valueOf(RED)
+                }
             }
         }
     }
