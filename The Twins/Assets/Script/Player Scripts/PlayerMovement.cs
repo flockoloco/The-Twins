@@ -61,8 +61,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && gameObject.GetComponent<PlayerStats>().healthPotions >= 1)
         {
+
             gameObject.GetComponent<PlayerStats>().UseHealthPotion();
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
