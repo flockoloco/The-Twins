@@ -3,6 +3,10 @@ package com.example.mainactivity
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
+import android.view.LayoutInflater
+import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mainactivity.retrofit.INodeJS
@@ -11,12 +15,20 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.confirmpassword_box.*
+import kotlinx.android.synthetic.main.confirmpassword_box.view.*
 import retrofit2.Retrofit
 
 class LoginActivity : AppCompatActivity() {
 
     lateinit var myAPI: INodeJS
     var compositeDisposable = CompositeDisposable()
+
+    private val msgDialog = AlertDialog.Builder(this)
+        .setTitle("Error")
+        .setMessage("Wrong Username or Password, please try again!")
+        .setNeutralButton("Ok") { _, _ -> }
+        .create()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,8 +41,16 @@ class LoginActivity : AppCompatActivity() {
         btnLogin.setOnClickListener {
             val username = lgnUsername.text.toString()
             val password = lgnPassword.text.toString()
-            if (!checkBox()) {
+            if (!fieldsCheck()) {
                 login(username, password)
+            }
+        }
+
+        btnRegister.setOnClickListener {
+            val username = lgnUsername.text.toString()
+            val password = lgnPassword.text.toString()
+            if (!fieldsCheck()) {
+                register(username, password)
             }
         }
         /*
@@ -51,12 +71,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login(Username: String, Password: String) {
-
-        val error = AlertDialog.Builder(this)
-            .setTitle("Error")
-            .setMessage("Wrong Username or Password, please try again!")
-            .setNeutralButton("Ok") { _, _ -> }
-            .create()
         compositeDisposable.add(myAPI.loginUser(Username, Password)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -67,17 +81,55 @@ class LoginActivity : AppCompatActivity() {
                         startActivity(it)
                     }
                 } else {
-                    error.show()
+                    msgDialog.show()
                 }
             }
         )
     }
 
-    private fun register(Username: String, Password: String){
-        
+    private fun register(Username: String, Password: String) {
+
+        compositeDisposable.add(myAPI.loginUser(Username, Password)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { message ->
+                if (message.contains("UserName")) {
+                    msgDialog.setMessage("Username already registered, please try a different username !")
+                    msgDialog.show()
+                } else {
+                    val inflatePassword =
+                        LayoutInflater.from(this).inflate(R.layout.confirmpassword_box, null)
+
+                    AlertDialog.Builder(this)
+                        .setTitle("Confirm Password")
+                        .setView(inflatePassword)
+                        .setNegativeButton("Cancel") { _, _ -> }
+                        .setPositiveButton("Confirm") { _, _ ->
+                            val confirmedPass = inflatePassword.lgnConfirmPassword as EditText
+                            if (Password == confirmedPass.text.toString()) {
+                                compositeDisposable.add(myAPI.registerUser(Username, Password)
+                                    .subscribeOn(Schedulers.io())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribe {
+                                        Toast.makeText(
+                                            this,
+                                            "successfully register",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                                )
+                            } else {
+                                msgDialog.setMessage("Password does not match, please try again! ")
+                                msgDialog.show()
+                            }
+                        }.show()
+                }
+            }
+        )
     }
 
-    private fun checkBox(): Boolean {
+
+    private fun fieldsCheck(): Boolean {
         if (TextUtils.isEmpty(lgnUsername.text.toString()) || TextUtils.isEmpty(lgnPassword.text.toString())) {
             if (TextUtils.isEmpty(lgnUsername.text.toString())) {
                 lgnUsername.error = "Please insert a username!"
