@@ -4,8 +4,6 @@ const path = require("path")
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-const login = require(path.join(__dirname, "routers", "login.js"))
-
 const hostname = '127.0.0.1';
 const port = 3000;
 
