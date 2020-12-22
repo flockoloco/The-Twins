@@ -16,7 +16,6 @@ public class StatsHolder : MonoBehaviour
     public GameObject goldPrefab;
     public GameObject nuggetsPrefab;
     private bool triggered;
-    public GameObject bulletPrefab;
     public bool ableToAttack = true;
 
     private void Update()
@@ -41,14 +40,14 @@ public class StatsHolder : MonoBehaviour
 
     private void SpawnDrops(int tier, Transform enemyTransform)
     {
-        int randomNumberGold = Random.Range(1 * tier, 6 * tier);
+        int randomNumberGold = Random.Range(10 * tier, 20 * tier);
         if (randomNumberGold > 0)
         {
             GameObject goldDrop = Instantiate(goldPrefab, enemyTransform.position, Quaternion.identity);
             goldDrop.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f)), ForceMode2D.Impulse);
             goldDrop.GetComponent<DropableScript>().Value(randomNumberGold);
         }
-        int randomNumberNuggets = Random.Range(1 * tier, 3 * tier);
+        int randomNumberNuggets = Random.Range(10 * tier, 20 * tier);
         if (randomNumberNuggets > 0)
         {
             Debug.Log("hello :aaaa");

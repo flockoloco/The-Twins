@@ -31,7 +31,7 @@ public class StairsScript : MonoBehaviour
 
             var generator = GameObject.Find("LevelGenerator").GetComponent<DungeonGenerator>();
             generator.Generate();
-
+            GameObject.FindWithTag("MainCamera").GetComponent<cameramovement>().shopOpen = false;
             playerMovement.Invoke("PlayerRespawn", 1f);
 
             //go to next level (generate a new one maybe in a new scene?)
