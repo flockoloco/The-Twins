@@ -6,12 +6,17 @@ const path = require("path")
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
+<<<<<<< HEAD
 =======
 var express = require('express');
 var cors = require('cors');
 var bodyParser = require('body-parser');
 var playersRouter = require('./routes/players');
 >>>>>>> parent of e6ff177... commit apenas para mim se o casa abrir é gay haahaha
+=======
+const login = require(path.join(__dirname, "routers", "login.js"))
+
+>>>>>>> parent of 2080c1f... minor fix
 const hostname = '127.0.0.1';
 const port = 3131;
 dbcon = mysql.createConnection({

@@ -3,6 +3,7 @@ package com.example.mainactivity
 import android.content.Intent
 import android.os.Bundle
 <<<<<<< HEAD
+<<<<<<< HEAD
 import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,6 +12,10 @@ import android.widget.Toast
 =======
 import android.widget.EditText
 >>>>>>> parent of e6ff177... commit apenas para mim se o casa abrir é gay haahaha
+=======
+import android.util.Log
+import android.widget.Toast
+>>>>>>> parent of 2080c1f... minor fix
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_login.*
@@ -40,15 +45,19 @@ class LoginActivity : AppCompatActivity() {
 
 <<<<<<< HEAD
         //iniciar API
-        val retrofit: Retrofit = RetrofitClient.instance
+        val retrofit:Retrofit = RetrofitClient.instance
         myAPI = retrofit.create(INodeJS::class.java)
 
-        btnLogin.setOnClickListener {
+        btnLogin.setOnClickListener{
             val username = lgnUsername.text.toString()
             val password = lgnPassword.text.toString()
+<<<<<<< HEAD
             if (!fieldsCheck()) {
                 login(username, password)
             }
+=======
+            login(username, password)
+>>>>>>> parent of 2080c1f... minor fix
         }
 
         btnRegister.setOnClickListener {
@@ -84,15 +93,25 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login(Username: String, Password: String) {
+<<<<<<< HEAD
+=======
+
+        val error = AlertDialog.Builder(this)
+            .setTitle("Error")
+            .setMessage("Username or Password not inserted")
+            .setNeutralButton("Ok") { _, _ -> }
+            .create()
+>>>>>>> parent of 2080c1f... minor fix
         compositeDisposable.add(myAPI.loginUser(Username, Password)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { message ->
                 if (message.contains("UserPassword")) {
-                    Intent(this, MainActivity::class.java).also {
+                    Intent(this, MainActivity::class.java).also{
                         it.putExtra("EXTRA_USERNAME", Username)
                         startActivity(it)
                     }
+<<<<<<< HEAD
                 } else {
                     msgDialog.show()
                 }
@@ -146,13 +165,13 @@ class LoginActivity : AppCompatActivity() {
         if (TextUtils.isEmpty(lgnUsername.text.toString()) || TextUtils.isEmpty(lgnPassword.text.toString())) {
             if (TextUtils.isEmpty(lgnUsername.text.toString())) {
                 lgnUsername.error = "Please insert a username!"
+=======
+                }else{
+                error.show()
+>>>>>>> parent of 2080c1f... minor fix
             }
-            if (TextUtils.isEmpty(lgnPassword.text.toString())) {
-                lgnPassword.error = "Please insert a password!"
             }
-            return true
-        }
-        return false
+        )
     }
 
     override fun onStop() {
