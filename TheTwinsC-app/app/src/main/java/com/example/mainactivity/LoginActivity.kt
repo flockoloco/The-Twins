@@ -5,6 +5,7 @@ import android.os.Bundle
 <<<<<<< HEAD
 <<<<<<< HEAD
 import android.text.TextUtils
+<<<<<<< HEAD
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.EditText
@@ -16,12 +17,17 @@ import android.widget.EditText
 import android.util.Log
 import android.widget.Toast
 >>>>>>> parent of 2080c1f... minor fix
+=======
+>>>>>>> parent of 0b58579... blabla mini update capp
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_login.*
 <<<<<<< HEAD
+<<<<<<< HEAD
 import kotlinx.android.synthetic.main.confirmpassword_box.*
 import kotlinx.android.synthetic.main.confirmpassword_box.view.*
+=======
+>>>>>>> parent of 0b58579... blabla mini update capp
 import retrofit2.Retrofit
 
 class LoginActivity : AppCompatActivity() {
@@ -29,6 +35,7 @@ class LoginActivity : AppCompatActivity() {
     lateinit var myAPI: INodeJS
     var compositeDisposable = CompositeDisposable()
 
+<<<<<<< HEAD
     private val msgDialog = AlertDialog.Builder(this)
         .setTitle("Error")
         .setMessage("Wrong Username or Password, please try again!")
@@ -39,6 +46,8 @@ class LoginActivity : AppCompatActivity() {
 
 class LoginActivity : AppCompatActivity() {
 >>>>>>> parent of e6ff177... commit apenas para mim se o casa abrir é gay haahaha
+=======
+>>>>>>> parent of 0b58579... blabla mini update capp
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -52,20 +61,16 @@ class LoginActivity : AppCompatActivity() {
             val username = lgnUsername.text.toString()
             val password = lgnPassword.text.toString()
 <<<<<<< HEAD
+<<<<<<< HEAD
             if (!fieldsCheck()) {
+=======
+            if (!checkBox()) {
+>>>>>>> parent of 0b58579... blabla mini update capp
                 login(username, password)
             }
 =======
             login(username, password)
 >>>>>>> parent of 2080c1f... minor fix
-        }
-
-        btnRegister.setOnClickListener {
-            val username = lgnUsername.text.toString()
-            val password = lgnPassword.text.toString()
-            if (!fieldsCheck()) {
-                register(username, password)
-            }
         }
         /*
 =======
@@ -94,6 +99,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun login(Username: String, Password: String) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
         val error = AlertDialog.Builder(this)
@@ -102,6 +108,14 @@ class LoginActivity : AppCompatActivity() {
             .setNeutralButton("Ok") { _, _ -> }
             .create()
 >>>>>>> parent of 2080c1f... minor fix
+=======
+
+        val error = AlertDialog.Builder(this)
+            .setTitle("Error")
+            .setMessage("Wrong Username or Password, please try again!")
+            .setNeutralButton("Ok") { _, _ -> }
+            .create()
+>>>>>>> parent of 0b58579... blabla mini update capp
         compositeDisposable.add(myAPI.loginUser(Username, Password)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -113,55 +127,17 @@ class LoginActivity : AppCompatActivity() {
                     }
 <<<<<<< HEAD
                 } else {
-                    msgDialog.show()
+                    error.show()
                 }
             }
         )
     }
 
-    private fun register(Username: String, Password: String) {
-
-        compositeDisposable.add(myAPI.loginUser(Username, Password)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { message ->
-                if (message.contains("UserName")) {
-                    msgDialog.setMessage("Username already registered, please try a different username !")
-                    msgDialog.show()
-                } else {
-                    val inflatePassword =
-                        LayoutInflater.from(this).inflate(R.layout.confirmpassword_box, null)
-
-                    AlertDialog.Builder(this)
-                        .setTitle("Confirm Password")
-                        .setView(inflatePassword)
-                        .setNegativeButton("Cancel") { _, _ -> }
-                        .setPositiveButton("Confirm") { _, _ ->
-                            val confirmedPass = inflatePassword.lgnConfirmPassword as EditText
-                            if (Password == confirmedPass.text.toString()) {
-                                compositeDisposable.add(myAPI.registerUser(Username, Password)
-                                    .subscribeOn(Schedulers.io())
-                                    .observeOn(AndroidSchedulers.mainThread())
-                                    .subscribe {
-                                        Toast.makeText(
-                                            this,
-                                            "successfully register",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    }
-                                )
-                            } else {
-                                msgDialog.setMessage("Password does not match, please try again! ")
-                                msgDialog.show()
-                            }
-                        }.show()
-                }
-            }
-        )
+    private fun register(Username: String, Password: String){
+        
     }
 
-
-    private fun fieldsCheck(): Boolean {
+    private fun checkBox(): Boolean {
         if (TextUtils.isEmpty(lgnUsername.text.toString()) || TextUtils.isEmpty(lgnPassword.text.toString())) {
             if (TextUtils.isEmpty(lgnUsername.text.toString())) {
                 lgnUsername.error = "Please insert a username!"

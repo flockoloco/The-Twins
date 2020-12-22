@@ -16,7 +16,7 @@ interface INodeJS {
     @FormUrlEncoded
     fun loginUser(@Field("Username") Username:String, @Field("Password") Password:String):Observable<String>
 
-    /*@GET("User")
+   /* @GET("User")
     @FormUrlEncoded
-    fun getCapp(@Field())*/
+    fun User(@Field())*/
 }
