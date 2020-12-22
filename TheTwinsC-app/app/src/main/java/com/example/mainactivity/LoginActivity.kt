@@ -4,12 +4,16 @@ import android.content.Intent
 import android.os.Bundle
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 5e9c894... ooh?
 import android.text.TextUtils
 <<<<<<< HEAD
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.EditText
 import android.widget.Toast
+<<<<<<< HEAD
 =======
 import android.widget.EditText
 >>>>>>> parent of e6ff177... commit apenas para mim se o casa abrir é gay haahaha
@@ -19,11 +23,21 @@ import android.widget.Toast
 >>>>>>> parent of 2080c1f... minor fix
 =======
 >>>>>>> parent of 0b58579... blabla mini update capp
+=======
+>>>>>>> parent of 5e9c894... ooh?
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mainactivity.retrofit.INodeJS
+import com.example.mainactivity.retrofit.RetrofitClient
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_login.*
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 5e9c894... ooh?
 import kotlinx.android.synthetic.main.confirmpassword_box.*
 import kotlinx.android.synthetic.main.confirmpassword_box.view.*
 =======
@@ -42,17 +56,19 @@ class LoginActivity : AppCompatActivity() {
         .setNeutralButton("Ok") { _, _ -> }
         .create()
 
+<<<<<<< HEAD
 =======
 
 class LoginActivity : AppCompatActivity() {
 >>>>>>> parent of e6ff177... commit apenas para mim se o casa abrir é gay haahaha
 =======
 >>>>>>> parent of 0b58579... blabla mini update capp
+=======
+>>>>>>> parent of 5e9c894... ooh?
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-<<<<<<< HEAD
         //iniciar API
         val retrofit:Retrofit = RetrofitClient.instance
         myAPI = retrofit.create(INodeJS::class.java)
@@ -73,13 +89,6 @@ class LoginActivity : AppCompatActivity() {
 >>>>>>> parent of 2080c1f... minor fix
         }
         /*
-=======
-        val error = AlertDialog.Builder(this)
-            .setTitle("Error")
-            .setMessage("Username or Password not inserted")
-            .setNeutralButton("Ok") { _, _ -> }
-            .create()
->>>>>>> parent of e6ff177... commit apenas para mim se o casa abrir é gay haahaha
 
         btnLogin.setOnClickListener{
             val username = lgnUsername.text.toString()
@@ -93,7 +102,6 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(it)
                 }
             }
-<<<<<<< HEAD
         }*/
     }
 
@@ -158,8 +166,5 @@ class LoginActivity : AppCompatActivity() {
     override fun onDestroy() {
         compositeDisposable.clear()
         super.onDestroy()
-=======
-        }
->>>>>>> parent of e6ff177... commit apenas para mim se o casa abrir é gay haahaha
     }
 }
