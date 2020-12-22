@@ -2,19 +2,19 @@ package com.example.mainactivity
 
 import android.content.Intent
 import android.os.Bundle
+<<<<<<< HEAD
 import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.EditText
 import android.widget.Toast
+=======
+import android.widget.EditText
+>>>>>>> parent of e6ff177... commit apenas para mim se o casa abrir é gay haahaha
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.mainactivity.retrofit.INodeJS
-import com.example.mainactivity.retrofit.RetrofitClient
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_login.*
+<<<<<<< HEAD
 import kotlinx.android.synthetic.main.confirmpassword_box.*
 import kotlinx.android.synthetic.main.confirmpassword_box.view.*
 import retrofit2.Retrofit
@@ -30,10 +30,15 @@ class LoginActivity : AppCompatActivity() {
         .setNeutralButton("Ok") { _, _ -> }
         .create()
 
+=======
+
+class LoginActivity : AppCompatActivity() {
+>>>>>>> parent of e6ff177... commit apenas para mim se o casa abrir é gay haahaha
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+<<<<<<< HEAD
         //iniciar API
         val retrofit: Retrofit = RetrofitClient.instance
         myAPI = retrofit.create(INodeJS::class.java)
@@ -54,6 +59,13 @@ class LoginActivity : AppCompatActivity() {
             }
         }
         /*
+=======
+        val error = AlertDialog.Builder(this)
+            .setTitle("Error")
+            .setMessage("Username or Password not inserted")
+            .setNeutralButton("Ok") { _, _ -> }
+            .create()
+>>>>>>> parent of e6ff177... commit apenas para mim se o casa abrir é gay haahaha
 
         btnLogin.setOnClickListener{
             val username = lgnUsername.text.toString()
@@ -67,6 +79,7 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(it)
                 }
             }
+<<<<<<< HEAD
         }*/
     }
 
@@ -150,5 +163,8 @@ class LoginActivity : AppCompatActivity() {
     override fun onDestroy() {
         compositeDisposable.clear()
         super.onDestroy()
+=======
+        }
+>>>>>>> parent of e6ff177... commit apenas para mim se o casa abrir é gay haahaha
     }
 }

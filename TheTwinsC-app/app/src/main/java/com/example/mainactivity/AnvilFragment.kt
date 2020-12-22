@@ -62,7 +62,15 @@ class AnvilFragment: Fragment(R.layout.fragment_anvil), SensorEventListener {
         clickablearea.setOnClickListener {
             if (batata == 1) {
                 ProgressBar.incrementProgressBy(1)
-                //ProgressBar.progressTintList = ColorStateList.valueOf(RED) -> assim que troca de cor da barra de progresso, mas nao é tao bom quanto um gradiant
+
+                if(ProgressBar.progress> 50) {
+                    //ProgressBar.progressDrawable.setTint(RED)
+                    ProgressBar.progressTintList = ColorStateList.valueOf(YELLOW)
+                }
+                if(ProgressBar.progress> 70) {
+                    //ProgressBar.progressDrawable.setTint(RED)
+                    ProgressBar.progressTintList = ColorStateList.valueOf(RED)
+                }
             }
         }
     }
