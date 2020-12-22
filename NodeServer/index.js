@@ -3,27 +3,6 @@ const express = require('express');
 const path = require("path")
 const cors = require('cors');
 const bodyParser = require('body-parser');
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of fd27792... ooh? 2
-=======
-var express = require('express');
-var cors = require('cors');
-var bodyParser = require('body-parser');
-var playersRouter = require('./routes/players');
->>>>>>> parent of e6ff177... commit apenas para mim se o casa abrir é gay haahaha
-<<<<<<< HEAD
-=======
-const login = require(path.join(__dirname, "routers", "login.js"))
-
->>>>>>> parent of 2080c1f... minor fix
-=======
->>>>>>> parent of 5e9c894... ooh?
-=======
->>>>>>> parent of fd27792... ooh? 2
 const hostname = '127.0.0.1';
 const port = 3000;
 
