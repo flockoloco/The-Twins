@@ -20,17 +20,22 @@ public class DropableScript : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            Destroy(gameObject);
             if (gameObject.tag == "GoldDrop")
             {
 
                 Debug.Log(thisValue);
-                player.GetComponent<PlayerStats>().gold += thisValue;
+                player.GetComponent<PlayerStats>().gold = player.GetComponent<PlayerStats>().gold + thisValue;
             }
             else if (gameObject.tag == "NuggetsDrop")
             {
                 player.GetComponent<PlayerStats>().nuggets += thisValue;
             }
-            Destroy(gameObject);
         }
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }
