@@ -40,10 +40,6 @@ public class EnchantMenuScript : MonoBehaviour
             //dar enable ou disable aos botoes dependendo dos enchants atuais.
         }
     }
-    public void DeActivate()
-    {
-        enchantMenu.SetActive(false);
-    }
 
     public void BuyEnchant(int number, int type)
     {

@@ -50,10 +50,7 @@ public class ShopMenuScript : MonoBehaviour
     public void Activate()
     {
         shopMenu.SetActive(true);
-    }
-    public void DeActivate()
-    {
-        shopMenu.SetActive(false);
+        Debug.Log("activating");
     }
     public void StartNoMoneyPopUp()
     {

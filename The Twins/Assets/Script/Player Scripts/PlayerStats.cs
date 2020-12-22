@@ -30,6 +30,11 @@ public class PlayerStats : MonoBehaviour
     {
         pauseMenu = GameObject.FindWithTag("PauseUI").GetComponent<PauseMenu>();
     }
+    private void Start()
+    {
+        RemoveEquipedItem("Sword");
+        GameObject.FindWithTag("PlayerSword").GetComponent<Animator>().SetInteger("Tier", 0);
+    }
 
     void Update()
     {
@@ -70,8 +75,8 @@ public class PlayerStats : MonoBehaviour
             Debug.Log("trying to equip the sword");
             equippedSword = EquipmentClass.SwordandArmor[number];
             swordDamage = equippedSword.damage + EquipmentClass.Enchant[equippedSword.enchantTier].BonusDamage;
-            swordRange = equippedSword.range;
             swordAtkSpeed = equippedSword.atkSpeed;
+            GameObject.FindWithTag("PlayerSword").GetComponent<Animator>().SetInteger("Tier",number);
             Debug.Log("equipping worked");
         }
         else if (type == "Armor")
@@ -84,11 +89,11 @@ public class PlayerStats : MonoBehaviour
     public void RemoveEquipedItem(string type)
     {
         if (type == "Sword")
-        {
-            swordDamage = 0;
-            swordRange = 1;
-            swordAtkSpeed = 1;
-            equippedSword = new SwordAndArmor();
+        { 
+            equippedSword = EquipmentClass.SwordandArmor[0];
+            swordDamage = equippedSword.damage + EquipmentClass.Enchant[equippedSword.enchantTier].BonusDamage;
+            swordAtkSpeed = equippedSword.atkSpeed;
+            GameObject.FindWithTag("PlayerSword").GetComponent<Animator>().SetInteger("Tier", 0);
         }
 
         else if (type == "Armor")

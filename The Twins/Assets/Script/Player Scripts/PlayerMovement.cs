@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
         Invoke("PlayerRespawn", 0.01f);
     }
 
-    void PlayerRespawn()
+    public void PlayerRespawn()
     {
         spawnRoom = GameObject.FindWithTag("Respawn");
         transform.position = spawnRoom.transform.position;

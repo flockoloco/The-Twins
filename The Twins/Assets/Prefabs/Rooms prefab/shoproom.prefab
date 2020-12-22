@@ -66,8 +66,6 @@ MonoBehaviour:
   DistanceFromCorners: 1
   DoorLength: 2
   DoorsList:
-  - From: {x: -6, y: -6, z: 0}
-    To: {x: -5, y: -6, z: 0}
   - From: {x: -5, y: -6, z: 0}
     To: {x: -4, y: -6, z: 0}
   - From: {x: -4, y: -6, z: 0}
@@ -86,8 +84,6 @@ MonoBehaviour:
     To: {x: 3, y: -6, z: 0}
   - From: {x: 3, y: -6, z: 0}
     To: {x: 4, y: -6, z: 0}
-  - From: {x: 4, y: -6, z: 0}
-    To: {x: 5, y: -6, z: 0}
   SelectedMode: 1
 --- !u!61 &5489381261863078934
 BoxCollider2D:
@@ -4897,11 +4893,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6881690423616214925, guid: 2fba49394afa71346b005c1bf1d711ba, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6881690423616214925, guid: 2fba49394afa71346b005c1bf1d711ba, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.5
+      value: 1.3125
       objectReference: {fileID: 0}
     - target: {fileID: 6881690423616214925, guid: 2fba49394afa71346b005c1bf1d711ba, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x

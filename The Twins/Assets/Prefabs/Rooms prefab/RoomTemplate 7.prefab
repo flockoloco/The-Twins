@@ -2062,8 +2062,6 @@ MonoBehaviour:
   DistanceFromCorners: 2
   DoorLength: 2
   DoorsList:
-  - From: {x: -7, y: 7, z: 0}
-    To: {x: -6, y: 7, z: 0}
   - From: {x: -6, y: 7, z: 0}
     To: {x: -5, y: 7, z: 0}
   - From: {x: -5, y: 7, z: 0}
@@ -2086,8 +2084,6 @@ MonoBehaviour:
     To: {x: 2, y: 7, z: 0}
   - From: {x: 3, y: 7, z: 0}
     To: {x: 3, y: 7, z: 0}
-  - From: {x: 6, y: 4, z: 0}
-    To: {x: 6, y: 3, z: 0}
   - From: {x: 6, y: 3, z: 0}
     To: {x: 6, y: 2, z: 0}
   - From: {x: 6, y: 2, z: 0}
@@ -2114,8 +2110,6 @@ MonoBehaviour:
     To: {x: -13, y: -4, z: 0}
   - From: {x: -13, y: -4, z: 0}
     To: {x: -13, y: -3, z: 0}
-  - From: {x: -13, y: -3, z: 0}
-    To: {x: -13, y: -2, z: 0}
   SelectedMode: 1
 --- !u!61 &1659233038819004032
 BoxCollider2D:

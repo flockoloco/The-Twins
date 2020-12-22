@@ -12,6 +12,7 @@ public class TankAI : MonoBehaviour
     private float bulletTimer;
     public Transform FirePoint;
     public bool triggered;
+    private float currentAttackDuration = 0.5f;
 
     void Start()
     {
@@ -31,6 +32,13 @@ public class TankAI : MonoBehaviour
 
             Vector2 direction = -playerDir;
             rigidbody.rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            if (bulletTimer > currentAttackDuration && gameObject.GetComponent<StatsHolder>().ableToAttack == true)
+            {
+                gameObject.GetComponent<StatsHolder>().ableToAttack = false;
+                bulletTimer = 0;
+                currentAttackDuration = gameObject.GetComponent<AtkPatterns>().Attack(0);
+
+            }
         }
     }
     void OnCollisionEnter2D(Collision2D collision)

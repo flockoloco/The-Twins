@@ -31,7 +31,7 @@ public class RunnerAI : MonoBehaviour
             Vector2 playerDir = UsefulllFs.Dir(playerPos, transform.position, true);
 
 
-            if (PlayerToEnemyDist(playerPos, transform.position) < agroDist) //when running away, he faces away from the player and moves away
+            if (UsefulllFs.Dist(playerPos, transform.position) < agroDist) //when running away, he faces away from the player and moves away
             {
                 Vector2 direction = playerDir;
                 rigidbody.velocity = new Vector2(playerDir.x, playerDir.y) * stats.moveSpeed;
@@ -47,14 +47,9 @@ public class RunnerAI : MonoBehaviour
                 if (bulletTimer > stats.atkspeed)
                 {
                     bulletTimer = 0;
-                    stats.EnemyFire(BulletPrefab, FirePoint, 0);
+                    gameObject.GetComponent<AtkPatterns>().Attack(0);
                 }
             }
         }
-    }
-
-    private float PlayerToEnemyDist(Vector3 pPos, Vector3 ePos)
-    {
-        return Mathf.Sqrt((ePos.x - pPos.x) * (ePos.x - pPos.x) + (ePos.y - pPos.y) * (ePos.y - pPos.y));
     }
 }

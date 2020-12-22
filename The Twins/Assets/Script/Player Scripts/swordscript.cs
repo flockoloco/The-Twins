@@ -49,8 +49,8 @@ public class swordscript : MonoBehaviour
         if (!rotatoFrezeto)
         {
             swordrotatorotato = Mathf.Atan2(mouseDir.y, mouseDir.x) * Mathf.Rad2Deg;
-            gameObject.transform.rotation = Quaternion.Euler(0, 0, swordrotatorotato);
-            gameObject.transform.position = new Vector3(finalvector.x + playerPos.x, finalvector.y + playerPos.y - 0.25f, 0);
+            gameObject.transform.parent.rotation = Quaternion.Euler(0, 0, swordrotatorotato);
+            gameObject.transform.parent.position = new Vector3( playerPos.x, playerPos.y - 0.2f, 0);
         }
     }
     void stopSwordAttackAnimation()

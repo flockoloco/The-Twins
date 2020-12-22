@@ -11,6 +11,7 @@ public class cameramovement : MonoBehaviour
     private Vector2 finalvector;
     private Vector2 mouseDir;
     private float mouseDist;
+    public bool shopOpen;
 
     void Start()
     {
@@ -19,7 +20,7 @@ public class cameramovement : MonoBehaviour
     }
     void Update()
     {
-        if (!PauseMenu.gameIsPaused)
+        if (!PauseMenu.gameIsPaused && !shopOpen)
         {
             mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
             playerPos = player.transform.position;

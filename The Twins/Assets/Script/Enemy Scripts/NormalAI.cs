@@ -38,7 +38,7 @@ public class NormalAI : MonoBehaviour
             if (bulletTimer > stats.atkspeed)
             {
                 bulletTimer = 0;
-                stats.EnemyFire(BulletPrefab, FirePoint, 0);
+                gameObject.GetComponent<AtkPatterns>().Attack(0);
             }
         }
     }

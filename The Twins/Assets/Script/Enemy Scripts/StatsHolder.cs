@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class StatsHolder : MonoBehaviour
 {
@@ -14,13 +12,14 @@ public class StatsHolder : MonoBehaviour
     private float vunerableTimer;
     public bool hit;
     public int lootTier;
-    public int aaaaaa;
     public int agroRange;
     public GameObject goldPrefab;
     public GameObject nuggetsPrefab;
     private bool triggered;
+    public GameObject bulletPrefab;
+    public bool ableToAttack = true;
 
-    void Update()
+    private void Update()
     {
         if (health < 0)
         {
@@ -39,12 +38,13 @@ public class StatsHolder : MonoBehaviour
             }
         }
     }
-    void SpawnDrops(int tier, Transform enemyTransform)
+
+    private void SpawnDrops(int tier, Transform enemyTransform)
     {
         int randomNumberGold = Random.Range(1 * tier, 6 * tier);
         if (randomNumberGold > 0)
         {
-            GameObject goldDrop = Instantiate(goldPrefab,enemyTransform.position,Quaternion.identity);
+            GameObject goldDrop = Instantiate(goldPrefab, enemyTransform.position, Quaternion.identity);
             goldDrop.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f)), ForceMode2D.Impulse);
             goldDrop.GetComponent<DropableScript>().Value(randomNumberGold);
         }
@@ -56,16 +56,5 @@ public class StatsHolder : MonoBehaviour
             nuggetsDrop.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f)), ForceMode2D.Impulse);
             nuggetsDrop.GetComponent<DropableScript>().Value(randomNumberNuggets);
         }
-    }
-    
-    public void EnemyFire(GameObject BulletPrefab,Transform firepoint,float angleDiff)
-    {
-        Quaternion finalrotation = firepoint.rotation;
-        finalrotation = Quaternion.Euler(0,0,firepoint.rotation.eulerAngles.z + angleDiff);
-        GameObject bullet = Instantiate(BulletPrefab, firepoint.position,finalrotation);
-        
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        bullet.GetComponent<BulletScript>().EnemyDamage(damage);
-        rb.velocity = bullet.transform.right * bulletSpd;
     }
 }

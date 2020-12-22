@@ -57,7 +57,7 @@ public class RoomDoorScript : MonoBehaviour
                 }
                 else if (enemy.name.Contains("Boss"))
                 {
-
+                    enemy.GetComponent<BossAi>().triggered = true;
                 }
             }
         }

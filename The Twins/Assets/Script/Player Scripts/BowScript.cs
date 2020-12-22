@@ -56,7 +56,7 @@ public class BowScript : MonoBehaviour
         {
             bowrotatorotato = Mathf.Atan2(mouseDir.y, mouseDir.x) * Mathf.Rad2Deg;
             gameObject.transform.rotation = Quaternion.Euler(0, 0, bowrotatorotato);
-            gameObject.transform.position = new Vector3(finalvector.x + playerPos.x, finalvector.y + playerPos.y - 0.25f, 0);
+            gameObject.transform.position = new Vector3(finalvector.x/2 + playerPos.x, finalvector.y/2 + playerPos.y - 0.25f, 0);
         }
     }
     public void SpawnArrow()

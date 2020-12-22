@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SwordHitBox : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject player;
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -14,7 +16,7 @@ public class SwordHitBox : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<StatsHolder>().invunerable == false)
             {
-                UsefulllFs.TakeDamage(collision.gameObject, transform.parent.parent.GetComponent<PlayerStats>().swordDamage);
+                UsefulllFs.TakeDamage(collision.gameObject, player.GetComponent<PlayerStats>().swordDamage);
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(Mathf.Cos((transform.parent.rotation.z * Mathf.Deg2Rad)), Mathf.Sin((transform.parent.rotation.z * Mathf.Deg2Rad))) * 5, ForceMode2D.Impulse);  
             }
         }

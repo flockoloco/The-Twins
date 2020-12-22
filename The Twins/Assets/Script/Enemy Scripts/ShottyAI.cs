@@ -13,7 +13,7 @@ public class ShottyAI : MonoBehaviour
     private float bulletTimer;
     public Transform FirePoint;
     public bool triggered;
-
+    private float currentAttackDuration = 0.5f;
     void Start()
     {
         rigidbodya = gameObject.GetComponent<Rigidbody2D>();
@@ -34,12 +34,12 @@ public class ShottyAI : MonoBehaviour
 
             Vector2 direction = -playerDir;
             rigidbodya.rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            if (bulletTimer > stats.atkspeed)
+            if (bulletTimer > currentAttackDuration && gameObject.GetComponent<StatsHolder>().ableToAttack == true)
             {
+                gameObject.GetComponent<StatsHolder>().ableToAttack = false;
                 bulletTimer = 0;
-                stats.EnemyFire(BulletPrefab, FirePoint, 0);
-                stats.EnemyFire(BulletPrefab, FirePoint, 30);
-                stats.EnemyFire(BulletPrefab, FirePoint, -30);
+                currentAttackDuration = gameObject.GetComponent<AtkPatterns>().Attack(0);
+                
             }
         }
     }

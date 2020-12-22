@@ -21,13 +21,22 @@ public class UsefulllFs
     {
         if (target.tag == "Player")
         {
-
-            target.GetComponent<PlayerStats>().health -= (dealerDamage - Mathf.FloorToInt(Mathf.Floor((target.GetComponent<PlayerStats>().armor/2))));
+            int damagecalculations = dealerDamage - Mathf.FloorToInt(Mathf.Floor((target.GetComponent<PlayerStats>().armor / 2)));
+            if (damagecalculations < 1)
+            {
+                damagecalculations = 1;
+            }
+            target.GetComponent<PlayerStats>().health -= damagecalculations;
             target.GetComponent<PlayerStats>().hit = true;
         }
         else if (target.tag == "Enemy") 
         {
-            target.GetComponent<StatsHolder>().health -= (dealerDamage - Mathf.FloorToInt(Mathf.Floor((target.GetComponent<StatsHolder>().armor / 2))));
+            int damagecalculations = dealerDamage - Mathf.FloorToInt(Mathf.Floor((target.GetComponent<StatsHolder>().armor / 2)));
+            if (damagecalculations < 1)
+            {
+                damagecalculations = 1;
+            }
+            target.GetComponent<StatsHolder>().health -= damagecalculations;
             target.GetComponent<StatsHolder>().hit = true;
         }
     }

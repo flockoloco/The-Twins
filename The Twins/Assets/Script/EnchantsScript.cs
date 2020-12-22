@@ -16,11 +16,13 @@ public class EnchantsScript : MonoBehaviour
     {
         Debug.Log("setting active");
         enchantCanvas.SetActive(true);
+        
         enchantCanvas.GetComponent<EnchantMenuScript>().Activate();
 
     }
-    public void Deinteract()
+    public void DeInteract()
     {
+      
         enchantCanvas.SetActive(false);
     }
 
@@ -34,7 +36,8 @@ public class EnchantsScript : MonoBehaviour
         }
         else if (playerInside == false && oneTime == false)
         {
-            Deinteract();
+            Debug.Log("helo......");
+            DeInteract();
             oneTime = true;
         }
     }
