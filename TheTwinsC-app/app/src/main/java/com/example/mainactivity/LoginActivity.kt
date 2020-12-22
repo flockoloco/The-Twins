@@ -5,8 +5,11 @@ import android.os.Bundle
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 5e9c894... ooh?
+=======
+>>>>>>> parent of fd27792... ooh? 2
 import android.text.TextUtils
 <<<<<<< HEAD
 import android.util.Log
@@ -17,6 +20,7 @@ import android.widget.Toast
 =======
 import android.widget.EditText
 >>>>>>> parent of e6ff177... commit apenas para mim se o casa abrir é gay haahaha
+<<<<<<< HEAD
 =======
 import android.util.Log
 import android.widget.Toast
@@ -25,6 +29,8 @@ import android.widget.Toast
 >>>>>>> parent of 0b58579... blabla mini update capp
 =======
 >>>>>>> parent of 5e9c894... ooh?
+=======
+>>>>>>> parent of fd27792... ooh? 2
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mainactivity.retrofit.INodeJS
@@ -70,23 +76,23 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         //iniciar API
-        val retrofit:Retrofit = RetrofitClient.instance
+        val retrofit: Retrofit = RetrofitClient.instance
         myAPI = retrofit.create(INodeJS::class.java)
 
-        btnLogin.setOnClickListener{
+        btnLogin.setOnClickListener {
             val username = lgnUsername.text.toString()
             val password = lgnPassword.text.toString()
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of fd27792... ooh? 2
             if (!fieldsCheck()) {
 =======
             if (!checkBox()) {
 >>>>>>> parent of 0b58579... blabla mini update capp
                 login(username, password)
             }
-=======
-            login(username, password)
->>>>>>> parent of 2080c1f... minor fix
         }
         /*
 
@@ -108,6 +114,7 @@ class LoginActivity : AppCompatActivity() {
     private fun login(Username: String, Password: String) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
         val error = AlertDialog.Builder(this)
@@ -124,16 +131,17 @@ class LoginActivity : AppCompatActivity() {
             .setNeutralButton("Ok") { _, _ -> }
             .create()
 >>>>>>> parent of 0b58579... blabla mini update capp
+=======
+>>>>>>> parent of fd27792... ooh? 2
         compositeDisposable.add(myAPI.loginUser(Username, Password)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { message ->
                 if (message.contains("UserPassword")) {
-                    Intent(this, MainActivity::class.java).also{
+                    Intent(this, MainActivity::class.java).also {
                         it.putExtra("EXTRA_USERNAME", Username)
                         startActivity(it)
                     }
-<<<<<<< HEAD
                 } else {
                     error.show()
                 }
@@ -149,13 +157,13 @@ class LoginActivity : AppCompatActivity() {
         if (TextUtils.isEmpty(lgnUsername.text.toString()) || TextUtils.isEmpty(lgnPassword.text.toString())) {
             if (TextUtils.isEmpty(lgnUsername.text.toString())) {
                 lgnUsername.error = "Please insert a username!"
-=======
-                }else{
-                error.show()
->>>>>>> parent of 2080c1f... minor fix
             }
+            if (TextUtils.isEmpty(lgnPassword.text.toString())) {
+                lgnPassword.error = "Please insert a password!"
             }
-        )
+            return true
+        }
+        return false
     }
 
     override fun onStop() {
