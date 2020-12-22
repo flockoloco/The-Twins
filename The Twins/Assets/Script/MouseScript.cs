@@ -10,7 +10,7 @@ public class MouseScript : MonoBehaviour
 
     void Start()
     {
-        //Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
     }
 
 }
