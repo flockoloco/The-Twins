@@ -27,12 +27,27 @@ public class StairsScript : MonoBehaviour
         if (used == false)
         {
             used = true;
-            player.transform.position = new Vector3(10000, 0, 0);
 
-            var generator = GameObject.Find("LevelGenerator").GetComponent<DungeonGenerator>();
-            generator.Generate();
-            GameObject.FindWithTag("MainCamera").GetComponent<cameramovement>().shopOpen = false;
+            player.transform.position = new Vector3(10000, 0, 0);
+            if (GameObject.FindWithTag("Player").GetComponent<PlayerStats>().currentLevel == 0)
+            {
+                var generator = GameObject.Find("AhhhGenerator").GetComponent<DungeonGenerator>();
+                generator.Generate();
+                //var generator = GameObject.Find("LevelGenerator").GetComponent<DungeonGenerator>(); //unused, deploy once database is up
+                //generator.Generate();
+                GameObject.FindWithTag("Player").GetComponent<PlayerStats>().currentLevel = 1;
+            }
+            else if (GameObject.FindWithTag("Player").GetComponent<PlayerStats>().currentLevel == 1)
+            {
+               
+                GameObject.FindWithTag("Player").GetComponent<PlayerStats>().currentLevel = 2;
+            }
+
+
+                GameObject.FindWithTag("Player").GetComponent<PlayerStats>().shopOpen = false;
             playerMovement.Invoke("PlayerRespawn", 1f);
+
+
 
             //go to next level (generate a new one maybe in a new scene?)
         }

@@ -27,13 +27,13 @@ public class ShopMenuScript : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerstats = player.GetComponent<PlayerStats>();
 
-        sButton0.onClick.AddListener(delegate { BuyEquipment(0, 1); });//first field is the number of the item inside the second fields list 0 = pots/arrows 1 = equipments
-        sButton1.onClick.AddListener(delegate { BuyEquipment(1, 1); });
+        sButton0.onClick.AddListener(delegate { BuyEquipment(1, 1); });//first field is the number of the item inside the second fields list 0 = pots/arrows 1 = equipments
+        sButton1.onClick.AddListener(delegate { BuyEquipment(2, 1); });
+        sButton2.onClick.AddListener(delegate { BuyEquipment(3, 1); });
 
-        sButton2.onClick.AddListener(delegate { BuyEquipment(2, 1); });
-        sButton3.onClick.AddListener(delegate { BuyEquipment(3, 1); });
-        sButton4.onClick.AddListener(delegate { BuyEquipment(4, 1); });
-        sButton5.onClick.AddListener(delegate { BuyEquipment(5, 1); });
+        sButton3.onClick.AddListener(delegate { BuyEquipment(5, 1); });
+        sButton4.onClick.AddListener(delegate { BuyEquipment(6, 1); });
+        sButton5.onClick.AddListener(delegate { BuyEquipment(7, 1); });
 
         sButton6.onClick.AddListener(delegate { BuyEquipment(0, 0); });
         sButton7.onClick.AddListener(delegate { BuyEquipment(1, 0); });
@@ -50,7 +50,6 @@ public class ShopMenuScript : MonoBehaviour
     public void Activate()
     {
         shopMenu.SetActive(true);
-        Debug.Log("activating");
     }
     public void StartNoMoneyPopUp()
     {
@@ -62,7 +61,6 @@ public class ShopMenuScript : MonoBehaviour
         {
             if (UsefulllFs.BuySomething(player, "gold", EquipmentClass.SwordandArmor[number].price) == true)
             {
-                Debug.Log("inside if number "+number);
                 playerstats.RemoveEquipedItem(EquipmentClass.SwordandArmor[number].type);
                 playerstats.EquipItem(EquipmentClass.SwordandArmor[number].type, number);
             }

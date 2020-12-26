@@ -26,10 +26,13 @@ public class swordscript : MonoBehaviour
     private void Update()
     {
         swordTimer += Time.deltaTime;
-        if (Input.GetKey(KeyCode.Mouse0) && (swordTimer > 0.5))
-        {
-            swordAnimator.SetBool("Attack", true);
-            rotatoFrezeto = true;
+        if (player.GetComponent<PlayerStats>().shopOpen == false) 
+        { 
+            if (Input.GetKey(KeyCode.Mouse0) && (swordTimer > player.GetComponent<PlayerStats>().equippedSword.atkSpeed))
+            {
+                swordAnimator.SetBool("Attack", true);
+                rotatoFrezeto = true;
+            }
         }
     }
     void FixedUpdate()

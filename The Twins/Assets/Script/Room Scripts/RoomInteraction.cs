@@ -19,7 +19,7 @@ public class RoomInteraction : MonoBehaviour
     {
         if (collision.tag == "Player" && ableToInteract == true)
         {
-            GameObject.FindWithTag("MainCamera").GetComponent<cameramovement>().shopOpen = true;
+            GameObject.FindWithTag("Player").GetComponent<PlayerStats>().shopOpen = true;
             ableToInteract = false;
             spriteRenderer.sprite = glowSprite;
             if (gameObject.tag == "Shop")
@@ -44,7 +44,7 @@ public class RoomInteraction : MonoBehaviour
     {
         if (collision.tag == "Player")
         { 
-            GameObject.FindWithTag("MainCamera").GetComponent<cameramovement>().shopOpen = false;
+            GameObject.FindWithTag("Player").GetComponent<PlayerStats>().shopOpen = false;
             ableToInteract = true;
             spriteRenderer.sprite = normalSprite;
             if (gameObject.tag == "Shop")

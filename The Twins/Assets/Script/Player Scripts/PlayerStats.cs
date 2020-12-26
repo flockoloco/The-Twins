@@ -25,14 +25,17 @@ public class PlayerStats : MonoBehaviour
     public SwordAndArmor equippedSword = new SwordAndArmor();
     public SwordAndArmor equippedArmor = new SwordAndArmor();
     private PauseMenu pauseMenu;
-
+    public bool shopOpen = false;
+    public int currentLevel;
     private void Awake()
     {
+        currentLevel = 0; //ir buscar a base de dados;
         pauseMenu = GameObject.FindWithTag("PauseUI").GetComponent<PauseMenu>();
     }
     private void Start()
     {
         RemoveEquipedItem("Sword");
+        RemoveEquipedItem("Armor");
         GameObject.FindWithTag("PlayerSword").GetComponent<Animator>().SetInteger("Tier", 0);
     }
 
@@ -61,7 +64,6 @@ public class PlayerStats : MonoBehaviour
             {
                 invunerable = false;
                 hit = false;
-
                 vunerableTimer = 0;
             }
         }
@@ -69,15 +71,12 @@ public class PlayerStats : MonoBehaviour
 
     public void EquipItem(string type, int number)
     {
-        Debug.Log("inside Equip, type" + type + " number " + number);
         if (type == "Sword")
         {
-            Debug.Log("trying to equip the sword");
             equippedSword = EquipmentClass.SwordandArmor[number];
             swordDamage = equippedSword.damage + EquipmentClass.Enchant[equippedSword.enchantTier].BonusDamage;
             swordAtkSpeed = equippedSword.atkSpeed;
             GameObject.FindWithTag("PlayerSword").GetComponent<Animator>().SetInteger("Tier",number);
-            Debug.Log("equipping worked");
         }
         else if (type == "Armor")
         {
@@ -89,24 +88,22 @@ public class PlayerStats : MonoBehaviour
     public void RemoveEquipedItem(string type)
     {
         if (type == "Sword")
-        { 
+        {
             equippedSword = EquipmentClass.SwordandArmor[0];
             swordDamage = equippedSword.damage + EquipmentClass.Enchant[equippedSword.enchantTier].BonusDamage;
             swordAtkSpeed = equippedSword.atkSpeed;
             GameObject.FindWithTag("PlayerSword").GetComponent<Animator>().SetInteger("Tier", 0);
         }
-
         else if (type == "Armor")
         {
+            equippedArmor = EquipmentClass.SwordandArmor[4];
             maxHealth = baseHPAmount;
             armor = baseArmorAmount;
-            equippedArmor = new SwordAndArmor();
         }
     }
     public void UseHealthPotion()
     {
         healthPotions -= 1;
-
         health += maxHealth / 2;
         if (health > maxHealth)
         {

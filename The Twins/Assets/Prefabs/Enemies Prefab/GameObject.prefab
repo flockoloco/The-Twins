@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3891217928379726488
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1426517989820860493}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1426517989820860493
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3891217928379726488}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
+  m_LocalScale: {x: 0.057990327, y: 0.2795985, z: 0.2795985}
+  m_Children: []
+  m_Father: {fileID: 1723968105539053288}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5416250994709235447
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,6 +43,8 @@ GameObject:
   - component: {fileID: -9010877989793642121}
   - component: {fileID: -5045490850131364046}
   - component: {fileID: -5526906904680720324}
+  - component: {fileID: 6344033612820534607}
+  - component: {fileID: 927791397736893851}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -27,13 +59,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5416250994709235447}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.96, y: 1.02, z: 0}
-  m_LocalScale: {x: 17.244255, y: 3.5765572, z: 3.5765572}
-  m_Children: []
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.16, y: -5.24, z: 0}
+  m_LocalScale: {x: 3.0729432, y: 11.865716, z: 1.9434582}
+  m_Children:
+  - {fileID: 1426517989820860493}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!212 &6652429680822182802
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -97,19 +130,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e74d3015bcc8a4cb117cf20656e1e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  armor: 0
-  damage: 0
-  moveSpeed: 0
+  health: 20
+  armor: 3
+  damage: 4
+  moveSpeed: 1
   atkspeed: 0
-  bulletSpd: 0
+  bulletSpd: 2
   invunerable: 0
   hit: 0
-  lootTier: 0
+  lootTier: 10
   agroRange: 0
-  goldPrefab: {fileID: 0}
-  nuggetsPrefab: {fileID: 0}
-  bulletPrefab: {fileID: 0}
+  goldPrefab: {fileID: 3974753108313818560, guid: e47326b11a82c5a4087a16cc9676a02c, type: 3}
+  nuggetsPrefab: {fileID: 3364890441730547243, guid: f494d076d2ab08246aca53f9f357dceb, type: 3}
   ableToAttack: 1
 --- !u!50 &-5045490850131364046
 Rigidbody2D:
@@ -119,19 +151,19 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5416250994709235447}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &-5526906904680720324
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -158,3 +190,711 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6344033612820534607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5416250994709235447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a3ab3e57b30de4c8db3775d7f39f71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atkInfos:
+  - Name: Shotty1
+    atkDuration: 3
+    allBullets:
+    - angleDiff: -60
+      shotTimer: 0.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: -45
+      shotTimer: 0.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: -30
+      shotTimer: 0.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: -15
+      shotTimer: 0.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 0
+      shotTimer: 0.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 15
+      shotTimer: 0.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 30
+      shotTimer: 0.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 45
+      shotTimer: 0.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 60
+      shotTimer: 0.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: -60
+      shotTimer: 1
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: -48
+      shotTimer: 1
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: -36
+      shotTimer: 1
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: -24
+      shotTimer: 1
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: -12
+      shotTimer: 1
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 0
+      shotTimer: 1
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 12
+      shotTimer: 1
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 24
+      shotTimer: 1
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 36
+      shotTimer: 1
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 48
+      shotTimer: 1
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 60
+      shotTimer: 1
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: -60
+      shotTimer: 1.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: -45
+      shotTimer: 1.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: -30
+      shotTimer: 1.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: -15
+      shotTimer: 1.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 0
+      shotTimer: 1.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 15
+      shotTimer: 1.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 30
+      shotTimer: 1.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 45
+      shotTimer: 1.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 60
+      shotTimer: 1.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+  - Name: Shotty2
+    atkDuration: 3
+    allBullets:
+    - angleDiff: -60
+      shotTimer: 0.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: -45
+      shotTimer: 0.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: -30
+      shotTimer: 0.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: -15
+      shotTimer: 0.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 0
+      shotTimer: 0.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 15
+      shotTimer: 0.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 30
+      shotTimer: 0.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 45
+      shotTimer: 0.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 60
+      shotTimer: 0.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: -60
+      shotTimer: 1
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: -48
+      shotTimer: 1
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: -36
+      shotTimer: 1
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: -24
+      shotTimer: 1
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: -12
+      shotTimer: 1
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 0
+      shotTimer: 1
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 12
+      shotTimer: 1
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 24
+      shotTimer: 1
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 36
+      shotTimer: 1
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 48
+      shotTimer: 1
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 60
+      shotTimer: 1
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: -60
+      shotTimer: 1.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: -45
+      shotTimer: 1.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: -30
+      shotTimer: 1.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: -15
+      shotTimer: 1.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 0
+      shotTimer: 1.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 15
+      shotTimer: 1.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 30
+      shotTimer: 1.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 45
+      shotTimer: 1.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+    - angleDiff: 60
+      shotTimer: 1.5
+      bulletPrefab: {fileID: 204290994505114704, guid: c0277dae5c82ca84ba10d2709ab045e6, type: 3}
+      fired: 0
+      accuracy: 0
+      randomSpeed: 0
+  - Name: MachineGun1
+    atkDuration: 3
+    allBullets:
+    - angleDiff: 0
+      shotTimer: 0.5
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 0.6
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 0.7
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 0.8
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 0.9
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 1
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 1.1
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 1.2
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 1.3
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 1.4
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 1.5
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 1.6
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 1.7
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 1.8
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 1.9
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 2
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 2.1
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 2.2
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 2.3
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 2.4
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 2.5
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 2.6
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 2.7
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 2.8
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 2.9
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 3
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+  - Name: MachineGun2
+    atkDuration: 3
+    allBullets:
+    - angleDiff: 0
+      shotTimer: 0.5
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 0.6
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 0.7
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 0.8
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 0.9
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 1
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 1.1
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 1.2
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 1.3
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 1.4
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 1.5
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 1.6
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 1.7
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 1.8
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 1.9
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 2
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 2.1
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 2.2
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 2.3
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 2.4
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 2.5
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 2.6
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 2.7
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 2.8
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 2.9
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+    - angleDiff: 0
+      shotTimer: 3
+      bulletPrefab: {fileID: 5562684277052291037, guid: 061a637f0531eb942b5b25a9f5126d50, type: 3}
+      fired: 0
+      accuracy: 45
+      randomSpeed: 0.5
+  - Name: Rest
+    atkDuration: 3
+    allBullets: []
+  UpdateCheck: 0
+  baseTimer: 0
+  currentAtkIndex: 0
+--- !u!114 &927791397736893851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5416250994709235447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85cee1b06a5666044af9efd63a60ad77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: -9010877989793642121}
+  FirePoint: {fileID: 1426517989820860493}
+  triggered: 0
+  attack: 0
+  duringAttack: 0

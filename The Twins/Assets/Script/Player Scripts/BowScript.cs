@@ -33,16 +33,18 @@ public class BowScript : MonoBehaviour
     private void Update()
     {
         bowTimer += Time.deltaTime;
-        
-        if (Input.GetKey(KeyCode.Mouse0) && (bowTimer > 0.5))
+        if (player.GetComponent<PlayerStats>().shopOpen == false)
         {
-            if (EquipmentClass.Quiver[player.GetComponent<PlayerStats>().selectedArrow].amount > 0 )
+            if (Input.GetKey(KeyCode.Mouse0) && (bowTimer > 0.5))
             {
-                EquipmentClass.Quiver[player.GetComponent<PlayerStats>().selectedArrow].amount -= 1;
-                bowTimer = 0;
-                bowAnimator.SetBool("Fire", true);
-                rotatoFrezeto = true;
-                mouseDirection = mousePos;
+                if (EquipmentClass.Quiver[player.GetComponent<PlayerStats>().selectedArrow].amount > 0)
+                {
+                    EquipmentClass.Quiver[player.GetComponent<PlayerStats>().selectedArrow].amount -= 1;
+                    bowTimer = 0;
+                    bowAnimator.SetBool("Fire", true);
+                    rotatoFrezeto = true;
+                    mouseDirection = mousePos;
+                }
             }
         }
     }

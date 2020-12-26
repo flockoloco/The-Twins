@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -26,8 +24,8 @@ public class PlayerMovement : MonoBehaviour
         sword,
         bow,
     }
-    private weaponState weapon;
 
+    private weaponState weapon;
 
     // define a type of state
     public enum State
@@ -45,7 +43,6 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         state = State.walking;
         weapon = weaponState.sword;
-        
     }
 
     private void Start()
@@ -59,28 +56,33 @@ public class PlayerMovement : MonoBehaviour
         transform.position = spawnRoom.transform.position;
     }
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (gameObject.GetComponent<PlayerStats>().shopOpen == false)
         {
-            gameObject.GetComponent<PlayerStats>().UseHealthPotion();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            gameObject.GetComponent<PlayerStats>().selectedArrow = 0;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            gameObject.GetComponent<PlayerStats>().selectedArrow = 1;
-        }
+            if (Input.GetKeyDown(KeyCode.E) && gameObject.GetComponent<PlayerStats>().healthPotions >= 1)
+            {
+                gameObject.GetComponent<PlayerStats>().UseHealthPotion();
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                gameObject.GetComponent<PlayerStats>().selectedArrow = 0;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                gameObject.GetComponent<PlayerStats>().selectedArrow = 1;
+            }
 
-        if (Input.GetKeyDown(KeyCode.Q)) {
-            if (weapon == weaponState.sword && swordScript.rotatoFrezeto == false)
+            if (Input.GetKeyDown(KeyCode.Q))
             {
-                weapon = weaponState.bow;
-            }else if(weapon == weaponState.bow && bowScript.rotatoFrezeto == false)
-            {
-                weapon = weaponState.sword;
+                if (weapon == weaponState.sword && swordScript.rotatoFrezeto == false)
+                {
+                    weapon = weaponState.bow;
+                }
+                else if (weapon == weaponState.bow && bowScript.rotatoFrezeto == false)
+                {
+                    weapon = weaponState.sword;
+                }
             }
         }
         switch (weapon)
@@ -89,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
                 playersword.SetActive(true);
                 playerbow.SetActive(false);
                 break;
+
             case weaponState.bow:
                 playersword.SetActive(false);
                 playerbow.SetActive(true);
@@ -99,29 +102,31 @@ public class PlayerMovement : MonoBehaviour
         switch (state)
         {
             case State.walking:
+                
+                    dodgeTimer -= Time.deltaTime;
 
-                dodgeTimer -= Time.deltaTime;
+                    float moveX = 0f;
+                    float moveY = 0f;
 
-                float moveX = 0f;
-                float moveY = 0f;
+                    moveX = Input.GetAxisRaw("Horizontal");
+                    moveY = Input.GetAxisRaw("Vertical");
 
-                moveX = Input.GetAxisRaw("Horizontal");
-                moveY = Input.GetAxisRaw("Vertical");
+                    moveDirection = new Vector3(moveX, moveY).normalized;
 
-                moveDirection = new Vector3(moveX, moveY).normalized;
+                    animator.SetFloat("Horizontal", moveX);
+                    animator.SetFloat("Speed", moveDirection.sqrMagnitude);
 
-                animator.SetFloat("Horizontal", moveX);
-                animator.SetFloat("Speed", moveDirection.sqrMagnitude);
-
-                if (Input.GetKeyDown(KeyCode.Space) && (dodgeTimer <= 0) && (moveX != 0 || moveY != 0))
-                {
-                    dodgeDirection = moveDirection;
-                    dodgeSpeed = 40f;
-                    state = State.dodging;
-                    dodgeTimer = 2f; 
-                }
+                    if (Input.GetKeyDown(KeyCode.Space) && (dodgeTimer <= 0) && (moveX != 0 || moveY != 0))
+                    {
+                        dodgeDirection = moveDirection;
+                        dodgeSpeed = 40f;
+                        state = State.dodging;
+                        dodgeTimer = 2f;
+                    }
+               
                 break;
-                //this dodging state 
+
+            //this dodging state
             case State.dodging:
                 //transicao para estado de walking enquanto diminui a velocidade do dodge
 
@@ -139,19 +144,21 @@ public class PlayerMovement : MonoBehaviour
                 break;
         }
     }
-    void FixedUpdate()
+
+    private void FixedUpdate()
     {
         switch (state)
         {
             case State.hit:
-                
                 break;
+
             case State.walking:
                 rb.velocity = moveDirection * moveSpeed;
                 break;
+
             case State.dodging:
                 rb.velocity = dodgeDirection * dodgeSpeed;
                 break;
-        }   
+        }
     }
 }

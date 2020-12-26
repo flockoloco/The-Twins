@@ -43,7 +43,6 @@ namespace TheTwins.Model
     {
         public string name;
         public string type;
-        public float range;
         public int damage;
         public float atkSpeed;
         public int armor;
@@ -54,11 +53,10 @@ namespace TheTwins.Model
 
 
         public SwordAndArmor() { }
-        public SwordAndArmor(string name, float range, int damage, float atkSpeed, int price,int enchantTier,int arrayIndex)//Sword
+        public SwordAndArmor(string name,  int damage, float atkSpeed, int price,int enchantTier,int arrayIndex)//Sword
         {
             this.name = name;
             this.type = "Sword";
-            this.range = range;
             this.damage = damage;
             this.atkSpeed = atkSpeed;
             this.price = price;
@@ -71,7 +69,6 @@ namespace TheTwins.Model
         {
             this.name = name;
             this.type = "Armor";
-            this.range = 0;
             this.damage = 0;
             this.atkSpeed = 0;
             this.enchantTier = enchantTier;
@@ -105,15 +102,19 @@ namespace TheTwins.Model
             get {
                 if (swordandArmor.Count == 0)
                 {
-                    //ir buscar a save 
-                    int enchantTier = 0;//busca da database
+                    //ir buscar a save
+                    int enchantTier = 0; //busca da database
 
-                    swordandArmor.Add(new SwordAndArmor("wooden sword", 1, 1, 50f, 20, enchantTier, 0));
-                    swordandArmor.Add(new SwordAndArmor("iron sword", 5f, 5, 55f, 30, enchantTier, 1));
-                    swordandArmor.Add(new SwordAndArmor("gold sword", 10f, 10, 310f, 50, enchantTier, 2));
-                    swordandArmor.Add(new SwordAndArmor("wood armor", 5, 20, 10, enchantTier, 3));
-                    swordandArmor.Add(new SwordAndArmor("iron armor", 8, 30, 20, enchantTier, 4));
-                    swordandArmor.Add(new SwordAndArmor("gold armor", 10, 40, 50, enchantTier, 5));
+                    swordandArmor.Add(new SwordAndArmor("Wooden sword", 1, 1.5f, 0, enchantTier, 0));
+                    swordandArmor.Add(new SwordAndArmor("Iron sword",  4, 2f, 20, enchantTier, 1));
+                    swordandArmor.Add(new SwordAndArmor("Gold sword", 4, 1.5f, 40, enchantTier, 2));
+                    swordandArmor.Add(new SwordAndArmor("Diamond sword", 5, 1f, 100, enchantTier, 3));
+
+                    swordandArmor.Add(new SwordAndArmor("Wooden armor", 0, 0, 0, enchantTier, 4));
+                    swordandArmor.Add(new SwordAndArmor("Iron armor", 1, 20, 20, enchantTier, 5));
+                    swordandArmor.Add(new SwordAndArmor("Gold armor", 1, 40, 40, enchantTier, 6));
+                    swordandArmor.Add(new SwordAndArmor("Diamond armor", 4, 40, 100, enchantTier, 7));
+                    
                 }
                 return swordandArmor;
             }
