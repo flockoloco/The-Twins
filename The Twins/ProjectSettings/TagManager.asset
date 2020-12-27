@@ -28,6 +28,7 @@ TagManager:
   - OreArrowText
   - NormalArrowText
   - PotionText
+  - WellCanvas
   layers:
   - Default
   - TransparentFX

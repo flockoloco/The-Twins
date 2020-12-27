@@ -39,7 +39,7 @@ public class RoomDoorScript : MonoBehaviour
         {
             foreach (GameObject enemy in enemies)
             {
-                if (enemy.name.Contains("Normal"))
+                if (enemy.name.Contains("Normal")|| enemy.name.Contains("MachineGun"))
                 {
                     enemy.GetComponent<NormalAI>().triggered = true;
                 }
@@ -60,6 +60,10 @@ public class RoomDoorScript : MonoBehaviour
                     if (enemy.name == "Boss1")
                     {
                         enemy.GetComponent<Boss1Ai>().triggered = true;
+                    }
+                    if (enemy.name == "Boss2")
+                    {
+                        enemy.GetComponent<Boss2Ai>().triggered = true;
                     }
                 }
             }

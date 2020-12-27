@@ -6,7 +6,6 @@ public class StatsHolder : MonoBehaviour
     public int armor;
     public int damage;
     public float moveSpeed;
-    public float atkspeed;
     public float bulletSpd;
     public bool invunerable;
     private float vunerableTimer;

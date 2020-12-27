@@ -10,7 +10,6 @@ public class PlayerStats : MonoBehaviour
     private int baseHPAmount = 100;
     private int baseArmorAmount = 1;
     public float swordAtkSpeed;
-    public float swordRange;
     public float bowAtkSpeed;
     public int armor;
     public int swordDamage;

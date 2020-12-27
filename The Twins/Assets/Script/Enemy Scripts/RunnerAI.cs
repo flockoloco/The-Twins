@@ -13,6 +13,7 @@ public class RunnerAI : MonoBehaviour
     private float bulletTimer;
     public Transform FirePoint;
     public bool triggered;
+    private float currentAttackDuration = 0.5f;
 
     void Start()
     {
@@ -44,10 +45,11 @@ public class RunnerAI : MonoBehaviour
 
                 Vector2 direction = -playerDir;
                 rigidbody.rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                if (bulletTimer > stats.atkspeed)
+                if (bulletTimer > currentAttackDuration && gameObject.GetComponent<StatsHolder>().ableToAttack == true)
                 {
                     bulletTimer = 0;
-                    gameObject.GetComponent<AtkPatterns>().Attack(0);
+                    currentAttackDuration = gameObject.GetComponent<AtkPatterns>().Attack(0);
+
                 }
             }
         }
