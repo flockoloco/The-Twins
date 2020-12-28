@@ -5,6 +5,7 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
+import java.util.*
 
 interface INodeJS {
     @POST("register")
@@ -16,7 +17,7 @@ interface INodeJS {
     @FormUrlEncoded
     fun loginUser(@Field("Username") Username:String, @Field("Password") Password:String):Observable<String>
 
-    /*@GET("User")
+    @POST("user")
     @FormUrlEncoded
-    fun getCapp(@Field())*/
+    fun getApp(@Field("UserID") UserID:Int):Observable<String>
 }

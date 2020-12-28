@@ -3,31 +3,46 @@ package com.example.mainactivity
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.beust.klaxon.Json
+import com.beust.klaxon.JsonObject
+import com.beust.klaxon.JsonReader
+import com.beust.klaxon.Klaxon
 import com.example.mainactivity.retrofit.INodeJS
 import com.example.mainactivity.retrofit.RetrofitClient
+import com.google.gson.Gson
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.confirmpassword_box.view.*
+import org.json.JSONStringer
 import retrofit2.Retrofit
+import java.io.Serializable
+import java.io.StringReader
+import kotlin.reflect.jvm.internal.impl.load.kotlin.JvmType
 
 class LoginActivity : AppCompatActivity() {
 
     lateinit var myAPI: INodeJS
     var compositeDisposable = CompositeDisposable()
-    private lateinit var msgDialog1:AlertDialog
+    private lateinit var msgDialog:AlertDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        msgDialog1 = AlertDialog.Builder(this).setIcon(R.drawable.ic_error).setTitle("Error").setMessage("Wrong Username or Password, please try again!").setNeutralButton("Ok") { _, _ -> }.create()
+        msgDialog = AlertDialog.Builder(this)
+            .setIcon(R.drawable.ic_error)
+            .setTitle("Error")
+            .setMessage("Wrong Username or Password, please try again!")
+            .setNeutralButton("Ok") { _, _ -> }
+            .create()
 
         //iniciar API
         val retrofit: Retrofit = RetrofitClient.instance
@@ -52,37 +67,34 @@ class LoginActivity : AppCompatActivity() {
 
     private fun login(Username: String, Password: String) {
 
-        val error = AlertDialog.Builder(this)
-            .setTitle("Error")
-            .setMessage("Wrong Username or Password, please try again!")
-            .setNeutralButton("Ok") { _, _ -> }
-            .create()
-
         compositeDisposable.add(myAPI.loginUser(Username, Password)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { message ->
                 if (message.contains("UserPassword")) {
                     Intent(this, MainActivity::class.java).also {
-                        it.putExtra("EXTRA_USERNAME", Username)
+                        val result = Klaxon().parse<UserClass>(message)
+                        if (result != null) {
+                            User.UserID = result.UserID
+                            User.UserName = result.UserName
+                        }
                         startActivity(it)
                     }
                 } else {
-                    msgDialog1.show()
+                    msgDialog.show()
                 }
             }
         )
     }
 
     private fun register(Username: String, Password: String) {
-
         compositeDisposable.add(myAPI.loginUser(Username, Password)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { message ->
                 if (message.contains("UserName")) {
-                    msgDialog1.setMessage("Username already registered, please try a different username !")
-                    msgDialog1.show()
+                    msgDialog.setMessage("Username already registered, please try a different username !")
+                    msgDialog.show()
                 } else {
                     val inflatePassword =
                         LayoutInflater.from(this).inflate(R.layout.confirmpassword_box, null)
@@ -97,17 +109,13 @@ class LoginActivity : AppCompatActivity() {
                                 compositeDisposable.add(myAPI.registerUser(Username, Password)
                                     .subscribeOn(Schedulers.io())
                                     .observeOn(AndroidSchedulers.mainThread())
-                                    .subscribe {
-                                        Toast.makeText(
-                                            this,
-                                            "successfully register",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
+                                    .subscribe { _ ->
+                                        Toast.makeText(this, "successfully register", Toast.LENGTH_SHORT).show()
                                     }
                                 )
                             } else {
-                                msgDialog1.setMessage("Password does not match, please try again! ")
-                                msgDialog1.show()
+                                msgDialog.setMessage("Password does not match, please try again! ")
+                                msgDialog.show()
                             }
                         }.show()
                 }

@@ -34,5 +34,6 @@ CREATE TABLE CApp(
     MineSpd int,
     MineHarvest int,
     PermUpgrade int,
+    FirstTime int,
     constraint foreign key(UserID_FK_CApp) references User(UserID)
 );
