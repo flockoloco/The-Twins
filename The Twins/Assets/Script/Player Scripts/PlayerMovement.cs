@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     public swordscript swordScript;
     public BowScript bowScript;
 
+
+    public GameObject UICanvas;
     public SpawnPoint RoomSpawn;
 
     public enum weaponState
@@ -43,6 +45,9 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         state = State.walking;
         weapon = weaponState.sword;
+        playersword.SetActive(true);
+        playerbow.SetActive(false);
+        gameObject.GetComponent<PlayerStats>().EquipItem("Sword", gameObject.GetComponent<PlayerStats>().equippedSword.id);
     }
 
     private void Start()
@@ -67,10 +72,12 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 gameObject.GetComponent<PlayerStats>().selectedArrow = 0;
+                UICanvas.GetComponent<UITextManager>().CheckArrow();
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 gameObject.GetComponent<PlayerStats>().selectedArrow = 1;
+                UICanvas.GetComponent<UITextManager>().CheckArrow();
             }
 
             if (Input.GetKeyDown(KeyCode.Q))
@@ -78,24 +85,17 @@ public class PlayerMovement : MonoBehaviour
                 if (weapon == weaponState.sword && swordScript.rotatoFrezeto == false)
                 {
                     weapon = weaponState.bow;
+                    playersword.SetActive(false);
+                    playerbow.SetActive(true);
                 }
                 else if (weapon == weaponState.bow && bowScript.rotatoFrezeto == false)
                 {
                     weapon = weaponState.sword;
+                    playersword.SetActive(true);
+                    playerbow.SetActive(false);
+                    gameObject.GetComponent<PlayerStats>().EquipItem("Sword", gameObject.GetComponent<PlayerStats>().equippedSword.id);
                 }
             }
-        }
-        switch (weapon)
-        {
-            case weaponState.sword:
-                playersword.SetActive(true);
-                playerbow.SetActive(false);
-                break;
-
-            case weaponState.bow:
-                playersword.SetActive(false);
-                playerbow.SetActive(true);
-                break;
         }
 
         //switch between the walking state to

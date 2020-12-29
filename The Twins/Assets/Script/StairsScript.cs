@@ -48,8 +48,6 @@ public class StairsScript : MonoBehaviour
             playerMovement.Invoke("PlayerRespawn", 1f);
 
 
-
-            //go to next level (generate a new one maybe in a new scene?)
         }
     }
 }

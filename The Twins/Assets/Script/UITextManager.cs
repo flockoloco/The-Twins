@@ -13,6 +13,7 @@ public class UITextManager : MonoBehaviour
     private TextMeshProUGUI normalArrowsText;
     private TextMeshProUGUI oreArrowsText;
     private TextMeshProUGUI potionText;
+    public GameObject ArrowSelectedImage;
 
     void Start()
     {
@@ -37,6 +38,18 @@ public class UITextManager : MonoBehaviour
         oreArrowsText.text = EquipmentClass.Quiver[1].amount.ToString();
 
         potionText.text = playerStats.healthPotions.ToString();
+    }
+
+    public void CheckArrow()
+    {
+        if (playerStats.selectedArrow == 1)
+        {
+            ArrowSelectedImage.transform.localPosition = new Vector2 (-22f, 72.1f);
+        }
+        else
+        {
+            ArrowSelectedImage.transform.localPosition = new Vector2(-22f, -7.3f);
+        }
     }
     void UpdateText(string stat) //more efficient :D for the future C:
     {

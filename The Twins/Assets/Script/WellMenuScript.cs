@@ -1,107 +1,131 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TheTwins.Model;
 
 public class WellMenuScript : MonoBehaviour
 {
     public GameObject player;
     public GameObject wellMenu;
 
-    public Button wButton0;
-    public Button wButton1;
-    public Button wButton2;
-    public Button wButton3;
-    public Button wButton4;
-    public Button wButton5;
-    public Button wButton6;
+    [SerializeField]
+    private int[] selectedCurrency;
 
-    public int selectedGold = 0;
-    public int selectedBars = 0;
-    public int selectedOre = 0;
+    [SerializeField]
+    private int[] availableCurrency;
+
+    public Button goldButton0;
+    public Button goldButton1;
+    public Button goldButton2;
+    public Button goldButton3;
+
+    public Button oreButton0;
+    public Button oreButton1;
+    public Button oreButton2;
+    public Button oreButton3;
+
+    public Button barsButton0;
+    public Button barsButton1;
+    public Button barsButton2;
+    public Button barsButton3;
+
+    public TextMeshProUGUI goldText;
+    public TextMeshProUGUI oreText;
+    public TextMeshProUGUI barsText;
+
+    public Button submitButton;
 
     private PlayerStats playerstats;
 
-    public bool teste = false;
     private void Awake()
     {
         wellMenu.SetActive(false);
         player = GameObject.FindWithTag("Player");
-        playerstats = player.GetComponent<PlayerStats>();
 
-        wButton0.onClick.AddListener(delegate { ChangeValue(0, 1); }); // first digit, 0 is minus 1 is plus type 2 is submit
-        wButton1.onClick.AddListener(delegate { ChangeValue(0, 2); }); // second digit, the reference
-        wButton2.onClick.AddListener(delegate { ChangeValue(0, 3); });
+        goldButton0.onClick.AddListener(delegate { ChangeValue(-10, 0); }); // first digit is how much the selectedcurrency[second digit] will change.
+        goldButton1.onClick.AddListener(delegate { ChangeValue(-1, 0); }); // second digit, the reference to the type of currency.
+        goldButton2.onClick.AddListener(delegate { ChangeValue(1, 0); });
+        goldButton3.onClick.AddListener(delegate { ChangeValue(10, 0); });
 
-        wButton3.onClick.AddListener(delegate { ChangeValue(1, 1); });
-        wButton4.onClick.AddListener(delegate { ChangeValue(1, 2); });
-        wButton5.onClick.AddListener(delegate { ChangeValue(1, 3); });
+        oreButton0.onClick.AddListener(delegate { ChangeValue(-10, 2); });
+        oreButton1.onClick.AddListener(delegate { ChangeValue(-1, 2); });
+        oreButton2.onClick.AddListener(delegate { ChangeValue(1, 2); });
+        oreButton3.onClick.AddListener(delegate { ChangeValue(10, 2); });
 
-        wButton6.onClick.AddListener(delegate { Submit(); });
+        barsButton0.onClick.AddListener(delegate { ChangeValue(-10, 1); });
+        barsButton1.onClick.AddListener(delegate { ChangeValue(-1, 1); });
+        barsButton2.onClick.AddListener(delegate { ChangeValue(1, 1); });
+        barsButton3.onClick.AddListener(delegate { ChangeValue(10, 1); });
 
+        submitButton.onClick.AddListener(delegate { Submit(); });
+
+        selectedCurrency = new int[3];
+        availableCurrency = new int[3];
     }
+
     public void Activate()
     {
         wellMenu.SetActive(true);
+        UpdateAvailableCurrency();
+        selectedCurrency[0] = 0;
+        selectedCurrency[1] = 0;
+        selectedCurrency[2] = 0;
+        UpdateText();
     }
-    public void StartNoMoneyPopUp()
-    {
-        Debug.Log("no money");
-    }
+
     public void ChangeValue(int number, int type)
     {
-        if (type == 1)
+        int testingResult = selectedCurrency[type] + number;
+
+        if (testingResult < 0)
         {
-            if (UsefulllFs.BuySomething(player, "gold", EquipmentClass.SwordandArmor[number].price) == true)
-            {
-                playerstats.RemoveEquipedItem(EquipmentClass.SwordandArmor[number].type);
-                playerstats.EquipItem(EquipmentClass.SwordandArmor[number].type, number);
-            }
-            else
-            {
-                StartNoMoneyPopUp();
-            }
+            testingResult = 0;
         }
-        else if (type == 0)
+        else if (testingResult > availableCurrency[type])
         {
-            if (number == 0)
-            {
-                if (UsefulllFs.BuySomething(player, "gold", 20) == true)
-                {
-                    playerstats.healthPotions += 1;
-                }
-                else
-                {
-                    StartNoMoneyPopUp();//send info
-                }
-            }
-            else if (number == 1)
-            {
-                if (UsefulllFs.BuySomething(player, "gold", 5) == true)
-                {
-                    EquipmentClass.Quiver[0].amount += 1;
-                }
-                else
-                {
-                    StartNoMoneyPopUp();
-                }
-            }
-            else if (number == 2)
-            {
-                if (UsefulllFs.BuySomething(player, "bars", 1) == true)
-                {
-                    EquipmentClass.Quiver[1].amount += 1;
-                }
-                else
-                {
-                    StartNoMoneyPopUp();
-                }
-            }
+            testingResult = availableCurrency[type];
+        }
+        selectedCurrency[type] = testingResult;
+        testingResult = 0;
+
+        UpdateText();
+    }
+
+    private void Submit()
+    {
+        if ((selectedCurrency[0] > 0) || (selectedCurrency[1] > 0) || (selectedCurrency[2] > 0))
+        {
+            //POST mandar selectedCurrency como um arrayy :D
+
+            player.GetComponent<PlayerStats>().gold -= selectedCurrency[0];
+            player.GetComponent<PlayerStats>().bars -= selectedCurrency[1];
+            player.GetComponent<PlayerStats>().nuggets -= selectedCurrency[2];
+
+            UpdateAvailableCurrency();
+
+            selectedCurrency[0] = 0;
+            selectedCurrency[1] = 0;
+            selectedCurrency[2] = 0;
+
+            UpdateText();
+        }
+        else
+        {
+            //ask to put something in the inputs
         }
     }
-    void Submit()
-    {
 
+    private void UpdateAvailableCurrency()
+    {
+        playerstats = player.GetComponent<PlayerStats>();
+        availableCurrency[0] = playerstats.gold;
+        availableCurrency[1] = playerstats.bars;
+        availableCurrency[2] = playerstats.nuggets;
+    }
+
+    private void UpdateText()
+    {
+        goldText.text = "Selected Gold: " + selectedCurrency[0];
+        barsText.text = "Selected Bars: " + selectedCurrency[1];
+        oreText.text = "Selected Ores: " + selectedCurrency[2];
     }
 }
