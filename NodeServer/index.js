@@ -44,7 +44,6 @@ app.post('/register', (req, res, next) => {
                     console.log('[MYSQL ERROR]', err);
                     res.json('Register user error: ', err);
                 })
-        
                 res.json('Register successful');
             })
         }
@@ -63,11 +62,44 @@ app.post('/login', (req, res, next) => {
             console.log('[MYSQL ERROR]', err);
         })
         if(result && result.length){
-            if(Password == result[0].UserPassword)
+            if(Password == result[0].UserPassword){
                 res.end(JSON.stringify(result[0]));
+            }
             else
             res.end(JSON.stringify('Wrong password'));
         }else
             res.json('User does not exists')
     })
+})
+
+app.post('/user', (req, res, next) => {
+	var data = req.body;
+
+	var UserID = data.UserID;
+
+	dbcon.query('SELECT * FROM thetwins.capp WHERE UserID_FK_CApp=?', [UserID], function(err, result, fields){
+		 dbcon.on('error', function(err){
+            console.log('[MYSQL ERROR]', err);
+        })
+		 if(result && result.length){
+		 	res.end(JSON.stringify(result[0]));
+		 }
+		 else
+		 {
+		 	dbcon.query('INSERT INTO `capp`(`UserID_FK_CApp`, `Gold`, `Nuggets`, `Bars`, `MineSpd`, `MineHarvest`, `PermUpgrade`, `FirstTime`) VALUES (?,?,?,?,?,?,?,?)', [UserID, 100, 10, 0, 0, 0, 0, 0], function(err, result, fields){
+		 		dbcon.on('error', function(err){
+                    console.log('[MYSQL ERROR]', err);
+                    res.json('Companion app error: ', err);
+                })
+			})	
+		}
+		dbcon.query('SELECT * FROM thetwins.capp WHERE UserID_FK_CApp=?', [UserID], function(err, result, fields){
+		 dbcon.on('error', function(err){
+            console.log('[MYSQL ERROR]', err);
+        })
+		 if(result && result.length){
+		 	res.end(JSON.stringify(result[0]));
+		 }
+		})
+	})
 })
