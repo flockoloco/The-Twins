@@ -29,6 +29,7 @@ TagManager:
   - NormalArrowText
   - PotionText
   - WellCanvas
+  - Well
   layers:
   - Default
   - TransparentFX

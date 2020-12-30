@@ -103,3 +103,20 @@ app.post('/user', (req, res, next) => {
 		})
 	})
 })
+
+
+
+app.post('/getPlayerSave', (req, res, next) => { //not connected for now.
+	var data = req.body;
+
+	var UserID = data.UserID;
+
+	dbcon.query('SELECT * FROM thetwins.MainGame WHERE UserID_FK_User=?', [UserID], function(err, result, fields){
+			dbcon.on('error', function(err){
+        	console.log('[MYSQL ERROR]', err);
+      })
+			if(result && result.length){
+		 		res.end(JSON.stringify(result[0]));
+	 		}
+	})
+})
