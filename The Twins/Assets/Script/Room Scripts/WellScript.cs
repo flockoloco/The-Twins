@@ -4,37 +4,47 @@ using UnityEngine;
 
 public class WellScript : MonoBehaviour
 {
-   public bool playerInside;
-    private bool used = false;
+    public bool playerInside;
     private GameObject player;
-    private PlayerMovement playerMovement;
+    private bool oneTime = true;
+    public GameObject WellCanvas;
 
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
-        playerMovement = player.GetComponent<PlayerMovement>();
+        
     }
-
-    private void Update()
+    void Awake()
     {
-        if (playerInside && Input.GetKey(KeyCode.E))
-        {
-            Interact();
-        }
+        WellCanvas = GameObject.FindWithTag("WellCanvas");
     }
-
     public void Interact()
     {
-        if (used == false)
+        WellCanvas.SetActive(true);
+        WellCanvas.GetComponent<WellMenuScript>().Activate();
+        Debug.Log("setting active");
+    }
+
+    void Update()
+    {
+        if (playerInside == true && oneTime == true)
         {
-            used = true;
-
-            
-            GameObject.FindWithTag("Player").GetComponent<PlayerStats>().shopOpen = false;
+            oneTime = false;
+            Interact();
 
 
-
-            //go to next level (generate a new one maybe in a new scene?)
+        }
+        else if (playerInside == false && oneTime == false)
+        {
+            Deinteract();
+            oneTime = true;
         }
     }
+
+   
+    public void Deinteract()
+    {
+        WellCanvas.SetActive(false);
+    }
+
 }

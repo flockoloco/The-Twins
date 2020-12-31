@@ -21,6 +21,7 @@ public class PlayerStats : MonoBehaviour
     public int nuggets;
     public int healthPotions;
     private float vunerableTimer;
+    public GameObject playerSword;
     public SwordAndArmor equippedSword = new SwordAndArmor();
     public SwordAndArmor equippedArmor = new SwordAndArmor();
     private PauseMenu pauseMenu;
@@ -29,11 +30,13 @@ public class PlayerStats : MonoBehaviour
     private void Awake()
     {
         currentLevel = 0; //ir buscar a base de dados;
+        RemoveEquipedItem("Sword");
         pauseMenu = GameObject.FindWithTag("PauseUI").GetComponent<PauseMenu>();
+
     }
     private void Start()
     {
-        RemoveEquipedItem("Sword");
+        
         RemoveEquipedItem("Armor");
         GameObject.FindWithTag("PlayerSword").GetComponent<Animator>().SetInteger("Tier", 0);
     }
@@ -75,7 +78,7 @@ public class PlayerStats : MonoBehaviour
             equippedSword = EquipmentClass.SwordandArmor[number];
             swordDamage = equippedSword.damage + EquipmentClass.Enchant[equippedSword.enchantTier].BonusDamage;
             swordAtkSpeed = equippedSword.atkSpeed;
-            GameObject.FindWithTag("PlayerSword").GetComponent<Animator>().SetInteger("Tier",number);
+            playerSword.GetComponent<Animator>().SetInteger("Tier",number);
         }
         else if (type == "Armor")
         {
@@ -91,7 +94,7 @@ public class PlayerStats : MonoBehaviour
             equippedSword = EquipmentClass.SwordandArmor[0];
             swordDamage = equippedSword.damage + EquipmentClass.Enchant[equippedSword.enchantTier].BonusDamage;
             swordAtkSpeed = equippedSword.atkSpeed;
-            GameObject.FindWithTag("PlayerSword").GetComponent<Animator>().SetInteger("Tier", 0);
+            playerSword.GetComponent<Animator>().SetInteger("Tier", equippedSword.id);
         }
         else if (type == "Armor")
         {

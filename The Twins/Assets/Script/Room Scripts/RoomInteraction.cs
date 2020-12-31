@@ -20,6 +20,7 @@ public class RoomInteraction : MonoBehaviour
         if (collision.tag == "Player" && ableToInteract == true)
         {
             GameObject.FindWithTag("Player").GetComponent<PlayerStats>().shopOpen = true;
+            GameObject.FindWithTag("MainCamera").transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y,-10);
             ableToInteract = false;
             spriteRenderer.sprite = glowSprite;
             if (gameObject.tag == "Shop")
@@ -37,6 +38,10 @@ public class RoomInteraction : MonoBehaviour
             else if (gameObject.tag == "Enchantment")
             {
                 gameObject.GetComponent<EnchantsScript>().playerInside = true;
+            }
+            else if (gameObject.tag == "Well")
+            {
+                gameObject.GetComponent<WellScript>().playerInside = true;
             }
         }
     }
@@ -62,6 +67,10 @@ public class RoomInteraction : MonoBehaviour
             else if (gameObject.tag == "Enchantment")
             {
                gameObject.GetComponent<EnchantsScript>().playerInside = false;
+            }
+            else if (gameObject.tag == "Well")
+            {
+                gameObject.GetComponent<WellScript>().playerInside = false;
             }
         }
     }

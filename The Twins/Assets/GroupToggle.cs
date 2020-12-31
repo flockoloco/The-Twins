@@ -8,27 +8,38 @@ public class GroupToggle : MonoBehaviour
 {
     public Slider Music;
     public Slider sound;
-    public ToggleGroup aa;
-    public TMP_Dropdown bb;
+    public ToggleGroup groupToggle;
+    public TMP_Dropdown dropDown;
     public Button bigButton;
+    public TextMeshProUGUI soundText;
+    public TextMeshProUGUI audioText;
+    public TextMeshProUGUI dificultyText;
+    public TextMeshProUGUI fullScreenText;
 
-
-    // Update is called once per frame
-    void Update()
-    {
-         
-        
-    }
     public void BigButton()
     {
-        Debug.Log(Music.value + "is the music value");
-        Debug.Log(sound.value + "is the sound value");
-        foreach (Toggle toggle in aa.ActiveToggles())
+        foreach (Toggle toggle in groupToggle.ActiveToggles())
         {
-            Debug.Log(toggle.name + "is the toggle active");
+            dificultyText.text = ("Dificulty mode: " + toggle.name);
+            Debug.Log("Dificulty mode: " + toggle.name); 
         }
-        Debug.Log(bb.value + "is the dropdown value");
+        Debug.Log("Music volume: " + Mathf.RoundToInt(Music.value * 100) + "%"); 
+        Debug.Log("Audio effects volume: "+ Mathf.RoundToInt(sound.value * 100) + "%");
+        soundText.text = ("Music volume: " + Mathf.RoundToInt(Music.value * 100) + "%");
+        audioText.text = ("Audio effects volume: " + Mathf.RoundToInt(sound.value * 100) + "%");
 
+        Debug.Log(dropDown.value + "is the dropdown value");
+        if (dropDown.value == 0)
+        {
+            fullScreenText.text = ("Screen mode: FullScreen");
+            Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+        }
+        else if (dropDown.value == 1)
+        {
+            fullScreenText.text = ("Screen mode: Windowed");
+            Screen.fullScreenMode = FullScreenMode.Windowed;
+        }
+        gameObject.SetActive(false);
     }
 
 }
