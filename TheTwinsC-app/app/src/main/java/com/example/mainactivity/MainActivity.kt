@@ -39,9 +39,6 @@ class MainActivity : AppCompatActivity() {
             .setNeutralButton("Ok") { _, _ -> }
             .create()
 
-        identifyUser(User.UserID)
-
-
         //Bottom navigation
         val anvilFragment = AnvilFragment()
         val mineFragment = MineFragment()
@@ -88,35 +85,6 @@ class MainActivity : AppCompatActivity() {
         }
         //-=-=-=-=-=-=-=-=-=-=--=-=-=-=-==-=-=-=-=-=-=-=-==-=-=-=-==-=-=-=
 
-    }
-
-    private fun identifyUser(UserID: Int) {
-       compositeDisposable.add(myAPI.getApp(UserID)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { message ->
-                val result = Klaxon().parse<ResourcesClass>(message)
-                if (result != null) {
-                    Resources.Gold = result.Gold
-                    Resources.Nuggets = result.Nuggets
-                    Resources.Bars = result.Bars
-                    Resources.Minespd = result.MineSpd
-                    Resources.MineHarvest = result.MineHarvest
-                    Resources.PermUpgrade = result.PermUpgrade
-                    Resources.FirstTime = result.FirstTime
-                }
-                if (Resources.FirstTime == -1) {
-                    msgDialog.setTitle("Welcome!")
-                    msgDialog.setMessage(
-                        "Hi ${User.UserName}, welcome to The Twins companion app, here you can manage resources and send them to the main game if needed. " +
-                                "for your first login we will give you ${Resources.Gold} Gold, ${Resources.Nuggets} Nuggets, " +
-                                "Hope you enjoy! :) "
-                    )
-                    msgDialog.show()
-                    Resources.FirstTime = 0
-                }
-            }
-        )
     }
 
     private fun setCurrentFragment(fragment: Fragment) {

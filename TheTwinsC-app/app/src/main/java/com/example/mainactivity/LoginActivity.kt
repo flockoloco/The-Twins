@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
 
     lateinit var myAPI: INodeJS
     var compositeDisposable = CompositeDisposable()
-    private lateinit var msgDialog:AlertDialog
+    private lateinit var msgDialog: AlertDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,13 +72,11 @@ class LoginActivity : AppCompatActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { message ->
                 if (message.contains("UserPassword")) {
-                    Intent(this, MainActivity::class.java).also {
-                        val result = Klaxon().parse<UserClass>(message)
-                        if (result != null) {
-                            User.UserID = result.UserID
-                            User.UserName = result.UserName
-                        }
-                        startActivity(it)
+
+                    val result = Klaxon().parse<UserClass>(message)
+                    if (result != null) {
+                        User.UserName = result.UserName
+                        identifyUser(result.UserID)
                     }
                 } else {
                     msgDialog.show()
@@ -110,7 +108,11 @@ class LoginActivity : AppCompatActivity() {
                                     .subscribeOn(Schedulers.io())
                                     .observeOn(AndroidSchedulers.mainThread())
                                     .subscribe { _ ->
-                                        Toast.makeText(this, "successfully register", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(
+                                            this,
+                                            "successfully register",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
                                     }
                                 )
                             } else {
@@ -135,6 +137,38 @@ class LoginActivity : AppCompatActivity() {
             return true
         }
         return false
+    }
+
+    private fun identifyUser(UserID: Int) {
+        compositeDisposable.add(myAPI.getApp(UserID)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { message ->
+                Intent(this, MainActivity::class.java).also {
+                    val result = Klaxon().parse<ResourcesClass>(message)
+                    if (result != null) {
+                        Resources.Gold = result.Gold
+                        Resources.Nuggets = result.Nuggets
+                        Resources.Bars = result.Bars
+                        Resources.Minespd = result.MineSpd
+                        Resources.MineHarvest = result.MineHarvest
+                        Resources.PermUpgrade = result.PermUpgrade
+                        Resources.FirstTime = result.FirstTime
+                    }
+                    startActivity(it)
+                }
+                /*if (Resources.FirstTime == -1) {
+                    msgDialog.setTitle("Welcome!")
+                    msgDialog.setMessage(
+                        "Hi ${User.UserName}, welcome to The Twins companion app, here you can manage resources and send them to the main game if needed. " +
+                                "for your first login we will give you ${Resources.Gold} Gold, ${Resources.Nuggets} Nuggets, " +
+                                "Hope you enjoy! :) "
+                    )
+                    msgDialog.show()
+                    Resources.FirstTime = 0
+                }*/
+            }
+        )
     }
 
     override fun onStop() {
