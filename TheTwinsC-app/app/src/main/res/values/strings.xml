@@ -13,4 +13,7 @@
     <string name="Shop">Shop</string>
     <string name="Mine">Mine</string>
     <string name="Quit">Quit</string>
+    <string name="e_mail">E-mail</string>
+    <string name="gold">Gold</string>
+    <string name="goldValue">111</string>
 </resources>

@@ -1,13 +1,12 @@
 package com.example.mainactivity
 
 import android.os.Bundle
-import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.beust.klaxon.Klaxon
 import com.example.mainactivity.retrofit.INodeJS
 import com.example.mainactivity.retrofit.RetrofitClient
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -55,7 +54,6 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation.getOrCreateBadge(R.id.AnvilFragment).apply {
             number = Resources.Nuggets
             isVisible = true
-            Log.d("nuggets", "nuggets é ${Resources.Nuggets}")
         }
         //-=-=-=-=-=-=-=-=-=-=--=-=-=-=-==-=-=-=-=-=-=-=-==-=-=-=-==-=-=-=
 
@@ -95,6 +93,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.top_drawer, menu)
+        return true
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)) {
             return true
@@ -104,7 +107,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         compositeDisposable.clear()
+        onCloseActivity()
         super.onStop()
+    }
+
+    private fun onCloseActivity() {
+        compositeDisposable.add(myAPI.sendDB(Resources.Gold, Resources.Nuggets, Resources.Bars, Resources.Minespd, Resources.MineHarvest, Resources.PermUpgrade, Resources.FirstTime, User.UserID)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {}
+        )
     }
 
     override fun onDestroy() {

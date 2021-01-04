@@ -23,7 +23,7 @@ var app = express();
 app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
-app.listen(port, hostname, () => console.log(`Server running at http://${hostname}:${port}/`));
+app.listen(port, hostname, () => console.log(`Server running at http://${hostname}:${port}`));
 
 app.post('/register', (req, res, next) => {
 
@@ -72,6 +72,7 @@ app.post('/login', (req, res, next) => {
     })
 })
 
+//create the user for the companion app
 app.post('/user', (req, res, next) => {
 	var data = req.body;
 
@@ -86,7 +87,7 @@ app.post('/user', (req, res, next) => {
 		 }
 		 else
 		 {
-		 	dbcon.query('INSERT INTO `capp`(`UserID_FK_CApp`, `Gold`, `Nuggets`, `Bars`, `MineSpd`, `MineHarvest`, `PermUpgrade`, `FirstTime`) VALUES (?,?,?,?,?,?,?,?)', [UserID, 100, 10, 0, 0, 0, 0, 0], function(err, result, fields){
+		 	dbcon.query('INSERT INTO `capp`(`UserID_FK_CApp`, `Gold`, `Nuggets`, `Bars`, `MineSpd`, `MineHarvest`, `PermUpgrade`, `FirstTime`) VALUES (?,?,?,?,?,?,?,?)', [UserID, 100, 10, 0, 0, 0, 1, 0], function(err, result, fields){
 		 		dbcon.on('error', function(err){
                     console.log('[MYSQL ERROR]', err);
                     res.json('Companion app error: ', err);
@@ -104,6 +105,27 @@ app.post('/user', (req, res, next) => {
 	})
 })
 
+//Save the data from the companion app to the database after the player closes the app
+app.post('/sendDB', (req, res, next) => {
+	var data = req.body;
+
+	var UserID = data.UserID
+	var Gold = data.Gold;
+    var Nuggets = data.Nuggets;
+    var Bars = data.Bars;
+    var Minespd = data.Minespd;
+    var MineHarvest = data.MineHarvest;
+    var PermUpgrade = data.PermUpgrade;
+    var FirstTime = data.FirstTime;
+
+    dbcon.query('UPDATE thetwins.capp SET Gold = ?, Nuggets = ?, Bars = ?, MineSpd = ?, MineHarvest = ?, PermUpgrade = ?, FirstTime = ? WHERE UserID_FK_CApp = ?', [Gold, Nuggets, Bars, Minespd, MineHarvest, PermUpgrade, FirstTime, UserID], function(err, result, fields){
+		 dbcon.on('error', function(err){
+            console.log('[MYSQL ERROR]', err);
+                res.json('Companion app error: ', err);
+            })
+		res.end(JSON.stringify('User Updated'));
+    })
+})
 
 
 app.post('/getPlayerSave', (req, res, next) => { //not connected for now.

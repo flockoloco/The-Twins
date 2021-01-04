@@ -1,6 +1,7 @@
 package com.example.mainactivity
 
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,16 +9,24 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.deliverydialog.*
+import kotlinx.android.synthetic.main.deliverydialog.closeShop
+import kotlinx.android.synthetic.main.deliverydialog.shopAmount
+import kotlinx.android.synthetic.main.deliverydialog.shopDecrease
+import kotlinx.android.synthetic.main.deliverydialog.shopImage
+import kotlinx.android.synthetic.main.deliverydialog.shopIncrease
+import kotlinx.android.synthetic.main.deliverydialog.shopText
 import kotlinx.android.synthetic.main.items_layout.view.*
+import kotlinx.android.synthetic.main.shopdialog.*
 
 class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.ShopViewHolder>() {
+
+    private var mContext: Context? = null
 
     inner class ShopViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShopViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.items_layout, parent, false)
         return ShopViewHolder(view)
-
     }
 
     override fun getItemCount(): Int {
@@ -26,146 +35,228 @@ class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.S
 
     override fun onBindViewHolder(holder: ShopViewHolder, position: Int) {
         holder.itemView.apply {
+            mContext = this.context
             itemTitle.text = itemInv[position].name
             itemDescription.text = itemInv[position].details
             itemIcon.setImageResource(itemInv[position].icon)
         }
         holder.itemView.setOnClickListener { view ->
-            val dialogBox = LayoutInflater.from(view.context).inflate(R.layout.deliverydialog, null)
+            val dialogBox = LayoutInflater.from(view.context).inflate(R.layout.shopdialog, null)
             val builder = AlertDialog.Builder(view.context)
                 .setView(dialogBox)
                 .create()
             builder.show()
 
+            //Starting config for the ores in the shop
             if (position == 0) {
-                builder.textView2.text = "How many ores do you want to buy / sell ?"
-                builder.imageView.setImageResource(R.drawable.ic_gold_ingot)
+                builder.shopText.text = "How many ores do you want to buy / sell ?"
+                builder.shopImage.setImageResource(R.drawable.ic_gold_ingot)
 
-                builder.closeImage.setOnClickListener {
+                builder.closeShop.setOnClickListener {
                     builder.dismiss()
                 }
                 var count = 0
-                builder.button.setOnClickListener{
+                builder.shopDecrease.setOnClickListener {
                     count--
-                    if(count < 0){
+                    if (count < 0) {
                         count = 0
                     }
-                    builder.textView.text = "$count"
+                    builder.shopAmount.text = "$count"
+                    builder.SellAmount.text = "$+$count"
+                    builder.BuyAmount.text = "$-$count"
                 }
 
-                builder.button2.setOnClickListener{
+                builder.shopIncrease.setOnClickListener {
                     count++
-                    builder.textView.text = "$count"
+                    builder.shopAmount.text = "$count"
+                    builder.SellAmount.text = "$+$count"
+                    builder.BuyAmount.text = "$-$count"
                 }
 
-                builder.button3.setOnClickListener{
-                    Toast.makeText(view.context, "$count Ores bought", Toast.LENGTH_LONG).show()
-                    builder.dismiss()
+                builder.shopBuy.setOnClickListener {
+                    if (Resources.Gold - count < 0) {
+                        //do something in the future
+                    } else {
+                        Resources.Nuggets += count
+                        Resources.Gold -= count
+                        builder.dismiss()
+                    }
+                }
+                builder.shopSell.setOnClickListener {
+                    if (Resources.Nuggets - count < 0) {
+                        //do something in the future
+                    } else {
+                        Resources.Nuggets -= count
+                        Resources.Gold += count
+                        builder.dismiss()
+                    }
                 }
             }
+            //Starting config for the ingots in the shop
             if (position == 1) {
-                builder.textView2.text = "How many ingots do you want to buy / sell?"
-                builder.imageView.setImageResource(R.drawable.ic_ingot)
+                builder.shopText.text = "How many ingots do you want to sell?"
+                builder.shopImage.setImageResource(R.drawable.ic_ingot)
 
-                builder.closeImage.setOnClickListener {
+                builder.closeShop.setOnClickListener {
                     builder.dismiss()
                 }
                 var count = 0
-                builder.button.setOnClickListener{
+                builder.shopDecrease.setOnClickListener {
                     count--
-                    if(count < 0){
+                    if (count < 0) {
                         count = 0
                     }
-                    builder.textView.text = "$count"
+                    builder.shopAmount.text = "$count"
+                    builder.SellAmount.text = "$+${count * 4}"
                 }
 
-                builder.button2.setOnClickListener{
+                builder.shopIncrease.setOnClickListener {
                     count++
-                    builder.textView.text = "$count"
+                    builder.shopAmount.text = "$count"
+                    builder.SellAmount.text = "$+${count * 4}"
                 }
 
-                builder.button3.setOnClickListener{
-                    Toast.makeText(view.context, "$count Ingots bought", Toast.LENGTH_LONG).show()
-                    builder.dismiss()
+                builder.shopSell.setOnClickListener {
+                    if (count > Resources.Bars) {
+                        //do something in the future
+                    } else {
+                        Resources.Nuggets -= count
+                        Resources.Gold += (count * 4)
+                        builder.dismiss()
+                    }
                 }
+
+                builder.shopBuy.setBackgroundColor(R.color.grey.toInt())
+                builder.BuyAmount.textSize = 20f
+                builder.BuyAmount.setTextColor(R.color.grey.toInt())
+                builder.shopBuy.isClickable = false
+                builder.BuyAmount.text = "Not available!"
             }
+
+            //Starting config for the Mine Speed in the shop
             if (position == 2) {
-                builder.textView2.text = "How many Mine Speed upgrades do you want buy / sell?"
-                builder.imageView.setImageResource(R.drawable.ic_upgrade)
+                builder.shopText.text = "How many Mine Speed upgrades do you want buy? 1 upgrade = 1 hour !"
+                builder.shopImage.setImageResource(R.drawable.ic_upgrade)
 
-                builder.closeImage.setOnClickListener {
+                builder.closeShop.setOnClickListener {
                     builder.dismiss()
                 }
                 var count = 0
-                builder.button.setOnClickListener{
+                builder.shopDecrease.setOnClickListener {
                     count--
-                    if(count < 0){
+                    if (count < 0) {
                         count = 0
                     }
-                    builder.textView.text = "$count"
+                    builder.shopAmount.text = "$count"
+                    builder.BuyAmount.text = "$-${count * 5}"
                 }
 
-                builder.button2.setOnClickListener{
+                builder.shopIncrease.setOnClickListener {
                     count++
-                    builder.textView.text = "$count"
+                    builder.shopAmount.text = "$count"
+                    builder.BuyAmount.text = "$-${count * 5}"
                 }
 
-                builder.button3.setOnClickListener{
-                    Toast.makeText(view.context, "$count Mine Speed bought", Toast.LENGTH_LONG).show()
-                    builder.dismiss()
+                builder.shopBuy.setOnClickListener {
+                    if((Resources.Gold - count * 5) < 0){
+                        //do something
+                    }
+                    else {
+                        Resources.Minespd += count * 60
+                        Resources.Gold -= (count * 5)
+                        builder.dismiss()
+                    }
+
                 }
+                builder.shopSell.setBackgroundColor(R.color.grey.toInt())
+                builder.SellAmount.textSize = 20f
+                builder.SellAmount.setTextColor(R.color.grey.toInt())
+                builder.shopSell.isClickable = false
+                builder.SellAmount.text = "Not available!"
             }
+
+            //Starting config for the Mine Harvest in the shop
             if (position == 3) {
-                builder.textView2.text = "How many Mine Harvest upgrades do you want buy / sell?"
-                builder.imageView.setImageResource(R.drawable.ic_upgrade)
+                builder.shopText.text = "How many Mine Harvest upgrades do you want buy? 1 upgrade = 1 hour !"
+                builder.shopImage.setImageResource(R.drawable.ic_upgrade)
 
-                builder.closeImage.setOnClickListener {
+                builder.closeShop.setOnClickListener {
                     builder.dismiss()
                 }
                 var count = 0
-                builder.button.setOnClickListener{
+                builder.shopDecrease.setOnClickListener {
                     count--
-                    if(count < 0){
+                    if (count < 0) {
                         count = 0
                     }
-                    builder.textView.text = "$count"
+                    builder.shopAmount.text = "$count"
+                    builder.BuyAmount.text = "$-${count * 5}"
                 }
 
-                builder.button2.setOnClickListener{
+                builder.shopIncrease.setOnClickListener {
                     count++
-                    builder.textView.text = "$count"
+                    builder.shopAmount.text = "$count"
+                    builder.BuyAmount.text = "$-${count * 5}"
                 }
 
-                builder.button3.setOnClickListener{
-                    Toast.makeText(view.context, "$count Mine Harvest bought", Toast.LENGTH_LONG).show()
-                    builder.dismiss()
+                builder.shopBuy.setOnClickListener {
+                    if((Resources.Gold - count * 5) < 0){
+                        //do something
+                    }
+                    else{
+                        Resources.MineHarvest += count * 60
+                        Resources.Gold -= (count * 5)
+                        builder.dismiss()
+                    }
+
                 }
+                builder.shopSell.setBackgroundColor(R.color.grey.toInt())
+                builder.SellAmount.textSize = 20f
+                builder.SellAmount.setTextColor(R.color.grey.toInt())
+                builder.shopSell.isClickable = false
+                builder.SellAmount.text = "Not available!"
             }
-            if (position == 4) {
-                builder.textView2.text = "How many Mine Ores upgrades do you want buy / sell?"
-                builder.imageView.setImageResource(R.drawable.ic_upgrade)
 
-                builder.closeImage.setOnClickListener {
+            //Starting config for the Mine Ores in the shop
+            if (position == 4) {
+                builder.shopText.text = "How many Mine Ores upgrades do you want buy?"
+                builder.shopImage.setImageResource(R.drawable.ic_upgrade)
+
+                builder.closeShop.setOnClickListener {
                     builder.dismiss()
                 }
                 var count = 0
-                builder.button.setOnClickListener{
+                builder.shopDecrease.setOnClickListener {
                     count--
-                    if(count < 0){
+                    if (count < 0) {
                         count = 0
                     }
-                    builder.textView.text = "$count"
+                    builder.shopAmount.text = "$count"
+                    builder.BuyAmount.text = "$-${count * 10}"
                 }
 
-                builder.button2.setOnClickListener{
+                builder.shopIncrease.setOnClickListener {
                     count++
-                    builder.textView.text = "$count"
+                    builder.shopAmount.text = "$count"
+                    builder.BuyAmount.text = "$-${count * 10}"
                 }
 
-                builder.button3.setOnClickListener{
-                    Toast.makeText(view.context, "$count Mine Ores bought", Toast.LENGTH_LONG).show()
-                    builder.dismiss()
+                builder.shopBuy.setOnClickListener {
+                    if((Resources.Gold - count * 10) < 0){
+                        // do something
+                    }
+                    else {
+                        Resources.PermUpgrade += count
+                        Resources.Gold -= (count * 10)
+                        builder.dismiss()
+                    }
+
                 }
+                builder.shopSell.setBackgroundColor(R.color.grey.toInt())
+                builder.SellAmount.textSize = 20f
+                builder.SellAmount.setTextColor(R.color.grey.toInt())
+                builder.shopSell.isClickable = false
+                builder.SellAmount.text = "Not available!"
             }
         }
     }

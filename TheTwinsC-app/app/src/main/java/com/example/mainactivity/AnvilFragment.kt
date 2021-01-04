@@ -55,7 +55,8 @@ class AnvilFragment : Fragment(R.layout.fragment_anvil), SensorEventListener {
 
         dragBot.setOnDragListener(dragListen)
         dragTop.setOnDragListener(dragListen)
-        //drag and drop PÁ
+
+        //drag and drop
         AnvilIngot.setOnLongClickListener {
             val clipText = "Drag and drop ingot"
             val item = ClipData.Item(clipText)
@@ -150,6 +151,9 @@ class AnvilFragment : Fragment(R.layout.fragment_anvil), SensorEventListener {
         if (event!!.values[0] > 2) {
             //supostamente o if de baixo funciona mas como nao consigo fazer no meu telemovel nao sei oq esperar :( POGGS
             //if (event!!.values[1] > 9.82 || event!!.values[1] < 9.80)
+                if(forge > 5){
+                    forge = 5
+                }
             forge += 1
         }
         if(ProgressBar.progress > 75){

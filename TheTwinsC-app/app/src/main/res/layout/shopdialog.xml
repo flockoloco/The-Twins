@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/shopDialogLayout"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@color/purple_200"
@@ -35,7 +35,7 @@
         android:src="@drawable/ic_ingot"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/shopText"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/shopDialogLayout" />
 
     <TextView
         android:id="@+id/shopAmount"
@@ -86,14 +86,60 @@
         app:layout_constraintTop_toTopOf="@+id/shopAmount" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/shopBuy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
         android:layout_marginBottom="100dp"
-        android:text="Send"
+        android:text="Buy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/shopAmount" />
+
+    <Button
+        android:id="@+id/shopSell"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="100dp"
+        android:text="Sell"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shopAmount" />
+
+    <TextView
+        android:id="@+id/SellAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:gravity="center"
+        android:text="$0"
+        android:textSize="25dp"
+        android:textColor="@color/holo_green_dark"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shopSell" />
+
+    <TextView
+        android:id="@+id/BuyAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:gravity="center"
+        android:text="$0"
+        android:textSize="25dp"
+        android:textColor="@color/holo_red_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/shopBuy" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="166dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

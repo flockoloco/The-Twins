@@ -7,7 +7,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clickablearea"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/highlighted_text_holo_dark">
 
         <ProgressBar
             android:id="@+id/ProgressBar"

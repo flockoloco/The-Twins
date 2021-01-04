@@ -27,7 +27,7 @@ import java.io.Serializable
 import java.io.StringReader
 import kotlin.reflect.jvm.internal.impl.load.kotlin.JvmType
 
-class LoginActivity : AppCompatActivity() {
+class  LoginActivity : AppCompatActivity() {
 
     lateinit var myAPI: INodeJS
     var compositeDisposable = CompositeDisposable()
@@ -76,6 +76,7 @@ class LoginActivity : AppCompatActivity() {
                     val result = Klaxon().parse<UserClass>(message)
                     if (result != null) {
                         User.UserName = result.UserName
+                        User.UserID = result.UserID
                         identifyUser(result.UserID)
                     }
                 } else {

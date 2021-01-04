@@ -38,24 +38,24 @@ class InvAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<InvAdapter.Inv
             builder.show()
 
             if (position == 0) {
-                builder.textView2.text = "How many ores do you want to send to your brother?"
-                builder.imageView.setImageResource(R.drawable.ic_gold_ingot)
+                builder.shopText.text = "How many ores do you want to send to your brother?"
+                builder.shopImage.setImageResource(R.drawable.ic_gold_ingot)
 
-                builder.closeImage.setOnClickListener {
+                builder.closeShop.setOnClickListener {
                     builder.dismiss()
                 }
                 var count = 0
-                builder.button.setOnClickListener{
+                builder.shopDecrease.setOnClickListener{
                     count--
                     if(count < 0){
                         count = 0
                     }
-                    builder.textView.text = "$count"
+                    builder.shopAmount.text = "$count"
                 }
 
-                builder.button2.setOnClickListener{
+                builder.shopIncrease.setOnClickListener{
                     count++
-                    builder.textView.text = "$count"
+                    builder.shopAmount.text = "$count"
                 }
 
                 builder.button3.setOnClickListener{
@@ -64,24 +64,24 @@ class InvAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<InvAdapter.Inv
                 }
             }
             if (position == 1) {
-                builder.textView2.text = "How many ingots do you want to send to your brother?"
-                builder.imageView.setImageResource(R.drawable.ic_ingot)
+                builder.shopText.text = "How many ingots do you want to send to your brother?"
+                builder.shopImage.setImageResource(R.drawable.ic_ingot)
 
-                builder.closeImage.setOnClickListener {
+                builder.closeShop.setOnClickListener {
                     builder.dismiss()
                 }
                 var count = 0
-                builder.button.setOnClickListener{
+                builder.shopDecrease.setOnClickListener{
                     count--
                     if(count < 0){
                         count = 0
                     }
-                    builder.textView.text = "$count"
+                    builder.shopAmount.text = "$count"
                 }
 
-                builder.button2.setOnClickListener{
+                builder.shopIncrease.setOnClickListener{
                     count++
-                    builder.textView.text = "$count"
+                    builder.shopAmount.text = "$count"
                 }
 
                 builder.button3.setOnClickListener{
@@ -90,24 +90,24 @@ class InvAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<InvAdapter.Inv
                 }
             }
             if (position == 2) {
-                builder.textView2.text = "How many coins do you want to send to your brother?"
-                builder.imageView.setImageResource(R.drawable.ic_money)
+                builder.shopText.text = "How many coins do you want to send to your brother?"
+                builder.shopImage.setImageResource(R.drawable.ic_money)
 
-                builder.closeImage.setOnClickListener {
+                builder.closeShop.setOnClickListener {
                     builder.dismiss()
                 }
                 var count = 0
-                builder.button.setOnClickListener{
+                builder.shopDecrease.setOnClickListener{
                     count--
                     if(count < 0){
                         count = 0
                     }
-                    builder.textView.text = "$count"
+                    builder.shopAmount.text = "$count"
                 }
 
-                builder.button2.setOnClickListener{
+                builder.shopIncrease.setOnClickListener{
                     count++
-                    builder.textView.text = "$count"
+                    builder.shopAmount.text = "$count"
                 }
 
                 builder.button3.setOnClickListener{
