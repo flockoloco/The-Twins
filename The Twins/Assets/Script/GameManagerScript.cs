@@ -22,7 +22,11 @@ public class GameManagerScript : MonoBehaviour
         }
     }
 
+<<<<<<< Updated upstream
     public string BaseAPI = "http://127.0.0.1:3000";
+=======
+    public string BaseAPI = "http://127.0.0.1:3000/";
+>>>>>>> Stashed changes
     public Canvas canvas;
     public PlayerInfo playerInfo;
     public bool logged;
@@ -33,7 +37,11 @@ public class GameManagerScript : MonoBehaviour
         Debug.Log(bbbbb);
     }
 
+<<<<<<< Updated upstream
     IEnumerator PostRequest(string uri, string jsondata,ReturningFunction aaaaaa)
+=======
+    IEnumerator PostRequest(string uri, string jsondata,myfunction aaaaaa)
+>>>>>>> Stashed changes
     {
         UnityWebRequest webRequest = new UnityWebRequest(uri, "POST");
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(jsondata);

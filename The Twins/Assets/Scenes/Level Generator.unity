@@ -4545,7 +4545,7 @@ MonoBehaviour:
     ThrowExceptionsImmediately: 0
   UseRandomSeed: 1
   RandomGeneratorSeed: 0
-  GenerateOnStart: 0
+  GenerateOnStart: 1
   ThrowExceptionsImmediately: 0
 --- !u!4 &777599500
 Transform:

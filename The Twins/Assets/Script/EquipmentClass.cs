@@ -4,6 +4,78 @@ using UnityEngine;
 
 namespace TheTwins.Model
 {
+    [System.Serializable]
+    public class PlayerInfo
+    {
+        public string Username;
+        public string Password;
+        public int id;
+        public PlayerInfo()
+        {
+            this.Username = null;
+            this.Password = null;
+            this.id = 0;
+        }
+        public PlayerInfo(string user, string pass)
+        {
+            this.Username = user;
+            this.Password = pass;
+        }
+        public PlayerInfo(int id)
+        {
+            this.id = id;
+        }
+    }
+    [System.Serializable]
+    public class PlayerStatsHolder
+    {
+        public int eSwordID;
+        public int eArmorID;
+        public int currentLvl;
+        public int currentHP;
+        public int oreArrowAmount;
+        public int normalArrowAmount;
+        public int potsAmount;
+        public int gold;
+        public PlayerStatsHolder()
+        {
+            this.eSwordID = 0;
+            this.eArmorID = 4;
+            this.currentLvl = 0;
+            this.currentHP = 100;
+            this.oreArrowAmount = 0;
+            this.normalArrowAmount = 0;
+            this.potsAmount = 2;
+            this.gold = 100;
+        }
+        public PlayerStatsHolder(int swordID,int armorID,int currentLvl,int hp, int oreArrows,int normalArrows, int pots,int gold)
+        {
+            this.eSwordID = swordID;
+            this.eArmorID = armorID;
+            this.currentLvl = currentLvl;
+            this.currentHP = hp;
+            this.oreArrowAmount = oreArrows;
+            this.normalArrowAmount = normalArrows;
+            this.potsAmount = pots;
+            this.gold = gold;
+        }
+    }
+    [System.Serializable]
+    public class CurrencyHolder
+    {
+        public int gold;
+        public int ores;
+        public int bars;
+        CurrencyHolder(int gold,int ores, int bars)
+        {
+            this.gold = gold;
+            this.ores = ores;
+            this.bars = bars;
+        }
+    }
+
+
+
     public struct Enchants
     {
         public int tier;

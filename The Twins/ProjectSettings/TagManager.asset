@@ -30,6 +30,7 @@ TagManager:
   - PotionText
   - WellCanvas
   - Well
+  - GameManager
   layers:
   - Default
   - TransparentFX

@@ -7,7 +7,7 @@ CREATE TABLE User(
     primary key (UserID)
 );
 CREATE TABLE MainGame(
-    UserID_FK_User int,
+    UserID_FK_MainGame int,
     CurrentSwordID int,
     CurrentArmorID int,
     CurrentHP int,
@@ -18,13 +18,21 @@ CREATE TABLE MainGame(
     Potions int,
     Arrows int,
     CurrentLevel int,
-    constraint foreign key (UserID_FK_User) references User(UserID)
+    constraint foreign key (UserID_FK_MainGame) references User(UserID)
     );
 CREATE TABLE CurrentEnchant(
     UserID_FK_Enchant int,
     EquipID int,
     EnchantTier int,
     constraint foreign key (UserID_FK_Enchant) references User(UserID)
+);
+CREATE TABLE Delivery(
+	UserID_FK_Delivery int,
+    BarsForCapp int,
+    OresForCapp int,
+    BarsForGame int,
+    OresForGame int,
+	constraint foreign key (UserID_FK_Delivery) references User(UserID)
 );
 CREATE TABLE CApp(
     UserID_FK_CApp int,

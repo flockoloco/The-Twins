@@ -44,11 +44,11 @@ public class UITextManager : MonoBehaviour
     {
         if (playerStats.selectedArrow == 1)
         {
-            ArrowSelectedImage.transform.localPosition = new Vector2 (-22f, 72.1f);
+            ArrowSelectedImage.transform.localPosition = new Vector2 (-22f, 72.1f); // would make 0 difference having the positions be a variable, this is used once in the whole code.
         }
         else
         {
-            ArrowSelectedImage.transform.localPosition = new Vector2(-22f, -7.3f);
+            ArrowSelectedImage.transform.localPosition = new Vector2(-22f, -7.3f); // would make 0 difference having the positions be a variable, this is used once in the whole code.
         }
     }
     void UpdateText(string stat) //more efficient :D for the future C:

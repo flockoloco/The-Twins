@@ -24,7 +24,10 @@ app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.listen(port, hostname, () => console.log(`Server running at http://${hostname}:${port}`));
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 app.post('/register', (req, res, next) => {
 
     var data = req.body;
@@ -36,7 +39,7 @@ app.post('/register', (req, res, next) => {
         dbcon.on('error', function(err){
             console.log('[MYSQL ERROR]', err);
         })
-        if(result && result.length){
+        if(result && result.length){	
                 res.json('User alerady exists');
         }else{
             dbcon.query('INSERT INTO `user`(`UserName`, `UserPassword`) VALUES (?,?)', [Username, Password], function(err, result, fields){
@@ -130,7 +133,6 @@ app.post('/sendDB', (req, res, next) => {
 
 app.post('/getPlayerSave', (req, res, next) => { //not connected for now.
 	var data = req.body;
-
 	var UserID = data.UserID;
 
 	dbcon.query('SELECT * FROM thetwins.MainGame WHERE UserID_FK_User=?', [UserID], function(err, result, fields){
