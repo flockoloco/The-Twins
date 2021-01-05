@@ -1,14 +1,10 @@
 package com.example.mainactivity
 
-
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.deliverydialog.*
 import kotlinx.android.synthetic.main.deliverydialog.closeShop
 import kotlinx.android.synthetic.main.deliverydialog.shopAmount
 import kotlinx.android.synthetic.main.deliverydialog.shopDecrease
@@ -19,8 +15,6 @@ import kotlinx.android.synthetic.main.items_layout.view.*
 import kotlinx.android.synthetic.main.shopdialog.*
 
 class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.ShopViewHolder>() {
-
-    private var mContext: Context? = null
 
     inner class ShopViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -35,7 +29,6 @@ class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.S
 
     override fun onBindViewHolder(holder: ShopViewHolder, position: Int) {
         holder.itemView.apply {
-            mContext = this.context
             itemTitle.text = itemInv[position].name
             itemDescription.text = itemInv[position].details
             itemIcon.setImageResource(itemInv[position].icon)

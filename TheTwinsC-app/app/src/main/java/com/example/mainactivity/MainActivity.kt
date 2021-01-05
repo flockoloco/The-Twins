@@ -1,19 +1,28 @@
 package com.example.mainactivity
 
+import android.app.Dialog
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.LinearLayout
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mainactivity.retrofit.INodeJS
 import com.example.mainactivity.retrofit.RetrofitClient
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.deliverydialog.*
 import kotlinx.android.synthetic.main.drawer_header.view.*
+import kotlinx.android.synthetic.main.email_dialog.*
+import kotlinx.android.synthetic.main.email_dialog.view.*
 import retrofit2.Retrofit
 
 
@@ -76,7 +85,7 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.ShopFragment -> setCurrentFragment(shopFragment)
                 R.id.InventoryFragment -> setCurrentFragment(inventoryFragment)
-                R.id.Quit -> finish()
+                R.id.Quit -> onCloseActivity()
             }
             drawerLayout.closeDrawers()
             true
@@ -95,12 +104,46 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.top_drawer, menu)
+
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)) {
             return true
+        }
+        when(item.itemId){
+            R.id.emailcon -> {
+                val dialog = Dialog(this)
+                dialog.setContentView(R.layout.email_dialog)
+                dialog.setCancelable(false)
+
+                if(dialog.window != null){
+                    dialog.window!!.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+                }
+
+                var emailList = mutableListOf(
+                    Items("Ore", "Ores are gathered every hour inside the mine", R.drawable.ic_gold_ingot)
+                )
+
+                //val dialogBox = LayoutInflater.from(this).inflate(R.layout.email_dialog, null)
+
+                var emailRecycler: RecyclerView = dialog.findViewById(R.id.emailRecycler)
+                emailRecycler.layoutManager = LinearLayoutManager(applicationContext)
+                emailRecycler.adapter = EmailAdapter(emailList)
+
+                dialog.show()
+
+
+
+
+                /*val adapterEmail = EmailAdapter(emailList)
+                dialogBox.emailRecycler.adapter = adapterEmail
+                dialogBox.emailRecycler.layoutManager = LinearLayoutManager(this)*/
+
+
+
+            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -117,6 +160,7 @@ class MainActivity : AppCompatActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {}
         )
+        finish()
     }
 
     override fun onDestroy() {

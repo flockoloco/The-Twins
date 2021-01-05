@@ -24,10 +24,7 @@ app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.listen(port, hostname, () => console.log(`Server running at http://${hostname}:${port}`));
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 app.post('/register', (req, res, next) => {
 
     var data = req.body;
