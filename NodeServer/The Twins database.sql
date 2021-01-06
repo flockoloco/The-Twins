@@ -22,16 +22,16 @@ CREATE TABLE CurrentEnchant(
     UserID_FK_Enchant int,
     e0tier int,
     e1tier int,
-	e2tier int,
+    e2tier int,
     e3tier int,
-	e4tier int,
-	e5tier int,
-	e6tier int,
-	e7tier int,
+    e4tier int,
+    e5tier int,
+    e6tier int,
+    e7tier int,
     constraint foreign key (UserID_FK_Enchant) references User(UserID)
-	);
+    );
 create table GameCurrency(
-	UserID_Fk_GameCurrency int,
+    UserID_Fk_GameCurrency int,
     Ores int,
     Bars int,
     constraint foreign key (UserID_FK_GameCurrency) references User(UserID)
@@ -40,15 +40,9 @@ CREATE TABLE Delivery(
     UserID_FK_Delivery int,
     BarsAmount int,
     OresAmount int,
-<<<<<<< Updated upstream
-    DeliveryType bool,
-	constraint foreign key (UserID_FK_Delivery) references User(UserID)
-=======
     DeliveryType int,
     constraint foreign key (UserID_FK_Delivery) references User(UserID)
->>>>>>> Stashed changes
 );
-
 CREATE TABLE CApp(
     UserID_FK_CApp int,
     Gold int,
