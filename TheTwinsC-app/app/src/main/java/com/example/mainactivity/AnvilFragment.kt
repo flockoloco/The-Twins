@@ -43,7 +43,7 @@ class AnvilFragment : Fragment(R.layout.fragment_anvil), SensorEventListener {
                         Progress_bar_dec()
                     }
                 }
-                looper.postDelayed(this, 1500)
+                looper.postDelayed(this, 3000)
             }
         })
 

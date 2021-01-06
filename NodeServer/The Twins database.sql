@@ -40,9 +40,15 @@ CREATE TABLE Delivery(
     UserID_FK_Delivery int,
     BarsAmount int,
     OresAmount int,
+<<<<<<< Updated upstream
     DeliveryType bool,
 	constraint foreign key (UserID_FK_Delivery) references User(UserID)
+=======
+    DeliveryType int,
+    constraint foreign key (UserID_FK_Delivery) references User(UserID)
+>>>>>>> Stashed changes
 );
+
 CREATE TABLE CApp(
     UserID_FK_CApp int,
     Gold int,

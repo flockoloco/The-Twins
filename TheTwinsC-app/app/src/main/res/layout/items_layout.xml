@@ -34,6 +34,7 @@
 
             <TextView
                 android:id="@+id/itemTitle"
+                android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -45,6 +46,7 @@
                 android:id="@+id/itemDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_margin="8dp"
                 android:text="This is the player's ingot, it was forged somewhere."
                 android:textSize="16dp"

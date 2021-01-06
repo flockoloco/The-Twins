@@ -24,8 +24,12 @@ app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.listen(port, hostname, () => console.log(`Server running at http://${hostname}:${port}`));
+<<<<<<< Updated upstream
 //registers the player
 
+=======
+	
+>>>>>>> Stashed changes
 app.post('/register', (req, res, next) => {
 
 	var data = req.body;
@@ -165,6 +169,7 @@ app.post('/getGameCurrency', (req, res, next) => {
 	})
 });
 
+<<<<<<< Updated upstream
 app.post('/saveCurrency', (req, res, next) => {
 	var data = req.body;
 	dbcon.query('UPDATE thetwins.GameCurrency SET Ores = ?, Bars = ? WHERE UserID_FK_GameCurrency = ?', [data.Ores, data.Bars, data.UserID], function(err, result, fields){
@@ -277,3 +282,76 @@ app.post('/saveEnchants', (req, res, next) => {
 		}
 	})
 });
+=======
+	dbcon.query('SELECT * FROM thetwins.MainGame WHERE UserID_FK_User=?', [UserID], function(err, result, fields){
+			dbcon.on('error', function(err){
+        	console.log('[MYSQL ERROR]', err);
+      	})
+			if(result && result.length){
+		 		res.end(JSON.stringify(result[0]));
+	 		}
+	})
+})
+
+app.post('/acceptDelivery', (req, res, next) => {
+	var data = req.body;
+
+	var UserID = data.UserID;
+	var Type = data.Type;
+
+	dbcon.query('SELECT * FROM Delivery WHERE UserID_FK_Delivery=? AND DeliveryType= ?', [UserID, Type], function(err, result, fields){
+		dbcon.on('error', function(err){
+        	console.log('[MYSQL ERROR]', err);
+      	})
+      	if(result && result.length){
+      		dbcon.query('UPDATE thetwins.Delivery SET BarsAmount = ?, OresAmount = ?', [0, 0], function(err, result, fields){
+				dbcon.on('error', function(err){
+        		console.log('[MYSQL ERROR]', err);
+      			})
+			})
+      		res.end(JSON.stringify(result[0]));
+      	}
+      	else{
+      		res.end(JSON.stringify('error'))
+      	}
+	})
+})
+
+app.post('/sendDelivery', (req, res, next) => {
+	var data = req.body;
+
+	var UserID = data.UserID;
+	var BarsAmount = data.BarsAmount;
+	var OresAmount = data.OresAmount;
+	var Type = data.Type;
+
+	dbcon.query('SELECT * FROM Delivery WHERE UserID_FK_Delivery=? AND DeliveryType= ?', [UserID, Type], function(err, result, fields){
+		dbcon.on('error', function(err){
+        	console.log('[MYSQL ERROR]', err);
+      	})
+      	if(result && result.length){
+
+      		var updatedBar = parseInt(result[0].BarsAmount, 10) + parseInt(BarsAmount, 10);
+      		var updatedOre = parseInt(result[0].OresAmount, 10) + parseInt(OresAmount, 10);
+
+      		dbcon.query('UPDATE thetwins.Delivery SET BarsAmount = ?, OresAmount = ?', [updatedBar, updatedOre], function(err, result, fields){
+				dbcon.on('error', function(err){
+        		console.log('[MYSQL ERROR]', err);
+      			})
+      			res.end(JSON.stringify('Updated'))
+			})
+      	}
+      	else
+      	{
+      		//doesnt accept false as input, put 0 to game or 1 to companion app
+      		dbcon.query('INSERT INTO `delivery`(`UserID_FK_Delivery`, `BarsAmount`, `OresAmount`, `DeliveryType`) VALUES (?, ?, ?, ?)', [UserID, BarsAmount, OresAmount, Type], function(err, result, fields){
+				dbcon.on('error', function(err){
+        			console.log('[MYSQL ERROR]', err);
+        			res.json('Register user error: ', err);
+      			})
+				res.end(JSON.stringify('Done'))
+			})
+      	}
+    })
+})
+>>>>>>> Stashed changes
