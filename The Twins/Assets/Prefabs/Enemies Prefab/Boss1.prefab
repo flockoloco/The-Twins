@@ -104,7 +104,6 @@ MonoBehaviour:
   armor: 3
   damage: 10
   moveSpeed: 1
-  atkspeed: 0
   bulletSpd: 4
   invunerable: 0
   hit: 0

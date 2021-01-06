@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace TheTwins.Model
@@ -9,26 +8,31 @@ namespace TheTwins.Model
     {
         public string Username;
         public string Password;
-        public int id;
+        public int UserID;
+        public string status;
+
         public PlayerInfo()
         {
             this.Username = null;
             this.Password = null;
-            this.id = 0;
         }
+
         public PlayerInfo(string user, string pass)
         {
             this.Username = user;
             this.Password = pass;
         }
+
         public PlayerInfo(int id)
         {
-            this.id = id;
+            this.UserID = id;
         }
     }
+
     [System.Serializable]
     public class PlayerStatsHolder
     {
+        public int UserID;
         public int eSwordID;
         public int eArmorID;
         public int currentLvl;
@@ -37,6 +41,7 @@ namespace TheTwins.Model
         public int normalArrowAmount;
         public int potsAmount;
         public int gold;
+
         public PlayerStatsHolder()
         {
             this.eSwordID = 0;
@@ -48,7 +53,8 @@ namespace TheTwins.Model
             this.potsAmount = 2;
             this.gold = 100;
         }
-        public PlayerStatsHolder(int swordID,int armorID,int currentLvl,int hp, int oreArrows,int normalArrows, int pots,int gold)
+
+        public PlayerStatsHolder(int swordID, int armorID, int currentLvl, int hp, int oreArrows, int normalArrows, int pots, int gold)
         {
             this.eSwordID = swordID;
             this.eArmorID = armorID;
@@ -60,21 +66,64 @@ namespace TheTwins.Model
             this.gold = gold;
         }
     }
+
     [System.Serializable]
     public class CurrencyHolder
     {
-        public int gold;
         public int ores;
         public int bars;
-        CurrencyHolder(int gold,int ores, int bars)
+        public int UserID;
+
+        public CurrencyHolder(int ores, int bars, int playerid)
         {
-            this.gold = gold;
             this.ores = ores;
             this.bars = bars;
+            this.UserID = playerid;
+        }
+
+        public CurrencyHolder()
+        {
+            this.ores = 0;
+            this.bars = 0;
         }
     }
+    [System.Serializable]
+    public class EnchantTierHolder
+    {
+        public int UserID;
+        public int e0tier;
+        public int e1tier;
+        public int e2tier;
+        public int e3tier;
+        public int e4tier;
+        public int e5tier;
+        public int e6tier;
+        public int e7tier;
 
+        public EnchantTierHolder(int e0tier, int e1tier, int e2tier, int e3tier, int e4tier, int e5tier, int e6tier, int e7tier)
+        {
+            this.e0tier = e0tier;
+            this.e1tier = e1tier;
+            this.e2tier = e2tier;
+            this.e3tier = e3tier;
+            this.e4tier = e4tier;
+            this.e5tier = e5tier;
+            this.e6tier = e6tier;
+            this.e7tier = e7tier;
+        }
 
+        public EnchantTierHolder()
+        {
+            this.e0tier = 0;
+            this.e1tier = 0;
+            this.e2tier = 0;
+            this.e3tier = 0;
+            this.e4tier = 0;
+            this.e5tier = 0;
+            this.e6tier = 0;
+            this.e7tier = 0;
+        }
+    }
 
     public struct Enchants
     {
@@ -89,9 +138,9 @@ namespace TheTwins.Model
             this.bonusHp = bonusHp;
             this.BonusDamage = BonusDamage;
             this.price = price;
-
         }
     }
+
     public class Arrows
     {
         public string name { get; }
@@ -100,7 +149,6 @@ namespace TheTwins.Model
         public int price { get; set; }
         public int amount { get; set; }
 
-        
         public Arrows(string name, string type, int damage, int price, int amount)
         {
             this.name = name;
@@ -123,9 +171,11 @@ namespace TheTwins.Model
         public int enchantTier;
         public int id;
 
+        public SwordAndArmor()
+        {
+        }
 
-        public SwordAndArmor() { }
-        public SwordAndArmor(string name,  int damage, float atkSpeed, int price,int enchantTier,int arrayIndex)//Sword
+        public SwordAndArmor(string name, int damage, float atkSpeed, int price, int enchantTier, int arrayIndex)//Sword
         {
             this.name = name;
             this.type = "Sword";
@@ -135,9 +185,10 @@ namespace TheTwins.Model
             this.enchantTier = enchantTier;
             this.armor = 0;
             this.maxHP = 0;
-            this.id = arrayIndex; 
+            this.id = arrayIndex;
         }
-        public SwordAndArmor(string name, int armor, int maxHP, int price,int enchantTier, int arrayIndex)//Armor
+
+        public SwordAndArmor(string name, int armor, int maxHP, int price, int enchantTier, int arrayIndex)//Armor
         {
             this.name = name;
             this.type = "Armor";
@@ -150,9 +201,11 @@ namespace TheTwins.Model
             this.id = arrayIndex;
         }
     }
+
     public static class EquipmentClass
     {
         private static List<Enchants> enchant = new List<Enchants>();
+
         public static List<Enchants> Enchant
         {
             get
@@ -169,35 +222,39 @@ namespace TheTwins.Model
         }
 
         private static List<SwordAndArmor> swordandArmor = new List<SwordAndArmor>();
+
         public static List<SwordAndArmor> SwordandArmor
         {
-            get {
+            get
+            {
                 if (swordandArmor.Count == 0)
                 {
                     //ir buscar a save
-                    int enchantTier = 0; //busca da database
+                    EnchantTierHolder enchantTier = new EnchantTierHolder();
+                    enchantTier = GameObject.FindWithTag("GameManager").GetComponent<GameManagerScript>().enchantTierHolder; //busca da database
 
-                    swordandArmor.Add(new SwordAndArmor("Wooden sword", 1, 1.5f, 0, enchantTier, 0));
-                    swordandArmor.Add(new SwordAndArmor("Iron sword",  4, 2f, 20, enchantTier, 1));
-                    swordandArmor.Add(new SwordAndArmor("Gold sword", 4, 1.5f, 40, enchantTier, 2));
-                    swordandArmor.Add(new SwordAndArmor("Diamond sword", 5, 1f, 100, enchantTier, 3));
+                    swordandArmor.Add(new SwordAndArmor("Wooden sword", 1, 1.5f, 0, enchantTier.e0tier, 0));
+                    swordandArmor.Add(new SwordAndArmor("Iron sword", 4, 2f, 20, enchantTier.e1tier, 1));
+                    swordandArmor.Add(new SwordAndArmor("Gold sword", 4, 1.5f, 40, enchantTier.e2tier, 2));
+                    swordandArmor.Add(new SwordAndArmor("Diamond sword", 5, 1f, 100, enchantTier.e3tier, 3));
 
-                    swordandArmor.Add(new SwordAndArmor("Wooden armor", 0, 0, 0, enchantTier, 4));
-                    swordandArmor.Add(new SwordAndArmor("Iron armor", 1, 20, 20, enchantTier, 5));
-                    swordandArmor.Add(new SwordAndArmor("Gold armor", 1, 40, 40, enchantTier, 6));
-                    swordandArmor.Add(new SwordAndArmor("Diamond armor", 4, 40, 100, enchantTier, 7));
-                    
+                    swordandArmor.Add(new SwordAndArmor("Wooden armor", 0, 0, 0, enchantTier.e4tier, 4));
+                    swordandArmor.Add(new SwordAndArmor("Iron armor", 1, 20, 20, enchantTier.e5tier, 5));
+                    swordandArmor.Add(new SwordAndArmor("Gold armor", 1, 40, 40, enchantTier.e6tier, 6));
+                    swordandArmor.Add(new SwordAndArmor("Diamond armor", 4, 40, 100, enchantTier.e7tier, 7));
                 }
                 return swordandArmor;
             }
         }
+
         private static List<Arrows> quiver = new List<Arrows>();
+
         public static List<Arrows> Quiver
         {
             get
             {
                 if (quiver.Count == 0)
-                { 
+                {
                     quiver = new List<Arrows>
                     {
                         new Arrows("NormalArrow", "Normal", 4, 5, 0), //When there are local saves, go get the amount value

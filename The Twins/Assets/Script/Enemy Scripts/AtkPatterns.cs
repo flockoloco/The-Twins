@@ -53,7 +53,7 @@ public class AtkPatterns : MonoBehaviour
         }
     }
 
-    public void EnemyFire(GameObject BulletPrefab, Transform firepoint, float angleDiff, float accuracy, float speed)
+    public void EnemyFire(GameObject BulletPrefab, Transform firepoint, float angleDiff, float accuracy, float speed)//put normal or uni
     {
         float randomSpeed = 1;
         if (speed != 0)

@@ -9,14 +9,22 @@ public class MainMenuScript : MonoBehaviour
     public GameObject gameManager;
     private PlayerStatsHolder playerStats;
     private bool disableContinue = true;
+    public GameObject popUpPrefab;
     public void Start()
     {
+        Debug.Log(gameManager.GetComponent<GameManagerScript>().logged + "inside start of mainmenuscript");
         if (gameManager.GetComponent<GameManagerScript>().logged == true)
         {
             disableContinue = false;
+            gameManager.GetComponent<GameManagerScript>().LoadRun();
+            gameManager.GetComponent<GameManagerScript>().GetBarsAndOres();
+            gameManager.GetComponent<GameManagerScript>().GetEnchants();
         }
         else
         {
+            gameManager.GetComponent<GameManagerScript>().enchantTierHolder = new EnchantTierHolder();
+            gameManager.GetComponent<GameManagerScript>().playerCurrency = new CurrencyHolder();
+            gameManager.GetComponent<GameManagerScript>().statsToUse = new PlayerStatsHolder();
             disableContinue = true;
         }
     }
@@ -24,21 +32,28 @@ public class MainMenuScript : MonoBehaviour
     {
         if (disableContinue == true)
         {
-            Debug.Log("ur not logged in rEEEEEEEEEEEEEEEEEEEeee");
-        }else if (disableContinue == false)
+            GameObject popUp = Instantiate(popUpPrefab, gameObject.transform);
+            popUp.transform.position = new Vector3(popUp.transform.position.x, popUp.transform.position.y - 300, popUp.transform.position.z);
+            popUp.GetComponent<DialogScript>().GiveText("Cant retrieve saves while offline");
+        }
+        else if (disableContinue == false)
         {
-            Debug.Log("go into game");//switch scene.
+            SceneManager.LoadScene("Level Generator");
         }
     }
     public void StartNewGame()
     {
-        
-        SceneManager.LoadScene("Level Generator");
         gameManager.GetComponent<GameManagerScript>().statsToUse = new PlayerStatsHolder();
+        SceneManager.LoadScene("Level Generator");
+        
     }
     public void Options()
     {
         Debug.Log("uhhga booga"); //canvas feito so ir buscar
+    }
+    public void Credits()
+    {
+
     }
     public void Exit()
     {

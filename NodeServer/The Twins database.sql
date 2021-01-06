@@ -8,30 +8,39 @@ CREATE TABLE User(
 );
 CREATE TABLE MainGame(
     UserID_FK_MainGame int,
-    CurrentSwordID int,
-    CurrentArmorID int,
-    CurrentHP int,
-    MaxHP int,
-    Gold int,
-    Nuggets int,
-    Bars int,
-    Potions int,
-    Arrows int,
-    CurrentLevel int,
+    eSwordID int,
+    eArmorID int,
+    currentLvl int,
+    currentHP int,
+    oreArrowAmount int,
+    normalArrowAmount int,
+    potsAmount int,
+    gold int,
     constraint foreign key (UserID_FK_MainGame) references User(UserID)
     );
 CREATE TABLE CurrentEnchant(
     UserID_FK_Enchant int,
-    EquipID int,
-    EnchantTier int,
+    e0tier int,
+    e1tier int,
+	e2tier int,
+    e3tier int,
+	e4tier int,
+	e5tier int,
+	e6tier int,
+	e7tier int,
     constraint foreign key (UserID_FK_Enchant) references User(UserID)
+	);
+create table GameCurrency(
+	UserID_Fk_GameCurrency int,
+    Ores int,
+    Bars int,
+    constraint foreign key (UserID_FK_GameCurrency) references User(UserID)
 );
 CREATE TABLE Delivery(
-	UserID_FK_Delivery int,
-    BarsForCapp int,
-    OresForCapp int,
-    BarsForGame int,
-    OresForGame int,
+    UserID_FK_Delivery int,
+    BarsAmount int,
+    OresAmount int,
+    DeliveryType bool,
 	constraint foreign key (UserID_FK_Delivery) references User(UserID)
 );
 CREATE TABLE CApp(

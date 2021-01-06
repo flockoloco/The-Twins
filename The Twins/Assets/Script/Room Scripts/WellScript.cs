@@ -23,6 +23,13 @@ public class WellScript : MonoBehaviour
         WellCanvas.SetActive(true);
         WellCanvas.GetComponent<WellMenuScript>().Activate();
         Debug.Log("setting active");
+        GameManagerScript manager = GameObject.FindWithTag("GameManager").GetComponent<GameManagerScript>();
+        manager.SaveBarsAndOres();
+        // mandar para o server saveCurrency()
+        // no script do canvas mandar o send para o email currency
+        // subtrair o email currency ao currency
+
+
     }
 
     void Update()
