@@ -15,6 +15,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_anvil.*
 import kotlinx.android.synthetic.main.fragment_anvil.view.*
 import java.io.IOException

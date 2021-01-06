@@ -25,6 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.listen(port, hostname, () => console.log(`Server running at http://${hostname}:${port}`));
 //registers the player
+
 app.post('/register', (req, res, next) => {
 
 	var data = req.body;
