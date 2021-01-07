@@ -96,7 +96,7 @@ public class WellMenuScript : MonoBehaviour
         if ((selectedCurrency[0] > 0) || (selectedCurrency[1] > 0) || (selectedCurrency[2] > 0))
         {
             //POST mandar selectedCurrency como um arrayy :D
-            gameManager.SendDelivery(selectedCurrency[1],selectedCurrency[2],gameManager.playerInfo.UserID);
+            gameManager.SendDelivery(selectedCurrency[1],selectedCurrency[2]);
 
 
             player.GetComponent<PlayerStats>().gold -= selectedCurrency[0];

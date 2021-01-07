@@ -9,7 +9,7 @@ namespace TheTwins.Model
         public string Username;
         public string Password;
         public int UserID;
-        public string status;
+        public int Status;
 
         public PlayerInfo()
         {
@@ -124,8 +124,36 @@ namespace TheTwins.Model
             this.e7tier = 0;
         }
     }
+    [System.Serializable]
+    public class DeliveryHolder
+    {
+        public int UserID;
+        public int OresAmount;
+        public int BarsAmount;
+        public int Type = 0;
+        public int Status;
+        public DeliveryHolder(int ores, int bars, int playerid)
+        {
+            this.OresAmount = ores;
+            this.BarsAmount = bars;
+            this.UserID = playerid;
+            this.Type = 0;
+        }
 
-    public struct Enchants
+        public DeliveryHolder()
+        {
+            this.OresAmount = 0;
+            this.BarsAmount = 0;
+            this.Type = 0;
+        }
+        public DeliveryHolder(int id)
+        {
+            this.UserID = id;
+            this.Type = 0;
+        }
+    }
+
+        public struct Enchants
     {
         public int tier;
         public int bonusHp;

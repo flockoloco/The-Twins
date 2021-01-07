@@ -39,7 +39,7 @@ app.post('/register', (req, res, next) => {
 		})
 		if(result && result.length) //user already exists
 		{	
-			res.json(1);
+			res.json(JSON.stringify({"Status": 1}));
 		}
 		else
 		{
@@ -48,7 +48,7 @@ app.post('/register', (req, res, next) => {
 					console.log('[MYSQL ERROR]', err);
 					res.json('Register user error: ', err);
 				})
-				res.json(0);
+				res.json(JSON.stringify({"Status": 0}));
 			})
 		}
 	})
@@ -68,16 +68,17 @@ app.post('/login', (req, res, next) => {
 		if(result && result.length)
 		{
 			if(Password == result[0].UserPassword)
-			{//meter status good job
+			{//status 0 correct login :D
+				result[0].Status = 0;
 				res.end(JSON.stringify(result[0]));
 			}
 			else
-			{//meter status wrong passs
-				res.end(JSON.stringify(result[0]));
+			{//status 1 wrong pass
+				res.end(JSON.stringify({"Status": 1}));
 			}
 		}
-		else{//meter status no user
-			res.json('User does not exists');
+		else{//status 2 no user with that name
+			res.json(JSON.stringify({"Status": 2}));
 		}
 	})
 });
@@ -277,6 +278,27 @@ app.post('/saveEnchants', (req, res, next) => {
 		}
 	})
 });
+app.post('/checkDelivery', (req, res, next) => { //returns bars ores as well as status (0 if it found something 1 if its empty)
+	var data = req.body;
+
+	var UserID = data.UserID;
+	var Type = data.Type;
+
+	dbcon.query('SELECT * FROM Delivery WHERE UserID_FK_Delivery=? AND DeliveryType= ?', [UserID, Type], function(err, result, fields){
+		dbcon.on('error', function(err){
+			console.log('[MYSQL ERROR]', err);
+		})
+		if(result && result.length)
+		{
+			result[0].Status = 0;
+			res.end(JSON.stringify(result[0]));
+		}
+		else
+		{
+			res.end(JSON.stringify({"Status": 1}));
+		}
+	})
+})
 
 app.post('/acceptDelivery', (req, res, next) => {
 	var data = req.body;
@@ -289,15 +311,16 @@ app.post('/acceptDelivery', (req, res, next) => {
 			console.log('[MYSQL ERROR]', err);
 		})
 		if(result && result.length){
-			dbcon.query('UPDATE thetwins.Delivery SET BarsAmount = ?, OresAmount = ?', [0, 0], function(err, result, fields){
+			dbcon.query('UPDATE thetwins.Delivery SET BarsAmount = ?, OresAmount = ?', [0, 0], function(err, result0, fields){
 				dbcon.on('error', function(err){
 					console.log('[MYSQL ERROR]', err);
 				})
 			})
+			result[0].Status = 0;
 			res.end(JSON.stringify(result[0]));
 		}
 		else{
-			res.end(JSON.stringify('error'))
+			res.end(JSON.stringify({"Status": 1}));
 		}
 	})
 })
@@ -323,7 +346,7 @@ app.post('/sendDelivery', (req, res, next) => {
 				dbcon.on('error', function(err){
 					console.log('[MYSQL ERROR]', err);
 				})
-				res.end(JSON.stringify('Updated'))
+				res.end(JSON.stringify('Updated'));
 			})
 		}
 		else
@@ -334,7 +357,7 @@ app.post('/sendDelivery', (req, res, next) => {
       				console.log('[MYSQL ERROR]', err);
       				res.json('Register user error: ', err);
       			})
-      			res.end(JSON.stringify('Done'))
+      			res.end(JSON.stringify('Done'));
       		})
       	}
       })
