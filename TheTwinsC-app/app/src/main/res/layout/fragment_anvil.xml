@@ -8,7 +8,7 @@
         android:id="@+id/clickablearea"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/highlighted_text_holo_dark">
+        android:background="@color/dark_brown">
 
         <ProgressBar
             android:id="@+id/ProgressBar"
@@ -29,7 +29,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginBottom="300dp"
-            android:background="@color/purple_200"
+            android:background="@color/cocoa_brown"
             android:orientation="horizontal"
             android:tag="dragTop"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -50,7 +50,7 @@
             android:id="@+id/dragBot"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@color/purple_200"
+            android:background="@color/cocoa_brown"
             android:orientation="horizontal"
             android:tag="dragBot"
             app:layout_constraintBottom_toBottomOf="parent"

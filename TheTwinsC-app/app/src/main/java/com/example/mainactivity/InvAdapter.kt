@@ -7,17 +7,30 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mainactivity.retrofit.INodeJS
+import com.example.mainactivity.retrofit.RetrofitClient
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.deliverydialog.*
 import kotlinx.android.synthetic.main.items_layout.view.*
+import retrofit2.Retrofit
 
 class InvAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<InvAdapter.InvViewHolder>() {
+
+    lateinit var myAPI: INodeJS
+    var compositeDisposable = CompositeDisposable()
 
     inner class InvViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InvViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.items_layout, parent, false)
-        return InvViewHolder(view)
 
+        //iniciar API
+        val retrofit: Retrofit = RetrofitClient.instance
+        myAPI = retrofit.create(INodeJS::class.java)
+
+        return InvViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -36,85 +49,75 @@ class InvAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<InvAdapter.Inv
                 .setView(dialogBox)
                 .create()
             builder.show()
-
-            if (position == 0) {
-                builder.shopText.text = "How many ores do you want to send to your brother?"
-                builder.shopImage.setImageResource(R.drawable.ic_gold_ingot)
-
-                builder.closeShop.setOnClickListener {
-                    builder.dismiss()
-                }
-                var count = 0
-                builder.shopDecrease.setOnClickListener{
-                    count--
-                    if(count < 0){
-                        count = 0
-                    }
-                    builder.shopAmount.text = "$count"
-                }
-
-                builder.shopIncrease.setOnClickListener{
-                    count++
-                    builder.shopAmount.text = "$count"
-                }
-
-                builder.button3.setOnClickListener{
-                    Toast.makeText(view.context, "$count Ores sent", Toast.LENGTH_LONG).show()
-                    builder.dismiss()
-                }
-            }
+            //Ores on click listener
             if (position == 1) {
-                builder.shopText.text = "How many ingots do you want to send to your brother?"
-                builder.shopImage.setImageResource(R.drawable.ic_ingot)
+                builder.deliveryTxt.text = "How many ores do you want to send to your brother?"
+                builder.deliveryImg.setImageResource(R.drawable.ic_gold_ingot)
 
-                builder.closeShop.setOnClickListener {
+                builder.deliveryClose.setOnClickListener {
                     builder.dismiss()
                 }
                 var count = 0
-                builder.shopDecrease.setOnClickListener{
+                builder.deliveryDecrease.setOnClickListener {
                     count--
-                    if(count < 0){
+                    if (count < 0) {
                         count = 0
                     }
-                    builder.shopAmount.text = "$count"
+                    builder.deliveryAmount.text = "$count"
                 }
 
-                builder.shopIncrease.setOnClickListener{
+                builder.deliveryIncrease.setOnClickListener {
                     count++
-                    builder.shopAmount.text = "$count"
+                    builder.deliveryAmount.text = "$count"
                 }
 
-                builder.button3.setOnClickListener{
-                    Toast.makeText(view.context, "$count Ingots sent", Toast.LENGTH_LONG).show()
+                builder.deliverySend.setOnClickListener {
+                    sendItemsDB(count,0, 1)
+                    Resources.Nuggets -= count
                     builder.dismiss()
                 }
             }
+            //Ingots on click listener
             if (position == 2) {
-                builder.shopText.text = "How many coins do you want to send to your brother?"
-                builder.shopImage.setImageResource(R.drawable.ic_money)
+                builder.deliveryTxt.text = "How many ingots do you want to send to your brother?"
+                builder.deliveryImg.setImageResource(R.drawable.ic_ingot)
 
-                builder.closeShop.setOnClickListener {
+                builder.deliveryClose.setOnClickListener {
                     builder.dismiss()
                 }
                 var count = 0
-                builder.shopDecrease.setOnClickListener{
+                builder.deliveryDecrease.setOnClickListener {
                     count--
-                    if(count < 0){
+                    if (count < 0) {
                         count = 0
                     }
-                    builder.shopAmount.text = "$count"
+                    builder.deliveryAmount.text = "$count"
                 }
 
-                builder.shopIncrease.setOnClickListener{
+                builder.deliveryIncrease.setOnClickListener {
                     count++
-                    builder.shopAmount.text = "$count"
+                    builder.deliveryAmount.text = "$count"
                 }
 
-                builder.button3.setOnClickListener{
-                    Toast.makeText(view.context, "$count Coins sent", Toast.LENGTH_LONG).show()
+                builder.deliverySend.setOnClickListener {
+                    sendItemsDB(0, count, 1)
+                    Resources.Bars -= count
                     builder.dismiss()
                 }
             }
         }
+    }
+
+    private fun sendItemsDB(Ores: Int, Ingots: Int, Type: Int) {
+        compositeDisposable.add(myAPI.sendDelivery(
+            User.UserID,
+            Ingots,
+            Ores,
+            Type
+        )
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {}
+        )
     }
 }

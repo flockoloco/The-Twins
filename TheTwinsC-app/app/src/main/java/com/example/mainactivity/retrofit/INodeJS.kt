@@ -1,6 +1,7 @@
 package com.example.mainactivity.retrofit
 
 import io.reactivex.Observable
+import io.reactivex.ObservableEmitter
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
@@ -36,5 +37,14 @@ interface INodeJS {
         @Field("PermUpgrade") PermUpgrade: Int,
         @Field("FirstTime") FirstTime: Int,
         @Field("UserID") UserID: Int
+    ): Observable<String>
+
+    @POST("sendDelivery")
+    @FormUrlEncoded
+    fun sendDelivery(
+        @Field("UserID") UserID: Int,
+        @Field("BarsAmount") BarsAmount: Int,
+        @Field("OresAmount") OresAmount: Int,
+        @Field("Type") Type: Int
     ): Observable<String>
 }

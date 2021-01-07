@@ -52,4 +52,21 @@
     <color name="holo_orange_dark">#ffff8800</color>
     <!-- A really bright Holo shade of blue -->
     <color name="holo_blue_bright">#ff00ddff</color>
+
+    <color name="Light_cocoa_brown">#a8a8ae</color>
+    <color name="cocoa_brown">#8f837e</color>
+    <color name="dark_gray">#706f74</color>
+    <color name="smoked">#cdcacf</color>
+    <color name="dim_gray">#9798a7</color>
+    <color name="brown">#64544c</color>
+    <color name="gray">#504f4f</color>
+    <color name="gray_suit">#61606f</color>
+    <color name="dark_brown">#483b35</color>
+    <color name="super_dark_brown">#2B201B</color>
+    <color name="black_forge">#171211</color>
+    <color name="dark_dark_gray">#383636</color>
+    <color name="light_brown">#c0a188</color>
+    <color name="dark_light_brown">#8A7360</color>
+    <color name="YMCA">#8C4B16</color>
+
 </resources>

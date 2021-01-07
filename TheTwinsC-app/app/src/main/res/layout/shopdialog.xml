@@ -9,7 +9,7 @@
         android:id="@+id/shopDialogLayout"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@color/purple_200"
+        android:background="@color/light_brown"
         android:orientation="vertical"
         android:paddingTop="2dp"
         android:paddingRight="10dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/closeShop"
+            android:id="@+id/deliveryClose"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_gravity="end|center"
@@ -28,17 +28,17 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/shopImage"
+        android:id="@+id/deliveryImg"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="32dp"
         android:src="@drawable/ic_ingot"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/shopText"
+        app:layout_constraintStart_toStartOf="@+id/deliveryTxt"
         app:layout_constraintTop_toBottomOf="@+id/shopDialogLayout" />
 
     <TextView
-        android:id="@+id/shopAmount"
+        android:id="@+id/deliveryAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -46,10 +46,10 @@
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shopText" />
+        app:layout_constraintTop_toBottomOf="@+id/deliveryTxt" />
 
     <TextView
-        android:id="@+id/shopText"
+        android:id="@+id/deliveryTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -59,7 +59,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shopImage" />
+        app:layout_constraintTop_toBottomOf="@+id/deliveryImg" />
 
     <Button
         android:id="@+id/shopDecrease"
@@ -67,23 +67,25 @@
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
+        android:backgroundTint="@color/YMCA"
         android:text="-"
-        app:layout_constraintBottom_toBottomOf="@+id/shopAmount"
-        app:layout_constraintEnd_toStartOf="@+id/shopAmount"
+        app:layout_constraintBottom_toBottomOf="@+id/deliveryAmount"
+        app:layout_constraintEnd_toStartOf="@+id/deliveryAmount"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/shopAmount" />
+        app:layout_constraintTop_toTopOf="@+id/deliveryAmount" />
 
     <Button
-        android:id="@+id/shopIncrease"
+        android:id="@+id/deliveryIncrease"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:text="+"
-        app:layout_constraintBottom_toBottomOf="@+id/shopAmount"
+        android:backgroundTint="@color/YMCA"
+        app:layout_constraintBottom_toBottomOf="@+id/deliveryAmount"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/shopAmount"
-        app:layout_constraintTop_toTopOf="@+id/shopAmount" />
+        app:layout_constraintStart_toEndOf="@+id/deliveryAmount"
+        app:layout_constraintTop_toTopOf="@+id/deliveryAmount" />
 
     <Button
         android:id="@+id/shopBuy"
@@ -92,10 +94,11 @@
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="100dp"
         android:text="Buy"
+        android:backgroundTint="@color/YMCA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/shopAmount" />
+        app:layout_constraintTop_toBottomOf="@+id/deliveryAmount" />
 
     <Button
         android:id="@+id/shopSell"
@@ -104,10 +107,11 @@
         android:layout_marginStart="48dp"
         android:layout_marginBottom="100dp"
         android:text="Sell"
+        android:backgroundTint="@color/YMCA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shopAmount" />
+        app:layout_constraintTop_toBottomOf="@+id/deliveryAmount" />
 
     <TextView
         android:id="@+id/SellAmount"

@@ -16,10 +16,20 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class InventoryFragment : Fragment(R.layout.fragment_inventory) {
 
+    private var invList = mutableListOf(Items("","",0))
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var invList = mutableListOf(
+        fillList()
+
+        val invRecycler = view.findViewById<RecyclerView>(R.id.invRecycler)
+        invRecycler.adapter = InvAdapter(invList)
+        invRecycler.layoutManager = LinearLayoutManager(this.activity)
+    }
+
+    private fun fillList() {
+        invList = mutableListOf(
             Items(
                 "Coin x${Resources.Gold}",
                 "Coins are the currency trading of this game!",
@@ -51,9 +61,10 @@ class InventoryFragment : Fragment(R.layout.fragment_inventory) {
                 R.drawable.ic_upgrade
             )
         )
+    }
 
-        val invRecycler = view.findViewById<RecyclerView>(R.id.invRecycler)
-        invRecycler.adapter = InvAdapter(invList)
-        invRecycler.layoutManager = LinearLayoutManager(this.activity)
+    override fun onResume() {
+        fillList()
+        super.onResume()
     }
 }

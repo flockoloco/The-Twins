@@ -5,12 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.deliverydialog.closeShop
-import kotlinx.android.synthetic.main.deliverydialog.shopAmount
-import kotlinx.android.synthetic.main.deliverydialog.shopDecrease
-import kotlinx.android.synthetic.main.deliverydialog.shopImage
-import kotlinx.android.synthetic.main.deliverydialog.shopIncrease
-import kotlinx.android.synthetic.main.deliverydialog.shopText
+import kotlinx.android.synthetic.main.deliverydialog.deliveryClose
+import kotlinx.android.synthetic.main.deliverydialog.deliveryAmount
+import kotlinx.android.synthetic.main.deliverydialog.deliveryImg
+import kotlinx.android.synthetic.main.deliverydialog.deliveryIncrease
+import kotlinx.android.synthetic.main.deliverydialog.deliveryTxt
 import kotlinx.android.synthetic.main.items_layout.view.*
 import kotlinx.android.synthetic.main.shopdialog.*
 
@@ -42,10 +41,10 @@ class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.S
 
             //Starting config for the ores in the shop
             if (position == 0) {
-                builder.shopText.text = "How many ores do you want to buy / sell ?"
-                builder.shopImage.setImageResource(R.drawable.ic_gold_ingot)
+                builder.deliveryTxt.text = "How many ores do you want to buy / sell ?"
+                builder.deliveryImg.setImageResource(R.drawable.ic_gold_ingot)
 
-                builder.closeShop.setOnClickListener {
+                builder.deliveryClose.setOnClickListener {
                     builder.dismiss()
                 }
                 var count = 0
@@ -54,14 +53,14 @@ class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.S
                     if (count < 0) {
                         count = 0
                     }
-                    builder.shopAmount.text = "$count"
+                    builder.deliveryAmount.text = "$count"
                     builder.SellAmount.text = "$+$count"
                     builder.BuyAmount.text = "$-$count"
                 }
 
-                builder.shopIncrease.setOnClickListener {
+                builder.deliveryIncrease.setOnClickListener {
                     count++
-                    builder.shopAmount.text = "$count"
+                    builder.deliveryAmount.text = "$count"
                     builder.SellAmount.text = "$+$count"
                     builder.BuyAmount.text = "$-$count"
                 }
@@ -87,10 +86,10 @@ class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.S
             }
             //Starting config for the ingots in the shop
             if (position == 1) {
-                builder.shopText.text = "How many ingots do you want to sell?"
-                builder.shopImage.setImageResource(R.drawable.ic_ingot)
+                builder.deliveryTxt.text = "How many ingots do you want to sell?"
+                builder.deliveryImg.setImageResource(R.drawable.ic_ingot)
 
-                builder.closeShop.setOnClickListener {
+                builder.deliveryClose.setOnClickListener {
                     builder.dismiss()
                 }
                 var count = 0
@@ -99,13 +98,13 @@ class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.S
                     if (count < 0) {
                         count = 0
                     }
-                    builder.shopAmount.text = "$count"
+                    builder.deliveryAmount.text = "$count"
                     builder.SellAmount.text = "$+${count * 4}"
                 }
 
-                builder.shopIncrease.setOnClickListener {
+                builder.deliveryIncrease.setOnClickListener {
                     count++
-                    builder.shopAmount.text = "$count"
+                    builder.deliveryAmount.text = "$count"
                     builder.SellAmount.text = "$+${count * 4}"
                 }
 
@@ -119,19 +118,19 @@ class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.S
                     }
                 }
 
-                builder.shopBuy.setBackgroundColor(R.color.grey.toInt())
+                builder.shopBuy.setBackgroundColor(R.color.gray_suit.toInt())
                 builder.BuyAmount.textSize = 20f
-                builder.BuyAmount.setTextColor(R.color.grey.toInt())
+                builder.BuyAmount.setTextColor(R.color.gray_suit.toInt())
                 builder.shopBuy.isClickable = false
                 builder.BuyAmount.text = "Not available!"
             }
 
             //Starting config for the Mine Speed in the shop
             if (position == 2) {
-                builder.shopText.text = "How many Mine Speed upgrades do you want buy? 1 upgrade = 1 hour !"
-                builder.shopImage.setImageResource(R.drawable.ic_upgrade)
+                builder.deliveryTxt.text = "How many Mine Speed upgrades do you want buy? 1 upgrade = 1 hour !"
+                builder.deliveryImg.setImageResource(R.drawable.ic_upgrade)
 
-                builder.closeShop.setOnClickListener {
+                builder.deliveryClose.setOnClickListener {
                     builder.dismiss()
                 }
                 var count = 0
@@ -140,13 +139,13 @@ class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.S
                     if (count < 0) {
                         count = 0
                     }
-                    builder.shopAmount.text = "$count"
+                    builder.deliveryAmount.text = "$count"
                     builder.BuyAmount.text = "$-${count * 5}"
                 }
 
-                builder.shopIncrease.setOnClickListener {
+                builder.deliveryIncrease.setOnClickListener {
                     count++
-                    builder.shopAmount.text = "$count"
+                    builder.deliveryAmount.text = "$count"
                     builder.BuyAmount.text = "$-${count * 5}"
                 }
 
@@ -161,19 +160,19 @@ class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.S
                     }
 
                 }
-                builder.shopSell.setBackgroundColor(R.color.grey.toInt())
+                builder.shopSell.setBackgroundColor(R.color.gray_suit.toInt())
                 builder.SellAmount.textSize = 20f
-                builder.SellAmount.setTextColor(R.color.grey.toInt())
+                builder.SellAmount.setTextColor(R.color.gray_suit.toInt())
                 builder.shopSell.isClickable = false
                 builder.SellAmount.text = "Not available!"
             }
 
             //Starting config for the Mine Harvest in the shop
             if (position == 3) {
-                builder.shopText.text = "How many Mine Harvest upgrades do you want buy? 1 upgrade = 1 hour !"
-                builder.shopImage.setImageResource(R.drawable.ic_upgrade)
+                builder.deliveryTxt.text = "How many Mine Harvest upgrades do you want buy? 1 upgrade = 1 hour !"
+                builder.deliveryImg.setImageResource(R.drawable.ic_upgrade)
 
-                builder.closeShop.setOnClickListener {
+                builder.deliveryClose.setOnClickListener {
                     builder.dismiss()
                 }
                 var count = 0
@@ -182,13 +181,13 @@ class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.S
                     if (count < 0) {
                         count = 0
                     }
-                    builder.shopAmount.text = "$count"
+                    builder.deliveryAmount.text = "$count"
                     builder.BuyAmount.text = "$-${count * 5}"
                 }
 
-                builder.shopIncrease.setOnClickListener {
+                builder.deliveryIncrease.setOnClickListener {
                     count++
-                    builder.shopAmount.text = "$count"
+                    builder.deliveryAmount.text = "$count"
                     builder.BuyAmount.text = "$-${count * 5}"
                 }
 
@@ -203,19 +202,19 @@ class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.S
                     }
 
                 }
-                builder.shopSell.setBackgroundColor(R.color.grey.toInt())
+                builder.shopSell.setBackgroundColor(R.color.gray_suit.toInt())
                 builder.SellAmount.textSize = 20f
-                builder.SellAmount.setTextColor(R.color.grey.toInt())
+                builder.SellAmount.setTextColor(R.color.gray_suit.toInt())
                 builder.shopSell.isClickable = false
                 builder.SellAmount.text = "Not available!"
             }
 
             //Starting config for the Mine Ores in the shop
             if (position == 4) {
-                builder.shopText.text = "How many Mine Ores upgrades do you want buy?"
-                builder.shopImage.setImageResource(R.drawable.ic_upgrade)
+                builder.deliveryTxt.text = "How many Mine Ores upgrades do you want buy?"
+                builder.deliveryImg.setImageResource(R.drawable.ic_upgrade)
 
-                builder.closeShop.setOnClickListener {
+                builder.deliveryClose.setOnClickListener {
                     builder.dismiss()
                 }
                 var count = 0
@@ -224,13 +223,13 @@ class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.S
                     if (count < 0) {
                         count = 0
                     }
-                    builder.shopAmount.text = "$count"
+                    builder.deliveryAmount.text = "$count"
                     builder.BuyAmount.text = "$-${count * 10}"
                 }
 
-                builder.shopIncrease.setOnClickListener {
+                builder.deliveryIncrease.setOnClickListener {
                     count++
-                    builder.shopAmount.text = "$count"
+                    builder.deliveryAmount.text = "$count"
                     builder.BuyAmount.text = "$-${count * 10}"
                 }
 
@@ -245,9 +244,9 @@ class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.S
                     }
 
                 }
-                builder.shopSell.setBackgroundColor(R.color.grey.toInt())
+                builder.shopSell.setBackgroundColor(R.color.gray_suit.toInt())
                 builder.SellAmount.textSize = 20f
-                builder.SellAmount.setTextColor(R.color.grey.toInt())
+                builder.SellAmount.setTextColor(R.color.gray_suit.toInt())
                 builder.shopSell.isClickable = false
                 builder.SellAmount.text = "Not available!"
             }
