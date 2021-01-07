@@ -6,6 +6,7 @@ public class WellMenuScript : MonoBehaviour
 {
     public GameObject player;
     public GameObject wellMenu;
+    private GameManagerScript gameManager;
 
     [SerializeField]
     private int[] selectedCurrency;
@@ -40,7 +41,7 @@ public class WellMenuScript : MonoBehaviour
     {
         wellMenu.SetActive(false);
         player = GameObject.FindWithTag("Player");
-
+        gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManagerScript>();
         goldButton0.onClick.AddListener(delegate { ChangeValue(-10, 0); }); // first digit is how much the selectedcurrency[second digit] will change.
         goldButton1.onClick.AddListener(delegate { ChangeValue(-1, 0); }); // second digit, the reference to the type of currency.
         goldButton2.onClick.AddListener(delegate { ChangeValue(1, 0); });
@@ -95,10 +96,16 @@ public class WellMenuScript : MonoBehaviour
         if ((selectedCurrency[0] > 0) || (selectedCurrency[1] > 0) || (selectedCurrency[2] > 0))
         {
             //POST mandar selectedCurrency como um arrayy :D
+            gameManager.SendDelivery(selectedCurrency[1],selectedCurrency[2],gameManager.playerInfo.UserID);
+
 
             player.GetComponent<PlayerStats>().gold -= selectedCurrency[0];
             player.GetComponent<PlayerStats>().bars -= selectedCurrency[1];
             player.GetComponent<PlayerStats>().nuggets -= selectedCurrency[2];
+
+            gameManager.playerCurrency.bars -= selectedCurrency[1];
+            gameManager.playerCurrency.ores -= selectedCurrency[2];
+
 
             UpdateAvailableCurrency();
 

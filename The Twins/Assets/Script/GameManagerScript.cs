@@ -182,4 +182,23 @@ public class GameManagerScript : MonoBehaviour
     {
         //idk
     }
+    public void SendDelivery(int selectedbars, int selectedores, int id)
+    {
+        string jsondata = JsonUtility.ToJson(new CurrencyHolder(selectedores,selectedbars,id));
+        StartCoroutine(PostRequest(BaseAPI + "senddelivery", jsondata, SendDeliveryReturn));
+    }
+    public void SendDeliveryReturn(string data, int error)
+    {
+        //idk
+    }
+    public void CheckDelivery(int whattodo)
+    {
+
+        string jsondata = JsonUtility.ToJson(playerInfo);
+        StartCoroutine(PostRequest(BaseAPI + "getdelivery", jsondata, SendDeliveryReturn));
+    }
+    public void CheckDeliveryReturn(string data, int error)
+    {
+        //idk
+    }
 }
