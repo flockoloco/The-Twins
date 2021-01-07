@@ -39,7 +39,7 @@ app.post('/register', (req, res, next) => {
 		})
 		if(result && result.length) //user already exists
 		{	
-			res.json(JSON.stringify({"Status": 1}));
+			res.json({"Status": 1});
 		}
 		else
 		{
@@ -48,7 +48,7 @@ app.post('/register', (req, res, next) => {
 					console.log('[MYSQL ERROR]', err);
 					res.json('Register user error: ', err);
 				})
-				res.json(JSON.stringify({"Status": 0}));
+				res.json({"Status": 0});
 			})
 		}
 	})
@@ -74,11 +74,11 @@ app.post('/login', (req, res, next) => {
 			}
 			else
 			{//status 1 wrong pass
-				res.end(JSON.stringify({"Status": 1}));
+				res.end({"Status":1});
 			}
 		}
-		else{//status 2 no user with that name
-			res.json(JSON.stringify({"Status": 2}));
+		else{//status 2 no user with that name   
+			res.json({"Status":2});
 		}
 	})
 });
@@ -295,7 +295,7 @@ app.post('/checkDelivery', (req, res, next) => { //returns bars ores as well as 
 		}
 		else
 		{
-			res.end(JSON.stringify({"Status": 1}));
+			res.end({"Status": 1});
 		}
 	})
 })
@@ -320,7 +320,7 @@ app.post('/acceptDelivery', (req, res, next) => {
 			res.end(JSON.stringify(result[0]));
 		}
 		else{
-			res.end(JSON.stringify({"Status": 1}));
+			res.end({"Status": 1});
 		}
 	})
 })

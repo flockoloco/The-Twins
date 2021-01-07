@@ -4,6 +4,19 @@ using UnityEngine;
 namespace TheTwins.Model
 {
     [System.Serializable]
+    public class JustStatus
+    {
+        public int Status;
+        public JustStatus()
+        {
+        }
+        public JustStatus(int status)
+        {
+            this.Status = status;
+        }
+    }
+
+    [System.Serializable]
     public class PlayerInfo
     {
         public string Username;
@@ -283,10 +296,11 @@ namespace TheTwins.Model
             {
                 if (quiver.Count == 0)
                 {
+                    PlayerStatsHolder statstoUse = GameObject.FindWithTag("GameManager").GetComponent<GameManagerScript>().statsToUse; // getting arrow amounts
                     quiver = new List<Arrows>
                     {
-                        new Arrows("NormalArrow", "Normal", 4, 5, 0), //When there are local saves, go get the amount value
-                        new Arrows("OreArrow", "Ore", 8, 1, 0) //When there are local saves, go get the amount value
+                        new Arrows("NormalArrow", "Normal", 4, 5, statstoUse.normalArrowAmount), 
+                        new Arrows("OreArrow", "Ore", 8, 1, statstoUse.oreArrowAmount) 
                     };
                 }
                 return quiver;

@@ -68,6 +68,8 @@ public class GameManagerScript : MonoBehaviour
     {
         if (error == 1) // no connection error
         {
+            Debug.Log("right before the crash :0");
+            Debug.Log(data);
             PlayerInfo dataReceived = JsonUtility.FromJson<PlayerInfo>(data);
             if (dataReceived.Status == 0)
             {
@@ -121,6 +123,8 @@ public class GameManagerScript : MonoBehaviour
     public void LoginPlayer(string name, string pass)
     {
         string jsondata = JsonUtility.ToJson(new PlayerInfo(name, pass));
+        Debug.Log("this is the post REEEEEEEEEEEEEE");
+        Debug.Log(jsondata);
         StartCoroutine(PostRequest(BaseAPI + "login", jsondata, LoginReturn));
     }
     public void RegisterNewPlayer(string name, string pass)
