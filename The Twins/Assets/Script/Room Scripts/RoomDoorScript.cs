@@ -37,6 +37,7 @@ public class RoomDoorScript : MonoBehaviour
     {
         if (playercheck == true && enemies.Count > 0)
         {
+            Debug.Log(enemies.Count);
             foreach (GameObject enemy in enemies)
             {
                 if (enemy.name.Contains("Normal")|| enemy.name.Contains("MachineGun"))

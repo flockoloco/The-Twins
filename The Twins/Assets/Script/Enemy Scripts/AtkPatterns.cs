@@ -12,7 +12,6 @@ public class AtkPatterns : MonoBehaviour
 
     public float Attack(int indexdoataque)
     {
-        Debug.Log("im being called");
         currentAtkIndex = indexdoataque;
         UpdateCheck = true;
         foreach (BulletInfo bullet in atkInfos[indexdoataque].allBullets)

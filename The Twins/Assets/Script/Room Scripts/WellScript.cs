@@ -21,7 +21,9 @@ public class WellScript : MonoBehaviour
     public void Interact()
     {
         WellCanvas.SetActive(true);
+
         WellCanvas.GetComponent<WellMenuScript>().Activate();
+
         Debug.Log("setting active");
         GameManagerScript manager = GameObject.FindWithTag("GameManager").GetComponent<GameManagerScript>();
         manager.SaveBarsAndOres();

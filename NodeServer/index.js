@@ -74,7 +74,7 @@ app.post('/login', (req, res, next) => {
 			}
 			else
 			{//status 1 wrong pass
-				res.end({"Status":1});
+				res.json({"Status":1});
 			}
 		}
 		else{//status 2 no user with that name   
@@ -168,15 +168,13 @@ app.post('/getGameCurrency', (req, res, next) => {
 
 app.post('/saveCurrency', (req, res, next) => {
 	var data = req.body;
+	console.log(req.body);
+
 	dbcon.query('UPDATE thetwins.GameCurrency SET Ores = ?, Bars = ? WHERE UserID_FK_GameCurrency = ?', [data.Ores, data.Bars, data.UserID], function(err, result, fields){
 		dbcon.on('error', function(err){
 			console.log('[MYSQL ERROR]', err);
-			res.json('Currency Error: ', err);
 		})
-		if(result && result.length){
-			res.end("yaaaaay");
-		}
-		res.end(JSON.stringify('User Updated'));
+			res.end(JSON.stringify("yaaaaay"));
 
 	})
 });
@@ -207,7 +205,7 @@ app.post('/loadRun', (req, res, next) => {
 		}
 		else
 		{
-			dbcon.query('INSERT INTO TheTwins.MainGame (UserID_FK_MainGame,eSwordID, eArmorID, currentLvl, currentHP, oreArrowAmount, normalArrowAmount, potsAmount, gold) VALUES (?,?,?,?,?,?,?,?,?)', [data.UserID,0, 0, 0, 100, 0, 0, 0, 200], function(err, result, fields){
+			dbcon.query('INSERT INTO TheTwins.MainGame (UserID_FK_MainGame,eSwordID, eArmorID, currentLvl, currentHP, oreArrowAmount, normalArrowAmount, potsAmount, gold) VALUES (?,?,?,?,?,?,?,?,?)', [data.UserID,0, 4, 0, 100, 0, 0, 0, 200], function(err, result, fields){
 				dbcon.on('error', function(err){
 					console.log('[MYSQL ERROR]', err);
 				})
@@ -224,14 +222,13 @@ app.post('/loadRun', (req, res, next) => {
 
 app.post('/saveRun', (req, res, next) => {
 	var data = req.body;
+	console.log(req.body);
 
-	dbcon.query('UPDATE TheTwins.MainGame SET eSwordID = ?, eArmorID = ?, currentLvl = ?, currentHP = ?, oreArrowAmount = ?, normalArrowAmount = ?, potsAmount = ?, gold = ? WHERE UserID_FK_MainGame = ?', [data.eSwordID, data.eArmorID, data.currentLvl, data.currentHP, data.oreArrowAmount, data.normalArrowAmount, data.potsAmount, data.gold, data.UserID], function(err, result, fields){
+	dbcon.query('UPDATE TheTwins.MainGame SET eSwordID = ?, eArmorID = ?, currentLvl = ?, currentHP = ?, oreArrowAmount = ?, normalArrowAmount = ?, potsAmount = ?, gold = ? WHERE UserID_FK_MainGame = ?', [data.eSwordID, data.eArmorID, data.currentLvl, data.currentHP, data.oreArrowAmount, data.normalArrowAmount, data.potsAmount, data.gold, data.UserID] , function(err, result, fields){
 		dbcon.on('error', function(err){
 			console.log('[MYSQL ERROR]', err);
 		})
-		if(result && result.length){
-			res.end("yaaaaay");
-		}
+			res.end(JSON.stringify("yaaaaay"));
 	})
 });
 
@@ -268,14 +265,12 @@ app.post('/loadEnchants', (req, res, next) => {
 
 app.post('/saveEnchants', (req, res, next) => {
 	var data = req.body;
-
+console.log(req.body);
 	dbcon.query('UPDATE TheTwins.CurrentEnchant SET e0tier = ?,e1tier = ?,e2tier = ?,e3tier = ?,e4tier = ?,e5tier = ?,e6tier = ?,e7tier = ?  WHERE UserID_FK_Enchant = ?', [data.e0tier, data.e1tier, data.e2tier, data.e3tier, data.e4tier, data.e5tier, data.e6tier, data.e7tier, data.UserID], function(err, result, fields){
 		dbcon.on('error', function(err){
 			console.log('[MYSQL ERROR]', err);
 		})
-		if(result && result.length){
-			res.end("yaaaaay");
-		}
+			res.end(JSON.stringify("yaaaaay"));
 	})
 });
 app.post('/checkDelivery', (req, res, next) => { //returns bars ores as well as status (0 if it found something 1 if its empty)

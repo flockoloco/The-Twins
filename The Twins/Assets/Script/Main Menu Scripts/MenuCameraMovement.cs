@@ -8,7 +8,6 @@ public class MenuCameraMovement : MonoBehaviour
 
     private void Start()
     {
-        Time.timeScale = 0.25f;
         wayPointArray = new Vector3[4];
         wayPointArray[0] = new Vector3(-15, 0, -10);
         wayPointArray[1] = new Vector3(-30, 0, -10);
@@ -18,7 +17,7 @@ public class MenuCameraMovement : MonoBehaviour
 
     private void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, wayPointArray[currentWayPoint], 1 * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, wayPointArray[currentWayPoint], 0.25f * Time.deltaTime);
 
         if (Vector2.Distance(transform.position, wayPointArray[currentWayPoint]) < 0.5f)
         {

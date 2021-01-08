@@ -20,7 +20,6 @@ public class ShopMenuScript : MonoBehaviour
     public Button sButton8;
     private PlayerStats playerstats;
 
-    public bool teste = false;
     private void Awake()
     {
         shopMenu.SetActive(false);
@@ -38,14 +37,6 @@ public class ShopMenuScript : MonoBehaviour
         sButton6.onClick.AddListener(delegate { BuyEquipment(0, 0); });
         sButton7.onClick.AddListener(delegate { BuyEquipment(1, 0); });
         sButton8.onClick.AddListener(delegate { BuyEquipment(2, 0); });
-    }
-    void Update()
-    {
-        if (teste == true)
-        {
-            teste = false;
-            BuyEquipment(2, 1);
-        }
     }
     public void Activate()
     {

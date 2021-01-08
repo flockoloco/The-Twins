@@ -8,7 +8,6 @@ public class Boss2Ai : MonoBehaviour
     private Vector3 playerPos;
     private Rigidbody2D rigidbody;
     public StatsHolder stats;
-    private readonly float agroDist = 4;
     private float bulletTimer;
     public Transform FirePoint;
     public bool triggered;

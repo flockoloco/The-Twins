@@ -145,8 +145,12 @@ public class GameManagerScript : MonoBehaviour
     }
     public void SaveBarsAndOres()
     {
-        playerCurrency.UserID = playerInfo.UserID;
-        string jsondata = JsonUtility.ToJson(playerCurrency);
+        PlayerStats Playerstats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
+
+
+        string jsondata = JsonUtility.ToJson(new CurrencyHolder (Playerstats.nuggets,Playerstats.bars,playerInfo.UserID));
+
+        Debug.Log("this is the json data for currency" +jsondata);
         StartCoroutine(PostRequest(BaseAPI + "saveCurrency", jsondata, SaveBarsAndOresReturn));
     }
     public void SaveBarsAndOresReturn(string data, int error)
@@ -173,11 +177,13 @@ public class GameManagerScript : MonoBehaviour
         int pOreArrowAmount = EquipmentClass.Quiver[1].amount;
         int pNormalArrowAmount = EquipmentClass.Quiver[0].amount;
         int pPotsAmount = Player.GetComponent<PlayerStats>().healthPotions;
-        int currentLvl = Player.GetComponent<PlayerStats>().currentLevel;
+        int currentLvl = Player.GetComponent<PlayerStats>().currentLevel + 1;
         int currentgold = Player.GetComponent<PlayerStats>().gold;
 
-        string jsonToSend = JsonUtility.ToJson(new PlayerStatsHolder(pSwordID, pArmorID, currentLvl, pHealth, pOreArrowAmount, pNormalArrowAmount, pPotsAmount,currentgold));
 
+        string jsonToSend = JsonUtility.ToJson(new PlayerStatsHolder(pSwordID, pArmorID, currentLvl, pHealth, pOreArrowAmount, pNormalArrowAmount, pPotsAmount,currentgold,playerInfo.UserID));
+
+        Debug.Log("this is the json data for runinfo" + jsonToSend);
         StartCoroutine(PostRequest(BaseAPI + "saveRun", jsonToSend,SaveRunInfoReturn));
     }
     public void SaveRunInfoReturn(string data, int error)
@@ -196,8 +202,18 @@ public class GameManagerScript : MonoBehaviour
     }
     public void SaveEnchants()
     {
-        enchantTierHolder.UserID = playerInfo.UserID;
-        string jsondata = JsonUtility.ToJson(enchantTierHolder);
+
+        PlayerStats Playerstats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
+
+        
+        string jsondata = JsonUtility.ToJson(new EnchantTierHolder(
+            EquipmentClass.SwordandArmor[0].enchantTier, EquipmentClass.SwordandArmor[1].enchantTier, 
+            EquipmentClass.SwordandArmor[2].enchantTier, EquipmentClass.SwordandArmor[3].enchantTier, 
+            EquipmentClass.SwordandArmor[4].enchantTier, EquipmentClass.SwordandArmor[5].enchantTier, 
+            EquipmentClass.SwordandArmor[6].enchantTier, EquipmentClass.SwordandArmor[7].enchantTier,
+            playerInfo.UserID));
+
+        Debug.Log("this is the json data for enchants" + jsondata);
         StartCoroutine(PostRequest(BaseAPI + "saveEnchants", jsondata, SaveEnchantsReturn));
     }
     public void SaveEnchantsReturn(string data, int error)

@@ -33,8 +33,7 @@ public class PlayerStats : MonoBehaviour
 
     }
     private void Start()
-    {
-        
+    {   
     }
 
     void Update()

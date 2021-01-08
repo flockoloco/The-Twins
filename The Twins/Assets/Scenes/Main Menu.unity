@@ -1264,7 +1264,6 @@ GameObject:
   - component: {fileID: 258768731}
   - component: {fileID: 258768730}
   - component: {fileID: 258768734}
-  - component: {fileID: 258768735}
   m_Layer: 5
   m_Name: MainMenu Canvas
   m_TagString: Untagged
@@ -1370,18 +1369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1631889226}
   popUpPrefab: {fileID: 4680473325387187772, guid: b6f9f96fd851bd6408b6ed5accc3f028, type: 3}
---- !u!114 &258768735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 258768729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9592db11a5d5d04a998ade835aefa37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  LevelLoader: {fileID: 1968799350}
 --- !u!1 &327654808
 GameObject:
   m_ObjectHideFlags: 0
@@ -72473,6 +72461,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1631889227}
   - component: {fileID: 1631889228}
+  - component: {fileID: 1631889229}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -72542,6 +72531,18 @@ MonoBehaviour:
     e5tier: 0
     e6tier: 0
     e7tier: 0
+--- !u!114 &1631889229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631889226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9592db11a5d5d04a998ade835aefa37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1680236735 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 189359499334434990, guid: e81fbe11db3f5504cb71510574b88f2a, type: 3}
@@ -74231,10 +74232,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1968799351}
-        m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
-        m_MethodName: LoadLevel
-        m_Mode: 5
+      - m_Target: {fileID: 258768734}
+        m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
+        m_MethodName: StartNewGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

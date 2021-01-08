@@ -14,7 +14,6 @@ public class LevelLoader : MonoBehaviour
     public void LoadLevel (string sceneName)
     {
         StartCoroutine(LoadAsynchronously(sceneName));
-        Time.timeScale = 1;
     }
     
     IEnumerator LoadAsynchronously(string sceneName)

@@ -10,6 +10,7 @@ public class MainMenuScript : MonoBehaviour
     private PlayerStatsHolder playerStats;
     private bool disableContinue = true;
     public GameObject popUpPrefab;
+    public GameObject LevelLoader;
     public void Start()
     {
         Debug.Log(gameManager.GetComponent<GameManagerScript>().logged + "inside start of mainmenuscript");
@@ -38,14 +39,13 @@ public class MainMenuScript : MonoBehaviour
         }
         else if (disableContinue == false)
         {
-            SceneManager.LoadScene("Level Generator");
+            LevelLoader.GetComponent<LevelLoader>().LoadLevel("Level Generator");
         }
     }
     public void StartNewGame()
     {
         gameManager.GetComponent<GameManagerScript>().statsToUse = new PlayerStatsHolder();
-        SceneManager.LoadScene("Level Generator");
-        
+        LevelLoader.GetComponent<LevelLoader>().LoadLevel("Level Generator");
     }
     public void Options()
     {

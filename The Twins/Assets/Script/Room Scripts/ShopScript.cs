@@ -23,7 +23,6 @@ public class ShopScript : MonoBehaviour
         shopCanvas.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (playerInside == true && oneTime == true)

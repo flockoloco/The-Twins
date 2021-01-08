@@ -32,6 +32,8 @@ public class WellMenuScript : MonoBehaviour
 
     private PlayerStats playerstats;
 
+    public GameObject CanvasChanger;
+
     private void Awake()
     {
         wellMenu.SetActive(false);
@@ -58,7 +60,11 @@ public class WellMenuScript : MonoBehaviour
     public void Activate()
     {
         wellMenu.SetActive(true);
+        CanvasChanger.GetComponent<UIPopUpScript>().CanvasSwitcher(0);
+
         UpdateAvailableCurrency();
+        
+        
         selectedCurrency[0] = 0;
         selectedCurrency[1] = 0;
         UpdateText();
@@ -93,8 +99,8 @@ public class WellMenuScript : MonoBehaviour
             player.GetComponent<PlayerStats>().bars -= selectedCurrency[0];
             player.GetComponent<PlayerStats>().nuggets -= selectedCurrency[1];
 
-            gameManager.playerCurrency.bars -= selectedCurrency[0];
-            gameManager.playerCurrency.ores -= selectedCurrency[1];
+            gameManager.playerCurrency.Bars -= selectedCurrency[0];
+            gameManager.playerCurrency.Ores -= selectedCurrency[1];
 
 
             UpdateAvailableCurrency();
@@ -122,5 +128,9 @@ public class WellMenuScript : MonoBehaviour
     {
         barsText.text = "Selected Bars: " + selectedCurrency[0];
         oreText.text = "Selected Ores: " + selectedCurrency[1];
+    }
+    public void CheckReceivedResources()
+    {
+        gameManager.CheckDelivery(0);
     }
 }

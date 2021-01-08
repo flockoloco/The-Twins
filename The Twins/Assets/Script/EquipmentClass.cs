@@ -67,8 +67,9 @@ namespace TheTwins.Model
             this.gold = 100;
         }
 
-        public PlayerStatsHolder(int swordID, int armorID, int currentLvl, int hp, int oreArrows, int normalArrows, int pots, int gold)
+        public PlayerStatsHolder(int swordID, int armorID, int currentLvl, int hp, int oreArrows, int normalArrows, int pots, int gold,int id)
         {
+            this.UserID = id;
             this.eSwordID = swordID;
             this.eArmorID = armorID;
             this.currentLvl = currentLvl;
@@ -83,21 +84,21 @@ namespace TheTwins.Model
     [System.Serializable]
     public class CurrencyHolder
     {
-        public int ores;
-        public int bars;
+        public int Ores;
+        public int Bars;
         public int UserID;
 
         public CurrencyHolder(int ores, int bars, int playerid)
         {
-            this.ores = ores;
-            this.bars = bars;
+            this.Ores = ores;
+            this.Bars = bars;
             this.UserID = playerid;
         }
 
         public CurrencyHolder()
         {
-            this.ores = 0;
-            this.bars = 0;
+            this.Ores = 0;
+            this.Bars = 0;
         }
     }
     [System.Serializable]
@@ -113,7 +114,7 @@ namespace TheTwins.Model
         public int e6tier;
         public int e7tier;
 
-        public EnchantTierHolder(int e0tier, int e1tier, int e2tier, int e3tier, int e4tier, int e5tier, int e6tier, int e7tier)
+        public EnchantTierHolder(int e0tier, int e1tier, int e2tier, int e3tier, int e4tier, int e5tier, int e6tier, int e7tier,int id)
         {
             this.e0tier = e0tier;
             this.e1tier = e1tier;
@@ -123,6 +124,7 @@ namespace TheTwins.Model
             this.e5tier = e5tier;
             this.e6tier = e6tier;
             this.e7tier = e7tier;
+            this.UserID = id;
         }
 
         public EnchantTierHolder()
@@ -165,8 +167,8 @@ namespace TheTwins.Model
             this.Type = 0;
         }
     }
-
-        public struct Enchants
+    [System.Serializable]
+    public struct Enchants
     {
         public int tier;
         public int bonusHp;
@@ -181,7 +183,7 @@ namespace TheTwins.Model
             this.price = price;
         }
     }
-
+    [System.Serializable]
     public class Arrows
     {
         public string name { get; }
@@ -199,7 +201,7 @@ namespace TheTwins.Model
             this.amount = amount;
         }
     }
-
+    [System.Serializable]
     public class SwordAndArmor
     {
         public string name;
@@ -242,7 +244,7 @@ namespace TheTwins.Model
             this.id = arrayIndex;
         }
     }
-
+    [System.Serializable]
     public static class EquipmentClass
     {
         private static List<Enchants> enchant = new List<Enchants>();
