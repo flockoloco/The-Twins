@@ -1,6 +1,7 @@
 package com.example.mainactivity
 
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -81,7 +82,7 @@ class InvAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<InvAdapter.Inv
                 }
 
                 builder.deliverySend.setOnClickListener {
-                    sendItemsDB(count, 0, 1)
+                    sendItemsDB(count, 0, 0)
                     Resources.Nuggets -= count
                     builder.dismiss()
                 }
@@ -113,7 +114,7 @@ class InvAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<InvAdapter.Inv
                 }
 
                 builder.deliverySend.setOnClickListener {
-                    sendItemsDB(0, count, 1)
+                    sendItemsDB(0, count, 0)
                     Resources.Bars -= count
                     builder.dismiss()
                 }

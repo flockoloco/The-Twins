@@ -30,3 +30,19 @@ class ResourcesClass(
     var FirstTime: Int
 )
 
+class ErrorStatus(
+    var Status: Int
+)
+
+class MailBoxClass(
+    var UserID_FK_Delivery: Int,
+    var OresAmount: Int,
+    var BarsAmount: Int,
+    var DeliveryType: Int,
+    var Status: Int
+)
+
+object MailBox{
+    var Ores: Int = 0
+    var Bars: Int = 0
+}

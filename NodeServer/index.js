@@ -290,7 +290,7 @@ app.post('/checkDelivery', (req, res, next) => { //returns bars ores as well as 
 		}
 		else
 		{
-			res.end({"Status": 1});
+			res.json({"Status": 1});
 		}
 	})
 })
@@ -306,7 +306,7 @@ app.post('/acceptDelivery', (req, res, next) => {
 			console.log('[MYSQL ERROR]', err);
 		})
 		if(result && result.length){
-			dbcon.query('UPDATE thetwins.Delivery SET BarsAmount = ?, OresAmount = ?', [0, 0], function(err, result0, fields){
+			dbcon.query('UPDATE thetwins.Delivery SET BarsAmount = ?, OresAmount = ? WHERE UserID_FK_Delivery=? AND DeliveryType= ?', [0, 0, UserID, Type], function(err, result0, fields){
 				dbcon.on('error', function(err){
 					console.log('[MYSQL ERROR]', err);
 				})
@@ -333,11 +333,10 @@ app.post('/sendDelivery', (req, res, next) => {
 			console.log('[MYSQL ERROR]', err);
 		})
 		if(result && result.length){
-
 			var updatedBar = parseInt(result[0].BarsAmount, 10) + parseInt(BarsAmount, 10);
 			var updatedOre = parseInt(result[0].OresAmount, 10) + parseInt(OresAmount, 10);
 
-			dbcon.query('UPDATE thetwins.Delivery SET BarsAmount = ?, OresAmount = ?', [updatedBar, updatedOre], function(err, result, fields){
+			dbcon.query('UPDATE thetwins.Delivery SET BarsAmount = ?, OresAmount = ? WHERE UserID_FK_Delivery=? AND DeliveryType= ?', [updatedBar, updatedOre, UserID, Type], function(err, result, fields){
 				dbcon.on('error', function(err){
 					console.log('[MYSQL ERROR]', err);
 				})

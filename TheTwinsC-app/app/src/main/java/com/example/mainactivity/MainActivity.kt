@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.AttributeSet
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -17,6 +18,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.beust.klaxon.Klaxon
 import com.example.mainactivity.retrofit.INodeJS
 import com.example.mainactivity.retrofit.RetrofitClient
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -131,8 +133,8 @@ class MainActivity : AppCompatActivity() {
         }
         when (item.itemId) {
             R.id.emailcon -> {
-                var dialog = EmailDialog()
-                dialog.show(supportFragmentManager, "customDialog")
+                checkData()
+
             }
         }
         return super.onOptionsItemSelected(item)
@@ -174,4 +176,17 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
     }
 
+    fun checkData(){
+        compositeDisposable.add(myAPI.checkDelivery(User.UserID, 1)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { message ->
+                val result = Klaxon().parse<MailBoxClass>(message)
+                MailBox.Ores = result!!.OresAmount
+                MailBox.Bars = result.BarsAmount
+                var dialog = EmailDialog()
+                dialog.show(supportFragmentManager, "customDialog")
+            }
+        )
+    }
 }

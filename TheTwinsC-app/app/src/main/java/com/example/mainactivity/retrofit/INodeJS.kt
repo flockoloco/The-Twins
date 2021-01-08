@@ -47,4 +47,18 @@ interface INodeJS {
         @Field("OresAmount") OresAmount: Int,
         @Field("Type") Type: Int
     ): Observable<String>
+
+    @POST("acceptDelivery")
+    @FormUrlEncoded
+    fun receiveDelivery(
+        @Field("UserID") UserID: Int,
+        @Field("Type") Type: Int
+    ): Observable<String>
+
+    @POST("checkDelivery")
+    @FormUrlEncoded
+    fun checkDelivery(
+        @Field("UserID") UserID: Int,
+        @Field("Type") Type: Int
+    ): Observable<String>
 }

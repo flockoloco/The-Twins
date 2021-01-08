@@ -25,9 +25,10 @@ import org.json.JSONStringer
 import retrofit2.Retrofit
 import java.io.Serializable
 import java.io.StringReader
+import kotlin.Error
 import kotlin.reflect.jvm.internal.impl.load.kotlin.JvmType
 
-class  LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
     lateinit var myAPI: INodeJS
     var compositeDisposable = CompositeDisposable()
@@ -66,21 +67,28 @@ class  LoginActivity : AppCompatActivity() {
     }
 
     private fun login(Username: String, Password: String) {
-
         compositeDisposable.add(myAPI.loginUser(Username, Password)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { message ->
-                if (message.contains("UserPassword")) {
-
+                if (message.contains("UserID")) {
                     val result = Klaxon().parse<UserClass>(message)
                     if (result != null) {
                         User.UserName = result.UserName
                         User.UserID = result.UserID
                         identifyUser(result.UserID)
                     }
-                } else {
-                    msgDialog.show()
+                }
+                if (message.contains("Status")) {
+                    val result = Klaxon().parse<ErrorStatus>(message)
+                    if (result!!.Status == 1) {
+                        msgDialog.setMessage("Wrong password, please try it again!")
+                        msgDialog.show()
+                    }
+                    if (result.Status == 2) {
+                        msgDialog.setMessage("Account does not exist, please create one!")
+                        msgDialog.show()
+                    }
                 }
             }
         )
@@ -91,36 +99,40 @@ class  LoginActivity : AppCompatActivity() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { message ->
-                if (message.contains("UserName")) {
-                    msgDialog.setMessage("Username already registered, please try a different username !")
-                    msgDialog.show()
-                } else {
-                    val inflatePassword =
-                        LayoutInflater.from(this).inflate(R.layout.confirmpassword_box, null)
+                if (message.contains("Status")) {
+                    val result = Klaxon().parse<ErrorStatus>(message)
+                    if (result!!.Status == 1) {
+                        msgDialog.setMessage("User already exists, please insert a different username!")
+                        msgDialog.show()
+                    }
+                    else{
+                        val inflatePassword =
+                            LayoutInflater.from(this).inflate(R.layout.confirmpassword_box, null)
 
-                    AlertDialog.Builder(this)
-                        .setTitle("Confirm Password")
-                        .setView(inflatePassword)
-                        .setNegativeButton("Cancel") { _, _ -> }
-                        .setPositiveButton("Confirm") { _, _ ->
-                            val confirmedPass = inflatePassword.lgnConfirmPassword as EditText
-                            if (Password == confirmedPass.text.toString()) {
-                                compositeDisposable.add(myAPI.registerUser(Username, Password)
-                                    .subscribeOn(Schedulers.io())
-                                    .observeOn(AndroidSchedulers.mainThread())
-                                    .subscribe { _ ->
-                                        Toast.makeText(
-                                            this,
-                                            "successfully register",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    }
-                                )
-                            } else {
-                                msgDialog.setMessage("Password does not match, please try again! ")
-                                msgDialog.show()
-                            }
-                        }.show()
+                        AlertDialog.Builder(this)
+                            .setTitle("Confirm Password")
+                            .setView(inflatePassword)
+                            .setNegativeButton("Cancel") { _, _ -> }
+                            .setPositiveButton("Confirm") { _, _ ->
+                                val confirmedPass = inflatePassword.lgnConfirmPassword as EditText
+                                if (Password == confirmedPass.text.toString()) {
+                                    compositeDisposable.add(myAPI.registerUser(Username, Password)
+                                        .subscribeOn(Schedulers.io())
+                                        .observeOn(AndroidSchedulers.mainThread())
+                                        .subscribe { _ ->
+                                            Toast.makeText(
+                                                this,
+                                                "successfully register",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                        }
+                                    )
+                                } else {
+                                    msgDialog.setMessage("Password does not match, please try again! ")
+                                    msgDialog.show()
+                                }
+                            }.show()
+                    }
                 }
             }
         )
@@ -158,6 +170,8 @@ class  LoginActivity : AppCompatActivity() {
                     }
                     startActivity(it)
                 }
+
+                //3 delivery tutorial REMEMBER
                 /*if (Resources.FirstTime == -1) {
                     msgDialog.setTitle("Welcome!")
                     msgDialog.setMessage(

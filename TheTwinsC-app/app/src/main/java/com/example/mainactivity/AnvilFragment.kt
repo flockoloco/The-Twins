@@ -85,7 +85,9 @@ class AnvilFragment : Fragment(R.layout.fragment_anvil), SensorEventListener {
 
     private fun update() {
         ProgressBar.incrementProgressBy(-1)
-
+        if(dragged == 0){
+            bagOretxt.text = Resources.Nuggets.toString()
+        }
     }
 
     // Creates a new drag event listener
@@ -131,6 +133,17 @@ class AnvilFragment : Fragment(R.layout.fragment_anvil), SensorEventListener {
                     Toast.makeText(
                         view.context,
                         "You moved 2 ores to the anvil",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                }else{
+                    dragged = 0
+                    anvilInOre = 0
+                    bagOretxt.text = Resources.Nuggets.toString()
+                    anvilOretxt.text = anvilInOre.toString()
+                    Toast.makeText(
+                        view.context,
+                        "You moved back 2 ores to the bag",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
