@@ -5,11 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.deliverydialog.deliveryClose
-import kotlinx.android.synthetic.main.deliverydialog.deliveryAmount
-import kotlinx.android.synthetic.main.deliverydialog.deliveryImg
-import kotlinx.android.synthetic.main.deliverydialog.deliveryIncrease
-import kotlinx.android.synthetic.main.deliverydialog.deliveryTxt
 import kotlinx.android.synthetic.main.items_layout.view.*
 import kotlinx.android.synthetic.main.shopdialog.*
 
@@ -41,10 +36,10 @@ class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.S
 
             //Starting config for the ores in the shop
             if (position == 0) {
-                builder.deliveryTxt.text = "How many ores do you want to buy / sell ?"
-                builder.deliveryImg.setImageResource(R.drawable.ic_gold_ingot)
+                builder.shopTxt.text = "How many ores do you want to buy / sell ?"
+                builder.shopImg.setImageResource(R.drawable.ic_gold_ingot)
 
-                builder.deliveryClose.setOnClickListener {
+                builder.shopClose.setOnClickListener {
                     builder.dismiss()
                 }
                 var count = 0
@@ -53,14 +48,14 @@ class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.S
                     if (count < 0) {
                         count = 0
                     }
-                    builder.deliveryAmount.text = "$count"
+                    builder.shopAmount.text = "$count"
                     builder.SellAmount.text = "$+$count"
                     builder.BuyAmount.text = "$-$count"
                 }
 
-                builder.deliveryIncrease.setOnClickListener {
+                builder.shopIncrease.setOnClickListener {
                     count++
-                    builder.deliveryAmount.text = "$count"
+                    builder.shopAmount.text = "$count"
                     builder.SellAmount.text = "$+$count"
                     builder.BuyAmount.text = "$-$count"
                 }
@@ -86,10 +81,10 @@ class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.S
             }
             //Starting config for the ingots in the shop
             if (position == 1) {
-                builder.deliveryTxt.text = "How many ingots do you want to sell?"
-                builder.deliveryImg.setImageResource(R.drawable.ic_ingot)
+                builder.shopTxt.text = "How many ingots do you want to sell?"
+                builder.shopImg.setImageResource(R.drawable.ic_ingot)
 
-                builder.deliveryClose.setOnClickListener {
+                builder.shopClose.setOnClickListener {
                     builder.dismiss()
                 }
                 var count = 0
@@ -98,13 +93,13 @@ class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.S
                     if (count < 0) {
                         count = 0
                     }
-                    builder.deliveryAmount.text = "$count"
+                    builder.shopAmount.text = "$count"
                     builder.SellAmount.text = "$+${count * 4}"
                 }
 
-                builder.deliveryIncrease.setOnClickListener {
+                builder.shopIncrease.setOnClickListener {
                     count++
-                    builder.deliveryAmount.text = "$count"
+                    builder.shopAmount.text = "$count"
                     builder.SellAmount.text = "$+${count * 4}"
                 }
 
@@ -127,10 +122,10 @@ class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.S
 
             //Starting config for the Mine Speed in the shop
             if (position == 2) {
-                builder.deliveryTxt.text = "How many Mine Speed upgrades do you want buy? 1 upgrade = 1 hour !"
-                builder.deliveryImg.setImageResource(R.drawable.ic_upgrade)
+                builder.shopTxt.text = "How many Mine Speed upgrades do you want buy? 1 upgrade = 1 hour !"
+                builder.shopImg.setImageResource(R.drawable.ic_upgrade)
 
-                builder.deliveryClose.setOnClickListener {
+                builder.shopClose.setOnClickListener {
                     builder.dismiss()
                 }
                 var count = 0
@@ -139,13 +134,13 @@ class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.S
                     if (count < 0) {
                         count = 0
                     }
-                    builder.deliveryAmount.text = "$count"
+                    builder.shopAmount.text = "$count"
                     builder.BuyAmount.text = "$-${count * 5}"
                 }
 
-                builder.deliveryIncrease.setOnClickListener {
+                builder.shopIncrease.setOnClickListener {
                     count++
-                    builder.deliveryAmount.text = "$count"
+                    builder.shopAmount.text = "$count"
                     builder.BuyAmount.text = "$-${count * 5}"
                 }
 
@@ -169,10 +164,10 @@ class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.S
 
             //Starting config for the Mine Harvest in the shop
             if (position == 3) {
-                builder.deliveryTxt.text = "How many Mine Harvest upgrades do you want buy? 1 upgrade = 1 hour !"
-                builder.deliveryImg.setImageResource(R.drawable.ic_upgrade)
+                builder.shopTxt.text = "How many Mine Harvest upgrades do you want buy? 1 upgrade = 1 hour !"
+                builder.shopImg.setImageResource(R.drawable.ic_upgrade)
 
-                builder.deliveryClose.setOnClickListener {
+                builder.shopClose.setOnClickListener {
                     builder.dismiss()
                 }
                 var count = 0
@@ -181,13 +176,13 @@ class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.S
                     if (count < 0) {
                         count = 0
                     }
-                    builder.deliveryAmount.text = "$count"
+                    builder.shopAmount.text = "$count"
                     builder.BuyAmount.text = "$-${count * 5}"
                 }
 
-                builder.deliveryIncrease.setOnClickListener {
+                builder.shopIncrease.setOnClickListener {
                     count++
-                    builder.deliveryAmount.text = "$count"
+                    builder.shopAmount.text = "$count"
                     builder.BuyAmount.text = "$-${count * 5}"
                 }
 
@@ -211,10 +206,10 @@ class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.S
 
             //Starting config for the Mine Ores in the shop
             if (position == 4) {
-                builder.deliveryTxt.text = "How many Mine Ores upgrades do you want buy?"
-                builder.deliveryImg.setImageResource(R.drawable.ic_upgrade)
+                builder.shopTxt.text = "How many Mine Ores upgrades do you want buy?"
+                builder.shopImg.setImageResource(R.drawable.ic_upgrade)
 
-                builder.deliveryClose.setOnClickListener {
+                builder.shopClose.setOnClickListener {
                     builder.dismiss()
                 }
                 var count = 0
@@ -223,13 +218,13 @@ class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.S
                     if (count < 0) {
                         count = 0
                     }
-                    builder.deliveryAmount.text = "$count"
+                    builder.shopAmount.text = "$count"
                     builder.BuyAmount.text = "$-${count * 10}"
                 }
 
-                builder.deliveryIncrease.setOnClickListener {
+                builder.shopIncrease.setOnClickListener {
                     count++
-                    builder.deliveryAmount.text = "$count"
+                    builder.shopAmount.text = "$count"
                     builder.BuyAmount.text = "$-${count * 10}"
                 }
 

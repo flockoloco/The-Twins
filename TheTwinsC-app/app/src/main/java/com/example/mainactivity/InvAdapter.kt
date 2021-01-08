@@ -4,8 +4,10 @@ package com.example.mainactivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mainactivity.retrofit.INodeJS
 import com.example.mainactivity.retrofit.RetrofitClient
@@ -17,6 +19,8 @@ import kotlinx.android.synthetic.main.items_layout.view.*
 import retrofit2.Retrofit
 
 class InvAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<InvAdapter.InvViewHolder>() {
+
+    val bool:Boolean = false
 
     lateinit var myAPI: INodeJS
     var compositeDisposable = CompositeDisposable()
@@ -48,9 +52,11 @@ class InvAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<InvAdapter.Inv
             val builder = AlertDialog.Builder(view.context)
                 .setView(dialogBox)
                 .create()
-            builder.show()
+
+
             //Ores on click listener
             if (position == 1) {
+                builder.show()
                 builder.deliveryTxt.text = "How many ores do you want to send to your brother?"
                 builder.deliveryImg.setImageResource(R.drawable.ic_gold_ingot)
 
@@ -68,17 +74,21 @@ class InvAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<InvAdapter.Inv
 
                 builder.deliveryIncrease.setOnClickListener {
                     count++
+                    if(count > Resources.Nuggets){
+                        count = Resources.Nuggets
+                    }
                     builder.deliveryAmount.text = "$count"
                 }
 
                 builder.deliverySend.setOnClickListener {
-                    sendItemsDB(count,0, 1)
+                    sendItemsDB(count, 0, 1)
                     Resources.Nuggets -= count
                     builder.dismiss()
                 }
             }
             //Ingots on click listener
             if (position == 2) {
+                builder.show()
                 builder.deliveryTxt.text = "How many ingots do you want to send to your brother?"
                 builder.deliveryImg.setImageResource(R.drawable.ic_ingot)
 
@@ -96,6 +106,9 @@ class InvAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<InvAdapter.Inv
 
                 builder.deliveryIncrease.setOnClickListener {
                     count++
+                    if(count > Resources.Bars){
+                        count = Resources.Bars
+                    }
                     builder.deliveryAmount.text = "$count"
                 }
 
