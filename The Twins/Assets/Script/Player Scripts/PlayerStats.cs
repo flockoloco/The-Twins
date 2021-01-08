@@ -29,16 +29,12 @@ public class PlayerStats : MonoBehaviour
     public int currentLevel;
     private void Awake()
     {
-        currentLevel = 0; //ir buscar a base de dados;
-        RemoveEquipedItem("Sword");
         pauseMenu = GameObject.FindWithTag("PauseUI").GetComponent<PauseMenu>();
 
     }
     private void Start()
     {
         
-        RemoveEquipedItem("Armor");
-        GameObject.FindWithTag("PlayerSword").GetComponent<Animator>().SetInteger("Tier", 0);
     }
 
     void Update()

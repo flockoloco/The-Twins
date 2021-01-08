@@ -31,23 +31,25 @@ public class GameManagerScript : MonoBehaviour
     public GameObject popUpPrefab;
     public GameObject loginCanvas;
     public GameObject registerCanvas;
+    public GameObject WellDeliveryCanvas;
     public CurrencyHolder playerCurrency;
-    [SerializeField]
     public EnchantTierHolder enchantTierHolder;
 
     public void RegisterReturn(string data, int error)  
     {
+        
         if (error == 1) // no connection error
         {
+            PlayerInfo dataReceived = JsonUtility.FromJson<PlayerInfo>(data);
             Debug.Log("inside of the return "+data);
-            if (data.Equals( "1")) //user name already in use
+            if (dataReceived.Status == 1) //user name already in use
             {
                 Debug.Log("inside of the equals");
                 GameObject popUp = Instantiate(popUpPrefab, registerCanvas.transform);
                 popUp.transform.position = new Vector3(popUp.transform.position.x, popUp.transform.position.y - 300, popUp.transform.position.z);
                 popUp.GetComponent<DialogScript>().GiveText("Name already in use.");
             }
-            else if (data.Equals("0"))  // acc created
+            else if (dataReceived.Status == 0)  // acc created
             {
                 GameObject.Find("CanvasChanger").GetComponent<UIPopUpScript>().CanvasSwitcher(1);
                 GameObject popUp = Instantiate(popUpPrefab, loginCanvas.transform);
@@ -66,11 +68,29 @@ public class GameManagerScript : MonoBehaviour
     {
         if (error == 1) // no connection error
         {
+            Debug.Log("right before the crash :0");
+            Debug.Log(data);
             PlayerInfo dataReceived = JsonUtility.FromJson<PlayerInfo>(data);
-            playerInfo.Username = dataReceived.Username;
-            playerInfo.UserID = dataReceived.UserID;
-            logged = true;
-            GameObject.Find("CanvasChanger").GetComponent<UIPopUpScript>().CanvasSwitcher(0);
+            if (dataReceived.Status == 0)
+            {
+                playerInfo.Username = dataReceived.Username;
+                playerInfo.UserID = dataReceived.UserID;
+                logged = true;
+                GameObject.Find("CanvasChanger").GetComponent<UIPopUpScript>().CanvasSwitcher(0);
+            }
+            else if (dataReceived.Status == 1)
+            {
+                GameObject popUp = Instantiate(popUpPrefab, loginCanvas.transform);
+                popUp.transform.position = new Vector3(popUp.transform.position.x, popUp.transform.position.y - 300, popUp.transform.position.z);
+                popUp.GetComponent<DialogScript>().GiveText("Wrong password, try again");
+            }
+            else if (dataReceived.Status == 2)
+            {
+                GameObject popUp = Instantiate(popUpPrefab, loginCanvas.transform);
+                popUp.transform.position = new Vector3(popUp.transform.position.x, popUp.transform.position.y - 300, popUp.transform.position.z);
+                popUp.GetComponent<DialogScript>().GiveText("No user with that username");
+            }
+           
         }
         else if (error == 2) // connection error
         {
@@ -103,6 +123,8 @@ public class GameManagerScript : MonoBehaviour
     public void LoginPlayer(string name, string pass)
     {
         string jsondata = JsonUtility.ToJson(new PlayerInfo(name, pass));
+        Debug.Log("this is the post REEEEEEEEEEEEEE");
+        Debug.Log(jsondata);
         StartCoroutine(PostRequest(BaseAPI + "login", jsondata, LoginReturn));
     }
     public void RegisterNewPlayer(string name, string pass)
@@ -181,5 +203,60 @@ public class GameManagerScript : MonoBehaviour
     public void SaveEnchantsReturn(string data, int error)
     {
         //idk
+    }
+    public void SendDelivery(int selectedbars, int selectedores)
+    {
+        string jsondata = JsonUtility.ToJson(new DeliveryHolder(selectedores,selectedbars,playerInfo.UserID));
+        StartCoroutine(PostRequest(BaseAPI + "senddelivery", jsondata, SendDeliveryReturn));
+    }
+    public void SendDeliveryReturn(string data, int error)
+    {
+        //idk
+    }
+    public void CheckDelivery(int whattodo)
+    {
+        string jsondata = JsonUtility.ToJson(new DeliveryHolder(playerInfo.UserID));
+        if (whattodo == 0)
+        {
+            StartCoroutine(PostRequest(BaseAPI + "checkdelivery", jsondata, CheckDeliveryReturn));
+        }
+        else if (whattodo == 1)
+        {
+            StartCoroutine(PostRequest(BaseAPI + "acceptdelivery", jsondata, AcceptDeliveryReturn));
+        }
+        
+    }
+    public void CheckDeliveryReturn(string data, int error)
+    {
+        DeliveryHolder receivedData = JsonUtility.FromJson<DeliveryHolder>(data);
+        if (receivedData.Status == 1)
+        {
+            //tell player nothing to get
+        }else if (receivedData.Status == 0)
+        {
+            //make button glow and clicable
+            //in new ui show values (this ui has a button that runs the accept delivery as well as a button that closes the ui)
+            //deliveryUI.bars = receivedData.bars....
+        }
+    }
+    public void AcceptDeliveryReturn(string data, int error)
+    {
+        DeliveryHolder receivedData = JsonUtility.FromJson<DeliveryHolder>(data);
+        if (receivedData.Status == 0)
+        {
+            //playerstats = playerstats + deliverystats
+            //saveplayercurrency() POST
+
+
+            GameObject popUp = Instantiate(popUpPrefab, WellDeliveryCanvas.transform);
+            popUp.transform.position = new Vector3(popUp.transform.position.x, popUp.transform.position.y - 300, popUp.transform.position.z);
+            popUp.GetComponent<DialogScript>().GiveText("Values accepted!");
+        }
+        else if (receivedData.Status == 1)
+        {
+            GameObject popUp = Instantiate(popUpPrefab, WellDeliveryCanvas.transform);
+            popUp.transform.position = new Vector3(popUp.transform.position.x, popUp.transform.position.y - 300, popUp.transform.position.z);
+            popUp.GetComponent<DialogScript>().GiveText("You somehow crashed it");
+        }
     }
 }

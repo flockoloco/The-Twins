@@ -1264,6 +1264,7 @@ GameObject:
   - component: {fileID: 258768731}
   - component: {fileID: 258768730}
   - component: {fileID: 258768734}
+  - component: {fileID: 258768735}
   m_Layer: 5
   m_Name: MainMenu Canvas
   m_TagString: Untagged
@@ -1369,6 +1370,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1631889226}
   popUpPrefab: {fileID: 4680473325387187772, guid: b6f9f96fd851bd6408b6ed5accc3f028, type: 3}
+--- !u!114 &258768735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258768729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9592db11a5d5d04a998ade835aefa37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &327654808
 GameObject:
   m_ObjectHideFlags: 0
@@ -2107,9 +2120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c41be5670fff41d4d98823f049d8ee77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LogInCanvas: {fileID: 1466633568}
-  RegisterCanvas: {fileID: 1498494942}
-  MainMenuCanvas: {fileID: 258768729}
+  Canvas1: {fileID: 1466633568}
+  Canvas2: {fileID: 1498494942}
+  Canvas0: {fileID: 258768729}
 --- !u!224 &571498537
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4573,7 +4586,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 258768734}
         m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
-        m_MethodName: Register
+        m_MethodName: Continue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -72499,7 +72512,7 @@ MonoBehaviour:
     Username: 
     Password: 
     UserID: 0
-    status: 
+    Status: 0
   logged: 0
   statsToUse:
     UserID: 0
@@ -72514,6 +72527,7 @@ MonoBehaviour:
   popUpPrefab: {fileID: 4680473325387187772, guid: b6f9f96fd851bd6408b6ed5accc3f028, type: 3}
   loginCanvas: {fileID: 1466633568}
   registerCanvas: {fileID: 1498494942}
+  WellDeliveryCanvas: {fileID: 0}
   playerCurrency:
     ores: 0
     bars: 0

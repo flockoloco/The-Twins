@@ -4,32 +4,32 @@ using UnityEngine;
 
 public class UIPopUpScript : MonoBehaviour
 {
-    public GameObject LogInCanvas;
-    public GameObject RegisterCanvas;
-    public GameObject MainMenuCanvas;
+    public GameObject Canvas1;
+    public GameObject Canvas2;
+    public GameObject Canvas0;
     public void Start()
     {
         CanvasSwitcher(1);
     }
-    public void CanvasSwitcher(int CanvasNumber) //0 MainMenu 1 Login 2 Register
+    public void CanvasSwitcher(int CanvasNumber) //0 MainMenu 1 Login 2 Register for the main menu, 
     {
         if (CanvasNumber == 0) 
         {
-            LogInCanvas.SetActive(false);
-            RegisterCanvas.SetActive(false);
-            MainMenuCanvas.SetActive(true);
+            Canvas1.SetActive(false);
+            Canvas2.SetActive(false);
+            Canvas0.SetActive(true);
         }
         else if (CanvasNumber == 1)
         {
-            RegisterCanvas.SetActive(false);
-            LogInCanvas.SetActive(true);
-            MainMenuCanvas.SetActive(false);
+            Canvas2.SetActive(false);
+            Canvas1.SetActive(true);
+            Canvas0.SetActive(false);
         }
         else if (CanvasNumber == 2) 
         {
-            RegisterCanvas.SetActive(true);
-            LogInCanvas.SetActive(false);
-            MainMenuCanvas.SetActive(false);
+            Canvas2.SetActive(true);
+            Canvas1.SetActive(false);
+            Canvas0.SetActive(false);
         }
     }
 }
