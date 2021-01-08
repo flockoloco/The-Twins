@@ -1466,6 +1466,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d48c9b5dff0ce2478f09390f4d5c38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  oresText: {fileID: 1496042592}
+  barsText: {fileID: 1829335552}
 --- !u!1 &289089058
 GameObject:
   m_ObjectHideFlags: 0
@@ -2377,7 +2379,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 400441708}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1721761853}
+        m_TargetAssemblyTypeName: WellMenuScript, Assembly-CSharp
+        m_MethodName: AcceptReceivedResources
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &400441708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4786,25 +4800,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1951305972}
-        m_TargetAssemblyTypeName: UIPopUpScript, Assembly-CSharp
-        m_MethodName: CanvasSwitcher
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIPopUpScript, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1721761853}
+        m_TargetAssemblyTypeName: WellMenuScript, Assembly-CSharp
+        m_MethodName: CheckReceivedResources
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8040,7 +8042,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1150166049
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11605,6 +11607,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 228255625}
   wellMenu: {fileID: 2044961130}
+  ChoosingCanvas: {fileID: 1314756111}
+  ReceiveCanvas: {fileID: 279252760}
   selectedCurrency: 
   availableCurrency: 
   oreButton0: {fileID: 1115950035}
@@ -11619,6 +11623,7 @@ MonoBehaviour:
   barsText: {fileID: 74791345}
   submitButton: {fileID: 431233942}
   CanvasChanger: {fileID: 1951305971}
+  popUpPrefab: {fileID: 4680473325387187772, guid: b6f9f96fd851bd6408b6ed5accc3f028, type: 3}
 --- !u!114 &1721761854
 MonoBehaviour:
   m_ObjectHideFlags: 0

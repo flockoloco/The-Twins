@@ -1,11 +1,14 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using TheTwins.Model;
 
 public class WellMenuScript : MonoBehaviour
 {
     public GameObject player;
     public GameObject wellMenu;
+    public GameObject ChoosingCanvas;
+    public GameObject ReceiveCanvas;
     private GameManagerScript gameManager;
 
     [SerializeField]
@@ -33,6 +36,9 @@ public class WellMenuScript : MonoBehaviour
     private PlayerStats playerstats;
 
     public GameObject CanvasChanger;
+   
+
+    public GameObject popUpPrefab;
 
     private void Awake()
     {
@@ -132,5 +138,33 @@ public class WellMenuScript : MonoBehaviour
     public void CheckReceivedResources()
     {
         gameManager.CheckDelivery(0);
+    }
+    public void AcceptReceivedResources()
+    {
+        gameManager.CheckDelivery(1);
+    }
+    public void ReturnReceivedResourcesCheck(DeliveryHolder receivedDelivery)
+    {
+        int oresToSend = 0;
+        int barsToSend = 0;
+
+        if (receivedDelivery.Status == 0)
+        {
+            oresToSend = receivedDelivery.OresAmount;
+            barsToSend = receivedDelivery.BarsAmount;
+        }
+
+        CanvasChanger.GetComponent<UIPopUpScript>().CanvasSwitcher(1);
+        ReceiveCanvas.GetComponent<TextWellReceiveUpdater>().UpdateText(oresToSend, barsToSend);
+
+    }
+    public void ReturnReceivedResourcesAccept()
+    {
+
+        CanvasChanger.GetComponent<UIPopUpScript>().CanvasSwitcher(0);
+
+        GameObject popUp = Instantiate(popUpPrefab, ChoosingCanvas.transform);
+        popUp.transform.position = new Vector3(popUp.transform.position.x, popUp.transform.position.y - 300, popUp.transform.position.z);
+        popUp.GetComponent<DialogScript>().GiveText("Values added!");
     }
 }

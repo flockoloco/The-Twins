@@ -31,7 +31,6 @@ public class GameManagerScript : MonoBehaviour
     public GameObject popUpPrefab;
     public GameObject loginCanvas;
     public GameObject registerCanvas;
-    public GameObject WellDeliveryCanvas;
     public CurrencyHolder playerCurrency;
     public EnchantTierHolder enchantTierHolder;
 
@@ -222,7 +221,7 @@ public class GameManagerScript : MonoBehaviour
     }
     public void SendDelivery(int selectedbars, int selectedores)
     {
-        string jsondata = JsonUtility.ToJson(new DeliveryHolder(selectedores,selectedbars,playerInfo.UserID));
+        string jsondata = JsonUtility.ToJson(new DeliveryHolder(selectedores,selectedbars,playerInfo.UserID,1));
         StartCoroutine(PostRequest(BaseAPI + "senddelivery", jsondata, SendDeliveryReturn));
     }
     public void SendDeliveryReturn(string data, int error)
@@ -231,7 +230,7 @@ public class GameManagerScript : MonoBehaviour
     }
     public void CheckDelivery(int whattodo)
     {
-        string jsondata = JsonUtility.ToJson(new DeliveryHolder(playerInfo.UserID));
+        string jsondata = JsonUtility.ToJson(new DeliveryHolder(playerInfo.UserID,0));
         if (whattodo == 0)
         {
             StartCoroutine(PostRequest(BaseAPI + "checkdelivery", jsondata, CheckDeliveryReturn));
@@ -240,39 +239,28 @@ public class GameManagerScript : MonoBehaviour
         {
             StartCoroutine(PostRequest(BaseAPI + "acceptdelivery", jsondata, AcceptDeliveryReturn));
         }
-        
     }
     public void CheckDeliveryReturn(string data, int error)
     {
         DeliveryHolder receivedData = JsonUtility.FromJson<DeliveryHolder>(data);
-        if (receivedData.Status == 1)
-        {
-            //tell player nothing to get
-        }else if (receivedData.Status == 0)
-        {
-            //make button glow and clicable
-            //in new ui show values (this ui has a button that runs the accept delivery as well as a button that closes the ui)
-            //deliveryUI.bars = receivedData.bars....
-        }
+        GameObject.Find("WellCanvas").GetComponent<WellMenuScript>().ReturnReceivedResourcesCheck(receivedData);
     }
     public void AcceptDeliveryReturn(string data, int error)
     {
         DeliveryHolder receivedData = JsonUtility.FromJson<DeliveryHolder>(data);
+
+        int oresToAdd = 0;
+        int barsToAdd = 0;
+
         if (receivedData.Status == 0)
         {
-            //playerstats = playerstats + deliverystats
-            //saveplayercurrency() POST
-
-
-            GameObject popUp = Instantiate(popUpPrefab, WellDeliveryCanvas.transform);
-            popUp.transform.position = new Vector3(popUp.transform.position.x, popUp.transform.position.y - 300, popUp.transform.position.z);
-            popUp.GetComponent<DialogScript>().GiveText("Values accepted!");
+            oresToAdd += receivedData.OresAmount;
+            barsToAdd += receivedData.BarsAmount;
         }
-        else if (receivedData.Status == 1)
-        {
-            GameObject popUp = Instantiate(popUpPrefab, WellDeliveryCanvas.transform);
-            popUp.transform.position = new Vector3(popUp.transform.position.x, popUp.transform.position.y - 300, popUp.transform.position.z);
-            popUp.GetComponent<DialogScript>().GiveText("You somehow crashed it");
-        }
+
+        GameObject.FindWithTag("Player").GetComponent<PlayerStats>().nuggets += oresToAdd;
+        GameObject.FindWithTag("Player").GetComponent<PlayerStats>().bars += barsToAdd;
+
+        GameObject.Find("WellCanvas").GetComponent<WellMenuScript>().ReturnReceivedResourcesAccept();
     }
 }

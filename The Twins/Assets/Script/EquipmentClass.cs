@@ -147,12 +147,12 @@ namespace TheTwins.Model
         public int BarsAmount;
         public int Type = 0;
         public int Status;
-        public DeliveryHolder(int ores, int bars, int playerid)
+        public DeliveryHolder(int ores, int bars, int playerid, int type)
         {
             this.OresAmount = ores;
             this.BarsAmount = bars;
             this.UserID = playerid;
-            this.Type = 0;
+            this.Type = type;
         }
 
         public DeliveryHolder()
@@ -161,10 +161,10 @@ namespace TheTwins.Model
             this.BarsAmount = 0;
             this.Type = 0;
         }
-        public DeliveryHolder(int id)
+        public DeliveryHolder(int id, int type)
         {
             this.UserID = id;
-            this.Type = 0;
+            this.Type = type;
         }
     }
     [System.Serializable]
