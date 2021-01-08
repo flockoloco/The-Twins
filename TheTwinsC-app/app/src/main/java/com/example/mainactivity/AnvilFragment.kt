@@ -31,19 +31,22 @@ class AnvilFragment : Fragment(R.layout.fragment_anvil), SensorEventListener {
 
     val looper = Handler(Looper.getMainLooper())
 
+    private var anvilInOre: Int = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
+        bagOretxt.text = Resources.Nuggets.toString()
+        anvilOretxt.text = anvilInOre.toString()
+
         looper.post(object : Runnable {
             override fun run() {
                 if (getView() != null) {
-                    if (dragged == 1) {
-                        Progress_bar_dec()
-                    }
+                    update()
+                    CheckForged()
                 }
-                looper.postDelayed(this, 3000)
+                looper.postDelayed(this, 1000)
             }
         })
 
@@ -80,12 +83,13 @@ class AnvilFragment : Fragment(R.layout.fragment_anvil), SensorEventListener {
         }
     }
 
-    private fun Progress_bar_dec() {
+    private fun update() {
         ProgressBar.incrementProgressBy(-1)
+
     }
 
     // Creates a new drag event listener
-    private val dragListen = View.OnDragListener { view, event ->
+    private var dragListen = View.OnDragListener { view, event ->
         when (event.action) {
 
             DragEvent.ACTION_DRAG_STARTED -> {
@@ -108,7 +112,6 @@ class AnvilFragment : Fragment(R.layout.fragment_anvil), SensorEventListener {
             DragEvent.ACTION_DROP -> {
                 val item = event.clipData.getItemAt(0)
                 val dragData = item.text
-                Toast.makeText(view.context, "esse é o numero ", Toast.LENGTH_SHORT).show()
 
                 view.invalidate()
 
@@ -118,12 +121,18 @@ class AnvilFragment : Fragment(R.layout.fragment_anvil), SensorEventListener {
                 val destination = view as LinearLayout
                 destination.addView(v)
                 v.visibility = View.VISIBLE
+                Log.d("teste1" ,"$destination")
 
-                //what ever ta a funcionar, porque dragtop nao dragbot?
-                dragged = if (owner.tag.toString() == "dragTop") {
-                    1
-                } else {
-                    0
+                if(destination.tag.toString() == "dragBot"){
+                    bagOretxt.text = (Resources.Nuggets - 2).toString()
+                    dragged = 1
+                    anvilInOre = 2
+                    anvilOretxt.text = anvilInOre.toString()
+                    Toast.makeText(
+                        view.context,
+                        "You moved 2 ores to the anvil",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
 
                 true
@@ -140,6 +149,11 @@ class AnvilFragment : Fragment(R.layout.fragment_anvil), SensorEventListener {
 
     override fun onResume() {
         super.onResume()
+        bagOretxt.text = Resources.Nuggets.toString()
+        anvilOretxt.text = anvilInOre.toString()
+        dragged = 0
+        anvilInOre = 0
+        ProgressBar.progress = 0
         sensorManager!!.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL)
     }
 
@@ -152,16 +166,28 @@ class AnvilFragment : Fragment(R.layout.fragment_anvil), SensorEventListener {
         if (event!!.values[0] > 2) {
             //supostamente o if de baixo funciona mas como nao consigo fazer no meu telemovel nao sei oq esperar :( POGGS
             //if (event!!.values[1] > 9.82 || event!!.values[1] < 9.80)
-                if(forge > 5){
-                    forge = 5
-                }
             forge += 1
         }
+    }
+
+    private fun CheckForged(){
         if(ProgressBar.progress > 75){
-            if(forge == 5 && dragged == 1){
+            if(forge >= 3 && dragged == 1){
+                dragBot.removeView(AnvilIngot)
+                dragTop.addView(AnvilIngot)
                 Resources.Bars += 1
+                Resources.Nuggets -= 2
+                anvilInOre = 0
+                bagOretxt.text = Resources.Nuggets.toString()
+                anvilOretxt.text = anvilInOre.toString()
+                Toast.makeText(view?.context, "You forged 1 bar", Toast.LENGTH_SHORT).show()
+                view?.invalidate()
+                dragged = 0
                 forge = 0
             }
+        }
+        if(dragged == 0){
+            forge = 0
         }
     }
 
