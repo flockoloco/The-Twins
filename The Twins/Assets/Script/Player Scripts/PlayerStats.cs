@@ -84,7 +84,12 @@ public class PlayerStats : MonoBehaviour
             equippedArmor = EquipmentClass.SwordandArmor[number];
             maxHealth = baseHPAmount + equippedArmor.maxHP + EquipmentClass.Enchant[equippedArmor.enchantTier].bonusHp;
             armor = baseArmorAmount + equippedArmor.armor;
-            if(number == 5)
+            if (number == 4)
+            {
+                Animator animator = gameObject.GetComponent<Animator>();
+                animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Default_hero_anim/Default_hero_animator");
+            }
+            else if (number == 5)
             {
                 Animator animator = gameObject.GetComponent<Animator>();
                 animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Iron_hero_anim/Iron_hero_animator");
@@ -94,7 +99,7 @@ public class PlayerStats : MonoBehaviour
                 Animator animator = gameObject.GetComponent<Animator>();
                 animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Gold_hero_anim/Gold_hero_animator");
             }
-            if (number == 7)
+            else if (number == 7)
             {
                 Animator animator = gameObject.GetComponent<Animator>();
                 animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Diamond_hero_anim/Diamond_hero_animator");
