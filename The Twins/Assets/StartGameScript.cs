@@ -8,10 +8,12 @@ public class StartGameScript : MonoBehaviour
     GameManagerScript managerScript;
     GameObject player;
     PlayerStats playerStats;
+    public GameObject mainMenuCanvasSwitcher;
 
     void Start()
     {
         managerScript = gameObject.GetComponent<GameManagerScript>();
+        mainMenuCanvasSwitcher.GetComponent<UIPopUpScript>().CanvasSwitcher(1);
     }
 
     public void StartGame()

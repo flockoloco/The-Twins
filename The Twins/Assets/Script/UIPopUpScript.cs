@@ -9,7 +9,6 @@ public class UIPopUpScript : MonoBehaviour
     public GameObject Canvas0;
     public void Start()
     {
-        CanvasSwitcher(1);
     }
     public void CanvasSwitcher(int CanvasNumber) //0 MainMenu 1 Login 2 Register for the main menu, 
     {

@@ -493,7 +493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.84313726}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2644,7 +2644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.84313726}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -72595,6 +72595,7 @@ MonoBehaviour:
     gold: 100
   popUpPrefab: {fileID: 4680473325387187772, guid: b6f9f96fd851bd6408b6ed5accc3f028, type: 3}
   loginCanvas: {fileID: 1466633568}
+  mainMenuCanvas: {fileID: 258768729}
   registerCanvas: {fileID: 1498494942}
   playerCurrency:
     Ores: 0
@@ -72622,6 +72623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9592db11a5d5d04a998ade835aefa37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenuCanvasSwitcher: {fileID: 571498535}
 --- !u!1 &1680236735 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 189359499334434990, guid: e81fbe11db3f5504cb71510574b88f2a, type: 3}
@@ -74049,7 +74051,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.84313726}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

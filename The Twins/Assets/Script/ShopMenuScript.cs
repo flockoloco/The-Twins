@@ -20,9 +20,11 @@ public class ShopMenuScript : MonoBehaviour
     public Button sButton8;
     private PlayerStats playerstats;
 
+    public GameObject canvasChanger;
+
     private void Awake()
     {
-        shopMenu.SetActive(false);
+        
         player = GameObject.FindWithTag("Player");
         playerstats = player.GetComponent<PlayerStats>();
 
@@ -37,6 +39,10 @@ public class ShopMenuScript : MonoBehaviour
         sButton6.onClick.AddListener(delegate { BuyEquipment(0, 0); });
         sButton7.onClick.AddListener(delegate { BuyEquipment(1, 0); });
         sButton8.onClick.AddListener(delegate { BuyEquipment(2, 0); });
+
+        //canvasChanger.GetComponent<UIPopUpScript>().CanvasSwitcher(0);
+        shopMenu.SetActive(false);
+
     }
     public void Activate()
     {

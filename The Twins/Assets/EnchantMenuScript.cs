@@ -3,19 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TheTwins.Model;
+using TMPro;
 
 public class EnchantMenuScript : MonoBehaviour
 {
     public GameObject player;
     public GameObject enchantMenu;
 
-    public Button eButton0;
-    public Button eButton1;
-    public Button eButton2;
-    public Button eButton3;
-    public Button eButton4;
-    public Button eButton5;
+    public Button eArmorButton;
+    public Button eSwordButton;
     private PlayerStats playerstats;
+
+    public TextMeshProUGUI oldSwordLvlText;
+    public TextMeshProUGUI newSwordLvlText;
+    public TextMeshProUGUI swordStatsText;
+    public TextMeshProUGUI swordBuyTextBars;
+    public TextMeshProUGUI swordBuyTextOres;
+    
+
+    public TextMeshProUGUI oldArmorLvlText;
+    public TextMeshProUGUI newArmorLvlText;
+    public TextMeshProUGUI armorStatsText;
+    public TextMeshProUGUI armorBuyTextBars;
+    public TextMeshProUGUI armorBuyTextOres;
+
+    public GameObject popUpPrefab;
 
     private void Awake()
     {
@@ -23,42 +35,97 @@ public class EnchantMenuScript : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerstats = player.GetComponent<PlayerStats>();
        
-        eButton0.onClick.AddListener(delegate { BuyEnchant(1, 1); });//armors
-        eButton1.onClick.AddListener(delegate { BuyEnchant(2, 1); });
-        eButton2.onClick.AddListener(delegate { BuyEnchant(3, 1); });
-
-        eButton3.onClick.AddListener(delegate { BuyEnchant(1, 0); });//swords
-        eButton4.onClick.AddListener(delegate { BuyEnchant(2, 0); });
-        eButton5.onClick.AddListener(delegate { BuyEnchant(3, 0); });
-        
+        eArmorButton.onClick.AddListener(delegate { BuyEnchant(playerstats.equippedArmor.id); });//armors
+        eSwordButton.onClick.AddListener(delegate { BuyEnchant(playerstats.equippedSword.id); });//swords
     }
     public void Activate()
     {
         enchantMenu.SetActive(true);
-        if (gameObject.tag == "EnchantCanvas")
+        UpdateTexts();
+    }
+    public void UpdateTexts()
+    {
+        if (playerstats.equippedSword.enchantTier < 3)
         {
-            //dar enable ou disable aos botoes dependendo dos enchants atuais.
+            int enchanttierplus1 = playerstats.equippedSword.enchantTier + 1;
+            oldSwordLvlText.text = "Lvl: " + playerstats.equippedSword.enchantTier;
+            newSwordLvlText.text = "Lvl: " + (enchanttierplus1);
+            swordStatsText.text = "Damage\n +" + EquipmentClass.Enchant[playerstats.equippedSword.enchantTier].BonusDamage + "  ->  +" + EquipmentClass.Enchant[playerstats.equippedSword.enchantTier + 1].BonusDamage;
+            
+            swordBuyTextBars.text = "" + EquipmentClass.Enchant[playerstats.equippedSword.enchantTier +1].price;
+            swordBuyTextOres.text = "" + EquipmentClass.Enchant[playerstats.equippedSword.enchantTier +1].price * 3;
+
         }
+        else
+        {
+            oldSwordLvlText.text = "Lvl: Max";
+            newSwordLvlText.text = "Lvl: N/A";
+            swordStatsText.text = "Damage\n +" + EquipmentClass.Enchant[playerstats.equippedSword.enchantTier].BonusDamage + "  ->  + N/A";
+
+            swordBuyTextBars.text = "N/A";
+            swordBuyTextOres.text = "N/A";
+        }
+
+        if (playerstats.equippedArmor.enchantTier < 3)
+        {
+            int enchanttierplus1 = playerstats.equippedArmor.enchantTier + 1;
+            oldArmorLvlText.text = "Lvl: " + playerstats.equippedArmor.enchantTier;
+            newArmorLvlText.text = "Lvl: " + enchanttierplus1;
+
+            armorStatsText.text = "BonusHP \n +" + EquipmentClass.Enchant[playerstats.equippedArmor.enchantTier].bonusHp + "  ->  +" + EquipmentClass.Enchant[playerstats.equippedArmor.enchantTier + 1].bonusHp;
+
+            armorBuyTextBars.text = "" + EquipmentClass.Enchant[playerstats.equippedArmor.enchantTier +1].price;
+            armorBuyTextOres.text = "" + EquipmentClass.Enchant[playerstats.equippedArmor.enchantTier +1].price * 3;
+        }
+        else
+        {
+            oldArmorLvlText.text = "Lvl: Max";
+            newArmorLvlText.text = "Lvl: N/A";
+            armorStatsText.text = "BonusHP \n +" + EquipmentClass.Enchant[playerstats.equippedArmor.enchantTier].bonusHp + "  ->  + N/A";
+
+            armorBuyTextBars.text = "N/A";
+            armorBuyTextOres.text = "N/A";
+        }
+    }
+    
+    public void BuyEnchant(int itemToUpgradeID)
+    {
+        
+        if (EquipmentClass.SwordandArmor[itemToUpgradeID].enchantTier < 3)
+        {
+            if (UsefulllFs.BuySomething(player, "bars", EquipmentClass.Enchant[EquipmentClass.SwordandArmor[itemToUpgradeID].enchantTier + 1].price) == true)
+            {
+                EquipmentClass.SwordandArmor[itemToUpgradeID].enchantTier += 1;
+
+                if (itemToUpgradeID < 4) //sword
+                {
+                    playerstats.RemoveEquipedItem("Sword");
+                    playerstats.EquipItem("Sword", itemToUpgradeID);
+                }
+                else if (itemToUpgradeID > 3) //armor
+                { 
+                    playerstats.RemoveEquipedItem("Armor");
+                    playerstats.EquipItem("Armor", itemToUpgradeID);
+                }
+                
+                GameObject popUp = Instantiate(popUpPrefab, gameObject.transform);
+                popUp.transform.position = new Vector3(popUp.transform.position.x, popUp.transform.position.y - 300, popUp.transform.position.z);
+                popUp.GetComponent<DialogScript>().GiveText("Enchantment bought!");
+            }
+            else
+            {
+                GameObject popUp = Instantiate(popUpPrefab, gameObject.transform);
+                popUp.transform.position = new Vector3(popUp.transform.position.x, popUp.transform.position.y - 300, popUp.transform.position.z);
+                popUp.GetComponent<DialogScript>().GiveText("Not enough money!");
+            }
+        }
+        else
+        {
+            GameObject popUp = Instantiate(popUpPrefab, gameObject.transform);
+            popUp.transform.position = new Vector3(popUp.transform.position.x, popUp.transform.position.y - 300, popUp.transform.position.z);
+            popUp.GetComponent<DialogScript>().GiveText("Already max level!");
+        }
+        UpdateTexts();
     }
 
-    public void BuyEnchant(int number, int type)
-    {
-        if (UsefulllFs.BuySomething(player, "bars", EquipmentClass.Enchant[number].price) == true)
-        {
-            if (type == 1)
-            {
-                playerstats.equippedArmor.enchantTier = number;
-                int idToEquip = playerstats.equippedArmor.id;
-                playerstats.RemoveEquipedItem("Armor");
-                playerstats.EquipItem("Armor", idToEquip);
-            }
-            else if (type == 0)
-            {
-                playerstats.equippedSword.enchantTier = number;
-                int idToEquip = playerstats.equippedSword.id;
-                playerstats.RemoveEquipedItem("Sword");
-                playerstats.EquipItem("Sword", idToEquip);
-            }
-        }
-    }
 }

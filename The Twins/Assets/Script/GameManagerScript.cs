@@ -30,6 +30,7 @@ public class GameManagerScript : MonoBehaviour
     public PlayerStatsHolder statsToUse;
     public GameObject popUpPrefab;
     public GameObject loginCanvas;
+    public GameObject mainMenuCanvas;
     public GameObject registerCanvas;
     public CurrencyHolder playerCurrency;
     public EnchantTierHolder enchantTierHolder;
@@ -76,18 +77,22 @@ public class GameManagerScript : MonoBehaviour
                 playerInfo.UserID = dataReceived.UserID;
                 logged = true;
                 GameObject.Find("CanvasChanger").GetComponent<UIPopUpScript>().CanvasSwitcher(0);
+
+                GameObject popUp = Instantiate(popUpPrefab, mainMenuCanvas.transform);
+                popUp.transform.position = new Vector3(popUp.transform.position.x, popUp.transform.position.y - 300, popUp.transform.position.z);
+                popUp.GetComponent<DialogScript>().GiveText("Logged in!");
             }
             else if (dataReceived.Status == 1)
             {
                 GameObject popUp = Instantiate(popUpPrefab, loginCanvas.transform);
                 popUp.transform.position = new Vector3(popUp.transform.position.x, popUp.transform.position.y - 300, popUp.transform.position.z);
-                popUp.GetComponent<DialogScript>().GiveText("Wrong password, try again");
+                popUp.GetComponent<DialogScript>().GiveText("Wrong password, try again!");
             }
             else if (dataReceived.Status == 2)
             {
                 GameObject popUp = Instantiate(popUpPrefab, loginCanvas.transform);
                 popUp.transform.position = new Vector3(popUp.transform.position.x, popUp.transform.position.y - 300, popUp.transform.position.z);
-                popUp.GetComponent<DialogScript>().GiveText("No user with that username");
+                popUp.GetComponent<DialogScript>().GiveText("Username not used!");
             }
            
         }
@@ -95,7 +100,7 @@ public class GameManagerScript : MonoBehaviour
         {
             GameObject popUp = Instantiate(popUpPrefab, loginCanvas.transform);
             popUp.transform.position = new Vector3(popUp.transform.position.x, popUp.transform.position.y - 300, popUp.transform.position.z);
-            popUp.GetComponent<DialogScript>().GiveText("Connection error");
+            popUp.GetComponent<DialogScript>().GiveText("Connection error!");
         }
     }
     IEnumerator PostRequest(string uri, string jsondata, ReturningFunction ReturningFunctionName)

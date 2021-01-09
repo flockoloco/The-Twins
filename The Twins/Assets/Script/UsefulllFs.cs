@@ -20,7 +20,7 @@ public class UsefulllFs
     public static void TakeDamage(GameObject target, int dealerDamage)
     {
         if (target.tag == "Player")
-        {
+        { 
             int damagecalculations = dealerDamage - Mathf.FloorToInt(Mathf.Floor((target.GetComponent<PlayerStats>().armor / 2)));
             if (damagecalculations < 1)
             {

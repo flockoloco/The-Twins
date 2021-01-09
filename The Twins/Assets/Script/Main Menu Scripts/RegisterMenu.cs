@@ -14,6 +14,9 @@ public class RegisterMenu : MonoBehaviour
         if (pass1Input.text == pass2Input.text)
         {
             GameObject.FindWithTag("GameManager").GetComponent<GameManagerScript>().RegisterNewPlayer(nameInput.text,pass1Input.text);
+            nameInput.text = "";
+            pass1Input.text = "";
+            pass2Input.text = "";
         }
         else if (pass1Input.text != pass2Input.text)
         {

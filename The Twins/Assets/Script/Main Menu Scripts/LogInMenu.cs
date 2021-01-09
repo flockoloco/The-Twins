@@ -10,5 +10,7 @@ public class LogInMenu : MonoBehaviour
     public void Login()
     {
         GameObject.FindWithTag("GameManager").GetComponent<GameManagerScript>().LoginPlayer(inputName.text, inputPass.text);
+        inputName.text = "";
+        inputPass.text = "";
     }
 }

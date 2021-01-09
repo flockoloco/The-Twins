@@ -256,9 +256,9 @@ namespace TheTwins.Model
                 if (enchant.Count == 0)
                 {
                     enchant.Add(new Enchants(0, 0, 0, 0));
-                    enchant.Add(new Enchants(1, 10, 10, 50));
-                    enchant.Add(new Enchants(2, 20, 20, 75));
-                    enchant.Add(new Enchants(3, 25, 30, 100));
+                    enchant.Add(new Enchants(1, 10, 5, 50));
+                    enchant.Add(new Enchants(2, 20, 10, 70));
+                    enchant.Add(new Enchants(3, 50, 20, 100));
                 }
                 return enchant;
             }
@@ -276,17 +276,17 @@ namespace TheTwins.Model
                     EnchantTierHolder enchantTier = new EnchantTierHolder();
                     enchantTier = GameObject.FindWithTag("GameManager").GetComponent<GameManagerScript>().enchantTierHolder; //busca da database
 
-                    swordandArmor.Add(new SwordAndArmor("Wooden sword", 1, 1.5f, 0, enchantTier.e0tier, 0));
-                    swordandArmor.Add(new SwordAndArmor("Iron sword", 4, 2f, 20, enchantTier.e1tier, 1));
-                    swordandArmor.Add(new SwordAndArmor("Gold sword", 4, 1.5f, 40, enchantTier.e2tier, 2));
-                    swordandArmor.Add(new SwordAndArmor("Diamond sword", 5, 1f, 100, enchantTier.e3tier, 3));
+                    swordandArmor.Add(new SwordAndArmor("Wooden sword", 10, 1.5f, 0, enchantTier.e0tier, 0));
+                    swordandArmor.Add(new SwordAndArmor("Iron sword", 40, 2f, 20, enchantTier.e1tier, 1));
+                    swordandArmor.Add(new SwordAndArmor("Gold sword", 30, 1.5f, 40, enchantTier.e2tier, 2));
+                    swordandArmor.Add(new SwordAndArmor("Diamond sword", 50, 1f, 100, enchantTier.e3tier, 3));
 
                     swordandArmor.Add(new SwordAndArmor("Wooden armor", 0, 0, 0, enchantTier.e4tier, 4));
-                    swordandArmor.Add(new SwordAndArmor("Iron armor", 1, 20, 20, enchantTier.e5tier, 5));
-                    swordandArmor.Add(new SwordAndArmor("Gold armor", 1, 40, 40, enchantTier.e6tier, 6));
-                    swordandArmor.Add(new SwordAndArmor("Diamond armor", 4, 40, 100, enchantTier.e7tier, 7));
+                    swordandArmor.Add(new SwordAndArmor("Iron armor", 0, 20, 20, enchantTier.e5tier, 5));
+                    swordandArmor.Add(new SwordAndArmor("Gold armor", 1, 30, 40, enchantTier.e6tier, 6));
+                    swordandArmor.Add(new SwordAndArmor("Diamond armor", 3, 50, 100, enchantTier.e7tier, 7));
                 }
-                return swordandArmor;
+                return swordandArmor; 
             }
         }
 
