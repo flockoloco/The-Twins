@@ -113,6 +113,7 @@ public class PlayerMovement : MonoBehaviour
 
                     moveDirection = new Vector3(moveX, moveY).normalized;
 
+                    animator.SetFloat("Vertical", moveY);
                     animator.SetFloat("Horizontal", moveX);
                     animator.SetFloat("Speed", moveDirection.sqrMagnitude);
 

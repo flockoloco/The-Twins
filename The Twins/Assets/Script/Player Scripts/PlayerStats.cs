@@ -8,6 +8,7 @@ public class PlayerStats : MonoBehaviour
     public int health;
     public int maxHealth;
     private int baseHPAmount = 100;
+    private Animator animator;
     private int baseArmorAmount = 1;
     public float swordAtkSpeed;
     public float bowAtkSpeed;
@@ -30,10 +31,11 @@ public class PlayerStats : MonoBehaviour
     private void Awake()
     {
         pauseMenu = GameObject.FindWithTag("PauseUI").GetComponent<PauseMenu>();
-
+        animator = GetComponent<Animator>();
     }
     private void Start()
-    {   
+    {
+        
     }
 
     void Update()
@@ -44,6 +46,7 @@ public class PlayerStats : MonoBehaviour
         }
         if (hit == true)
         {
+            animator.SetBool("Hit", true);
             invunerable = true;
             if (vunerableTimer == 0)
             {
@@ -60,6 +63,7 @@ public class PlayerStats : MonoBehaviour
             if (vunerableTimer > 0.5)
             {
                 invunerable = false;
+                animator.SetBool("Hit", false);
                 hit = false;
                 vunerableTimer = 0;
             }
@@ -80,6 +84,21 @@ public class PlayerStats : MonoBehaviour
             equippedArmor = EquipmentClass.SwordandArmor[number];
             maxHealth = baseHPAmount + equippedArmor.maxHP + EquipmentClass.Enchant[equippedArmor.enchantTier].bonusHp;
             armor = baseArmorAmount + equippedArmor.armor;
+            if(number == 5)
+            {
+                Animator animator = gameObject.GetComponent<Animator>();
+                animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Iron_hero_anim/Iron_hero_animator");
+            }
+            else if (number == 6)
+            {
+                Animator animator = gameObject.GetComponent<Animator>();
+                animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Gold_hero_anim/Gold_hero_animator");
+            }
+            if (number == 7)
+            {
+                Animator animator = gameObject.GetComponent<Animator>();
+                animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Diamond_hero_anim/Diamond_hero_animator");
+            }
         }
     }
     public void RemoveEquipedItem(string type)
