@@ -71,7 +71,7 @@ public class EnchantMenuScript : MonoBehaviour
             int enchanttierplus1 = playerstats.equippedArmor.enchantTier + 1;
             oldArmorLvlText.text = "Lvl: " + playerstats.equippedArmor.enchantTier;
             newArmorLvlText.text = "Lvl: " + enchanttierplus1;
-
+            
             armorStatsText.text = "BonusHP \n +" + EquipmentClass.Enchant[playerstats.equippedArmor.enchantTier].bonusHp + "  ->  +" + EquipmentClass.Enchant[playerstats.equippedArmor.enchantTier + 1].bonusHp;
 
             armorBuyTextBars.text = "" + EquipmentClass.Enchant[playerstats.equippedArmor.enchantTier +1].price;

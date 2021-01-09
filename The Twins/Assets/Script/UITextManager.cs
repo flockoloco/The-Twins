@@ -13,8 +13,9 @@ public class UITextManager : MonoBehaviour
     private TextMeshProUGUI normalArrowsText;
     private TextMeshProUGUI oreArrowsText;
     private TextMeshProUGUI potionText;
-    public GameObject ArrowSelectedImage;
 
+    public GameObject normalArrowUI;
+    public GameObject oreArrowUI;
     void Start()
     {
         playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
@@ -44,34 +45,20 @@ public class UITextManager : MonoBehaviour
     {
         if (playerStats.selectedArrow == 1)
         {
-            ArrowSelectedImage.transform.localPosition = new Vector2 (-22f, 72.1f); // would make 0 difference having the positions be a variable, this is used once in the whole code.
+            normalArrowUI.GetComponent<RectTransform>().localPosition = new Vector3(-51.0999985f, 41.2000008f, 0);
+            normalArrowUI.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+
+            oreArrowUI.GetComponent<RectTransform>().localPosition = new Vector3(-22f, 93.5f, 0);
+            oreArrowUI.GetComponent<RectTransform>().localScale = new Vector3(1.5f,1.5f,1);
+        
         }
         else
         {
-            ArrowSelectedImage.transform.localPosition = new Vector2(-22f, -7.3f); // would make 0 difference having the positions be a variable, this is used once in the whole code.
-        }
-    }
-    void UpdateText(string stat) //more efficient :D for the future C:
-    {
-        switch(stat) {
-            case "HP":
-                hpText.text = (playerStats.health.ToString() + "/" + playerStats.maxHealth.ToString());
-                break;
-            case "Gold":
-                goldText.text = playerStats.gold.ToString();
-                break;
-            case "Nuggets":
-                nuggetsText.text = playerStats.nuggets.ToString();
-                break;
-            case "Bars":
-                barsText.text = playerStats.bars.ToString();
-                break;
-            case "NormalArrow":
-                normalArrowsText.text = "0"; //playerStats.normalArrow.ToString();
-                break;
-            case "OreArrow":
-                oreArrowsText.text = "0"; //playerStats.oreArrow.ToString();
-                break;
+            normalArrowUI.GetComponent<RectTransform>().localPosition = new Vector3(-22.7000008f, 53.9000015f, 0);
+            normalArrowUI.GetComponent<RectTransform>().localScale = new Vector3(1.5f, 1.5f, 1);
+
+            oreArrowUI.GetComponent<RectTransform>().localPosition = new Vector3(-52.0999985f, 103.5f, 0);
+            oreArrowUI.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
 
         }
     }
