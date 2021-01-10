@@ -63,5 +63,8 @@ public class StartGameScript : MonoBehaviour
 
         playerStats.shopOpen = false; //making sure camera doesnt get stuck on stairs
         player.GetComponent<PlayerMovement>().Invoke("PlayerTeleport", 0.1f);//teleporting to spawn
+
+        //RUN FOREST RUNNNNNNNNNNNNNNNN!
+        GameObject.Find("GameKickStarter").GetComponent<GameKIckStarter>().Invoke("JustDoIt", 0.1f);
     }
 }

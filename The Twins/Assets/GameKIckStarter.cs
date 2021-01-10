@@ -7,10 +7,9 @@ public class GameKIckStarter : MonoBehaviour
     public GameObject lvl0;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         GameObject.FindWithTag("GameManager").GetComponent<StartGameScript>().StartGame();
-        Invoke("JustDoIt", 0.5f);
     }
 
     // Update is called once per frame
@@ -18,7 +17,7 @@ public class GameKIckStarter : MonoBehaviour
     {
 
     }
-     
+
     void JustDoIt()
     {
         lvl0 = GameObject.Find("Generated Level");
