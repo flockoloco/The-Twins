@@ -19,7 +19,6 @@ public class EnchantMenuScript : MonoBehaviour
     public TextMeshProUGUI swordStatsText;
     public TextMeshProUGUI swordBuyTextBars;
     public TextMeshProUGUI swordBuyTextOres;
-    
 
     public TextMeshProUGUI oldArmorLvlText;
     public TextMeshProUGUI newArmorLvlText;
@@ -27,10 +26,18 @@ public class EnchantMenuScript : MonoBehaviour
     public TextMeshProUGUI armorBuyTextBars;
     public TextMeshProUGUI armorBuyTextOres;
 
+    [SerializeField]
+    public List<Sprite> equipSprites;
+    public Image swordImageRenderer1;
+    public Image swordImageRenderer2;
+    public Image armorImageRenderer1;
+    public Image armorImageRenderer2;
+
     public GameObject popUpPrefab;
 
     private void Awake()
     {
+
         enchantMenu.SetActive(false);
         player = GameObject.FindWithTag("Player");
         playerstats = player.GetComponent<PlayerStats>();
@@ -86,6 +93,12 @@ public class EnchantMenuScript : MonoBehaviour
             armorBuyTextBars.text = "N/A";
             armorBuyTextOres.text = "N/A";
         }
+
+        swordImageRenderer1.sprite = equipSprites[playerstats.equippedSword.id];
+        swordImageRenderer2.sprite = equipSprites[playerstats.equippedSword.id];
+        armorImageRenderer1.sprite = equipSprites[playerstats.equippedArmor.id];
+        armorImageRenderer2.sprite = equipSprites[playerstats.equippedArmor.id];
+
     }
     
     public void BuyEnchant(int itemToUpgradeID)

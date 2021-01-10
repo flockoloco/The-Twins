@@ -12,6 +12,8 @@ public class cameramovement : MonoBehaviour
     private Vector2 mouseDir;
     private float mouseDist;
 
+    private Vector3 wayPointInteract;
+
     void Start()
     {
         cam = gameObject.GetComponent<Camera>();
@@ -30,5 +32,13 @@ public class cameramovement : MonoBehaviour
 
             gameObject.transform.position = new Vector3(finalvector.x + playerPos.x, finalvector.y + playerPos.y, -10);
         }
+        else
+        {
+            gameObject.transform.position = Vector3.LerpUnclamped(gameObject.transform.position, wayPointInteract, 2 * Time.deltaTime);
+        }
+    }
+    public void SetUpWayPoint(Vector3 desiredPosition)
+    {
+        wayPointInteract = desiredPosition;
     }
 }

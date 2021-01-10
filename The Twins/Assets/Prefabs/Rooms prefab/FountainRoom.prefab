@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5489381261863078934}
   - component: {fileID: 3190257748653031272}
   m_Layer: 0
-  m_Name: FountainROom
+  m_Name: FountainRoom
   m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4931,11 +4931,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7758780687407827851, guid: bf0085243bc54ab49a51dc30ccfb3f10, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.6197815
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7758780687407827851, guid: bf0085243bc54ab49a51dc30ccfb3f10, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.6239166
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7758780687407827857, guid: bf0085243bc54ab49a51dc30ccfb3f10, type: 3}
       propertyPath: m_Name
