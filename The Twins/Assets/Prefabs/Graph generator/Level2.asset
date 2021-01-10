@@ -173,22 +173,22 @@ MonoBehaviour:
   - {fileID: -5033114781019185099}
   - {fileID: -7075961148550240023}
   CorridorIndividualRoomTemplates:
-  - {fileID: 5416963717307959135, guid: 4f12579b27b215442a07eea17a4d04af, type: 3}
-  - {fileID: 4374557940119921305, guid: 6fa103e3da930ff4a99be5939a4fbffb, type: 3}
-  - {fileID: 5754402271382057863, guid: 476609720ea6c674da52026c129c1bff, type: 3}
-  - {fileID: 6336366798538649379, guid: 9c0055f9902671e43b0d0a7210fde21b, type: 3}
+  - {fileID: 5416963717307959135, guid: 0bedb8c3024e8a84ba88787be24f12c8, type: 3}
+  - {fileID: 4374557940119921305, guid: ca13119ecde9ec042bca845c04b82e7d, type: 3}
+  - {fileID: 5754402271382057863, guid: f2ae42cd7e08be8409a2e498baee219f, type: 3}
+  - {fileID: 6336366798538649379, guid: 3939518b8a9f69748a59b69271fd7f91, type: 3}
   CorridorRoomTemplateSets: []
   DefaultIndividualRoomTemplates:
-  - {fileID: 8600251875759139634, guid: e03a5710bf2ca1c4cb53087932dbb720, type: 3}
-  - {fileID: 4753516775658709897, guid: aec2215c3973c5142baa32777d7aeade, type: 3}
-  - {fileID: 1038488521474614701, guid: 588af920b76e9874fb0bf8d157f221e8, type: 3}
-  - {fileID: 6874096849543655325, guid: 70e6daa7ae37fc142bb088953966f5d9, type: 3}
+  - {fileID: 8600251875759139634, guid: dfeeba535d9f29540a3933bb88ac6afa, type: 3}
+  - {fileID: 1038488521474614701, guid: 6e90427f6a4e2af4d9ca56209ccdcdf1, type: 3}
   - {fileID: 5175616250331333879, guid: d7f84a62024ba9b41b22a38a47ebc455, type: 3}
   - {fileID: 3886127930010019442, guid: e59a9251581edf44fafc2be868fb5e2c, type: 3}
   - {fileID: 8165010944940123651, guid: 1edebeff3aed62b4daa69dd659b66e6d, type: 3}
   - {fileID: 3679136486845873781, guid: ba18ee9d43dd6884d930fe00d90e8e5c, type: 3}
   - {fileID: 4331593908503496109, guid: 64cb1c7424c2dd34587478eeab9c9b3d, type: 3}
   - {fileID: 9121758027560506767, guid: ea97fae76eff9494f858c76f7e063140, type: 3}
+  - {fileID: 6874096849543655325, guid: 202ccb912071151488429ee82a1e7f25, type: 3}
+  - {fileID: 4753516775658709897, guid: 5d92070a292246144a054ceebd19d2dd, type: 3}
   DefaultRoomTemplateSets: []
   Rooms:
   - {fileID: 833199301147958147}
@@ -202,8 +202,8 @@ MonoBehaviour:
   - {fileID: 3567411032259743295}
   - {fileID: 8799567816327066804}
   EditorData:
-    PanOffset: {x: 856.9664, y: 736.1274}
-    Zoom: 0.34317285
+    PanOffset: {x: 375.2448, y: 142.1402}
+    Zoom: 0.6109117
   RoomType: ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph.Room
   ConnectionType: ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph.Connection
 --- !u!114 &269737026257367962
@@ -341,8 +341,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position: {x: 217.74086, y: 515.435}
+  Position: {x: 219.37776, y: 515.435}
   Name: Fountain
   IndividualRoomTemplates:
-  - {fileID: 1119717454252754409, guid: 669193ca1e1d4974693ac5cdff8f13f3, type: 3}
+  - {fileID: 1119717454252754409, guid: 713628d3c7c365d4f9ea4bf49b5eb631, type: 3}
   RoomTemplateSets: []
