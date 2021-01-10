@@ -9,7 +9,11 @@ public class RoomDoorScript : MonoBehaviour
 
     private void Update()
     {
-        enemiesInside.RemoveAll(i => i == null);
+    }
+
+    public void RemoveEnemy(GameObject enemyIndex)
+    {
+        enemiesInside.Remove(enemyIndex);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -22,7 +26,6 @@ public class RoomDoorScript : MonoBehaviour
         if (collision.tag == "Enemy")
         {
             enemiesInside.Add(collision.gameObject);
-
         }
     }
 

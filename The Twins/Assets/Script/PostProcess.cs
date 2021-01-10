@@ -1,26 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTasks;
+using ProceduralLevelGenerator.Unity.Generators.Common;
 
-public class GameKIckStarter : MonoBehaviour
+[CreateAssetMenu(menuName = "Edgar/Examples/Docs/My custom post process", fileName = "MyCustomPostProcess")]
+public class PostProcess : DungeonGeneratorPostProcessBase
 {
     public GameObject lvl0;
-
-    // Start is called before the first frame update
-    void Start()
+    
+    public override void Run(GeneratedLevel level, LevelDescription levelDescription)
     {
-        GameObject.FindWithTag("GameManager").GetComponent<StartGameScript>().StartGame();
-        Invoke("JustDoIt", 0.5f);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-     
-    void JustDoIt()
-    {
+        /*
         lvl0 = GameObject.Find("Generated Level");
         foreach (Transform child in lvl0.transform)
         {
@@ -32,7 +23,7 @@ public class GameKIckStarter : MonoBehaviour
                     {
                         foreach (Transform childDoor in childRoom.transform)
                         {
-                            if (childDoor.gameObject.tag == "Door")
+                            if(childDoor.gameObject.tag == "Door")
                             {
                                 childDoor.GetComponent<DoorScript>().CheckContacts();
                             }
@@ -40,7 +31,6 @@ public class GameKIckStarter : MonoBehaviour
                     }
                 }
             }
-        }
-
+        }*/
     }
 }

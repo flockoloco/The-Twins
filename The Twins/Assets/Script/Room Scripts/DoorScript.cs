@@ -11,7 +11,11 @@ public class DoorScript : MonoBehaviour
 
     private Animator dooranimator;
 
+    public List<ContactPoint2D> bigList;
+
     public List<GameObject> rooms = new List<GameObject>();
+
+    public bool onlyNow = false;
 
     private void Start()
     {
@@ -19,17 +23,20 @@ public class DoorScript : MonoBehaviour
     }
     void Update()
     {
-        if (RoomDoor.enemiesInside.Count == 0)
+        if (onlyNow)
         {
-            dooranimator.SetBool("open", true);
-            Invoke("OpeningDoor", 1f);
-        }
-        if (RoomDoor.enemiesInside.Count >= 1 && RoomDoor.playerInside == true) 
-        {
-            dooranimator.SetBool("open", false);
-            Invoke("ClosingDoor", 1f);
-        }
-    }
+            if (RoomDoor.enemiesInside.Count == 0)
+            {
+                dooranimator.SetBool("open", true);
+                Invoke("OpeningDoor", 1f);
+            }
+            if (RoomDoor.enemiesInside.Count >= 1 && RoomDoor.playerInside == true)
+            {
+                dooranimator.SetBool("open", false);
+                Invoke("ClosingDoor", 1f);
+            }
+        } 
+    } 
 
     public void OpeningDoor()
     {
@@ -40,12 +47,25 @@ public class DoorScript : MonoBehaviour
     {
         gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
     }
-
-    public void OnTriggerEnter2D(Collider2D collision)
+    public void CheckContacts()
     {
-        if (collision.tag == "Room")
+        Debug.Log(rooms.Count);
+        foreach (GameObject roomConnect in rooms)
         {
-            RoomDoor = collision.gameObject.GetComponent<RoomDoorScript>();
+            Debug.Log("Nao queria por isso ca mas coloquei");
+            RoomDoor = roomConnect.GetComponent<RoomDoorScript>();
+            onlyNow = true;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Room")
+        {
+            Debug.Log("AAAAAAAAAABC SAMFADSNF");
+            rooms.Add(collision.gameObject);
+        }
+        
+    }
+    
 }

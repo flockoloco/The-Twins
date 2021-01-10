@@ -39,7 +39,6 @@ public class StartGameScript : MonoBehaviour
         playerStats.gold = managerScript.statsToUse.gold; //loading saved gold
 
         playerStats.currentLevel = managerScript.statsToUse.currentLvl;
-        Debug.Log(playerStats.currentLevel);
 
         GenLevel(playerStats.currentLevel);
     }
@@ -63,6 +62,6 @@ public class StartGameScript : MonoBehaviour
         }//add 1 more in the future
 
         playerStats.shopOpen = false; //making sure camera doesnt get stuck on stairs
-        player.GetComponent<PlayerMovement>().Invoke("PlayerTeleport", 1f);//teleporting to spawn
+        player.GetComponent<PlayerMovement>().Invoke("PlayerTeleport", 0.1f);//teleporting to spawn
     }
 }

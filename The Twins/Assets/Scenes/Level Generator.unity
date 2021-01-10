@@ -8919,7 +8919,8 @@ MonoBehaviour:
     CenterGrid: 1
     DisableRoomTemplatesRenderers: 1
     DisableRoomTemplatesColliders: 1
-  CustomPostProcessTasks: []
+  CustomPostProcessTasks:
+  - {fileID: 11400000, guid: 0a61613469902ad4798294d454845a3b, type: 2}
   OtherConfig:
     UseRandomSeed: 1
     RandomGeneratorSeed: 0
@@ -24164,22 +24165,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 184705383726117084, guid: e47326b11a82c5a4087a16cc9676a02c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -97
-      objectReference: {fileID: 0}
-    - target: {fileID: 3030940426621218664, guid: e47326b11a82c5a4087a16cc9676a02c, type: 3}
-      propertyPath: thisValue
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 3974753108313818560, guid: e47326b11a82c5a4087a16cc9676a02c, type: 3}
-      propertyPath: m_Name
-      value: GoldDropPrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 7496535962423498864, guid: e47326b11a82c5a4087a16cc9676a02c, type: 3}
-      propertyPath: m_BodyType
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1328323143882589575, guid: 649803b81974d984ea5db45485a2a419, type: 3}
       propertyPath: m_LocalPosition.y
       value: 728.23254
@@ -24219,6 +24204,22 @@ PrefabInstance:
     - target: {fileID: 1328323143882589575, guid: 649803b81974d984ea5db45485a2a419, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 184705383726117084, guid: e47326b11a82c5a4087a16cc9676a02c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -97
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030940426621218664, guid: e47326b11a82c5a4087a16cc9676a02c, type: 3}
+      propertyPath: thisValue
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3974753108313818560, guid: e47326b11a82c5a4087a16cc9676a02c, type: 3}
+      propertyPath: m_Name
+      value: GoldDropPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496535962423498864, guid: e47326b11a82c5a4087a16cc9676a02c, type: 3}
+      propertyPath: m_BodyType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 649803b81974d984ea5db45485a2a419, type: 3}

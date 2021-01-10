@@ -50,11 +50,6 @@ public class PlayerMovement : MonoBehaviour
         gameObject.GetComponent<PlayerStats>().EquipItem("Sword", gameObject.GetComponent<PlayerStats>().equippedSword.id);
     }
 
-    private void Start()
-    {
-        Invoke("PlayerTeleport", 0.01f);
-    }
-
     public void PlayerTeleport()
     {
         spawnRoom = GameObject.FindWithTag("Respawn");
@@ -102,29 +97,29 @@ public class PlayerMovement : MonoBehaviour
         switch (state)
         {
             case State.walking:
-                
-                    dodgeTimer -= Time.deltaTime;
 
-                    float moveX = 0f;
-                    float moveY = 0f;
+                dodgeTimer -= Time.deltaTime;
 
-                    moveX = Input.GetAxisRaw("Horizontal");
-                    moveY = Input.GetAxisRaw("Vertical");
+                float moveX = 0f;
+                float moveY = 0f;
 
-                    moveDirection = new Vector3(moveX, moveY).normalized;
+                moveX = Input.GetAxisRaw("Horizontal");
+                moveY = Input.GetAxisRaw("Vertical");
 
-                    animator.SetFloat("Vertical", moveY);
-                    animator.SetFloat("Horizontal", moveX);
-                    animator.SetFloat("Speed", moveDirection.sqrMagnitude);
+                moveDirection = new Vector3(moveX, moveY).normalized;
 
-                    if (Input.GetKeyDown(KeyCode.Space) && (dodgeTimer <= 0) && (moveX != 0 || moveY != 0))
-                    {
-                        dodgeDirection = moveDirection;
-                        dodgeSpeed = 40f;
-                        state = State.dodging;
-                        dodgeTimer = 2f;
-                    }
-               
+                animator.SetFloat("Vertical", moveY);
+                animator.SetFloat("Horizontal", moveX);
+                animator.SetFloat("Speed", moveDirection.sqrMagnitude);
+
+                if (Input.GetKeyDown(KeyCode.Space) && (dodgeTimer <= 0) && (moveX != 0 || moveY != 0))
+                {
+                    dodgeDirection = moveDirection;
+                    dodgeSpeed = 40f;
+                    state = State.dodging;
+                    dodgeTimer = 2f;
+                }
+
                 break;
 
             //this dodging state

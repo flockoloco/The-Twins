@@ -17,11 +17,14 @@ public class StatsHolder : MonoBehaviour
     private bool triggered;
     public bool ableToAttack = true;
 
+    public GameObject roomIn;
+
     private void Update()
     {
         if (health < 0)
         {
             SpawnDrops(lootTier, gameObject.transform);
+            roomIn.GetComponent<RoomDoorScript>().RemoveEnemy(gameObject);
             Destroy(gameObject);
         }
         if (hit == true)
@@ -34,6 +37,14 @@ public class StatsHolder : MonoBehaviour
                 invunerable = false;
                 vunerableTimer = 0;
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Room")
+        {
+            roomIn = collision.gameObject;
         }
     }
 
