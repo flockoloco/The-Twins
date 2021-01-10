@@ -7,9 +7,6 @@ public class RoomDoorScript : MonoBehaviour
     public List<GameObject> enemiesInside = new List<GameObject>();
     public bool playerInside;
 
-    private void Update()
-    {
-    }
 
     public void RemoveEnemy(GameObject enemyIndex)
     {
@@ -94,7 +91,6 @@ public class RoomDoorScript : MonoBehaviour
                 }
                 else if (enemy.name.Contains("Boss"))
                 {
-
                 }
             }
         }

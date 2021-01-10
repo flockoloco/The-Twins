@@ -46,8 +46,8 @@ GameObject:
   - component: {fileID: 6344033612820534607}
   - component: {fileID: 927791397736893851}
   m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
+  m_Name: Boss2
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,7 +134,6 @@ MonoBehaviour:
   armor: 3
   damage: 4
   moveSpeed: 1
-  atkspeed: 0
   bulletSpd: 2
   invunerable: 0
   hit: 0
@@ -143,6 +142,7 @@ MonoBehaviour:
   goldPrefab: {fileID: 3974753108313818560, guid: e47326b11a82c5a4087a16cc9676a02c, type: 3}
   nuggetsPrefab: {fileID: 3364890441730547243, guid: f494d076d2ab08246aca53f9f357dceb, type: 3}
   ableToAttack: 1
+  roomIn: {fileID: 0}
 --- !u!50 &-5045490850131364046
 Rigidbody2D:
   serializedVersion: 4

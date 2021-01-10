@@ -15481,11 +15481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5416250994709235447, guid: e8dbaefad9993d843b8db1fc71badb76, type: 3}
       propertyPath: m_Name
-      value: GameObject
-      objectReference: {fileID: 0}
-    - target: {fileID: 5416250994709235447, guid: e8dbaefad9993d843b8db1fc71badb76, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
+      value: Boss2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8dbaefad9993d843b8db1fc71badb76, type: 3}

@@ -20,7 +20,13 @@ public class RoomInteraction : MonoBehaviour
         if (collision.tag == "Player" && ableToInteract == true)
         {
             GameObject.FindWithTag("Player").GetComponent<PlayerStats>().shopOpen = true;
-            GameObject.FindWithTag("MainCamera").transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y,-10);
+
+
+
+
+            GameObject.FindWithTag("MainCamera").GetComponent<cameramovement>().SetUpWayPoint(new Vector3(gameObject.transform.position.x,gameObject.transform.position.y + 3,-10));
+
+
             ableToInteract = false;
             spriteRenderer.sprite = glowSprite;
             if (gameObject.tag == "Shop")

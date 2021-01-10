@@ -26,6 +26,7 @@ public class StairsUIScript : MonoBehaviour
     public void Continue()
     {
         gameManager.GetComponent<StartGameScript>().GenLevel(player.GetComponent<PlayerStats>().currentLevel + 1);
+        stairsMenu.SetActive(false);
     }
     public void SaveAndExit()
     {
@@ -42,9 +43,5 @@ public class StairsUIScript : MonoBehaviour
             popUp.GetComponent<DialogScript>().GiveText("Can't save offline");
 
         }
-        
-
-
     }
-
 }
