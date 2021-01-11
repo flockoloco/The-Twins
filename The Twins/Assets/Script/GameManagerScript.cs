@@ -182,7 +182,7 @@ public class GameManagerScript : MonoBehaviour
         int pOreArrowAmount = EquipmentClass.Quiver[1].amount;
         int pNormalArrowAmount = EquipmentClass.Quiver[0].amount;
         int pPotsAmount = Player.GetComponent<PlayerStats>().healthPotions;
-        int currentLvl = Player.GetComponent<PlayerStats>().currentLevel + 1;
+        int currentLvl = Player.GetComponent<PlayerStats>().currentLevel;
         int currentgold = Player.GetComponent<PlayerStats>().gold;
 
 

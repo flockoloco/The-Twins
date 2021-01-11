@@ -4237,10 +4237,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5755359842104783311, guid: fe9c3b18987caab488f2fe48ad635c46, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7335738582774868384, guid: 96ed06bd16b55f3498e27d9b40fc113a, type: 3}
     - target: {fileID: 5755359842104783314, guid: fe9c3b18987caab488f2fe48ad635c46, type: 3}
       propertyPath: m_Offset.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5755359842104783315, guid: fe9c3b18987caab488f2fe48ad635c46, type: 3}
+      propertyPath: normalSprite
+      value: 
+      objectReference: {fileID: 7335738582774868384, guid: 96ed06bd16b55f3498e27d9b40fc113a, type: 3}
+    - target: {fileID: 5755359842104783315, guid: fe9c3b18987caab488f2fe48ad635c46, type: 3}
+      propertyPath: glowSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b2d2c063b5dff774c82ad5b861656d8c, type: 3}
     - target: {fileID: 5755359842104783316, guid: fe9c3b18987caab488f2fe48ad635c46, type: 3}
       propertyPath: m_Name
       value: StairsPrefab

@@ -32,9 +32,13 @@ public class StairsUIScript : MonoBehaviour
     {
         if (gameManager.GetComponent<GameManagerScript>().logged == true)
         {
+            player.GetComponent<PlayerStats>().currentLevel += 1;
+
             gameManager.GetComponent<GameManagerScript>().SaveEnchants();
             gameManager.GetComponent<GameManagerScript>().SaveRunInfo();
             gameManager.GetComponent<GameManagerScript>().SaveBarsAndOres();
+
+            Application.Quit();
         }
         else if (gameManager.GetComponent<GameManagerScript>().logged == false)
         {

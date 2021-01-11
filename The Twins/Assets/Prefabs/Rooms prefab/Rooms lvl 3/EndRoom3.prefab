@@ -4126,7 +4126,7 @@ PrefabInstance:
     - target: {fileID: 1773798927182706871, guid: 37da7d96a0ba36b42aa0e58bf2f1bbe6, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1283641251883392230, guid: 8f9a9836e5f5cb743a2768875d2b4f91, type: 3}
+      objectReference: {fileID: 543518670667904333, guid: 8f9a9836e5f5cb743a2768875d2b4f91, type: 3}
     - target: {fileID: 3153269737358614060, guid: 37da7d96a0ba36b42aa0e58bf2f1bbe6, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 6
@@ -4135,6 +4135,14 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 7054214082629268230, guid: 37da7d96a0ba36b42aa0e58bf2f1bbe6, type: 3}
+      propertyPath: normalSprite
+      value: 
+      objectReference: {fileID: 543518670667904333, guid: 8f9a9836e5f5cb743a2768875d2b4f91, type: 3}
+    - target: {fileID: 7054214082629268230, guid: 37da7d96a0ba36b42aa0e58bf2f1bbe6, type: 3}
+      propertyPath: glowSprite
+      value: 
+      objectReference: {fileID: 543518670667904333, guid: 8f9a9836e5f5cb743a2768875d2b4f91, type: 3}
     - target: {fileID: 7098320330975069560, guid: 37da7d96a0ba36b42aa0e58bf2f1bbe6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.1
@@ -4237,6 +4245,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5755359842104783311, guid: fe9c3b18987caab488f2fe48ad635c46, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1363335135792688228, guid: 96ed06bd16b55f3498e27d9b40fc113a, type: 3}
+    - target: {fileID: 5755359842104783315, guid: fe9c3b18987caab488f2fe48ad635c46, type: 3}
+      propertyPath: glowSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f586f2f421d9f9e48a67c38cfb59a339, type: 3}
     - target: {fileID: 5755359842104783316, guid: fe9c3b18987caab488f2fe48ad635c46, type: 3}
       propertyPath: m_Name
       value: StairsPrefab
