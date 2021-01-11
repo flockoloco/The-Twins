@@ -15,6 +15,7 @@ public class DoorScript : MonoBehaviour
 
     public List<GameObject> rooms = new List<GameObject>();
 
+    public int verticalOrHozirontal; //0 vertical 1 horizontal
     public bool onlyNow = false;
 
     private void Start()
@@ -27,12 +28,12 @@ public class DoorScript : MonoBehaviour
         {
             if (RoomDoor.enemiesInside.Count == 0)
             {
-                dooranimator.SetBool("open", true);
+                gameObject.GetComponent<SpriteRenderer>().sprite = doorOpened;
                 Invoke("OpeningDoor", 1f);
             }
             if (RoomDoor.enemiesInside.Count >= 1 && RoomDoor.playerInside == true)
             {
-                dooranimator.SetBool("open", false);
+                gameObject.GetComponent<SpriteRenderer>().sprite = doorClosed;
                 Invoke("ClosingDoor", 1f);
             }
         } 

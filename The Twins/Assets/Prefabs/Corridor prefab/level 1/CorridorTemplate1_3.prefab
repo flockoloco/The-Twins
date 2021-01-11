@@ -2104,10 +2104,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorL (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 1854811047967094604, guid: 772c74ed3aa3b5549840c3b646295434, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4791393682556341350, guid: 772c74ed3aa3b5549840c3b646295434, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.5
@@ -2174,10 +2170,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4167909214495687301, guid: 772c74ed3aa3b5549840c3b646295434, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 6186258325330786439, guid: 96ed06bd16b55f3498e27d9b40fc113a, type: 3}
     - target: {fileID: 4791393682556341350, guid: 772c74ed3aa3b5549840c3b646295434, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.5
@@ -2224,7 +2216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7361626064651951398, guid: 772c74ed3aa3b5549840c3b646295434, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 772c74ed3aa3b5549840c3b646295434, type: 3}

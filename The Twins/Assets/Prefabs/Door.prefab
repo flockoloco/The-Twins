@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3408415766202237397}
   - component: {fileID: 5972494056036558470}
   - component: {fileID: 4621718273596342384}
-  - component: {fileID: 7157458065496665527}
   m_Layer: 0
   m_Name: Door
   m_TagString: Door
@@ -75,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 6186258325330786439, guid: 96ed06bd16b55f3498e27d9b40fc113a, type: 3}
+  m_Sprite: {fileID: 4442423708776206395, guid: 96ed06bd16b55f3498e27d9b40fc113a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -124,7 +123,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1, y: 1.75}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -146,26 +145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoomDoor: {fileID: 0}
-  doorOpened: {fileID: 2204730517744618319, guid: aa405769e6ac5af4eb1878d0c42ef826, type: 3}
-  doorClosed: {fileID: 7905517104358623913, guid: aa405769e6ac5af4eb1878d0c42ef826, type: 3}
+  doorOpened: {fileID: 4442423708776206395, guid: 96ed06bd16b55f3498e27d9b40fc113a, type: 3}
+  doorClosed: {fileID: -5723949949818355595, guid: 1dad8f6654d9b3043a5689a108389a0c, type: 3}
   rooms: []
+  verticalOrHozirontal: 0
   onlyNow: 0
---- !u!95 &7157458065496665527
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3275995477302742252}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1913b248f02bdb74c93e65a2d1744d94, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

@@ -15274,7 +15274,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ef13b3bdbb24544bacd2e1c51daea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesInside: []
+  enemiesInside:
+  - {fileID: 7746618795874257524}
   playerInside: 0
 --- !u!61 &8271227905353598623
 BoxCollider2D:
@@ -15509,6 +15510,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8dbaefad9993d843b8db1fc71badb76, type: 3}
+--- !u!1 &7746618795874257524 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5416250994709235447, guid: e8dbaefad9993d843b8db1fc71badb76, type: 3}
+  m_PrefabInstance: {fileID: 2354229583168081027}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3983192590130424427 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1723968105539053288, guid: e8dbaefad9993d843b8db1fc71badb76, type: 3}

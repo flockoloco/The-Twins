@@ -2769,7 +2769,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ef13b3bdbb24544bacd2e1c51daea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesInside: []
+  enemiesInside:
+  - {fileID: 579771003840329628}
+  - {fileID: 9187398813042250654}
+  - {fileID: 8264881753133170360}
   playerInside: 0
 --- !u!1 &3679136487032151601
 GameObject:
@@ -4597,6 +4600,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c886118620677a44cb13ea45cf9de815, type: 3}
+--- !u!1 &8264881753133170360 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6073432497351779870, guid: c886118620677a44cb13ea45cf9de815, type: 3}
+  m_PrefabInstance: {fileID: 2809094462434400422}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8264881753133170363 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6073432497351779869, guid: c886118620677a44cb13ea45cf9de815, type: 3}
@@ -4664,6 +4672,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6073432497351779869, guid: c886118620677a44cb13ea45cf9de815, type: 3}
   m_PrefabInstance: {fileID: 3155079568370300288}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &9187398813042250654 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6073432497351779870, guid: c886118620677a44cb13ea45cf9de815, type: 3}
+  m_PrefabInstance: {fileID: 3155079568370300288}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6648131131563446658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4721,6 +4734,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c886118620677a44cb13ea45cf9de815, type: 3}
+--- !u!1 &579771003840329628 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6073432497351779870, guid: c886118620677a44cb13ea45cf9de815, type: 3}
+  m_PrefabInstance: {fileID: 6648131131563446658}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &579771003840329631 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6073432497351779869, guid: c886118620677a44cb13ea45cf9de815, type: 3}

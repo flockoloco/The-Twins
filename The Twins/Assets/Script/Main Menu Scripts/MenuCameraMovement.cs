@@ -3,25 +3,22 @@
 public class MenuCameraMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public Vector3[] wayPointArray;
+    [SerializeField]
+    public Transform[] wayPointArray;
     public int currentWayPoint = 0;
+
 
     private void Start()
     {
         Screen.SetResolution(1920, 1080, true);
 
-        wayPointArray = new Vector3[4];
-        wayPointArray[0] = new Vector3(-15, 0, -10);
-        wayPointArray[1] = new Vector3(-30, 0, -10);
-        wayPointArray[2] = new Vector3(-30, -15, -10);
-        wayPointArray[3] = new Vector3(-15, -15, -10);
     }
 
     private void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, wayPointArray[currentWayPoint], 0.25f * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, wayPointArray[currentWayPoint].position, 0.25f * Time.deltaTime);
 
-        if (Vector2.Distance(transform.position, wayPointArray[currentWayPoint]) < 0.5f)
+        if (Vector2.Distance(transform.position, wayPointArray[currentWayPoint].position) < 0.5f)
         {
             currentWayPoint = NewWayPoint(currentWayPoint, wayPointArray.Length);
         }

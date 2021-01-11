@@ -20,10 +20,6 @@ public class RoomDoorScript : MonoBehaviour
             playerInside = true;
             EnemyTriggerCheck(playerInside, enemiesInside);
         }
-        if (collision.tag == "Enemy")
-        {
-            enemiesInside.Add(collision.gameObject);
-        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)

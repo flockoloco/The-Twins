@@ -3880,7 +3880,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ef13b3bdbb24544bacd2e1c51daea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesInside: []
+  enemiesInside:
+  - {fileID: 8799870622094618311}
+  - {fileID: 2750844173810804724}
   playerInside: 0
 --- !u!1 &9131355793589615410
 GameObject:
@@ -4124,6 +4126,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fef87cf51723a14292e123e0eef9bd1, type: 3}
+--- !u!1 &8799870622094618311 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 294041783013881470, guid: 4fef87cf51723a14292e123e0eef9bd1, type: 3}
+  m_PrefabInstance: {fileID: 9082580417331222713}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8799870622094618315 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 294041783013881458, guid: 4fef87cf51723a14292e123e0eef9bd1, type: 3}
