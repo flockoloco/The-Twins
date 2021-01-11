@@ -22,6 +22,8 @@ public class ShopMenuScript : MonoBehaviour
 
     public GameObject canvasChanger;
 
+    public GameObject popUpPrefab;
+
     private void Awake()
     {
         
@@ -50,7 +52,9 @@ public class ShopMenuScript : MonoBehaviour
     }
     public void StartNoMoneyPopUp()
     {
-        Debug.Log("no money");
+        GameObject popUp = Instantiate(popUpPrefab, gameObject.transform);
+        popUp.transform.position = new Vector3(popUp.transform.position.x, popUp.transform.position.y - 300, popUp.transform.position.z);
+        popUp.GetComponent<DialogScript>().GiveText("Not enough money!");
     }
     public void BuyEquipment(int number,int type)
     {
@@ -60,6 +64,10 @@ public class ShopMenuScript : MonoBehaviour
             {
                 playerstats.RemoveEquipedItem(EquipmentClass.SwordandArmor[number].type);
                 playerstats.EquipItem(EquipmentClass.SwordandArmor[number].type, number);
+
+                GameObject popUp = Instantiate(popUpPrefab, gameObject.transform);
+                popUp.transform.position = new Vector3(popUp.transform.position.x, popUp.transform.position.y - 300, popUp.transform.position.z);
+                popUp.GetComponent<DialogScript>().GiveText("Equipment bought!");
             }
             else
             {
@@ -73,6 +81,10 @@ public class ShopMenuScript : MonoBehaviour
                 if (UsefulllFs.BuySomething(player, "gold", 20) == true)
                 {
                     playerstats.healthPotions += 1;
+
+                    GameObject popUp = Instantiate(popUpPrefab, gameObject.transform);
+                    popUp.transform.position = new Vector3(popUp.transform.position.x, popUp.transform.position.y - 300, popUp.transform.position.z);
+                    popUp.GetComponent<DialogScript>().GiveText("Potion bought!");
                 }
                 else
                 {
@@ -84,6 +96,10 @@ public class ShopMenuScript : MonoBehaviour
                 if (UsefulllFs.BuySomething(player, "gold", 5) == true)
                 {
                     EquipmentClass.Quiver[0].amount += 1;
+                  
+                    GameObject popUp = Instantiate(popUpPrefab, gameObject.transform);
+                    popUp.transform.position = new Vector3(popUp.transform.position.x, popUp.transform.position.y - 300, popUp.transform.position.z);
+                    popUp.GetComponent<DialogScript>().GiveText("Normal arrow bought!");
                 }
                 else
                 {
@@ -95,6 +111,10 @@ public class ShopMenuScript : MonoBehaviour
                 if (UsefulllFs.BuySomething(player, "bars", 1) == true)
                 {
                     EquipmentClass.Quiver[1].amount += 1;
+
+                    GameObject popUp = Instantiate(popUpPrefab, gameObject.transform);
+                    popUp.transform.position = new Vector3(popUp.transform.position.x, popUp.transform.position.y - 300, popUp.transform.position.z);
+                    popUp.GetComponent<DialogScript>().GiveText("Ore arrow bought!");
                 }
                 else
                 {
