@@ -5412,7 +5412,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 224
-        y: 208
+        y: 207
         width: 16
         height: 16
       alignment: 0
@@ -5727,9 +5727,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 224
-        y: 192
+        y: 187
         width: 16
-        height: 16
+        height: 20
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5747,10 +5747,10 @@ TextureImporter:
       name: tiles_dungeon_v1.1_178
       rect:
         serializedVersion: 2
-        x: 240
-        y: 192
+        x: 246
+        y: 186
         width: 16
-        height: 32
+        height: 28
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5768,10 +5768,10 @@ TextureImporter:
       name: tiles_dungeon_v1.1_179
       rect:
         serializedVersion: 2
-        x: 256
-        y: 192
+        x: 262
+        y: 186
         width: 16
-        height: 32
+        height: 28
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
