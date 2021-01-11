@@ -75,3 +75,12 @@ TagManager:
   - name: UI front
     uniqueID: 234086693
     locked: 0
+  - name: Enemies
+    uniqueID: 120252013
+    locked: 0
+  - name: Projectiles
+    uniqueID: 1817755649
+    locked: 0
+  - name: New Layer
+    uniqueID: 2372385073
+    locked: 0

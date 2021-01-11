@@ -8,6 +8,8 @@ public class MenuCameraMovement : MonoBehaviour
 
     private void Start()
     {
+        Screen.SetResolution(1920, 1080, true);
+
         wayPointArray = new Vector3[4];
         wayPointArray[0] = new Vector3(-15, 0, -10);
         wayPointArray[1] = new Vector3(-30, 0, -10);

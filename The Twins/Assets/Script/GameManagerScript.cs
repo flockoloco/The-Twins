@@ -77,6 +77,7 @@ public class GameManagerScript : MonoBehaviour
                 playerInfo.UserID = dataReceived.UserID;
                 logged = true;
                 GameObject.Find("CanvasChanger").GetComponent<UIPopUpScript>().CanvasSwitcher(0);
+                mainMenuCanvas.GetComponent<MainMenuScript>().StartUp();
 
                 GameObject popUp = Instantiate(popUpPrefab, mainMenuCanvas.transform);
                 popUp.transform.position = new Vector3(popUp.transform.position.x, popUp.transform.position.y - 300, popUp.transform.position.z);

@@ -64,7 +64,7 @@ namespace TheTwins.Model
             this.oreArrowAmount = 0;
             this.normalArrowAmount = 0;
             this.potsAmount = 2;
-            this.gold = 100;
+            this.gold = 50;
         }
 
         public PlayerStatsHolder(int swordID, int armorID, int currentLvl, int hp, int oreArrows, int normalArrows, int pots, int gold,int id)
@@ -256,9 +256,9 @@ namespace TheTwins.Model
                 if (enchant.Count == 0)
                 {
                     enchant.Add(new Enchants(0, 0, 0, 0));
-                    enchant.Add(new Enchants(1, 10, 5, 50));
-                    enchant.Add(new Enchants(2, 20, 10, 70));
-                    enchant.Add(new Enchants(3, 50, 20, 100));
+                    enchant.Add(new Enchants(1, 10, 2, 50));
+                    enchant.Add(new Enchants(2, 20, 5, 70));
+                    enchant.Add(new Enchants(3, 50, 10, 100));
                 }
                 return enchant;
             }
@@ -276,15 +276,15 @@ namespace TheTwins.Model
                     EnchantTierHolder enchantTier = new EnchantTierHolder();
                     enchantTier = GameObject.FindWithTag("GameManager").GetComponent<GameManagerScript>().enchantTierHolder; //busca da database
 
-                    swordandArmor.Add(new SwordAndArmor("Wooden sword", 10, 1.5f, 0, enchantTier.e0tier, 0));
-                    swordandArmor.Add(new SwordAndArmor("Iron sword", 40, 2f, 20, enchantTier.e1tier, 1));
-                    swordandArmor.Add(new SwordAndArmor("Gold sword", 30, 1.5f, 40, enchantTier.e2tier, 2));
-                    swordandArmor.Add(new SwordAndArmor("Diamond sword", 50, 1f, 100, enchantTier.e3tier, 3));
+                    swordandArmor.Add(new SwordAndArmor("Wooden sword", 15, 1.5f, 0, enchantTier.e0tier, 0));
+                    swordandArmor.Add(new SwordAndArmor("Iron sword", 25, 2f, 20, enchantTier.e1tier, 1));
+                    swordandArmor.Add(new SwordAndArmor("Gold sword", 20, 1f, 40, enchantTier.e2tier, 2));
+                    swordandArmor.Add(new SwordAndArmor("Diamond sword", 35, 1f, 100, enchantTier.e3tier, 3));
 
                     swordandArmor.Add(new SwordAndArmor("Wooden armor", 0, 0, 0, enchantTier.e4tier, 4));
                     swordandArmor.Add(new SwordAndArmor("Iron armor", 0, 20, 20, enchantTier.e5tier, 5));
-                    swordandArmor.Add(new SwordAndArmor("Gold armor", 1, 30, 40, enchantTier.e6tier, 6));
-                    swordandArmor.Add(new SwordAndArmor("Diamond armor", 3, 50, 100, enchantTier.e7tier, 7));
+                    swordandArmor.Add(new SwordAndArmor("Gold armor", 2, 30, 40, enchantTier.e6tier, 6));
+                    swordandArmor.Add(new SwordAndArmor("Diamond armor", 4, 50, 100, enchantTier.e7tier, 7));
                 }
                 return swordandArmor; 
             }
@@ -301,8 +301,8 @@ namespace TheTwins.Model
                     PlayerStatsHolder statstoUse = GameObject.FindWithTag("GameManager").GetComponent<GameManagerScript>().statsToUse; // getting arrow amounts
                     quiver = new List<Arrows>
                     {
-                        new Arrows("NormalArrow", "Normal", 4, 5, statstoUse.normalArrowAmount), 
-                        new Arrows("OreArrow", "Ore", 8, 1, statstoUse.oreArrowAmount) 
+                        new Arrows("NormalArrow", "Normal", 10, 5, statstoUse.normalArrowAmount), 
+                        new Arrows("OreArrow", "Ore", 20, 1, statstoUse.oreArrowAmount) 
                     };
                 }
                 return quiver;
