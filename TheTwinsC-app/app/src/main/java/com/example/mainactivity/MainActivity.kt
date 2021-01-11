@@ -176,17 +176,18 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
     }
 
-    fun checkData(){
-        compositeDisposable.add(myAPI.checkDelivery(User.UserID, 1)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { message ->
-                val result = Klaxon().parse<MailBoxClass>(message)
-                MailBox.Ores = result!!.OresAmount
-                MailBox.Bars = result.BarsAmount
-                var dialog = EmailDialog()
-                dialog.show(supportFragmentManager, "customDialog")
-            }
+    fun checkData() {
+        compositeDisposable.add(
+            myAPI.checkDelivery(User.UserID, 1)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe { message ->
+                        val result = Klaxon().parse<MailBoxClass>(message)
+                        MailBox.Ores = result!!.OresAmount
+                        MailBox.Bars = result.BarsAmount
+                        var dialog = EmailDialog()
+                        dialog.show(supportFragmentManager, "customDialog")
+                }
         )
     }
 }
