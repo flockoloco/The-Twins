@@ -225,7 +225,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: de33acacbc6ad8a4abd3feb2fbbe3efa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -275,6 +275,7 @@ MonoBehaviour:
   playerbow: {fileID: 6687403023602151114}
   swordScript: {fileID: 6687403023126719157}
   bowScript: {fileID: 6687403023602151119}
+  UICanvas: {fileID: 0}
   RoomSpawn: {fileID: 0}
   state: 0
 --- !u!114 &6687403023518315389
@@ -292,7 +293,6 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   swordAtkSpeed: 0
-  swordRange: 0
   bowAtkSpeed: 0
   armor: 2
   swordDamage: 6
@@ -303,6 +303,29 @@ MonoBehaviour:
   bars: 0
   nuggets: 0
   healthPotions: 0
+  playerSword: {fileID: 0}
+  equippedSword:
+    name: 
+    type: 
+    damage: 0
+    atkSpeed: 0
+    armor: 0
+    maxHP: 0
+    price: 0
+    enchantTier: 0
+    id: 0
+  equippedArmor:
+    name: 
+    type: 
+    damage: 0
+    atkSpeed: 0
+    armor: 0
+    maxHP: 0
+    price: 0
+    enchantTier: 0
+    id: 0
+  shopOpen: 0
+  currentLevel: 0
 --- !u!70 &5510964965212659342
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

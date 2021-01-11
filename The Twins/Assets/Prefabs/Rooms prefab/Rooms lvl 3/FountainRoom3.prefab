@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DistanceFromCorners: 4
-  DoorLength: 2
+  DoorLength: 1
   DoorsList:
   - From: {x: -5, y: -6, z: 0}
     To: {x: -4, y: -6, z: 0}

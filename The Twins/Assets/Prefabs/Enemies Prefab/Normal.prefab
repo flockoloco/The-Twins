@@ -77,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f42cb1a3ec93f0f4fb3efb3aca698c41, type: 3}
-  m_Color: {r: 0.34848487, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: -8657648756768421543, guid: acd3eecc4bf0ae74eac5cea7199d6972, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -104,17 +104,15 @@ MonoBehaviour:
   armor: 1
   damage: 10
   moveSpeed: 2
-  atkspeed: 1
   bulletSpd: 6
   invunerable: 0
   hit: 0
   lootTier: 1
-  aaaaaa: 0
   agroRange: 0
   goldPrefab: {fileID: 3974753108313818560, guid: e47326b11a82c5a4087a16cc9676a02c, type: 3}
   nuggetsPrefab: {fileID: 3364890441730547243, guid: f494d076d2ab08246aca53f9f357dceb, type: 3}
-  bulletPrefab: {fileID: 0}
   ableToAttack: 1
+  roomIn: {fileID: 0}
 --- !u!50 &6073432497351779842
 Rigidbody2D:
   serializedVersion: 4
@@ -198,6 +196,8 @@ MonoBehaviour:
       shotTimer: 0
       bulletPrefab: {fileID: 218398660483767826, guid: ed699d81779612744a7e0b900e363b12, type: 3}
       fired: 0
+      accuracy: 0
+      randomSpeed: 0
   UpdateCheck: 0
   baseTimer: 0
   currentAtkIndex: 0

@@ -12877,7 +12877,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 13
-      m_TileSpriteIndex: 13
+      m_TileSpriteIndex: 17
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -14942,16 +14942,16 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 184
     m_Data: {fileID: 8735259083416551180, guid: 96ed06bd16b55f3498e27d9b40fc113a, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 3934577811060685178, guid: 96ed06bd16b55f3498e27d9b40fc113a, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 26
     m_Data: {fileID: 3306408358939762429, guid: 96ed06bd16b55f3498e27d9b40fc113a, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 1979082390249046020, guid: 96ed06bd16b55f3498e27d9b40fc113a, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 3934577811060685178, guid: 96ed06bd16b55f3498e27d9b40fc113a, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 3060774399834055599, guid: 96ed06bd16b55f3498e27d9b40fc113a, type: 3}
   - m_RefCount: 1
@@ -15199,44 +15199,68 @@ MonoBehaviour:
   DistanceFromCorners: 4
   DoorLength: 2
   DoorsList:
+  - From: {x: 4, y: 0, z: 0}
+    To: {x: 4, y: 0, z: 0}
+  - From: {x: 4, y: -1, z: 0}
+    To: {x: 4, y: -1, z: 0}
+  - From: {x: 4, y: -2, z: 0}
+    To: {x: 4, y: -2, z: 0}
   - From: {x: 4, y: -3, z: 0}
-    To: {x: 4, y: -4, z: 0}
+    To: {x: 4, y: -3, z: 0}
   - From: {x: 4, y: -4, z: 0}
-    To: {x: 4, y: -5, z: 0}
+    To: {x: 4, y: -4, z: 0}
   - From: {x: 4, y: -5, z: 0}
-    To: {x: 4, y: -6, z: 0}
+    To: {x: 4, y: -5, z: 0}
   - From: {x: 4, y: -6, z: 0}
-    To: {x: 4, y: -7, z: 0}
+    To: {x: 4, y: -6, z: 0}
   - From: {x: 4, y: -7, z: 0}
-    To: {x: 4, y: -8, z: 0}
+    To: {x: 4, y: -7, z: 0}
   - From: {x: 4, y: -8, z: 0}
+    To: {x: 4, y: -8, z: 0}
+  - From: {x: 4, y: -9, z: 0}
     To: {x: 4, y: -9, z: 0}
-  - From: {x: -4, y: 8, z: 0}
-    To: {x: -3, y: 8, z: 0}
-  - From: {x: -3, y: 8, z: 0}
-    To: {x: -2, y: 8, z: 0}
-  - From: {x: -2, y: 8, z: 0}
-    To: {x: -1, y: 8, z: 0}
-  - From: {x: -1, y: 8, z: 0}
-    To: {x: 0, y: 8, z: 0}
-  - From: {x: -4, y: 8, z: 0}
-    To: {x: -5, y: 8, z: 0}
-  - From: {x: -5, y: 8, z: 0}
-    To: {x: -6, y: 8, z: 0}
+  - From: {x: -10, y: 0, z: 0}
+    To: {x: -10, y: 0, z: 0}
+  - From: {x: -10, y: -1, z: 0}
+    To: {x: -10, y: -1, z: 0}
+  - From: {x: -10, y: -2, z: 0}
+    To: {x: -10, y: -2, z: 0}
   - From: {x: -10, y: -3, z: 0}
-    To: {x: -10, y: -4, z: 0}
+    To: {x: -10, y: -3, z: 0}
   - From: {x: -10, y: -4, z: 0}
-    To: {x: -10, y: -5, z: 0}
+    To: {x: -10, y: -4, z: 0}
   - From: {x: -10, y: -5, z: 0}
-    To: {x: -10, y: -6, z: 0}
+    To: {x: -10, y: -5, z: 0}
   - From: {x: -10, y: -6, z: 0}
-    To: {x: -10, y: -7, z: 0}
+    To: {x: -10, y: -6, z: 0}
   - From: {x: -10, y: -7, z: 0}
     To: {x: -10, y: -7, z: 0}
-  - From: {x: -10, y: -7, z: 0}
-    To: {x: -10, y: -8, z: 0}
   - From: {x: -10, y: -8, z: 0}
+    To: {x: -10, y: -8, z: 0}
+  - From: {x: -10, y: -9, z: 0}
     To: {x: -10, y: -9, z: 0}
+  - From: {x: 4, y: -10, z: 0}
+    To: {x: 4, y: -10, z: 0}
+  - From: {x: -10, y: -10, z: 0}
+    To: {x: -10, y: -10, z: 0}
+  - From: {x: -7, y: 8, z: 0}
+    To: {x: -7, y: 8, z: 0}
+  - From: {x: -6, y: 8, z: 0}
+    To: {x: -6, y: 8, z: 0}
+  - From: {x: -5, y: 8, z: 0}
+    To: {x: -5, y: 8, z: 0}
+  - From: {x: -4, y: 8, z: 0}
+    To: {x: -4, y: 8, z: 0}
+  - From: {x: -3, y: 8, z: 0}
+    To: {x: -3, y: 8, z: 0}
+  - From: {x: -2, y: 8, z: 0}
+    To: {x: -2, y: 8, z: 0}
+  - From: {x: -1, y: 8, z: 0}
+    To: {x: -1, y: 8, z: 0}
+  - From: {x: 0, y: 8, z: 0}
+    To: {x: 0, y: 8, z: 0}
+  - From: {x: 1, y: 8, z: 0}
+    To: {x: 1, y: 8, z: 0}
   SelectedMode: 1
 --- !u!114 &970687128610741460
 MonoBehaviour:

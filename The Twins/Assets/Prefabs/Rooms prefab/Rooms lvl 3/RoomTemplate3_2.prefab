@@ -144,58 +144,72 @@ MonoBehaviour:
   DistanceFromCorners: 4
   DoorLength: 3
   DoorsList:
-  - From: {x: -10, y: -1, z: 0}
-    To: {x: -10, y: -2, z: 0}
-  - From: {x: -10, y: -2, z: 0}
-    To: {x: -10, y: -3, z: 0}
-  - From: {x: -10, y: -3, z: 0}
-    To: {x: -10, y: -4, z: 0}
-  - From: {x: -5, y: -7, z: 0}
-    To: {x: -4, y: -7, z: 0}
-  - From: {x: -4, y: -7, z: 0}
-    To: {x: -3, y: -7, z: 0}
-  - From: {x: -3, y: -7, z: 0}
-    To: {x: -2, y: -7, z: 0}
-  - From: {x: -2, y: -7, z: 0}
-    To: {x: -1, y: -7, z: 0}
-  - From: {x: -1, y: -7, z: 0}
-    To: {x: 0, y: -7, z: 0}
-  - From: {x: 0, y: -7, z: 0}
-    To: {x: 1, y: -7, z: 0}
-  - From: {x: 1, y: -7, z: 0}
-    To: {x: 2, y: -7, z: 0}
-  - From: {x: 2, y: -7, z: 0}
-    To: {x: 3, y: -7, z: 0}
-  - From: {x: 3, y: -7, z: 0}
-    To: {x: 4, y: -7, z: 0}
-  - From: {x: 4, y: -7, z: 0}
-    To: {x: 5, y: -7, z: 0}
-  - From: {x: 12, y: -4, z: 0}
-    To: {x: 12, y: -3, z: 0}
-  - From: {x: 12, y: -3, z: 0}
-    To: {x: 12, y: -2, z: 0}
-  - From: {x: 12, y: -2, z: 0}
+  - From: {x: 12, y: 0, z: 0}
+    To: {x: 12, y: 0, z: 0}
+  - From: {x: 12, y: -1, z: 0}
     To: {x: 12, y: -1, z: 0}
-  - From: {x: -7, y: 3, z: 0}
-    To: {x: -6, y: 3, z: 0}
+  - From: {x: 12, y: -2, z: 0}
+    To: {x: 12, y: -2, z: 0}
+  - From: {x: 12, y: -3, z: 0}
+    To: {x: 12, y: -3, z: 0}
+  - From: {x: 12, y: -4, z: 0}
+    To: {x: 12, y: -4, z: 0}
+  - From: {x: 8, y: -7, z: 0}
+    To: {x: 8, y: -7, z: 0}
+  - From: {x: 7, y: -7, z: 0}
+    To: {x: 7, y: -7, z: 0}
+  - From: {x: 6, y: -7, z: 0}
+    To: {x: 6, y: -7, z: 0}
+  - From: {x: 5, y: -7, z: 0}
+    To: {x: 5, y: -7, z: 0}
+  - From: {x: 4, y: -7, z: 0}
+    To: {x: 4, y: -7, z: 0}
+  - From: {x: 3, y: -7, z: 0}
+    To: {x: 3, y: -7, z: 0}
+  - From: {x: 2, y: -7, z: 0}
+    To: {x: 2, y: -7, z: 0}
+  - From: {x: 1, y: -7, z: 0}
+    To: {x: 1, y: -7, z: 0}
+  - From: {x: 0, y: -7, z: 0}
+    To: {x: 0, y: -7, z: 0}
+  - From: {x: -1, y: -7, z: 0}
+    To: {x: -1, y: -7, z: 0}
+  - From: {x: -2, y: -7, z: 0}
+    To: {x: -2, y: -7, z: 0}
+  - From: {x: -3, y: -7, z: 0}
+    To: {x: -3, y: -7, z: 0}
+  - From: {x: -4, y: -7, z: 0}
+    To: {x: -4, y: -7, z: 0}
+  - From: {x: -5, y: -7, z: 0}
+    To: {x: -5, y: -7, z: 0}
+  - From: {x: -6, y: -7, z: 0}
+    To: {x: -6, y: -7, z: 0}
+  - From: {x: -10, y: -4, z: 0}
+    To: {x: -10, y: -4, z: 0}
+  - From: {x: -10, y: -3, z: 0}
+    To: {x: -10, y: -3, z: 0}
+  - From: {x: -10, y: -2, z: 0}
+    To: {x: -10, y: -2, z: 0}
+  - From: {x: -10, y: -1, z: 0}
+    To: {x: -10, y: -1, z: 0}
+  - From: {x: -10, y: 0, z: 0}
+    To: {x: -10, y: 0, z: 0}
   - From: {x: -6, y: 3, z: 0}
-    To: {x: -5, y: 3, z: 0}
+    To: {x: -6, y: 3, z: 0}
   - From: {x: -5, y: 3, z: 0}
-    To: {x: -4, y: 3, z: 0}
+    To: {x: -5, y: 3, z: 0}
   - From: {x: -4, y: 3, z: 0}
-    To: {x: -3, y: 3, z: 0}
+    To: {x: -4, y: 3, z: 0}
   - From: {x: -3, y: 3, z: 0}
-    To: {x: -2, y: 3, z: 0}
-  - From: {x: 4, y: 10, z: 0}
-    To: {x: 5, y: 10, z: 0}
+    To: {x: -3, y: 3, z: 0}
   - From: {x: 5, y: 10, z: 0}
-    To: {x: 6, y: 10, z: 0}
-  - From: {x: 6, y: 10, z: 0}
-    To: {x: 7, y: 10, z: 0}
+    To: {x: 5, y: 10, z: 0}
   - From: {x: 7, y: 10, z: 0}
-    To: {x: 8, y: 10, z: 0}
+    To: {x: 7, y: 10, z: 0}
+  - From: {x: 6, y: 10, z: 0}
+    To: {x: 6, y: 10, z: 0}
   - From: {x: 8, y: 10, z: 0}
-    To: {x: 9, y: 10, z: 0}
+    To: {x: 8, y: 10, z: 0}
   SelectedMode: 1
 --- !u!61 &7563279597048609841
 BoxCollider2D:

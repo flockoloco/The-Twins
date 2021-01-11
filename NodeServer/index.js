@@ -93,7 +93,7 @@ app.post('/user', (req, res, next) => {
 			res.end(JSON.stringify(result[0]));
 		}
 		else {
-			dbcon.query('INSERT INTO `capp`(`UserID_FK_CApp`, `Gold`, `Nuggets`, `Bars`, `MineSpd`, `MineHarvest`, `PermUpgrade`, `FirstTime`) VALUES (?,?,?,?,?,?,?,?)', [UserID, 100, 10, 0, 0, 0, 1, 0], function (err, result, fields) {
+			dbcon.query('INSERT INTO `capp`(`UserID_FK_CApp`, `Gold`, `Nuggets`, `Bars`, `MineSpd`, `MineHarvest`, `PermUpgrade`, `FirstTime`) VALUES (?,?,?,?,?,?,?,?)', [UserID, 20, 10, 0, 0, 0, 1, 0], function (err, result, fields) {
 				dbcon.on('error', function (err) {
 					console.log('[MYSQL ERROR]', err);
 					res.json('Companion app error: ', err);
