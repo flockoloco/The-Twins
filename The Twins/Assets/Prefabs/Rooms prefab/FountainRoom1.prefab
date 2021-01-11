@@ -14,11 +14,7 @@ GameObject:
   - component: {fileID: 5489381261863078934}
   - component: {fileID: 3190257748653031272}
   m_Layer: 0
-<<<<<<< HEAD:The Twins/Assets/Prefabs/Rooms prefab/FountainRoom1.prefab
   m_Name: FountainRoom1
-=======
-  m_Name: FountainRoom
->>>>>>> 8eb3aa6c76bfb8af2652f30c5de11e7a13947295:The Twins/Assets/Prefabs/Rooms prefab/FountainRoom.prefab
   m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4174,19 +4170,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7758780687407827851, guid: bf0085243bc54ab49a51dc30ccfb3f10, type: 3}
       propertyPath: m_LocalScale.x
-<<<<<<< HEAD:The Twins/Assets/Prefabs/Rooms prefab/FountainRoom1.prefab
       value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7758780687407827851, guid: bf0085243bc54ab49a51dc30ccfb3f10, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.7
-=======
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7758780687407827851, guid: bf0085243bc54ab49a51dc30ccfb3f10, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
->>>>>>> 8eb3aa6c76bfb8af2652f30c5de11e7a13947295:The Twins/Assets/Prefabs/Rooms prefab/FountainRoom.prefab
       objectReference: {fileID: 0}
     - target: {fileID: 7758780687407827857, guid: bf0085243bc54ab49a51dc30ccfb3f10, type: 3}
       propertyPath: m_Name
