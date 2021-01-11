@@ -8,10 +8,10 @@ public class MainMenuScript : MonoBehaviour
 {
     public GameObject gameManager;
     private PlayerStatsHolder playerStats;
-    private bool disableContinue = true;
+    public bool disableContinue = true;
     public GameObject popUpPrefab;
     public GameObject LevelLoader;
-    public void Start()
+    public void StartUp()
     {
         Debug.Log(gameManager.GetComponent<GameManagerScript>().logged + "inside start of mainmenuscript");
         if (gameManager.GetComponent<GameManagerScript>().logged == true)

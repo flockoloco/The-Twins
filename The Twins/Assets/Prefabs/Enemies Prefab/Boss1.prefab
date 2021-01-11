@@ -100,9 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e74d3015bcc8a4cb117cf20656e1e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
-  armor: 3
-  damage: 10
+  health: 200
+  armor: 0
+  damage: 13
   moveSpeed: 1
   bulletSpd: 4
   invunerable: 0
