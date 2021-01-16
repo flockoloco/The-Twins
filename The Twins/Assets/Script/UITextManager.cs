@@ -16,6 +16,8 @@ public class UITextManager : MonoBehaviour
 
     public GameObject normalArrowUI;
     public GameObject oreArrowUI;
+
+    public GameObject BossUI;
     void Start()
     {
         playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
@@ -29,7 +31,7 @@ public class UITextManager : MonoBehaviour
         potionText = GameObject.FindWithTag("PotionText").GetComponent<TextMeshProUGUI>();
     }
     void Update()
-    {//eventualmente remover o UPDATE() todo, e apenas dar call a funcao quando e necessario.
+    {
         hpText.text = (playerStats.health.ToString() + "/" + playerStats.maxHealth.ToString());
         goldText.text = playerStats.gold.ToString();
         nuggetsText.text = playerStats.nuggets.ToString();
@@ -61,5 +63,14 @@ public class UITextManager : MonoBehaviour
             oreArrowUI.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
 
         }
+    }
+    public void EnteredABossRoom(GameObject BossObject)
+    {
+        BossUI.SetActive(true);
+        BossUI.GetComponent<BossUIHPBar>().AssignBoss(BossObject);
+    }
+    public void BossDied()
+    {
+        BossUI.SetActive(false);
     }
 }

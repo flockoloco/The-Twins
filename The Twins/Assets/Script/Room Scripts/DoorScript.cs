@@ -17,6 +17,7 @@ public class DoorScript : MonoBehaviour
 
     public int verticalOrHozirontal; //0 vertical 1 horizontal
     public bool onlyNow = false;
+    public int OpenOrClosed = 0; //0 open 1 closed
 
     private void Start()
     {
@@ -28,25 +29,24 @@ public class DoorScript : MonoBehaviour
         {
             if (RoomDoor.enemiesInside.Count == 0)
             {
-                gameObject.GetComponent<SpriteRenderer>().sprite = doorOpened;
                 Invoke("OpeningDoor", 1f);
-            }
-            if (RoomDoor.enemiesInside.Count >= 1 && RoomDoor.playerInside == true)
-            {
-                gameObject.GetComponent<SpriteRenderer>().sprite = doorClosed;
-                Invoke("ClosingDoor", 1f);
             }
         } 
     } 
 
     public void OpeningDoor()
     {
+        gameObject.GetComponent<SpriteRenderer>().sprite = doorOpened;
         gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+        OpenOrClosed = 0;
     }
 
     public void ClosingDoor()
     {
+        gameObject.GetComponent<SpriteRenderer>().sprite = doorClosed;
+        RoomDoor.EnemyTriggerCheck();
         gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+        OpenOrClosed = 1;
     }
     public void CheckContacts()
     {

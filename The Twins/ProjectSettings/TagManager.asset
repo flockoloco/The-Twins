@@ -32,6 +32,8 @@ TagManager:
   - Well
   - GameManager
   - StairsCanvas
+  - BossHPUI
+  - UICanvas
   layers:
   - Default
   - TransparentFX

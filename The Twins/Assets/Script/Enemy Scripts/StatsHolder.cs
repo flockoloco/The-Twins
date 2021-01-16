@@ -16,6 +16,8 @@ public class StatsHolder : MonoBehaviour
     public GameObject nuggetsPrefab;
     private bool triggered;
     public bool ableToAttack = true;
+    public int enemyID;
+
 
     public GameObject roomIn;
 
@@ -23,6 +25,10 @@ public class StatsHolder : MonoBehaviour
     {
         if (health < 0)
         {
+            if (enemyID > 5)
+            {
+                GameObject.FindWithTag("UICanvas").GetComponent<UITextManager>().BossDied();
+            }
             SpawnDrops(lootTier, gameObject.transform);
             roomIn.GetComponent<RoomDoorScript>().RemoveEnemy(gameObject);
             Destroy(gameObject);

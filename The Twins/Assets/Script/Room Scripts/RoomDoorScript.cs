@@ -18,7 +18,6 @@ public class RoomDoorScript : MonoBehaviour
         if (collision.tag == "Player")
         {
             playerInside = true;
-            EnemyTriggerCheck(playerInside, enemiesInside);
         }
     }
 
@@ -29,12 +28,12 @@ public class RoomDoorScript : MonoBehaviour
             playerInside = false;
         }
     }
-    void EnemyTriggerCheck(bool playercheck, List<GameObject> enemies)
+    public void EnemyTriggerCheck()
     {
-        if (playercheck == true && enemies.Count > 0)
+        if (playerInside == true && enemiesInside.Count > 0)
         {
-            Debug.Log(enemies.Count);
-            foreach (GameObject enemy in enemies)
+            Debug.Log(enemiesInside.Count);
+            foreach (GameObject enemy in enemiesInside)
             {
                 if (enemy.name.Contains("Normal")|| enemy.name.Contains("MachineGun"))
                 {
@@ -62,31 +61,7 @@ public class RoomDoorScript : MonoBehaviour
                     {
                         enemy.GetComponent<Boss2Ai>().triggered = true;
                     }
-                }
-            }
-        }
-        else
-        {
-            foreach (GameObject enemy in enemies)
-            {
-                if (enemy.name.Contains("Normal"))
-                {
-                    enemy.GetComponent<NormalAI>().triggered = false;
-                }
-                else if (enemy.name.Contains("Tank"))
-                {
-                    enemy.GetComponent<TankAI>().triggered = false;
-                }
-                else if (enemy.name.Contains("Shotty"))
-                {
-                    enemy.GetComponent<ShottyAI>().triggered = false;
-                }
-                else if (enemy.name.Contains("Runner"))
-                {
-                    enemy.GetComponent<RunnerAI>().triggered = false;
-                }
-                else if (enemy.name.Contains("Boss"))
-                {
+                    GameObject.FindWithTag("UICanvas").GetComponent<UITextManager>().EnteredABossRoom(enemy);
                 }
             }
         }

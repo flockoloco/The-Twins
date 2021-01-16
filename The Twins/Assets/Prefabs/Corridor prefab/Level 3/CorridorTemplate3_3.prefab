@@ -2092,6 +2092,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorL (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3185295495838132773, guid: 772c74ed3aa3b5549840c3b646295434, type: 3}
+      propertyPath: m_Offset.x
+      value: 1.48
+      objectReference: {fileID: 0}
     - target: {fileID: 4791393682556341350, guid: 772c74ed3aa3b5549840c3b646295434, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.5
@@ -2157,6 +2161,10 @@ PrefabInstance:
     - target: {fileID: 1854811047967094604, guid: 772c74ed3aa3b5549840c3b646295434, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3185295495838132773, guid: 772c74ed3aa3b5549840c3b646295434, type: 3}
+      propertyPath: m_Offset.x
+      value: -1.48
       objectReference: {fileID: 0}
     - target: {fileID: 4791393682556341350, guid: 772c74ed3aa3b5549840c3b646295434, type: 3}
       propertyPath: m_LocalPosition.x
