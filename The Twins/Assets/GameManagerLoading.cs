@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class GameManagerLoading : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public static GameManagerLoading instance;
     void Start()
     {
-        
+        instance = this;
     }
 
     // Update is called once per frame

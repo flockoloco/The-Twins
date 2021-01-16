@@ -107,7 +107,7 @@ class ShopAdapter(var itemInv: List<Items>) : RecyclerView.Adapter<ShopAdapter.S
                     if (count > Resources.Bars) {
                         //do something in the future
                     } else {
-                        Resources.Nuggets -= count
+                        Resources.Bars -= count
                         Resources.Gold += (count * 4)
                         builder.dismiss()
                     }
