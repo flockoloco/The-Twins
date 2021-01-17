@@ -10,10 +10,13 @@ public class StartGameScript : MonoBehaviour
     PlayerStats playerStats;
     public GameObject mainMenuCanvasSwitcher;
 
+
+
     void Start()
     {
         managerScript = gameObject.GetComponent<GameManagerScript>();
         mainMenuCanvasSwitcher.GetComponent<UIPopUpScript>().CanvasSwitcher(1);
+
     }
 
     public void StartGame()
@@ -49,12 +52,14 @@ public class StartGameScript : MonoBehaviour
 
         if (levelnumber == 0) //selecting lvl to gen
         {
+
             Debug.Log("trying to gen a lvl 1");
             var lvl0gen = GameObject.Find("Level1Generator").GetComponent<DungeonGenerator>();
             lvl0gen.Generate();
         }
         else if (levelnumber == 1)
         {
+
             Debug.Log("trying to gen a lvl 2");
             var lvl1gen = GameObject.Find("Level2Generator").GetComponent<DungeonGenerator>();
             lvl1gen.Generate();
@@ -62,6 +67,7 @@ public class StartGameScript : MonoBehaviour
         }
         else if (levelnumber == 2)
         {
+
             Debug.Log("trying to gen a lvl 3");
             var lvl2gen = GameObject.Find("Level3Generator").GetComponent<DungeonGenerator>();
             lvl2gen.Generate();
@@ -77,4 +83,9 @@ public class StartGameScript : MonoBehaviour
         //RUN FOREST RUNNNNNNNNNNNNNNNN!
         GameObject.Find("GameKickStarter").GetComponent<GameKIckStarter>().Invoke("JustDoIt", 0.1f);
     }
+
+
+  
+
+
 }

@@ -9,12 +9,15 @@ public class StairsUIScript : MonoBehaviour
     private GameManagerScript gameManager;
     public GameObject popUpPrefab;
 
+    public Animator transition;
+
     private void Start()
     {
         Debug.Log("Inside of the start, " + stairsMenu);
         stairsMenu.SetActive(false);
         player = GameObject.FindWithTag("Player");
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManagerScript>();
+        transition = GameObject.Find("Transition").GetComponent<Animator>();
     }
 
     public void Activate()
@@ -23,11 +26,19 @@ public class StairsUIScript : MonoBehaviour
         stairsMenu.SetActive(true);
     }
 
-    public void Continue()
+    IEnumerator LoadTransition()
     {
+        transition.SetBool("Start", true);
+        stairsMenu.SetActive(false);
+        yield return new WaitForSeconds(1f);
         gameManager.GetComponent<StartGameScript>().GenLevel(player.GetComponent<PlayerStats>().currentLevel + 1);
         player.GetComponent<PlayerStats>().currentLevel += 1;
-        stairsMenu.SetActive(false);
+        transition.SetBool("Start", false);
+    }
+
+    public void Continue()
+    {
+        StartCoroutine(LoadTransition());
     }
     public void SaveAndExit()
     {
@@ -49,4 +60,5 @@ public class StairsUIScript : MonoBehaviour
 
         }
     }
+
 }
