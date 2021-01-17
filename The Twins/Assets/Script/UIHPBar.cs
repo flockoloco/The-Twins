@@ -17,7 +17,7 @@ public class UIHPBar : MonoBehaviour
     {
         maxHP = player.GetComponent<PlayerStats>().maxHealth;
         currentHP = player.GetComponent<PlayerStats>().health;
-        scaleChange = new Vector3( currentHP/ maxHP, 1, 0);
+        scaleChange = new Vector3(currentHP/ maxHP, 1, 0);
         transform.localScale = scaleChange;
     }
 }

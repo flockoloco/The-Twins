@@ -62,8 +62,8 @@ public class PlayerStats : MonoBehaviour
             }
             if (vunerableTimer > 0.5)
             {
-                invunerable = false;
                 animator.SetBool("Hit", false);
+                invunerable = false;
                 hit = false;
                 vunerableTimer = 0;
             }

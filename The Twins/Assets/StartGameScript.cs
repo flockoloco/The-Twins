@@ -49,17 +49,27 @@ public class StartGameScript : MonoBehaviour
 
         if (levelnumber == 0) //selecting lvl to gen
         {
-            Debug.Log("trying to gen a lvl 0");
-            var lvl0gen = GameObject.Find("Level0Generator").GetComponent<DungeonGenerator>();
+            Debug.Log("trying to gen a lvl 1");
+            var lvl0gen = GameObject.Find("Level1Generator").GetComponent<DungeonGenerator>();
             lvl0gen.Generate();
         }
         else if (levelnumber == 1)
         {
-            Debug.Log("trying to gen a lvl 1");
-            var lvl1gen = GameObject.Find("Level1Generator").GetComponent<DungeonGenerator>();
+            Debug.Log("trying to gen a lvl 2");
+            var lvl1gen = GameObject.Find("Level2Generator").GetComponent<DungeonGenerator>();
             lvl1gen.Generate();
 
-        }//add 1 more in the future
+        }
+        else if (levelnumber == 2)
+        {
+            Debug.Log("trying to gen a lvl 3");
+            var lvl2gen = GameObject.Find("Level3Generator").GetComponent<DungeonGenerator>();
+            lvl2gen.Generate();
+        }
+        else if(levelnumber >= 3)
+        {
+            Debug.Log("Fim do jogo , perdeu mas ganhou");
+        }
 
         playerStats.shopOpen = false; //making sure camera doesnt get stuck on stairs
         player.GetComponent<PlayerMovement>().Invoke("PlayerTeleport", 0.1f);//teleporting to spawn

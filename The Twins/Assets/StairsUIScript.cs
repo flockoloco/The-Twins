@@ -26,6 +26,7 @@ public class StairsUIScript : MonoBehaviour
     public void Continue()
     {
         gameManager.GetComponent<StartGameScript>().GenLevel(player.GetComponent<PlayerStats>().currentLevel + 1);
+        player.GetComponent<PlayerStats>().currentLevel += 1;
         stairsMenu.SetActive(false);
     }
     public void SaveAndExit()
