@@ -9,7 +9,8 @@ public class StartGameScript : MonoBehaviour
     GameObject player;
     PlayerStats playerStats;
     public GameObject mainMenuCanvasSwitcher;
-
+    public GameObject shopCanvas;
+    public GameObject enchantCanvas;
 
 
     void Start()
