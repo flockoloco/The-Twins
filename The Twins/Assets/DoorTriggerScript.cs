@@ -11,8 +11,13 @@ public class DoorTriggerScript : MonoBehaviour
         {
             if (parentDoorScript.RoomDoor.enemiesInside.Count >= 1 && parentDoorScript.RoomDoor.playerInside == true)
             {
-                parentDoorScript.ClosingDoor();
+                parentDoorScript.RoomDoor.CloseMyDoors();
             }
+        }
+        if (collision.gameObject.tag == "Room")
+        {
+            Debug.Log("AAAAAAAAAABC SAMFADSNF");
+            parentDoorScript.rooms.Add(collision.gameObject);
         }
     }
 }

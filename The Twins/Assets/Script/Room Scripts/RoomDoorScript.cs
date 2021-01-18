@@ -6,7 +6,7 @@ public class RoomDoorScript : MonoBehaviour
 {
     public List<GameObject> enemiesInside = new List<GameObject>();
     public bool playerInside;
-
+    public List<GameObject> DoorList = new List<GameObject>();
 
     public void RemoveEnemy(GameObject enemyIndex)
     {
@@ -18,6 +18,17 @@ public class RoomDoorScript : MonoBehaviour
         if (collision.tag == "Player")
         {
             playerInside = true;
+        }
+        else if(collision.tag == "DoorTrigger") 
+        {
+            DoorList.Add(collision.gameObject.transform.parent.gameObject);
+        }
+    }
+    public void CloseMyDoors()
+    {
+        foreach (GameObject door in DoorList)
+        {
+            door.GetComponent<DoorScript>().ClosingDoor();
         }
     }
 

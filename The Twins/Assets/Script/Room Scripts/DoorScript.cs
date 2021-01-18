@@ -58,15 +58,4 @@ public class DoorScript : MonoBehaviour
             onlyNow = true;
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Room")
-        {
-            Debug.Log("AAAAAAAAAABC SAMFADSNF");
-            rooms.Add(collision.gameObject);
-        }
-        
-    }
-    
 }

@@ -34,6 +34,7 @@ TagManager:
   - StairsCanvas
   - BossHPUI
   - UICanvas
+  - DoorTrigger
   layers:
   - Default
   - TransparentFX
