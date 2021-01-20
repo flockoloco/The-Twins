@@ -8,9 +8,9 @@ public class EnchantsScript : MonoBehaviour
     public bool playerInside = false;
     public bool oneTime = true;
 
-    void Awake()
+    void Start()
     {
-        enchantCanvas = GameObject.FindWithTag("EnchantCanvas");
+        enchantCanvas = GameObject.FindWithTag("GameManager").GetComponent<StartGameScript>().enchantCanvas;
     }
     public void Interact()
     {

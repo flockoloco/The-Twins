@@ -12,9 +12,9 @@ public class StairsScript : MonoBehaviour
 
     private void Start()
     {
-        StairsCanvas = GameObject.FindWithTag("StairsCanvas");
+        StairsCanvas = GameObject.FindWithTag("GameManager").GetComponent<StartGameScript>().stairsCanvas;
         player = GameObject.FindWithTag("Player");
-        playerMovement = player.GetComponent<PlayerMovement>();
+        playerMovement = player.GetComponent<PlayerMovement>(); 
     }
 
     private void Update()

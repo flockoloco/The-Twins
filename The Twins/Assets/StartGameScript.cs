@@ -9,20 +9,39 @@ public class StartGameScript : MonoBehaviour
     GameObject player;
     PlayerStats playerStats;
     public GameObject mainMenuCanvasSwitcher;
+    
+    public GameObject wellCanvas;
+    public GameObject shopCanvas;
+    public GameObject enchantCanvas;
+    public GameObject stairsCanvas;
 
+    //add fountainCanvas if we add a canvas for it
 
-
-    void Start()
+    public void StartMainMenu()
     {
         managerScript = gameObject.GetComponent<GameManagerScript>();
+
+
+        managerScript.loginCanvas = GameObject.Find("LoginpopUp Canvas");
+        managerScript.registerCanvas = GameObject.Find("RegisterPopUp Canvas");
+        managerScript.mainMenuCanvas = GameObject.Find("MainMenu Canvas");
+        // options // to add
+        //credits // to add
+        mainMenuCanvasSwitcher = GameObject.Find("CanvasChanger");
+
+
         mainMenuCanvasSwitcher.GetComponent<UIPopUpScript>().CanvasSwitcher(1);
-
+        
     }
-
     public void StartGame()
     {
         player = GameObject.FindWithTag("Player");
         playerStats = player.GetComponent<PlayerStats>();
+
+        wellCanvas = GameObject.FindWithTag("WellCanvas");
+        shopCanvas = GameObject.FindWithTag("ShopCanvas");
+        enchantCanvas = GameObject.FindWithTag("EnchantCanvas");
+        stairsCanvas = GameObject.FindWithTag("StairsCanvas");
 
         playerStats.nuggets = managerScript.playerCurrency.Ores; //getting both permanent currencies
         playerStats.bars = managerScript.playerCurrency.Bars;
@@ -42,6 +61,8 @@ public class StartGameScript : MonoBehaviour
         playerStats.gold = managerScript.statsToUse.gold; //loading saved gold
 
         playerStats.currentLevel = managerScript.statsToUse.currentLvl;
+
+
 
         GenLevel(playerStats.currentLevel);
     }

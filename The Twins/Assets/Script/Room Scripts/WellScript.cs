@@ -13,11 +13,7 @@ public class WellScript : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
-        
-    }
-    void Awake()
-    {
-        WellCanvas = GameObject.FindWithTag("WellCanvas");
+        WellCanvas = GameObject.FindWithTag("GameManager").GetComponent<StartGameScript>().wellCanvas;
     }
     public void Interact()
     {

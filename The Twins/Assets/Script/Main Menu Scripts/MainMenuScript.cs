@@ -13,6 +13,7 @@ public class MainMenuScript : MonoBehaviour
     public GameObject LevelLoader;
     public void StartUp()
     {
+        gameManager = GameObject.FindWithTag("GameManager");
         Debug.Log(gameManager.GetComponent<GameManagerScript>().logged + "inside start of mainmenuscript");
         if (gameManager.GetComponent<GameManagerScript>().logged == true)
         {

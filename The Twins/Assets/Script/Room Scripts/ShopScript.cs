@@ -8,9 +8,9 @@ public class ShopScript : MonoBehaviour
     public bool playerInside = false;
     public bool oneTime = true;
 
-    void Awake()
+    void Start()
     {
-        shopCanvas = GameObject.FindWithTag("ShopCanvas");
+        shopCanvas = GameObject.FindWithTag("GameManager").GetComponent<StartGameScript>().shopCanvas;
     }
     public void Interact()
     {
