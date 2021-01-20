@@ -120,6 +120,7 @@ MonoBehaviour:
   - {fileID: 2704509288343383622}
   - {fileID: 243822667186702755}
   playerInside: 0
+  DoorList: []
 --- !u!1 &6874096849585158207
 GameObject:
   m_ObjectHideFlags: 0
